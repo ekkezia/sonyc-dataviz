@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Tabletop Pawn Tracker</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --surface: #13131a; --border: #2a2a38;
+      --text: #c8c8dc; --muted: #555570; --accent: #5b8fff;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--mono); overflow: hidden; }
+    .layout { display: flex; flex-direction: column; height: 100%; }
+    #topbar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 6px 12px; background: var(--surface);
+      border-bottom: 1px solid var(--border); flex-shrink: 0; min-height: 42px;
+    }
+    .logo { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing:.1em; white-space:nowrap; }
+    .vsep { width:1px; height:20px; background:var(--border); flex-shrink:0; }
+    .btn {
+      font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 5px 10px;
+      background: transparent; border: 1px solid var(--border); border-radius: 5px;
+      color: var(--muted); cursor: pointer; letter-spacing:.05em;
+      transition: border-color .12s, color .12s, background .12s; white-space: nowrap;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--text); }
+    .btn.on  { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.danger:hover { border-color: #f05; color: #f05; }
+    #gridCfg { display:flex; align-items:center; gap:6px; }
+    #gridCfg label { font-size:10px; color:var(--muted); }
+    #gridCfg input[type=number] {
+      width:42px; padding:4px 5px; font-family:var(--mono); font-size:10px;
+      background:var(--bg); border:1px solid var(--border); border-radius:4px;
+      color:var(--text); text-align:center;
+    }
+    #gridCfg input:focus { outline:none; border-color:var(--accent); }
+    #trackerRow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .chip {
+      display:flex; align-items:center; gap:5px; padding:3px 8px 3px 5px;
+      border:1px solid var(--border); border-radius:20px; font-size:10px;
+      cursor:pointer; transition:border-color .12s; background:transparent; font-family:var(--mono);
+    }
+    .chip.active-chip { border-color:rgba(255,255,255,.45); }
+    .chip-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .chip-label { color:var(--text); letter-spacing:.04em; }
+    .chip-cell  { color:var(--muted); font-size:9px; min-width:34px; }
+    .chip-remove { color:var(--muted); font-size:11px; background:none; border:none; cursor:pointer; padding:0 0 0 2px; font-family:var(--mono); transition:color .1s; }
+    .chip-remove:hover { color:#f05; }
+    #addPawnBtn {
+      display:flex; align-items:center; gap:4px; padding:3px 9px;
+      border:1px dashed var(--border); border-radius:20px; font-size:10px;
+      font-family:var(--mono); color:var(--muted); background:none; cursor:pointer;
+      transition:border-color .12s, color .12s; letter-spacing:.04em;
+    }
+    #addPawnBtn:hover { border-color:var(--accent); color:var(--accent); }
+    #pawnPicker {
+      position:absolute; top:46px; left:50%; transform:translateX(-50%);
+      background:var(--surface); border:1px solid var(--border); border-radius:8px;
+      padding:12px; z-index:30; display:none; flex-direction:column; gap:8px;
+      min-width:260px; box-shadow:0 8px 28px rgba(0,0,0,.7);
+    }
+    #pawnPicker.open { display:flex; }
+    #pickerSwatches { display:flex; flex-wrap:wrap; gap:8px; }
+    .pick-close { align-self:flex-end; font-size:10px; color:var(--muted); cursor:pointer; background:none; border:none; font-family:var(--mono); letter-spacing:.04em; }
+    .pick-close:hover { color:var(--text); }
+    .pick-swatch { display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; padding:6px 8px; border-radius:6px; border:1px solid transparent; transition:border-color .12s; font-family:var(--mono); }
+    .pick-swatch:hover { border-color:var(--border); }
+    .pick-swatch.disabled { opacity:.3; pointer-events:none; }
+    .pick-swatch span { font-size:9px; color:var(--muted); }
+    .pick-circle { width:22px; height:22px; border-radius:50%; }
+    #pickerCustomRow { display:flex; align-items:center; gap:8px; padding-top:8px; border-top:1px solid var(--border); }
+    #pickerCustomRow label { font-size:9px; color:var(--muted); }
+    #customColorPick { width:26px; height:26px; border:none; background:none; cursor:pointer; border-radius:3px; }
+    #customHueLbl { font-size:9px; color:var(--muted); min-width:40px; }
+    #addCustomBtn { font-family:var(--mono); font-size:9px; padding:3px 8px; margin-left:auto; background:transparent; border:1px solid var(--border); border-radius:4px; color:var(--text); cursor:pointer; }
+    #addCustomBtn:hover { border-color:var(--accent); }
+    #stage { flex:1; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#000; }
+    video { max-width:100%; max-height:100%; display:block; object-fit:contain; }
+    #overlay { position:absolute; inset:0; width:100%; height:100%; }
+    #hint {
+      position:absolute; top:12px; left:50%; transform:translateX(-50%);
+      font-size:11px; font-weight:600; background:rgba(10,10,15,.92);
+      border:1px solid var(--accent); padding:6px 16px; border-radius:5px;
+      color:var(--accent); pointer-events:none; opacity:0; transition:opacity .2s;
+      white-space:nowrap; letter-spacing:.05em; z-index:5;
+    }
+    #hint.show { opacity:1; }
+    #tuner { position:absolute; bottom:0; right:0; z-index:10; background:var(--surface); border:1px solid var(--border); border-radius:8px 0 0 0; padding:12px 14px; min-width:210px; font-size:10px; display:none; }
+    #tuner.open { display:block; }
+    #tuner h4 { font-size:10px; color:var(--accent); margin-bottom:9px; letter-spacing:.06em; }
+    .srow { display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+    .srow label { width:34px; color:var(--muted); font-size:9px; }
+    .srow input[type=range] { flex:1; accent-color:var(--accent); }
+    .srow span { width:28px; text-align:right; color:var(--text); font-size:9px; }
+    #sampleCanvas { border:1px solid var(--border); border-radius:3px; margin-top:7px; display:block; }
+    #bottombar { display:flex; align-items:center; gap:14px; padding:4px 12px; background:var(--surface); border-top:1px solid var(--border); flex-shrink:0; font-size:9px; color:var(--muted); }
+    .stat { display:flex; gap:4px; }
+    .stat span:last-child { color:var(--text); }
+    #bCells { display:flex; gap:10px; margin-left:auto; }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <div id="topbar">
+    <div class="logo">PAWN/TRACK</div>
+    <div class="vsep"></div>
+    <button id="btnDraw"   class="btn" onclick="setMode('draw')">DRAW GRID</button>
+    <button id="btnSample" class="btn" onclick="setMode('sample')">SAMPLE</button>
+    <button class="btn danger" onclick="clearGrid()">RESET GRID</button>
+    <div class="vsep"></div>
+    <div id="trackerRow"></div>
+    <button id="addPawnBtn" onclick="openPicker()">+ PAWN</button>
+    <div class="vsep"></div>
+    <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
+    <div class="vsep"></div>
+    <div id="gridCfg">
+      <label>COLS</label>
+      <input type="number" id="gCols" value="10" min="1" max="40" onchange="updateGrid()">
+      <label>ROWS</label>
+      <input type="number" id="gRows" value="10" min="1" max="40" onchange="updateGrid()">
+    </div>
+    <div id="statusTag" style="margin-left:auto;font-size:10px;color:var(--muted)">INIT</div>
+  </div>
+
+  <div id="stage">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="overlay"></canvas>
+    <div id="hint"></div>
+    <div id="pawnPicker">
+      <button class="pick-close" onclick="closePicker()">CLOSE x</button>
+      <div id="pickerSwatches"></div>
+      <div id="pickerCustomRow">
+        <label>CUSTOM</label>
+        <input type="color" id="customColorPick" value="#ff8800" oninput="onCustomColorChange()">
+        <span id="customHueLbl">H: 32</span>
+        <button id="addCustomBtn" onclick="addCustomColor()">ADD</button>
+      </div>
+    </div>
+    <div id="tuner">
+      <h4>HSV - <span id="tunerLabel">-</span></h4>
+      <div class="srow"><label>H +/-</label><input type="range" id="sHr" min="5"  max="60"  value="18"  oninput="syncSliders()"><span id="vHr">18</span></div>
+      <div class="srow"><label>S min</label><input type="range" id="sSm" min="0"  max="255" value="80"  oninput="syncSliders()"><span id="vSm">80</span></div>
+      <div class="srow"><label>V min</label><input type="range" id="sVn" min="0"  max="255" value="50"  oninput="syncSliders()"><span id="vVn">50</span></div>
+      <div class="srow"><label>V max</label><input type="range" id="sVx" min="0"  max="255" value="255" oninput="syncSliders()"><span id="vVx">255</span></div>
+      <div class="srow"><label>R min</label><input type="range" id="sRn" min="3"  max="80"  value="10"  oninput="syncSliders()"><span id="vRn">10</span></div>
+      <div class="srow"><label>R max</label><input type="range" id="sRx" min="10" max="200" value="60"  oninput="syncSliders()"><span id="vRx">60</span></div>
+      <canvas id="sampleCanvas" width="182" height="100"></canvas>
+    </div>
+  </div>
+
+  <div id="bottombar">
+    <div class="stat"><span>FPS</span><span id="bFps">-</span></div>
+    <div class="stat"><span>BLOBS</span><span id="bBlobs">-</span></div>
+    <div class="stat"><span>GRID</span><span id="bGrid">none</span></div>
+    <div id="bCells"></div>
+  </div>
+</div>
+
+<script>
+const PRESET_PAWNS = [
+  { id:'red',    hue:  0, color:'#e63030', label:'Red',    isWhite:false },
+  { id:'blue',   hue:215, color:'#3070e6', label:'Blue',   isWhite:false },
+  { id:'green',  hue:120, color:'#30c050', label:'Green',  isWhite:false },
+  { id:'yellow', hue: 52, color:'#e6c830', label:'Yellow', isWhite:false },
+  { id:'purple', hue:270, color:'#9b40e0', label:'Purple', isWhite:false },
+  { id:'orange', hue: 25, color:'#e07830', label:'Orange', isWhite:false },
+  { id:'white',  hue:  0, color:'#d8d8d8', label:'White',  isWhite:true  },
+];
+let allPawnDefs = [...PRESET_PAWNS];
+let customCounter = 0;
+
+const pawnParams = {};
+function defaultParams(pd) {
+  return pd.isWhite
+    ? { hRange:20, sMin:0,  vMin:190, vMax:255, rMin:10, rMax:60 }
+    : { hRange:18, sMin:80, vMin:50,  vMax:255, rMin:10, rMax:60 };
+}
+PRESET_PAWNS.forEach(p => { pawnParams[p.id] = defaultParams(p); });
+
+let activePawnIds  = new Set(['red']);
+let selectedChipId = 'red';
+const pawnState    = {};
+PRESET_PAWNS.forEach(p => { pawnState[p.id] = { pos:null, cell:null }; });
+
+// THE KEY VARIABLE - currentCell[pawnId] = {col,row} or null
+const currentCell = {};
+
+// ── PAWNS STATE OBJECT ─────────────────────────────────────────
+// Key = pawn index (1-based). Access anywhere as pawns[1], pawns[2], etc.
+// pawns[1] = { color: '#e63030', position: { col: 3, row: 2 } | null, score: 0 }
+const pawns = {
+  1: { color: '#e63030', position: null, score: 0 }
+};
+// maps pawnId string (e.g. 'red') → pawn index so we can update pawns[] during tracking
+const pawnIdToIndex = { red: 1 };
+let nextPawnIndex = 2;
+
+// Grid: simple axis-aligned rect in canvas px
+let grid      = null; // { x, y, w, h }
+let dragStart = null;
+let COLS = 10, ROWS = 10;
+
+function canvasPxToCell(px, py) {
+  if (!grid) return null;
+  const col = Math.floor((px - grid.x) / (grid.w / COLS));
+  const row = Math.floor((py - grid.y) / (grid.h / ROWS));
+  if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
+  return { col, row };
+}
+
+// DOM
+const video      = document.getElementById('video');
+const overlay    = document.getElementById('overlay');
+const ctx        = overlay.getContext('2d', { willReadFrequently:true });
+const hint       = document.getElementById('hint');
+const statusTag  = document.getElementById('statusTag');
+const sampleCtx  = document.getElementById('sampleCanvas').getContext('2d');
+const trackerRow = document.getElementById('trackerRow');
+const bCellsEl   = document.getElementById('bCells');
+
+const offC = document.createElement('canvas');
+const offX = offC.getContext('2d', { willReadFrequently:true });
+const SCALE = 0.35;
+
+let mode = 'track';
+let frameCount = 0, lastFpsTime = performance.now();
+
+// CHIPS
+function rebuildChips() {
+  trackerRow.innerHTML = '';
+  activePawnIds.forEach(id => {
+    const pd = allPawnDefs.find(p => p.id === id); if (!pd) return;
+    const chip = document.createElement('div');
+    chip.className = 'chip' + (id === selectedChipId ? ' active-chip' : '');
+    chip.innerHTML =
+      '<span class="chip-dot" style="background:' + pd.color + '"></span>' +
+      '<span class="chip-label">' + pd.label.toUpperCase() + '</span>' +
+      '<span class="chip-cell" id="chipCell-' + id + '">-,-</span>' +
+      '<button class="chip-remove" title="Remove">x</button>';
+    chip.querySelector('.chip-remove').onclick = function(e){ e.stopPropagation(); removePawn(id); };
+    chip.addEventListener('click', function(){ selectChip(id); });
+    trackerRow.appendChild(chip);
+  });
+  updateBottomCells();
+}
+
+function selectChip(id) { selectedChipId = id; rebuildChips(); loadSliders(); }
+
+function removePawn(id) {
+  activePawnIds.delete(id);
+  if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
+  currentCell[id] = null;
+  if (selectedChipId === id) selectedChipId = [...activePawnIds][0] || null;
+  rebuildChips();
+}
+
+function updateBottomCells() {
+  bCellsEl.innerHTML = '';
+  activePawnIds.forEach(id => {
+    const pd   = allPawnDefs.find(p => p.id === id);
+    const cell = currentCell[id];
+    const div  = document.createElement('div');
+    div.className = 'stat';
+    div.innerHTML = '<span style="color:' + (pd ? pd.color : 'var(--muted)') + ';">' + ((pd ? pd.label : id)).toUpperCase() + '</span><span>' + (cell ? cell.col + ',' + cell.row : '-') + '</span>';
+    bCellsEl.appendChild(div);
+  });
+}
+
+// PICKER
+function buildPickerSwatches() {
+  const sw = document.getElementById('pickerSwatches');
+  sw.innerHTML = '';
+  allPawnDefs.forEach(pd => {
+    const div = document.createElement('div');
+    div.className = 'pick-swatch' + (activePawnIds.has(pd.id) ? ' disabled' : '');
+    div.innerHTML = '<div class="pick-circle" style="background:' + pd.color + '"></div><span>' + pd.label.toUpperCase() + '</span>';
+    div.onclick = function(){ addPawnToTracking(pd.id); closePicker(); };
+    sw.appendChild(div);
+  });
+}
+function openPicker()  { buildPickerSwatches(); document.getElementById('pawnPicker').classList.add('open'); }
+function closePicker() { document.getElementById('pawnPicker').classList.remove('open'); }
+
+function addPawnToTracking(id) {
+  activePawnIds.add(id);
+  selectedChipId = id;
+  if (!pawnState[id])  pawnState[id]  = { pos:null, cell:null };
+  if (!pawnParams[id]) pawnParams[id] = defaultParams(allPawnDefs.find(function(p){ return p.id===id; }));
+  // register in pawns[] if not already there
+  if (!pawnIdToIndex[id]) {
+    const idx = nextPawnIndex++;
+    pawnIdToIndex[id] = idx;
+    const pd = allPawnDefs.find(function(p){ return p.id===id; });
+    pawns[idx] = { color: pd ? pd.color : '#ffffff', position: null, score: 0 };
+  }
+  rebuildChips(); loadSliders();
+}
+
+function onCustomColorChange() {
+  const hex = document.getElementById('customColorPick').value;
+  const rv = parseInt(hex.slice(1),16);
+  const r=(rv>>16)&255, g=(rv>>8)&255, b=rv&255;
+  const h = rgbToHsv(r,g,b)[0];
+  document.getElementById('customHueLbl').textContent = 'H: ' + Math.round(h);
+}
+
+function addCustomColor() {
+  const hex = document.getElementById('customColorPick').value;
+  const rv = parseInt(hex.slice(1),16);
+  const r=(rv>>16)&255, g=(rv>>8)&255, b=rv&255;
+  const h = rgbToHsv(r,g,b)[0];
+  customCounter++;
+  const id = 'custom' + customCounter;
+  const pd = { id:id, hue:Math.round(h), color:hex, label:'C'+customCounter, isWhite:false };
+  allPawnDefs.push(pd);
+  pawnParams[id] = defaultParams(pd);
+  pawnState[id]  = { pos:null, cell:null };
+  addPawnToTracking(id);
+  closePicker();
+}
+
+// HSV TUNER
+function loadSliders() {
+  const id = selectedChipId; if (!id || !pawnParams[id]) return;
+  const pp = pawnParams[id];
+  const pd = allPawnDefs.find(function(p){ return p.id===id; });
+  document.getElementById('sHr').value = pp.hRange;
+  document.getElementById('sSm').value = pp.sMin;
+  document.getElementById('sVn').value = pp.vMin;
+  document.getElementById('sVx').value = pp.vMax;
+  document.getElementById('sRn').value = pp.rMin;
+  document.getElementById('sRx').value = pp.rMax;
+  document.getElementById('tunerLabel').textContent = (pd ? pd.label : id).toUpperCase();
+  syncSliders();
+}
+function syncSliders() {
+  const id = selectedChipId; if (!id || !pawnParams[id]) return;
+  const pp = pawnParams[id];
+  pp.hRange = +document.getElementById('sHr').value;
+  pp.sMin   = +document.getElementById('sSm').value;
+  pp.vMin   = +document.getElementById('sVn').value;
+  pp.vMax   = +document.getElementById('sVx').value;
+  pp.rMin   = +document.getElementById('sRn').value;
+  pp.rMax   = +document.getElementById('sRx').value;
+  ['Hr','Sm','Vn','Vx','Rn','Rx'].forEach(function(k){
+    document.getElementById('v'+k).textContent = document.getElementById('s'+k).value;
+  });
+}
+function toggleTuner() { document.getElementById('tuner').classList.toggle('open'); }
+loadSliders();
+
+// CAMERA
+async function startCamera() {
+  try {
+    const s = await navigator.mediaDevices.getUserMedia({
+      video:{ facingMode:'environment', width:{ideal:1280}, height:{ideal:720} }, audio:false });
+    video.srcObject = s; statusTag.textContent = 'CAMERA OK';
+  } catch(e) { statusTag.textContent = 'CAM ERROR'; console.error(e); }
+}
+
+function resizeCanvases() {
+  overlay.width  = video.videoWidth  || overlay.offsetWidth;
+  overlay.height = video.videoHeight || overlay.offsetHeight;
+  offC.width  = Math.max(1, Math.round(overlay.width  * SCALE));
+  offC.height = Math.max(1, Math.round(overlay.height * SCALE));
+}
+
+// DRAG TO DEFINE GRID
+function canvasPoint(e) {
+  const rect = overlay.getBoundingClientRect();
+  const sx = overlay.width  / rect.width;
+  const sy = overlay.height / rect.height;
+  const cx = e.touches ? e.touches[0].clientX : e.clientX;
+  const cy = e.touches ? e.touches[0].clientY : e.clientY;
+  return { x:(cx-rect.left)*sx, y:(cy-rect.top)*sy };
+}
+
+overlay.addEventListener('pointerdown', function(e) {
+  if (mode !== 'draw') return;
+  e.preventDefault();
+  overlay.setPointerCapture(e.pointerId);
+  dragStart = canvasPoint(e);
+  grid = null;
+});
+
+overlay.addEventListener('pointermove', function(e) {
+  if (mode !== 'draw' || !dragStart) return;
+  e.preventDefault();
+  const p = canvasPoint(e);
+  grid = normaliseRect(dragStart, p);
+});
+
+overlay.addEventListener('pointerup', function(e) {
+  if (mode !== 'draw' || !dragStart) return;
+  e.preventDefault();
+  const p = canvasPoint(e);
+  grid = normaliseRect(dragStart, p);
+  dragStart = null;
+  if (grid.w < 10 || grid.h < 10) { grid = null; showHint('TOO SMALL - DRAG AGAIN'); return; }
+  document.getElementById('bGrid').textContent = Math.round(grid.w) + 'x' + Math.round(grid.h) + 'px';
+  setMode('track');
+  showHint('GRID SET'); setTimeout(hideHint, 1500);
+});
+
+function normaliseRect(a, b) {
+  return { x:Math.min(a.x,b.x), y:Math.min(a.y,b.y), w:Math.abs(b.x-a.x), h:Math.abs(b.y-a.y) };
+}
+
+function clearGrid() {
+  grid = null; dragStart = null;
+  document.getElementById('bGrid').textContent = 'none';
+  activePawnIds.forEach(function(id) {
+    if (pawnState[id]) pawnState[id].cell = null;
+    currentCell[id] = null;
+  });
+  updateBottomCells();
+}
+
+function updateGrid() {
+  COLS = Math.max(1, +document.getElementById('gCols').value);
+  ROWS = Math.max(1, +document.getElementById('gRows').value);
+}
+
+// MAIN LOOP
+function loop() {
+  requestAnimationFrame(loop);
+  if (video.readyState < 2) return;
+
+  frameCount++;
+  const now = performance.now();
+  if (now - lastFpsTime > 600) {
+    document.getElementById('bFps').textContent = Math.round(frameCount*1000/(now-lastFpsTime));
+    frameCount = 0; lastFpsTime = now;
+  }
+
+  offX.drawImage(video, 0, 0, offC.width, offC.height);
+  const imgData = offX.getImageData(0, 0, offC.width, offC.height);
+
+  if (mode === 'sample') {
+    runSampleMode(imgData);
+    return;
+  }
+
+  let totalBlobs = 0;
+  activePawnIds.forEach(function(id) {
+    const blobs = detectBlobs(imgData, id);
+    totalBlobs += blobs.length;
+    if (blobs.length > 0) {
+      const best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
+      updatePawnState(id, best.cx/SCALE, best.cy/SCALE, best.r/SCALE);
+    } else {
+      if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
+      currentCell[id] = null;
+      const idx = pawnIdToIndex[id];
+      if (idx !== undefined) pawns[idx].position = null;
+      const chipCell = document.getElementById('chipCell-' + id);
+      if (chipCell) chipCell.textContent = '-,-';
+    }
+  });
+  document.getElementById('bBlobs').textContent = totalBlobs;
+  draw();
+}
+
+// UPDATE STATE - direct px to cell, no transforms
+function updatePawnState(id, cx, cy, r) {
+  const state = pawnState[id];
+  state.pos  = { cx:cx, cy:cy, r:r };
+  const cell = canvasPxToCell(cx, cy);
+  state.cell      = cell;
+  currentCell[id] = cell;  // <-- THE VARIABLE
+
+  // keep pawns[] in sync
+  const idx = pawnIdToIndex[id];
+  if (idx !== undefined) {
+    pawns[idx].position = cell;  // { col, row } | null
+  }
+
+  const chipCell = document.getElementById('chipCell-' + id);
+  if (chipCell) chipCell.textContent = cell ? cell.col+','+cell.row : '-,-';
+
+  // update the inline debug readout next to COLS/ROWS
+  updateBottomCells();
+}
+
+// HSV
+function rgbToHsv(r,g,b) {
+  r/=255; g/=255; b/=255;
+  var max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min, h=0;
+  if (d>0) {
+    if (max===r)      h=60*(((g-b)/d)%6);
+    else if (max===g) h=60*((b-r)/d+2);
+    else              h=60*((r-g)/d+4);
+    if (h<0) h+=360;
+  }
+  return [h, max===0?0:d/max*255, max*255];
+}
+function hueDiff(a,b){ var d=Math.abs(a-b)%360; return d>180?360-d:d; }
+
+function pixelMatches(r,g,b,id) {
+  const pp  = pawnParams[id];
+  const def = allPawnDefs.find(function(p){ return p.id===id; });
+  if (!pp||!def) return false;
+  const hsv = rgbToHsv(r,g,b);
+  const h=hsv[0], s=hsv[1], v=hsv[2];
+  if (v<pp.vMin||v>pp.vMax) return false;
+  if (def.isWhite) return s < pp.sMin;
+  return hueDiff(h,def.hue)<=pp.hRange && s>=pp.sMin;
+}
+
+// BLOB DETECTION
+function detectBlobs(imgData, id) {
+  const data=imgData.data, w=imgData.width, h=imgData.height;
+  const pp = pawnParams[id]; if (!pp) return [];
+
+  const mask = new Uint8Array(w*h);
+  for (var i=0; i<w*h; i++)
+    mask[i] = pixelMatches(data[i*4],data[i*4+1],data[i*4+2],id) ? 1 : 0;
+
+  const closed = morphErode(morphDilate(mask,w,h),w,h);
+  const visited = new Uint8Array(w*h);
+  const blobs = [];
+
+  for (var y=0; y<h; y++) for (var x=0; x<w; x++) {
+    const idx = y*w+x;
+    if (!closed[idx]||visited[idx]) continue;
+    var queue=[idx]; visited[idx]=1;
+    var sumX=0,sumY=0,count=0,mnX=x,mxX=x,mnY=y,mxY=y,qi=0;
+    while (qi<queue.length) {
+      const ci=queue[qi++], cx=ci%w, cy2=Math.floor(ci/w);
+      sumX+=cx; sumY+=cy2; count++;
+      if(cx<mnX)mnX=cx; if(cx>mxX)mxX=cx;
+      if(cy2<mnY)mnY=cy2; if(cy2>mxY)mxY=cy2;
+      const ns=[ci-1,ci+1,ci-w,ci+w];
+      for (var ni=0; ni<ns.length; ni++) {
+        const n=ns[ni];
+        if (n>=0&&n<w*h&&!visited[n]&&closed[n]) { visited[n]=1; queue.push(n); }
+      }
+    }
+    const bw=mxX-mnX+1, bh=mxY-mnY+1, r=(bw+bh)/4;
+    const circ=count/(Math.PI*r*r);
+    const asp=Math.max(bw,bh)/Math.max(1,Math.min(bw,bh));
+    if (r>=pp.rMin&&r<=pp.rMax&&circ>0.35&&asp<2.5)
+      blobs.push({ cx:sumX/count, cy:sumY/count, r:r, area:count });
+  }
+  return blobs;
+}
+
+function morphDilate(mask,w,h) {
+  const out=new Uint8Array(w*h);
+  for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
+    const i=y*w+x;
+    if(mask[i]||(x>0&&mask[i-1])||(x<w-1&&mask[i+1])||(y>0&&mask[i-w])||(y<h-1&&mask[i+w])) out[i]=1;
+  }
+  return out;
+}
+function morphErode(mask,w,h) {
+  const out=new Uint8Array(w*h);
+  for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
+    const i=y*w+x;
+    if(mask[i]&&(x===0||mask[i-1])&&(x===w-1||mask[i+1])&&(y===0||mask[i-w])&&(y===h-1||mask[i+w])) out[i]=1;
+  }
+  return out;
+}
+
+// SAMPLE MODE
+function runSampleMode(imgData) {
+  const data=imgData.data, w=imgData.width, h=imgData.height;
+  const id = selectedChipId; if (!id) return;
+  const def = allPawnDefs.find(function(p){ return p.id===id; });
+  const hex = def ? def.color : '#ff0000';
+  const rv = parseInt(hex.slice(1),16);
+  const mr=(rv>>16)&255, mg=(rv>>8)&255, mb=rv&255;
+
+  const preview = new ImageData(w,h);
+  for (var i=0; i<w*h; i++) {
+    const r=data[i*4],g=data[i*4+1],b=data[i*4+2];
+    if (pixelMatches(r,g,b,id)) {
+      preview.data[i*4]=mr; preview.data[i*4+1]=mg; preview.data[i*4+2]=mb; preview.data[i*4+3]=255;
+    } else {
+      preview.data[i*4]=r>>1; preview.data[i*4+1]=g>>1; preview.data[i*4+2]=b>>1; preview.data[i*4+3]=255;
+    }
+  }
+  sampleCtx.putImageData(preview,0,0);
+  const tmp=document.createElement('canvas'); tmp.width=w; tmp.height=h;
+  tmp.getContext('2d').putImageData(preview,0,0);
+  ctx.clearRect(0,0,overlay.width,overlay.height);
+  ctx.drawImage(tmp,0,0,overlay.width,overlay.height);
+  if (grid) drawGridOverlay(false);
+}
+
+// DRAW
+function draw() {
+  ctx.clearRect(0,0,overlay.width,overlay.height);
+  if (grid) drawGridOverlay(true);
+  activePawnIds.forEach(function(id) {
+    const s = pawnState[id];
+    if (s&&s.pos) drawPawn(allPawnDefs.find(function(p){ return p.id===id; }), s);
+  });
+}
+
+function drawGridOverlay(showActive) {
+  if (!grid) return;
+  const gx=grid.x, gy=grid.y, gw=grid.w, gh=grid.h;
+  const cellW=gw/COLS, cellH=gh/ROWS;
+  const fontSize=Math.max(7, Math.min(10, cellW/4));
+
+  const activeCells = new Map();
+  if (showActive) {
+    activePawnIds.forEach(function(id) {
+      const s = pawnState[id];
+      if (s&&s.cell) {
+        const k = s.cell.col+','+s.cell.row;
+        const pd = allPawnDefs.find(function(p){ return p.id===id; });
+        activeCells.set(k, pd ? pd.color : '#fff');
+      }
+    });
+  }
+
+  for (var row=0; row<ROWS; row++) {
+    for (var col=0; col<COLS; col++) {
+      const cx=gx+col*cellW, cy=gy+row*cellH;
+      const k=col+','+row;
+      const isActive=activeCells.has(k);
+
+      ctx.beginPath();
+      ctx.rect(cx, cy, cellW, cellH);
+
+      if (isActive) {
+        const c=activeCells.get(k);
+        ctx.fillStyle=c+'40'; ctx.fill();
+        ctx.globalAlpha=1; ctx.strokeStyle='rgba(0,0,0,1)'; ctx.lineWidth=2; ctx.stroke();
+      } else {
+        ctx.globalAlpha=0.5; ctx.strokeStyle='#000'; ctx.lineWidth=1; ctx.stroke();
+        ctx.globalAlpha=1;
+      }
+
+      // label
+      const lx=cx+cellW/2, ly=cy+cellH/2+fontSize*0.4;
+      ctx.globalAlpha = isActive ? 1 : 0.4;
+      ctx.fillStyle = isActive ? 'rgba(0,0,0,0.85)' : '#000';
+      ctx.font=fontSize+'px IBM Plex Mono,monospace';
+      ctx.textAlign='center';
+      ctx.fillText(col+','+row, lx, ly);
+      ctx.globalAlpha=1;
+    }
+  }
+  ctx.textAlign='left';
+
+  // outer border
+  ctx.strokeStyle='rgba(0,0,0,0.85)'; ctx.lineWidth=2;
+  ctx.strokeRect(gx,gy,gw,gh);
+}
+
+function drawPawn(pd, state) {
+  if (!pd) return;
+  const cx=state.pos.cx, cy=state.pos.cy, r=state.pos.r;
+  ctx.beginPath(); ctx.arc(cx,cy,r+5,0,Math.PI*2);
+  ctx.strokeStyle=pd.color; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+  ctx.fillStyle=pd.color+'40'; ctx.fill();
+  ctx.strokeStyle=pd.color; ctx.lineWidth=1.5; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cy,3,0,Math.PI*2);
+  ctx.fillStyle=pd.color; ctx.fill();
+  ctx.strokeStyle=pd.color+'88'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(cx-r-4,cy); ctx.lineTo(cx+r+4,cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx,cy-r-4); ctx.lineTo(cx,cy+r+4); ctx.stroke();
+  ctx.font='bold 11px IBM Plex Mono,monospace';
+  ctx.fillStyle='#fff'; ctx.textAlign='center';
+  ctx.fillText(pd.label.toUpperCase(), cx, cy-r-8);
+  if (state.cell) {
+    ctx.fillStyle=pd.color;
+    ctx.font='10px IBM Plex Mono,monospace';
+    ctx.fillText('['+state.cell.col+','+state.cell.row+']', cx, cy+r+16);
+  }
+  ctx.textAlign='left';
+}
+
+// MODE
+function setMode(m) {
+  mode=m;
+  document.getElementById('btnDraw').classList.toggle('on',   m==='draw');
+  document.getElementById('btnSample').classList.toggle('on', m==='sample');
+  overlay.style.cursor = m==='draw' ? 'crosshair' : 'default';
+  if (m==='draw') {
+    showHint('DRAG TO DEFINE BOARD AREA');
+  } else if (m==='sample') {
+    showHint('SAMPLE - adjust HSV to isolate ' + (selectedChipId||'').toUpperCase());
+    document.getElementById('tuner').classList.add('open');
+  } else { hideHint(); }
+  statusTag.textContent=m.toUpperCase();
+}
+
+function showHint(msg){ hint.textContent=msg; hint.classList.add('show'); }
+function hideHint(){ hint.classList.remove('show'); }
+
+// INIT
+rebuildChips();
+video.addEventListener('playing', function(){ resizeCanvases(); loop(); });
+new ResizeObserver(resizeCanvases).observe(video);
+startCamera();
+</script>
+</body>
+</html>
