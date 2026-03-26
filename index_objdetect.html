@@ -138,14 +138,10 @@
     }
     #timelinePicker.open { display:flex; }
     #tlPickerSwatches { display:flex; flex-wrap:wrap; gap:8px; }
-    #tuner { position:absolute; bottom:0; right:0; z-index:25; background:var(--surface); border:1px solid var(--border); border-radius:8px 0 0 0; padding:12px 14px; min-width:210px; font-size:10px; display:none; }
-    #tuner.open { display:block; }
-    #tuner h4 { font-size:10px; color:var(--accent); margin-bottom:9px; letter-spacing:.06em; }
-    .srow { display:flex; align-items:center; gap:7px; margin-bottom:5px; }
-    .srow label { width:34px; color:var(--muted); font-size:9px; }
-    .srow input[type=range] { flex:1; accent-color:var(--accent); }
-    .srow span { width:28px; text-align:right; color:var(--text); font-size:9px; }
-    #sampleCanvas { border:1px solid var(--border); border-radius:3px; margin-top:7px; display:block; }
+    .chip-capture { color:var(--muted); font-size:12px; background:none; border:1px solid transparent; border-radius:10px; cursor:pointer; padding:1px 5px; font-family:var(--mono); transition:color .1s, border-color .1s; letter-spacing:.03em; }
+    .chip-capture:hover { color:var(--accent); border-color:var(--accent); }
+    .chip-capture.capturing { color:#ff8800; border-color:#ff8800; animation: capturePulse 0.6s ease-in-out infinite; }
+    @keyframes capturePulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
     .stat { display:flex; gap:4px; }
     .stat span:last-child { color:var(--text); }
     #bCells { display:flex; gap:10px; margin-left:auto; }
@@ -181,16 +177,15 @@
       padding: 6px 24px 8px; background: rgba(255,255,255,0.9);
       border-top: 1px solid #e8e8e8; display: flex; flex-direction: column; gap: 4px;
     }
-    #projSliderLabel { font-size: 11px; color: #555; letter-spacing: .1em; text-align: center; }
-    #projSliderLabel.settling { animation: sliderSettle 1s ease-in forwards; }
+    #projSliderLabel { font-size: 11px; color: #555; letter-spacing: .1em; text-align: center; transition: color .15s; }
+    #projSliderLabel.settling { animation: sliderSettle 0.45s ease-in-out infinite alternate; }
     @keyframes sliderSettle {
-      0%   { color: #bbb; text-shadow: none; }
-      50%  { color: #5b8fff; text-shadow: 0 0 6px #5b8fff99; }
-      100% { color: #5b8fff; text-shadow: 0 0 16px #5b8fffee, 0 0 32px #5b8fff77; }
+      from { color: #aaa; text-shadow: none; }
+      to   { color: #5b8fff; text-shadow: 0 0 8px #5b8fffcc, 0 0 20px #5b8fff44; }
     }
     #projSlider { width: 100%; accent-color: #111; cursor: pointer; }
     #projSliderTicks { display: flex; justify-content: space-between; font-size: 9px; color: #bbb; letter-spacing: .05em; }
-    #projSliderTicks span { transition: color .2s; }
+    #projSliderTicks span { transition: color .2s, font-weight .1s; }
     #projSliderTicks span.active { color: #111; font-weight: 600; }
   </style>
 </head>
@@ -218,9 +213,7 @@
         <div id="trackerRow"></div>
         <button id="addPawnBtn" onclick="openPicker()">+ PAWN</button>
         <div class="vsep"></div>
-        <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
-        <div class="vsep"></div>
-        <button class="btn" id="tlColorBtn" onclick="openTimelinePicker()">TIMELINE: PURPLE</button>
+        <button class="btn" id="captureTimelineBtn" onclick="startCapture('timeline')">&#9678; CAPTURE TIMELINE</button>
         <div id="statusTag" style="margin-left:auto;font-size:10px;color:var(--muted)">INIT</div>
       </div>
 
@@ -230,13 +223,6 @@
         <div class="stat"><span>BLOBS</span><span id="bBlobs">-</span></div>
         <div class="stat"><span>GRID</span><span id="bGrid">none</span></div>
         <div id="bCells"></div>
-      </div>
-
-      <!-- Timeline color picker -->
-      <div id="timelinePicker">
-        <button class="pick-close" onclick="closeTimelinePicker()">CLOSE x</button>
-        <div style="font-size:9px;color:var(--muted);letter-spacing:.05em;">TIMELINE TRACKER COLOR</div>
-        <div id="tlPickerSwatches"></div>
       </div>
 
       <!-- Pawn picker -->
@@ -249,18 +235,6 @@
           <span id="customHueLbl">H: 32</span>
           <button id="addCustomBtn" onclick="addCustomColor()">ADD</button>
         </div>
-      </div>
-
-      <!-- HSV tuner -->
-      <div id="tuner">
-        <h4>HSV - <span id="tunerLabel">-</span></h4>
-        <div class="srow"><label>H +/-</label><input type="range" id="sHr" min="5"  max="60"  value="18"  oninput="syncSliders()"><span id="vHr">18</span></div>
-        <div class="srow"><label>S min</label><input type="range" id="sSm" min="0"  max="255" value="80"  oninput="syncSliders()"><span id="vSm">80</span></div>
-        <div class="srow"><label>V min</label><input type="range" id="sVn" min="0"  max="255" value="50"  oninput="syncSliders()"><span id="vVn">50</span></div>
-        <div class="srow"><label>V max</label><input type="range" id="sVx" min="0"  max="255" value="255" oninput="syncSliders()"><span id="vVx">255</span></div>
-        <div class="srow"><label>R min</label><input type="range" id="sRn" min="3"  max="80"  value="10"  oninput="syncSliders()"><span id="vRn">10</span></div>
-        <div class="srow"><label>R max</label><input type="range" id="sRx" min="10" max="200" value="60"  oninput="syncSliders()"><span id="vRx">60</span></div>
-        <canvas id="sampleCanvas" width="182" height="100"></canvas>
       </div>
 
       <!-- Hint (mode indicator) -->
@@ -308,6 +282,7 @@
 
 </div>
 
+<script src="noiseColors.js"></script>
 <script src="config.js"></script>
 <script>
 // ── PAWN PRESETS ────────────────────────────────────────────────
@@ -323,14 +298,6 @@ const PRESET_PAWNS = [
 let allPawnDefs = [...PRESET_PAWNS];
 let customCounter = 0;
 
-const pawnParams = {};
-function defaultParams(pd) {
-  return pd.isWhite
-    ? { hRange:20, sMin:0,  vMin:190, vMax:255, rMin:10, rMax:60 }
-    : { hRange:18, sMin:80, vMin:50,  vMax:255, rMin:10, rMax:60 };
-}
-PRESET_PAWNS.forEach(p => { pawnParams[p.id] = defaultParams(p); });
-
 let activePawnIds  = new Set(['red']);
 let selectedChipId = 'red';
 const pawnState    = {};
@@ -338,10 +305,6 @@ PRESET_PAWNS.forEach(p => { pawnState[p.id] = { pos:null, cell:null }; });
 
 // currentCell[pawnId] = {col,row} or null
 const currentCell = {};
-
-// EMA-smoothed positions for stable rendering: { cx, cy, r }
-const smoothPos = {};
-const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
 
 // pawns[1] = { color, position: {col,row}|null, score }
 const pawns = {
@@ -396,11 +359,15 @@ function rebuildChips() {
     const pd = allPawnDefs.find(p => p.id === id); if (!pd) return;
     const chip = document.createElement('div');
     chip.className = 'chip' + (id === selectedChipId ? ' active-chip' : '');
+    const isCap = captureTarget === id;
+    const isCapt = trackers[id] && trackers[id].captured;
     chip.innerHTML =
       '<span class="chip-dot" style="background:' + pd.color + '"></span>' +
       '<span class="chip-label">' + pd.label.toUpperCase() + '</span>' +
       '<span class="chip-cell" id="chipCell-' + id + '">-,-</span>' +
+      '<button class="chip-capture' + (isCap ? ' capturing' : '') + '" title="Capture object">' + (isCapt ? '&#9679;' : '&#9678;') + '</button>' +
       '<button class="chip-remove" title="Remove">x</button>';
+    chip.querySelector('.chip-capture').onclick = function(e){ e.stopPropagation(); startCapture(id); };
     chip.querySelector('.chip-remove').onclick = function(e){ e.stopPropagation(); removePawn(id); };
     chip.addEventListener('click', function(){ selectChip(id); });
     trackerRow.appendChild(chip);
@@ -408,7 +375,7 @@ function rebuildChips() {
   updateBottomCells();
 }
 
-function selectChip(id) { selectedChipId = id; rebuildChips(); loadSliders(); }
+function selectChip(id) { selectedChipId = id; rebuildChips(); }
 
 function removePawn(id) {
   activePawnIds.delete(id);
@@ -450,15 +417,15 @@ function closePicker() { document.getElementById('pawnPicker').classList.remove(
 function addPawnToTracking(id) {
   activePawnIds.add(id);
   selectedChipId = id;
-  if (!pawnState[id])  pawnState[id]  = { pos:null, cell:null };
-  if (!pawnParams[id]) pawnParams[id] = defaultParams(allPawnDefs.find(function(p){ return p.id===id; }));
+  if (!pawnState[id]) pawnState[id] = { pos:null, cell:null };
+  if (!trackers[id])  trackers[id]  = new ObjectTracker();
   if (!pawnIdToIndex[id]) {
     const idx = nextPawnIndex++;
     pawnIdToIndex[id] = idx;
     const pd = allPawnDefs.find(function(p){ return p.id===id; });
     pawns[idx] = { color: pd ? pd.color : '#ffffff', position: null, score: 0 };
   }
-  rebuildChips(); loadSliders();
+  rebuildChips();
 }
 
 function onCustomColorChange() {
@@ -478,66 +445,11 @@ function addCustomColor() {
   const id = 'custom' + customCounter;
   const pd = { id, hue:Math.round(h), color:hex, label:'C'+customCounter, isWhite:false };
   allPawnDefs.push(pd);
-  pawnParams[id] = defaultParams(pd);
-  pawnState[id]  = { pos:null, cell:null };
+  pawnState[id] = { pos:null, cell:null };
   addPawnToTracking(id);
   closePicker();
 }
 
-// ── TIMELINE PICKER ─────────────────────────────────────────────
-function openTimelinePicker() {
-  buildTimelinePickerSwatches();
-  document.getElementById('timelinePicker').classList.add('open');
-}
-function closeTimelinePicker() {
-  document.getElementById('timelinePicker').classList.remove('open');
-}
-function buildTimelinePickerSwatches() {
-  const sw = document.getElementById('tlPickerSwatches');
-  sw.innerHTML = '';
-  allPawnDefs.forEach(function(pd) {
-    const div = document.createElement('div');
-    div.className = 'pick-swatch' + (pd.id === timelineTrackerId ? ' disabled' : '');
-    div.innerHTML = '<div class="pick-circle" style="background:' + pd.color + '"></div><span>' + pd.label.toUpperCase() + '</span>';
-    div.onclick = function() {
-      timelineTrackerId = pd.id;
-      if (!pawnParams[pd.id]) pawnParams[pd.id] = defaultParams(pd);
-      document.getElementById('tlColorBtn').textContent = 'TIMELINE: ' + pd.label.toUpperCase();
-      closeTimelinePicker();
-    };
-    sw.appendChild(div);
-  });
-}
-
-// ── HSV TUNER ───────────────────────────────────────────────────
-function loadSliders() {
-  const id = selectedChipId; if (!id || !pawnParams[id]) return;
-  const pp = pawnParams[id];
-  const pd = allPawnDefs.find(function(p){ return p.id===id; });
-  document.getElementById('sHr').value = pp.hRange;
-  document.getElementById('sSm').value = pp.sMin;
-  document.getElementById('sVn').value = pp.vMin;
-  document.getElementById('sVx').value = pp.vMax;
-  document.getElementById('sRn').value = pp.rMin;
-  document.getElementById('sRx').value = pp.rMax;
-  document.getElementById('tunerLabel').textContent = (pd ? pd.label : id).toUpperCase();
-  syncSliders();
-}
-function syncSliders() {
-  const id = selectedChipId; if (!id || !pawnParams[id]) return;
-  const pp = pawnParams[id];
-  pp.hRange = +document.getElementById('sHr').value;
-  pp.sMin   = +document.getElementById('sSm').value;
-  pp.vMin   = +document.getElementById('sVn').value;
-  pp.vMax   = +document.getElementById('sVx').value;
-  pp.rMin   = +document.getElementById('sRn').value;
-  pp.rMax   = +document.getElementById('sRx').value;
-  ['Hr','Sm','Vn','Vx','Rn','Rx'].forEach(function(k){
-    document.getElementById('v'+k).textContent = document.getElementById('s'+k).value;
-  });
-}
-function toggleTuner() { document.getElementById('tuner').classList.toggle('open'); }
-loadSliders();
 
 // ── CAMERA ──────────────────────────────────────────────────────
 async function startCamera() {
@@ -681,31 +593,9 @@ function loop() {
     const blobs = detectBlobs(imgData, id);
     totalBlobs += blobs.length;
     if (blobs.length > 0) {
-      // Prefer blob closest to last known position; fall back to largest
-      var best;
-      const sp = smoothPos[id];
-      if (sp) {
-        var minDist = Infinity;
-        blobs.forEach(function(b) {
-          const dx = b.cx - sp.cx * SCALE, dy = b.cy - sp.cy * SCALE;
-          const dist = dx*dx + dy*dy - b.area * 0.5; // area bonus to avoid tiny noise blobs
-          if (dist < minDist) { minDist = dist; best = b; }
-        });
-      } else {
-        best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
-      }
-      // EMA smooth the position
-      const rawCx = best.cx/SCALE, rawCy = best.cy/SCALE, rawR = best.r/SCALE;
-      if (!smoothPos[id]) {
-        smoothPos[id] = { cx: rawCx, cy: rawCy, r: rawR };
-      } else {
-        smoothPos[id].cx = smoothPos[id].cx + SMOOTH_ALPHA * (rawCx - smoothPos[id].cx);
-        smoothPos[id].cy = smoothPos[id].cy + SMOOTH_ALPHA * (rawCy - smoothPos[id].cy);
-        smoothPos[id].r  = smoothPos[id].r  + SMOOTH_ALPHA * (rawR  - smoothPos[id].r);
-      }
-      updatePawnState(id, smoothPos[id].cx, smoothPos[id].cy, smoothPos[id].r);
+      const best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
+      updatePawnState(id, best.cx/SCALE, best.cy/SCALE, best.r/SCALE);
     } else {
-      smoothPos[id] = null;
       if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
       currentCell[id] = null;
       checkDwell(id, null);
@@ -733,18 +623,14 @@ function loop() {
       if (slider) {
         slider.value = sliderVal;
         if (Math.abs(sliderDwell.val - sliderVal) > 4) {
-          // Moved more than 4 units — reset settle timer (ignores camera jitter)
+          // Moved more than 4 units — reset the settle timer (ignore camera jitter)
           sliderDwell = { val: sliderVal, startTime: Date.now(), active: true };
           const lbl = document.getElementById('projSliderLabel');
           if (lbl) {
             const ratio = sliderVal / 1000;
-            const pendingIdx = Math.min(sliderSteps.length - 1,
+            const pi = Math.min(sliderSteps.length - 1,
               Math.round(ratio * (sliderSteps.length - 1)));
-            lbl.textContent = (sliderSteps[pendingIdx]
-              ? sliderSteps[pendingIdx].label : 'NO DATA') + ' \u2026';
-            // Restart animation from scratch
-            lbl.classList.remove('settling');
-            void lbl.offsetWidth; // force reflow so animation replays
+            lbl.textContent = (sliderSteps[pi] ? sliderSteps[pi].label : 'NO DATA') + ' \u2026';
             lbl.classList.add('settling');
           }
         }
@@ -786,97 +672,121 @@ function rgbToHsv(r,g,b) {
 }
 function hueDiff(a,b){ var d=Math.abs(a-b)%360; return d>180?360-d:d; }
 
-function pixelMatches(r,g,b,id) {
-  const pp  = pawnParams[id];
-  const def = allPawnDefs.find(function(p){ return p.id===id; });
-  if (!pp||!def) return false;
-  const hsv = rgbToHsv(r,g,b);
-  const h=hsv[0], s=hsv[1], v=hsv[2];
-  if (v<pp.vMin||v>pp.vMax) return false;
-  if (def.isWhite) return s < pp.sMin;
-  return hueDiff(h,def.hue)<=pp.hRange && s>=pp.sMin;
-}
+// ── OBJECT TRACKER (CamShift) ────────────────────────────────────
+// Tracks a specific object via hue histogram backprojection + MeanShift.
+// Call capture() once to save the reference; track() each frame returns {cx,cy,r} or null.
+class ObjectTracker {
+  constructor() {
+    this.hist     = null;   // Float32Array(16) — normalised hue histogram
+    this.lastBox  = null;   // {x,y,w,h} last search window in offC pixels
+    this.captured = false;
+    this.ROI_HALF = 30;     // half-size of capture ROI in offC pixels
+  }
 
-// ── BLOB DETECTION ──────────────────────────────────────────────
-function detectBlobs(imgData, id) {
-  const data=imgData.data, w=imgData.width, h=imgData.height;
-  const pp = pawnParams[id]; if (!pp) return [];
-  const mask = new Uint8Array(w*h);
-  for (var i=0; i<w*h; i++)
-    mask[i] = pixelMatches(data[i*4],data[i*4+1],data[i*4+2],id) ? 1 : 0;
-  // 3× dilate then 3× erode = aggressive closing: merges nearby same-color regions
-  // into one solid blob before flood-fill, eliminating flicker from sparse pixels
-  var closed = mask;
-  for (var p=0; p<3; p++) closed = morphDilate(closed,w,h);
-  for (var p=0; p<3; p++) closed = morphErode(closed,w,h);
-  const visited = new Uint8Array(w*h);
-  const blobs = [];
-  for (var y=0; y<h; y++) for (var x=0; x<w; x++) {
-    const idx = y*w+x;
-    if (!closed[idx]||visited[idx]) continue;
-    var queue=[idx]; visited[idx]=1;
-    var sumX=0,sumY=0,count=0,mnX=x,mxX=x,mnY=y,mxY=y,qi=0;
-    while (qi<queue.length) {
-      const ci=queue[qi++], cx=ci%w, cy2=Math.floor(ci/w);
-      sumX+=cx; sumY+=cy2; count++;
-      if(cx<mnX)mnX=cx; if(cx>mxX)mxX=cx;
-      if(cy2<mnY)mnY=cy2; if(cy2>mxY)mxY=cy2;
-      const ns=[ci-1,ci+1,ci-w,ci+w];
-      for (var ni=0; ni<ns.length; ni++) {
-        const n=ns[ni];
-        if (n>=0&&n<w*h&&!visited[n]&&closed[n]) { visited[n]=1; queue.push(n); }
+  // cx, cy in offC (raw camera) pixel space
+  capture(imgData, cx, cy) {
+    const W = imgData.width, H = imgData.height;
+    const x0 = Math.max(0, Math.round(cx - this.ROI_HALF));
+    const y0 = Math.max(0, Math.round(cy - this.ROI_HALF));
+    const x1 = Math.min(W, Math.round(cx + this.ROI_HALF));
+    const y1 = Math.min(H, Math.round(cy + this.ROI_HALF));
+    const hist = new Float32Array(16);
+    const data = imgData.data;
+    let count = 0;
+    for (let y = y0; y < y1; y++) {
+      for (let x = x0; x < x1; x++) {
+        const i = (y * W + x) * 4;
+        const hsv = rgbToHsv(data[i], data[i+1], data[i+2]);
+        if (hsv[1] > 40 && hsv[2] > 40) {
+          hist[Math.floor(hsv[0] / 22.5) % 16]++;
+          count++;
+        }
       }
     }
-    const bw=mxX-mnX+1, bh=mxY-mnY+1, r=(bw+bh)/4;
-    const circ=count/(Math.PI*r*r);
-    const asp=Math.max(bw,bh)/Math.max(1,Math.min(bw,bh));
-    if (r>=pp.rMin&&r<=pp.rMax&&circ>0.35&&asp<2.5)
-      blobs.push({ cx:sumX/count, cy:sumY/count, r, area:count });
+    if (count > 0) for (let i = 0; i < 16; i++) hist[i] /= count;
+    this.hist = hist;
+    this.lastBox = { x: x0, y: y0, w: x1-x0, h: y1-y0 };
+    this.captured = true;
   }
-  return blobs;
-}
 
-function morphDilate(mask,w,h) {
-  const out=new Uint8Array(w*h);
-  for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
-    const i=y*w+x;
-    if(mask[i]||(x>0&&mask[i-1])||(x<w-1&&mask[i+1])||(y>0&&mask[i-w])||(y<h-1&&mask[i+w])) out[i]=1;
-  }
-  return out;
-}
-function morphErode(mask,w,h) {
-  const out=new Uint8Array(w*h);
-  for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
-    const i=y*w+x;
-    if(mask[i]&&(x===0||mask[i-1])&&(x===w-1||mask[i+1])&&(y===0||mask[i-w])&&(y===h-1||mask[i+w])) out[i]=1;
-  }
-  return out;
-}
+  // Returns {cx, cy, r} in offC pixel space, or null if lost
+  track(imgData) {
+    if (!this.hist || !this.captured) return null;
+    const W = imgData.width, H = imgData.height;
+    const data = imgData.data;
 
-// ── SAMPLE MODE ─────────────────────────────────────────────────
-function runSampleMode(imgData) {
-  const data=imgData.data, w=imgData.width, h=imgData.height;
-  const id = selectedChipId; if (!id) return;
-  const def = allPawnDefs.find(function(p){ return p.id===id; });
-  const hex = def ? def.color : '#ff0000';
-  const rv = parseInt(hex.slice(1),16);
-  const mr=(rv>>16)&255, mg=(rv>>8)&255, mb=rv&255;
-  const preview = new ImageData(w,h);
-  for (var i=0; i<w*h; i++) {
-    const r=data[i*4],g=data[i*4+1],b=data[i*4+2];
-    if (pixelMatches(r,g,b,id)) {
-      preview.data[i*4]=mr; preview.data[i*4+1]=mg; preview.data[i*4+2]=mb; preview.data[i*4+3]=255;
-    } else {
-      preview.data[i*4]=r>>1; preview.data[i*4+1]=g>>1; preview.data[i*4+2]=b>>1; preview.data[i*4+3]=255;
+    // Backprojection: map each pixel to its histogram probability
+    const prob = new Float32Array(W * H);
+    let maxP = 0;
+    for (let i = 0; i < W * H; i++) {
+      const hsv = rgbToHsv(data[i*4], data[i*4+1], data[i*4+2]);
+      if (hsv[1] > 25 && hsv[2] > 25) {
+        const p = this.hist[Math.floor(hsv[0] / 22.5) % 16];
+        prob[i] = p;
+        if (p > maxP) maxP = p;
+      }
     }
+    if (maxP < 1e-6) return null;
+    const scale = 255 / maxP;
+    for (let i = 0; i < W * H; i++) prob[i] *= scale;
+
+    // MeanShift: iteratively shift search window to probability centroid
+    let bx = this.lastBox ? this.lastBox.x : Math.round(W * 0.25);
+    let by = this.lastBox ? this.lastBox.y : Math.round(H * 0.25);
+    const bw = this.lastBox ? this.lastBox.w : Math.round(W * 0.5);
+    const bh = this.lastBox ? this.lastBox.h : Math.round(H * 0.5);
+
+    for (let iter = 0; iter < 12; iter++) {
+      const x0 = Math.max(0, bx), y0 = Math.max(0, by);
+      const x1 = Math.min(W, bx + bw), y1 = Math.min(H, by + bh);
+      let m00 = 0, m10 = 0, m01 = 0;
+      for (let y = y0; y < y1; y++) {
+        for (let x = x0; x < x1; x++) {
+          const p = prob[y * W + x];
+          m00 += p; m10 += p * x; m01 += p * y;
+        }
+      }
+      if (m00 < 1) break;
+      const newBx = Math.round(m10/m00 - bw/2);
+      const newBy = Math.round(m01/m00 - bh/2);
+      if (Math.abs(newBx - bx) < 1 && Math.abs(newBy - by) < 1) { bx = newBx; by = newBy; break; }
+      bx = newBx; by = newBy;
+    }
+    bx = Math.max(0, Math.min(W - bw, bx));
+    by = Math.max(0, Math.min(H - bh, by));
+    this.lastBox = { x: bx, y: by, w: bw, h: bh };
+
+    // Confidence check: average probability within window
+    const x0 = Math.max(0, bx), y0 = Math.max(0, by);
+    const x1 = Math.min(W, bx+bw), y1 = Math.min(H, by+bh);
+    let total = 0, area = (x1-x0) * (y1-y0);
+    for (let y = y0; y < y1; y++)
+      for (let x = x0; x < x1; x++) total += prob[y*W+x];
+    if (area < 1 || total/area < 28) return null;
+
+    return { cx: bx + bw/2, cy: by + bh/2, r: Math.sqrt(bw * bh) / 2 };
   }
-  sampleCtx.putImageData(preview,0,0);
-  const tmp=document.createElement('canvas'); tmp.width=w; tmp.height=h;
-  tmp.getContext('2d').putImageData(preview,0,0);
-  ctx.clearRect(0,0,overlay.width,overlay.height);
-  ctx.drawImage(tmp,0,0,overlay.width,overlay.height);
-  if (grid) drawGridOverlay(false);
 }
+
+// Tracker state
+const trackers        = {};   // pawnId → ObjectTracker
+const timelineTracker = new ObjectTracker();
+let   captureTarget   = null; // null | pawnId | 'timeline'
+let   lastImgData     = null; // most recent offC ImageData
+
+// Initialise trackers for preset pawns
+PRESET_PAWNS.forEach(p => { trackers[p.id] = new ObjectTracker(); });
+
+function startCapture(target) {
+  captureTarget = target;
+  overlay.style.cursor = 'crosshair';
+  const label = target === 'timeline' ? 'TIMELINE OBJECT' : target.toUpperCase();
+  showHint('CLICK ON ' + label + ' TO CAPTURE');
+  rebuildChips();
+  const btn = document.getElementById('captureTimelineBtn');
+  if (btn) btn.classList.toggle('on', target === 'timeline');
+}
+
 
 // ── DRAW (camera overlay) ────────────────────────────────────────
 function draw() {
@@ -1121,7 +1031,7 @@ let mockData    = null;   // full JSON object once loaded
 let sliderSteps = [];     // [{dateKey, dateObj, label}] — one entry per date
 let sliderIndex = 0;      // resolved integer index into sliderSteps
 let sliderDwell = { val: -1, startTime: 0, active: false };
-const SLIDER_DWELL_MS = 1000;
+const SLIDER_DWELL_MS = 2000;
 
 // Maps getTimeOfDay() output → ordered list of mockData slot keys to try
 const TOD_SLOT_MAP = {
@@ -1188,47 +1098,6 @@ function updateTickActive() {
   });
 }
 
-function playLockSound() {
-  try {
-    const ctx  = new (window.AudioContext || window.webkitAudioContext)();
-    const osc  = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(523, ctx.currentTime);         // C5
-    osc.frequency.setValueAtTime(659, ctx.currentTime + 0.12); // E5
-    gain.gain.setValueAtTime(0.25, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
-    osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + 0.45);
-    osc.onended = function() { ctx.close(); };
-  } catch(e) {}
-}
-
-// Play all sound files associated with the noise sources at a cell.
-// Sounds are staggered by 120 ms so overlapping types don't clash.
-function playPawnSettleSound(row, col) {
-  const sources = getMockCellData(row, col);
-  if (!sources || sources.length === 0) return;
-  // Deduplicate by sound type so the same file doesn't play twice
-  const seen = new Set();
-  const unique = sources.filter(function(s) {
-    const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[s.type];
-    if (!nc || !nc.sound || seen.has(nc.sound)) return false;
-    seen.add(nc.sound);
-    return true;
-  });
-  unique.forEach(function(s, i) {
-    const nc = NOISE_CONFIG[s.type];
-    setTimeout(function() {
-      const audio = new Audio(nc.sound);
-      audio.volume = Math.min(1, 0.6 + (s.db - 40) / 100); // louder sources play slightly louder
-      audio.play().catch(function() {});
-    }, i * 120);
-  });
-}
-
 // val is a float 0–1000; resolve to the nearest date index
 function onProjSliderChange(val, fromDwell) {
   const ratio = val / 1000;
@@ -1241,6 +1110,24 @@ function onProjSliderChange(val, fromDwell) {
   drawProjection();
   updateProjStats();
   if (fromDwell) playLockSound();
+}
+
+function playLockSound() {
+  try {
+    const ctx  = new (window.AudioContext || window.webkitAudioContext)();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(523, ctx.currentTime);          // C5
+    osc.frequency.setValueAtTime(659, ctx.currentTime + 0.12);  // E5
+    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.45);
+    osc.onended = function() { ctx.close(); };
+  } catch(e) {}
 }
 
 function updateProjSliderLabel() {
@@ -1297,11 +1184,11 @@ function getProjPawns() {
 // ── GAME RULES ───────────────────────────────────────────────────
 const START_CELL  = { col: 0,        row: 0        }; // top-left cell
 const FINISH_CELL = { col: COLS - 1, row: ROWS - 1 }; // bottom-right cell
+const MIN_MOVES   = 10; // unique cells to visit before finish counts
+
 const moveHistory    = {};  // id → Set<"col,row">
-const visitedCells   = new Set(); // "col,row" cells any pawn has ever stepped on
-let   gameStarted    = false;
-let   gameEnded      = false;
-let   gameNotif      = '\u2014 BOTH START TO BEGIN \u2014';
+const playerFinished = new Set();
+let   gameNotif      = '';  // shown on projection
 let   gameNotifColor = '#30c050';
 
 function updateGameState(id, prevCell, newCell) {
@@ -1312,61 +1199,40 @@ function updateGameState(id, prevCell, newCell) {
     const cellKey = newCell.col + ',' + newCell.row;
     if (!prevCell || prevCell.col !== newCell.col || prevCell.row !== newCell.row) {
       moveHistory[id].add(cellKey);
-      if (gameStarted && !gameEnded) visitedCells.add(cellKey);
     }
   }
 
-  const projPawns = getProjPawns();
-
-  // Always show the pre-game notif regardless of pawn count
-  if (!gameStarted) {
-    const onStart = projPawns.filter(function(p) {
-      const c = currentCell[p.id];
-      return c && c.col === START_CELL.col && c.row === START_CELL.row;
-    });
-    const bothOnStart = onStart.length === projPawns.length && projPawns.length === 2;
-    if (bothOnStart) {
-      gameStarted    = true;
-      gameNotif      = '\u2014 GO! \u2014';
-      gameNotifColor = '#30c050';
-    } else if (projPawns.length === 2 && onStart.length === 1) {
-      const waiting = projPawns.find(function(p) {
-        const c = currentCell[p.id];
-        return !(c && c.col === START_CELL.col && c.row === START_CELL.row);
-      });
-      const label = waiting ? (waiting.label || waiting.id).toUpperCase() : 'OTHER';
-      gameNotif      = '\u2014 WAITING FOR ' + label + ' \u2014';
-      gameNotifColor = '#f0a030';
-    } else {
-      gameNotif      = '\u2014 BOTH START TO BEGIN \u2014';
-      gameNotifColor = '#30c050';
-    }
-    return;
-  }
-
-  if (projPawns.length < 2) return;
-
-  const bothOnFinish = projPawns.every(function(p) {
-    const c = currentCell[p.id];
-    return c && c.col === FINISH_CELL.col && c.row === FINISH_CELL.row;
-  });
-
-  // Finish condition: both simultaneously on FINISH cell (game must be started)
-  if (!gameEnded && bothOnFinish) {
-    gameEnded      = true;
-    gameNotif      = '\u2014 FINISH! \u2014';
+  // Finish condition: player lands on finish cell with 10+ unique cells visited
+  if (newCell && !playerFinished.has(id)
+      && newCell.col === FINISH_CELL.col && newCell.row === FINISH_CELL.row
+      && moveHistory[id].size >= MIN_MOVES) {
+    playerFinished.add(id);
+    const pp = getProjPawns().find(function(p){ return p.id === id; });
+    gameNotif      = (pp ? pp.label : id.toUpperCase()) + ' CROSSED THE FINISH!';
     gameNotifColor = '#e63030';
-    visitedCells.clear();
     return;
   }
 
-  if (!gameEnded) {
-    gameNotif = '';
+  // "Ready to start" — both tracked players simultaneously on start cell
+  if (playerFinished.size === 0) {
+    const projPawns = getProjPawns();
+    if (projPawns.length >= 2) {
+      const bothOnStart = projPawns.every(function(p) {
+        const c = currentCell[p.id];
+        return c && c.col === START_CELL.col && c.row === START_CELL.row;
+      });
+      if (bothOnStart) {
+        gameNotif      = '\u2014 READY TO START \u2014';
+        gameNotifColor = '#30c050';
+      } else if (gameNotif === '\u2014 READY TO START \u2014') {
+        gameNotif = '';
+      }
+    }
   }
 }
 
 // ── DWELL SCORING ────────────────────────────────────────────────
-const DWELL_MS = 1000;
+const DWELL_MS = 2000;
 const dwellState = {}; // id → { col, row, startTime, scored }
 
 function checkDwell(id, cell) {
@@ -1378,11 +1244,8 @@ function checkDwell(id, cell) {
   }
   if (!ds.scored && (Date.now() - ds.startTime) >= DWELL_MS) {
     ds.scored = true;
-    playPawnSettleSound(ds.row, ds.col);
-    if (gameStarted && !gameEnded) {
-      const idx = pawnIdToIndex[id];
-      if (idx !== undefined && pawns[idx]) pawns[idx].score += 1;
-    }
+    const idx = pawnIdToIndex[id];
+    if (idx !== undefined && pawns[idx]) pawns[idx].score += 1;
   }
 }
 
@@ -1436,42 +1299,24 @@ function drawProjection() {
   const gridX    = Math.round((cw - gridW) / 2);
   const gridY    = gridTop;
 
-  // Cell fills — color only revealed after a pawn has stepped on the cell
+  // Cell fills (noise color) + indicator dots
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
-      const x       = gridX + col * cellSize;
-      const y       = gridY + row * cellSize;
-      const cellKey = col + ',' + row;
-      const visited = visitedCells.has(cellKey);
-      const sources = visited ? getMockCellData(row, col) : [];
+      const x = gridX + col * cellSize;
+      const y = gridY + row * cellSize;
+      const sources = getMockCellData(row, col);
 
       let bgColor = '#f2f2f2';
-      if (visited && sources.length > 0) {
-        // Blend all noise colors weighted by dB level
-        let rSum = 0, gSum = 0, bSum = 0, wSum = 0;
-        sources.forEach(function(src) {
-          const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
-          if (!nc) return;
-          const hex = nc.color.replace('#', '');
-          const w   = Math.pow(10, (src.db || 60) / 20); // dB → linear amplitude weight
-          rSum += parseInt(hex.slice(0,2), 16) * w;
-          gSum += parseInt(hex.slice(2,4), 16) * w;
-          bSum += parseInt(hex.slice(4,6), 16) * w;
-          wSum += w;
-        });
-        if (wSum > 0) {
-          const r = Math.round(rSum / wSum).toString(16).padStart(2,'0');
-          const g = Math.round(gSum / wSum).toString(16).padStart(2,'0');
-          const b = Math.round(bSum / wSum).toString(16).padStart(2,'0');
-          bgColor = '#' + r + g + b + '88'; // semi-transparent
-        }
+      if (sources.length > 0) {
+        const dominant = sources.reduce((a, b) => a.db > b.db ? a : b);
+        const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[dominant.type];
+        if (nc) bgColor = nc.color + '44';
       }
       pc.fillStyle = bgColor;
       pc.fillRect(x, y, cellSize, cellSize);
 
-      // Indicator dots — only on visited cells
-      if (visited && sources.length > 0 && cellSize >= 18) {
-        sources.slice(0, 4).forEach(function(src, i) {
+      if (sources.length > 0 && cellSize >= 18) {
+        sources.slice(0, 4).forEach((src, i) => {
           const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
           if (!nc) return;
           pc.beginPath();
@@ -1527,7 +1372,7 @@ function drawProjection() {
   pc.lineWidth = 2;
   pc.strokeRect(gridX, gridY, gridW, gridH);
 
-  // ── Start / Finish cell highlights ──────────────────────────────
+  // ── Start / Finish cell highlights ───���──────────────────────────
   const startX  = gridX + START_CELL.col  * cellSize;
   const startY  = gridY + START_CELL.row  * cellSize;
   const finishX = gridX + FINISH_CELL.col * cellSize;
@@ -1594,43 +1439,61 @@ function drawProjection() {
   let moveCountY = finishFlagY + flagSize * 1.4;
   getProjPawns().forEach(function(p) {
     const moves = moveHistory[p.id] ? moveHistory[p.id].size : 0;
+    const done  = playerFinished.has(p.id);
     pc.font = 'bold ' + Math.max(8, Math.round(flagSize * 0.38)) + 'px IBM Plex Mono,monospace';
-    pc.fillStyle = gameEnded ? '#30c050' : p.color;
+    pc.fillStyle = done ? '#30c050' : (moves >= MIN_MOVES ? '#e07830' : p.color);
     pc.textAlign = 'left';
-    pc.fillText(p.label + ': ' + moves + (gameEnded ? ' \u2713' : ''), finishFlagX, moveCountY);
+    pc.fillText(p.label + ': ' + moves + '/' + MIN_MOVES + (done ? ' \u2713' : ''), finishFlagX, moveCountY);
     moveCountY += flagSize * 0.6;
   });
 
   pc.textAlign = 'left'; pc.textBaseline = 'alphabetic';
 
-  // Pawn circles — smaller radius so two fit side-by-side in one cell
-  const projPawnList = getProjPawns();
-  const r = Math.max(7, cellSize * 0.22);
-  // Pre-group pawns by cell so we can offset same-cell pairs
-  const cellOccupancy = {};
-  projPawnList.forEach(function(p) {
+  // Slider settle countdown bar — shown on canvas while pawn is moving the slider
+  if (sliderDwell.active) {
+    const now      = Date.now();
+    const elapsed  = now - sliderDwell.startTime;
+    const progress = Math.min(1, elapsed / SLIDER_DWELL_MS);
+    const remaining = ((SLIDER_DWELL_MS - elapsed) / 1000).toFixed(1);
+    const pulse    = 0.55 + 0.45 * Math.sin(now / 180);
+
+    const pi = Math.min(sliderSteps.length - 1,
+      Math.round((sliderDwell.val / 1000) * (sliderSteps.length - 1)));
+    const pendingLabel = sliderSteps[pi] ? sliderSteps[pi].label : '\u2014';
+
+    const bx = 20, bw = cw - 40, bh = 30, by = ch - bh - 12;
+    // Track background
+    pc.fillStyle = 'rgba(0,0,0,0.07)';
+    pc.fillRect(bx, by, bw, bh);
+    // Fill bar
+    pc.fillStyle = 'rgba(91,143,255,' + (0.22 + 0.18 * pulse) + ')';
+    pc.fillRect(bx, by, bw * progress, bh);
+    // Border
+    pc.strokeStyle = 'rgba(91,143,255,' + (0.4 + 0.4 * pulse) + ')';
+    pc.lineWidth = 1.5;
+    pc.strokeRect(bx, by, bw, bh);
+    // Text
+    const cfs = Math.max(10, Math.round(bh * 0.42));
+    pc.font = 'bold ' + cfs + 'px IBM Plex Mono,monospace';
+    pc.fillStyle = 'rgba(91,143,255,' + (0.7 + 0.3 * pulse) + ')';
+    pc.textAlign = 'center';
+    pc.textBaseline = 'middle';
+    pc.fillText('HOLD STILL \u2014 ' + pendingLabel + ' \u2014 locking in ' + remaining + 's', cw / 2, by + bh / 2);
+    pc.textAlign = 'left'; pc.textBaseline = 'alphabetic';
+  }
+
+  // Pawn circles
+  getProjPawns().forEach(function(p) {
     const cell = currentCell[p.id];
     if (!cell) return;
-    const key = cell.col + ',' + cell.row;
-    if (!cellOccupancy[key]) cellOccupancy[key] = [];
-    cellOccupancy[key].push(p.id);
-  });
-  projPawnList.forEach(function(p, pi) {
-    const cell = currentCell[p.id];
-    if (!cell) return;
-    const key = cell.col + ',' + cell.row;
-    const mates = cellOccupancy[key];
-    const slotIdx = mates.indexOf(p.id); // 0 or 1
-    const total   = mates.length;
-    // Offset: if sharing, shift left/right; if alone, center
-    const offsetX = total > 1 ? (slotIdx === 0 ? -r * 0.85 : r * 0.85) : 0;
-    const cx = gridX + cell.col * cellSize + cellSize / 2 + offsetX;
+    const cx = gridX + cell.col * cellSize + cellSize / 2;
     const cy = gridY + cell.row * cellSize + cellSize / 2;
+    const r  = Math.max(10, cellSize * 0.36);
     pc.beginPath(); pc.arc(cx, cy, r, 0, Math.PI * 2);
     pc.fillStyle = p.color; pc.globalAlpha = 0.92; pc.fill();
     pc.globalAlpha = 1;
-    pc.strokeStyle = '#fff'; pc.lineWidth = 2; pc.stroke();
-    const fs = Math.max(7, Math.round(r * 0.78));
+    pc.strokeStyle = '#fff'; pc.lineWidth = 2.5; pc.stroke();
+    const fs = Math.max(10, Math.round(r * 0.82));
     pc.font = 'bold ' + fs + 'px IBM Plex Mono,monospace';
     pc.fillStyle = '#fff'; pc.textAlign = 'center'; pc.textBaseline = 'middle';
     pc.fillText(p.label, cx, cy);
@@ -1639,7 +1502,6 @@ function drawProjection() {
 }
 
 function updateProjStats() {
-  console.log('Updating projection stats...');
   getProjPawns().forEach(function(p) {
     // Sync avatar color to the live camera pawn color
     const avatarEls = document.querySelectorAll('.proj-avatar');
@@ -1695,16 +1557,15 @@ function toggleOverlays() {
   document.getElementById('projBottomUi').style.pointerEvents = overlaysVisible ? 'none' : 'auto';
 }
 
-// Commit slider when the 2s glow animation finishes — animationend is the lock signal
-document.getElementById('projSliderLabel').addEventListener('animationend', function() {
-  if (!sliderDwell.active) return;
-  sliderDwell.active = false;
-  this.classList.remove('settling');
-  onProjSliderChange(sliderDwell.val, true);
-});
-
 // Projection draw loop — RAF for smooth dwell pulsing
 (function projRAF() {
+  // Commit slider date after SLIDER_DWELL_MS of stillness
+  if (sliderDwell.active && Date.now() - sliderDwell.startTime >= SLIDER_DWELL_MS) {
+    sliderDwell.active = false;
+    onProjSliderChange(sliderDwell.val, true);
+    const lbl = document.getElementById('projSliderLabel');
+    if (lbl) lbl.classList.remove('settling');
+  }
   drawProjection();
   requestAnimationFrame(projRAF);
 })();
