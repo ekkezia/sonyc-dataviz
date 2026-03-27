@@ -1231,6 +1231,22 @@ function playPawnSettleSound(row, col) {
 
 // val is a float 0–1000; resolve to the nearest date index
 function onProjSliderChange(val, fromDwell) {
+  // Block slider while game is in progress
+  if (gameStarted && !gameEnded) return;
+
+  // Restart game when user slides after game ended
+  if (gameEnded) {
+    gameStarted = false;
+    gameEnded   = false;
+    visitedCells.clear();
+    // Reset scores
+    getProjPawns().forEach(function(p) {
+      if (pawns[p.idx]) pawns[p.idx].score = 0;
+    });
+    gameNotif      = '\u2014 BOTH START TO BEGIN \u2014';
+    gameNotifColor = '#30c050';
+  }
+
   const ratio = val / 1000;
   sliderIndex = Math.min(
     sliderSteps.length - 1,
@@ -1329,6 +1345,9 @@ function updateGameState(id, prevCell, newCell) {
       gameStarted    = true;
       gameNotif      = '\u2014 GO! \u2014';
       gameNotifColor = '#30c050';
+      // Lock the slider for the duration of the game
+      var slider = document.getElementById('projSlider');
+      if (slider) { slider.disabled = true; slider.style.opacity = '0.35'; slider.title = 'Slider locked during game'; }
     } else if (projPawns.length === 2 && onStart.length === 1) {
       const waiting = projPawns.find(function(p) {
         const c = currentCell[p.id];
@@ -1353,10 +1372,31 @@ function updateGameState(id, prevCell, newCell) {
 
   // Finish condition: both simultaneously on FINISH cell (game must be started)
   if (!gameEnded && bothOnFinish) {
-    gameEnded      = true;
-    gameNotif      = '\u2014 FINISH! \u2014';
-    gameNotifColor = '#e63030';
+    gameEnded = true;
     visitedCells.clear();
+    // Determine winner (lower score wins)
+    const scores = projPawns.map(function(p) {
+      return { label: p.label, score: pawns[p.idx] ? pawns[p.idx].score : 0 };
+    });
+    var winnerText;
+    if (scores.length >= 2) {
+      if (scores[0].score < scores[1].score)       winnerText = scores[0].label + ' WINS!';
+      else if (scores[1].score < scores[0].score)  winnerText = scores[1].label + ' WINS!';
+      else                                          winnerText = 'TIE!';
+    } else {
+      winnerText = 'FINISH!';
+    }
+    gameNotif      = '\u2014 ' + winnerText + ' \u2014';
+    gameNotifColor = '#e63030';
+    // Disable slider during game; re-enable now so user can restart
+    var slider = document.getElementById('projSlider');
+    if (slider) {
+      slider.disabled = false;
+      slider.style.opacity = '1';
+      slider.title = 'Slide to a new date to restart';
+    }
+    var lbl = document.getElementById('projSliderLabel');
+    if (lbl) lbl.textContent = '\u2014 Slide to restart \u2014';
     return;
   }
 
@@ -1659,6 +1699,9 @@ function updateProjStats() {
     const noiseDOM = document.getElementById(p.noiseEl);
     if (!noiseDOM) return;
     noiseDOM.innerHTML = '';
+
+    // Only show noise during an active game
+    if (!gameStarted || gameEnded) return;
 
     if (sources.length === 0) {
       const quiet = document.createElement('span');
