@@ -44,7 +44,7 @@
       display: flex; flex-direction: column;
       pointer-events: none; /* disabled while camera overlay is active */
     }
-    #projCanvas { position: absolute; inset: 0; display: block; }
+    #projCanvas { position: absolute; inset: 0; display: block; z-index: 1; }
 
     video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -188,10 +188,37 @@
       50%  { color: #5b8fff; text-shadow: 0 0 6px #5b8fff99; }
       100% { color: #5b8fff; text-shadow: 0 0 16px #5b8fffee, 0 0 32px #5b8fff77; }
     }
-    #projSlider { width: 100%; accent-color: #111; cursor: pointer; }
+    #sliderBarWrap { position: relative; }
+    #sliderBarCanvas {
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 100%; pointer-events: none;
+    }
+    #projSlider { position: relative; width: 100%; accent-color: #111; cursor: pointer; z-index: 1; }
     #projSliderTicks { display: flex; justify-content: space-between; font-size: 9px; color: #bbb; letter-spacing: .05em; }
     #projSliderTicks span { transition: color .2s; }
     #projSliderTicks span.active { color: #111; font-weight: 600; }
+
+    /* ── Mode toggle slider ── */
+    .mode-toggle {
+      display: flex; align-items: center; gap: 7px; margin-left: 8px;
+    }
+    .mode-toggle-label {
+      font-size: 9px; color: var(--muted); letter-spacing: .06em;
+      transition: color .15s;
+    }
+    .mode-toggle-label.active { color: var(--text); }
+    .mode-switch {
+      position: relative; width: 36px; height: 18px; cursor: pointer;
+      background: var(--border); border-radius: 9px; border: none;
+      transition: background .2s; flex-shrink: 0;
+    }
+    .mode-switch.on { background: var(--accent); }
+    .mode-switch::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #fff; transition: transform .2s;
+    }
+    .mode-switch.on::after { transform: translateX(18px); }
   </style>
 </head>
 <body>
@@ -221,6 +248,12 @@
         <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
         <div class="vsep"></div>
         <button class="btn" id="tlColorBtn" onclick="openTimelinePicker()">TIMELINE: PURPLE</button>
+        <div class="vsep"></div>
+        <div class="mode-toggle">
+          <span id="modeLabelInteract" class="mode-toggle-label active">INTERACT</span>
+          <button id="modeSwitch" class="mode-switch" onclick="toggleMode()"></button>
+          <span id="modeLabelCamera" class="mode-toggle-label">CAMERA</span>
+        </div>
         <div id="statusTag" style="margin-left:auto;font-size:10px;color:var(--muted)">INIT</div>
       </div>
 
@@ -272,8 +305,11 @@
     <div id="projBottomUi">
       <div id="projSliderWrap">
         <div id="projSliderLabel">LOADING DATA&#8230;</div>
-        <input type="range" id="projSlider" min="0" max="1000" value="0"
-               oninput="onProjSliderChange(+this.value)">
+        <div id="sliderBarWrap">
+          <canvas id="sliderBarCanvas"></canvas>
+          <input type="range" id="projSlider" min="0" max="1000" value="0"
+                 oninput="onProjSliderChange(+this.value)">
+        </div>
         <div id="projSliderTicks"></div>
       </div>
       <div id="projStats">
@@ -1169,6 +1205,7 @@ function buildSliderSteps() {
   sliderIndex = 0;
   buildSliderTicks();
   updateProjSliderLabel();
+  drawSliderBarGraph();
 }
 
 function buildSliderTicks() {
@@ -1186,6 +1223,74 @@ function updateTickActive() {
   tickEl.querySelectorAll('span').forEach(function(s) {
     s.classList.toggle('active', +s.dataset.i === sliderIndex);
   });
+}
+
+// ── SLIDER BAR GRAPH ────────────────────────────────────────────
+function getStepTotalDb(stepIdx) {
+  if (!mockData || !sliderSteps[stepIdx]) return 0;
+  const dateData = mockData[sliderSteps[stepIdx].dateKey];
+  if (!dateData) return 0;
+  let total = 0;
+  Object.keys(dateData).forEach(function(tod) {
+    const cells = dateData[tod];
+    Object.keys(cells).forEach(function(cellKey) {
+      var sources = cells[cellKey];
+      if (!Array.isArray(sources)) return;
+      sources.forEach(function(s) { total += (s.dB || 0); });
+    });
+  });
+  return total;
+}
+
+function drawSliderBarGraph() {
+  const canvas = document.getElementById('sliderBarCanvas');
+  const wrap   = document.getElementById('sliderBarWrap');
+  if (!canvas || !wrap || !sliderSteps.length) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const w   = wrap.clientWidth;
+  const barH = 60; // total height of bar graph area
+  canvas.style.height = barH + 'px';
+  canvas.width  = w * dpr;
+  canvas.height = barH * dpr;
+  const bc = canvas.getContext('2d');
+  bc.scale(dpr, dpr);
+  bc.clearRect(0, 0, w, barH);
+
+  // Compute totals and find max
+  const totals = [];
+  let maxDb = 0;
+  for (var i = 0; i < sliderSteps.length; i++) {
+    const t = getStepTotalDb(i);
+    totals.push(t);
+    if (t > maxDb) maxDb = t;
+  }
+  if (maxDb === 0) return;
+
+  const n        = sliderSteps.length;
+  const midY     = barH / 2;
+  const maxBarH  = midY - 2; // max half-height of a bar
+  const barW     = Math.max(2, Math.min(12, (w / n) * 0.7));
+  const gap      = w / (n > 1 ? n - 1 : 1);
+
+  for (var i = 0; i < n; i++) {
+    const ratio = totals[i] / maxDb;
+    const h     = Math.round(maxBarH * ratio);
+    const x     = n > 1 ? i * gap - barW / 2 : w / 2 - barW / 2;
+
+    const isActive = (i === sliderIndex);
+    bc.fillStyle = isActive ? 'rgba(91,143,255,0.5)' : 'rgba(0,0,0,0.12)';
+    // Bar extends equally above and below center
+    bc.fillRect(x, midY - h, barW, h * 2);
+  }
+
+  // Center line
+  bc.strokeStyle = 'rgba(0,0,0,0.08)';
+  bc.lineWidth = 0.5;
+  bc.beginPath();
+  bc.moveTo(0, midY);
+  bc.lineTo(w, midY);
+  bc.stroke();
 }
 
 function playLockSound() {
@@ -1254,6 +1359,7 @@ function onProjSliderChange(val, fromDwell) {
   );
   updateProjSliderLabel();
   updateTickActive();
+  drawSliderBarGraph();
   drawProjection();
   updateProjStats();
   if (fromDwell) playLockSound();
@@ -1476,7 +1582,24 @@ function drawProjection() {
   const gridX    = Math.round((cw - gridW) / 2);
   const gridY    = gridTop;
 
+  // Draw map background behind grid when overlay is hidden
+  if (!overlaysVisible && mapImg && mapImg.complete) {
+    pc.drawImage(mapImg, gridX, gridY, gridW, gridH);
+  }
+
   // Cell fills — color only revealed after a pawn has stepped on the cell
+  // First pass: find maximum dB across all grid cells for proportional fill
+  let globalMaxDb = 0;
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      const sources = getMockCellData(row, col);
+      sources.forEach(function(src) {
+        if ((src.db || 0) > globalMaxDb) globalMaxDb = src.db;
+      });
+    }
+  }
+  if (globalMaxDb === 0) globalMaxDb = 1; // avoid division by zero
+
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       const x       = gridX + col * cellSize;
@@ -1485,8 +1608,21 @@ function drawProjection() {
       const visited = visitedCells.has(cellKey);
       const sources = visited ? getMockCellData(row, col) : [];
 
-      let bgColor = '#f2f2f2';
+      // Draw empty cell background (transparent when map is showing)
+      if (overlaysVisible || !mapImg || !mapImg.complete) {
+        pc.fillStyle = '#f2f2f2';
+        pc.fillRect(x, y, cellSize, cellSize);
+      }
+
       if (visited && sources.length > 0) {
+        // Compute cell's max dB for fill height ratio
+        let cellMaxDb = 0;
+        sources.forEach(function(src) {
+          if ((src.db || 0) > cellMaxDb) cellMaxDb = src.db;
+        });
+        const fillRatio = Math.min(1, cellMaxDb / globalMaxDb);
+        const fillH     = Math.round(cellSize * fillRatio);
+
         // Blend all noise colors weighted by dB level
         let rSum = 0, gSum = 0, bSum = 0, wSum = 0;
         sources.forEach(function(src) {
@@ -1503,11 +1639,11 @@ function drawProjection() {
           const r = Math.round(rSum / wSum).toString(16).padStart(2,'0');
           const g = Math.round(gSum / wSum).toString(16).padStart(2,'0');
           const b = Math.round(bSum / wSum).toString(16).padStart(2,'0');
-          bgColor = '#' + r + g + b + '88'; // semi-transparent
+          // Draw colored fill anchored to the bottom of the cell
+          pc.fillStyle = '#' + r + g + b + '88';
+          pc.fillRect(x, y + cellSize - fillH, cellSize, fillH);
         }
       }
-      pc.fillStyle = bgColor;
-      pc.fillRect(x, y, cellSize, cellSize);
 
       // Indicator dots — only on visited cells
       if (visited && sources.length > 0 && cellSize >= 18) {
@@ -1726,6 +1862,11 @@ function updateProjStats() {
   });
 }
 
+// ── MAP BACKGROUND IMAGE ────────────────────────────────────────
+const mapImg = new Image();
+mapImg.src = 'map.png';
+mapImg.onload = function() { drawProjection(); };
+
 // ── OVERLAY TOGGLE (M key) ───────────────────────────────────────
 let overlaysVisible = true;
 function toggleOverlays() {
@@ -1734,9 +1875,104 @@ function toggleOverlays() {
   document.getElementById('overlay').classList.toggle('hidden',        !overlaysVisible);
   document.getElementById('topbar').classList.toggle('hidden',         !overlaysVisible);
   document.getElementById('bottombar').classList.toggle('hidden',      !overlaysVisible);
-  // When camera/menu is hidden, enable projection bottom UI (date slider, stats)
-  document.getElementById('projBottomUi').style.pointerEvents = overlaysVisible ? 'none' : 'auto';
+  // When overlays are hidden, force interaction mode for bottom UI
+  if (!overlaysVisible) {
+    document.getElementById('projBottomUi').style.pointerEvents = 'auto';
+  } else {
+    applyMode(); // restore pointer-events based on current mode
+  }
+  drawProjection(); // redraw to show/hide map background
 }
+
+// ── MODE TOGGLE (Interaction vs Camera) ─────────────────────────
+// false = Interaction mode (default), true = Camera mode
+let cameraMode = false;
+
+function applyMode() {
+  const sw = document.getElementById('modeSwitch');
+  const lblI = document.getElementById('modeLabelInteract');
+  const lblC = document.getElementById('modeLabelCamera');
+
+  sw.classList.toggle('on', cameraMode);
+  lblI.classList.toggle('active', !cameraMode);
+  lblC.classList.toggle('active', cameraMode);
+
+  // Camera mode: overlay captures pointer events, bottom UI disabled
+  // Interaction mode: overlay passes through, bottom UI + projCanvas interactable
+  document.getElementById('overlay').style.pointerEvents = cameraMode ? 'auto' : 'none';
+  document.getElementById('projBottomUi').style.pointerEvents = cameraMode ? 'none' : 'auto';
+  document.getElementById('projCanvas').style.cursor = cameraMode ? 'default' : 'pointer';
+}
+
+function toggleMode() {
+  cameraMode = !cameraMode;
+  applyMode();
+}
+
+// Set initial mode
+applyMode();
+
+// ── INTERACT-MODE: click grid to place pawns ────────────────────
+let interactTurnIndex = 0; // cycles through active pawns
+
+function getProjGridLayout() {
+  const zone = document.getElementById('projZone');
+  const cw   = zone.clientWidth  || 800;
+  const ch   = zone.clientHeight || 500;
+  const timeFontSize = Math.min(52, Math.max(22, Math.round(ch * 0.11)));
+  const pad      = 20;
+  const gridTop  = timeFontSize + 26;
+  const avW      = cw - pad * 2;
+  const avH      = ch - gridTop - pad;
+  const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
+  const gridW    = COLS * cellSize;
+  const gridH    = ROWS * cellSize;
+  const gridX    = Math.round((cw - gridW) / 2);
+  const gridY    = gridTop;
+  return { gridX: gridX, gridY: gridY, gridW: gridW, gridH: gridH, cellSize: cellSize };
+}
+
+function projClickToCell(px, py) {
+  const g = getProjGridLayout();
+  const col = Math.floor((px - g.gridX) / g.cellSize);
+  const row = Math.floor((py - g.gridY) / g.cellSize);
+  if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
+  return { col: col, row: row };
+}
+
+function setPawnCell(id, cell) {
+  const state    = pawnState[id];
+  if (!state) return;
+  const prevCell = state.cell;
+  state.cell      = cell;
+  currentCell[id] = cell;
+  const idx = pawnIdToIndex[id];
+  if (idx !== undefined) pawns[idx].position = cell;
+  checkDwell(id, cell);
+  updateGameState(id, prevCell, cell);
+  const chipCell = document.getElementById('chipCell-' + id);
+  if (chipCell) chipCell.textContent = cell ? cell.col + ',' + cell.row : '-,-';
+  updateBottomCells();
+  updateProjStats();
+  drawProjection();
+}
+
+document.getElementById('projCanvas').addEventListener('click', function(e) {
+  if (cameraMode) return; // only in interaction mode
+  const rect = this.getBoundingClientRect();
+  const px = (e.clientX - rect.left) * (this.width  / rect.width);
+  const py = (e.clientY - rect.top)  * (this.height / rect.height);
+  const cell = projClickToCell(px, py);
+  if (!cell) return;
+
+  // Determine which pawn moves: cycle through active pawns in order
+  const ids = Array.from(activePawnIds);
+  if (ids.length === 0) return;
+  interactTurnIndex = interactTurnIndex % ids.length;
+  const pawnId = ids[interactTurnIndex];
+  setPawnCell(pawnId, cell);
+  interactTurnIndex = (interactTurnIndex + 1) % ids.length;
+});
 
 // Commit slider when the 2s glow animation finishes — animationend is the lock signal
 document.getElementById('projSliderLabel').addEventListener('animationend', function() {
@@ -1768,7 +2004,7 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-window.addEventListener('resize', drawProjection);
+window.addEventListener('resize', function() { drawProjection(); drawSliderBarGraph(); });
 document.addEventListener('fullscreenchange',       drawProjection);
 document.addEventListener('webkitfullscreenchange', drawProjection);
 
