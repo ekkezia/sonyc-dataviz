@@ -254,6 +254,12 @@
           <button id="modeSwitch" class="mode-switch" onclick="toggleMode()"></button>
           <span id="modeLabelCamera" class="mode-toggle-label">CAMERA</span>
         </div>
+        <div class="vsep"></div>
+        <div class="mode-toggle">
+          <span id="modeLabelGame" class="mode-toggle-label active">GAME</span>
+          <button id="viewSwitch" class="mode-switch" onclick="toggleViewMode()"></button>
+          <span id="modeLabelView" class="mode-toggle-label">VIEW</span>
+        </div>
         <div id="statusTag" style="margin-left:auto;font-size:10px;color:var(--muted)">INIT</div>
       </div>
 
@@ -313,31 +319,44 @@
         <div id="projSliderTicks"></div>
       </div>
       <div id="projStats">
-        <!-- Player 1 -->
-        <div class="proj-player">
-          <div class="proj-avatar-wrap">
-            <span class="proj-player-label">PLAYER 1</span>
-            <div class="proj-avatar" style="background:#e63030;border:3px solid #b82020;">P1</div>
+        <!-- Game mode: P1 + P2 -->
+        <div id="gamePlayers">
+          <div class="proj-player">
+            <div class="proj-avatar-wrap">
+              <span class="proj-player-label">PLAYER 1</span>
+              <div class="proj-avatar" style="background:#e63030;border:3px solid #b82020;">P1</div>
+            </div>
+            <div class="proj-score-wrap">
+              <span class="proj-score-label">NOISE (dB)</span>
+              <span id="p1Score" class="proj-score-val">0</span>
+            </div>
+            <div id="p1NoiseIcons" class="proj-noise-icons"></div>
           </div>
-          <div class="proj-score-wrap">
-            <span class="proj-score-label">SCORE</span>
-            <span id="p1Score" class="proj-score-val">0</span>
+          <div class="proj-divider"></div>
+          <div class="proj-player">
+            <div class="proj-avatar-wrap">
+              <span class="proj-player-label">PLAYER 2</span>
+              <div class="proj-avatar" style="background:#3070e6;border:3px solid #1a50c0;">P2</div>
+            </div>
+            <div class="proj-score-wrap">
+              <span class="proj-score-label">NOISE (dB)</span>
+              <span id="p2Score" class="proj-score-val">0</span>
+            </div>
+            <div id="p2NoiseIcons" class="proj-noise-icons"></div>
           </div>
-          <div id="p1NoiseIcons" class="proj-noise-icons"></div>
         </div>
-        <div class="proj-divider"></div>
-        <!-- Player 2 -->
-        <div class="proj-player">
-          <div class="proj-avatar-wrap">
-            <span class="proj-player-label">PLAYER 2</span>
-            <div class="proj-avatar" style="background:#3070e6;border:3px solid #1a50c0;">P2</div>
-          </div>
-          <div class="proj-score-wrap">
-            <span class="proj-score-label">SCORE</span>
-            <span id="p2Score" class="proj-score-val">0</span>
-          </div>
-          <div id="p2NoiseIcons" class="proj-noise-icons"></div>
+        <!-- View mode: single noise panel -->
+        <div id="viewNoisePanel" style="display:none;flex:1;padding:8px 12px;overflow-y:auto;">
+          <div style="font-size:9px;color:#888;letter-spacing:.1em;margin-bottom:6px;">CELL NOISE</div>
+          <div id="viewNoiseIcons" class="proj-noise-icons"></div>
         </div>
+      </div>
+      <!-- Game-end result overlay -->
+      <div id="gameEndOverlay" style="display:none;position:absolute;inset:0;background:rgba(255,255,255,0.93);flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:20;padding:24px;text-align:center;">
+        <div id="gameEndWinner" style="font-size:28px;font-weight:700;font-family:IBM Plex Mono,monospace;color:#111;"></div>
+        <div id="gameEndScores" style="font-size:14px;font-family:IBM Plex Mono,monospace;color:#555;line-height:1.7;"></div>
+        <div id="gameEndReason" style="font-size:11px;font-family:IBM Plex Mono,monospace;color:#888;max-width:320px;line-height:1.6;"></div>
+        <button onclick="restartGame()" style="margin-top:12px;padding:10px 28px;font-family:IBM Plex Mono,monospace;font-size:13px;font-weight:700;letter-spacing:.08em;background:#111;color:#fff;border:none;border-radius:6px;cursor:pointer;">RESTART GAME</button>
       </div>
     </div>
   </div>
@@ -367,7 +386,7 @@ function defaultParams(pd) {
 }
 PRESET_PAWNS.forEach(p => { pawnParams[p.id] = defaultParams(p); });
 
-let activePawnIds  = new Set(['red']);
+let activePawnIds  = new Set(['red', 'blue']);
 let selectedChipId = 'red';
 const pawnState    = {};
 PRESET_PAWNS.forEach(p => { pawnState[p.id] = { pos:null, cell:null }; });
@@ -381,10 +400,11 @@ const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
 
 // pawns[1] = { color, position: {col,row}|null, score }
 const pawns = {
-  1: { color: '#e63030', position: null, score: 0 }
+  1: { color: '#e63030', position: null, score: 0 },
+  2: { color: '#3070e6', position: null, score: 0 }
 };
-const pawnIdToIndex = { red: 1 };
-let nextPawnIndex = 2;
+const pawnIdToIndex = { red: 1, blue: 2 };
+let nextPawnIndex = 3;
 
 // Grid state
 let grid      = null;
@@ -739,16 +759,18 @@ function loop() {
         smoothPos[id].cy = smoothPos[id].cy + SMOOTH_ALPHA * (rawCy - smoothPos[id].cy);
         smoothPos[id].r  = smoothPos[id].r  + SMOOTH_ALPHA * (rawR  - smoothPos[id].r);
       }
-      updatePawnState(id, smoothPos[id].cx, smoothPos[id].cy, smoothPos[id].r);
+      if (cameraMode) updatePawnState(id, smoothPos[id].cx, smoothPos[id].cy, smoothPos[id].r);
     } else {
       smoothPos[id] = null;
-      if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
-      currentCell[id] = null;
-      checkDwell(id, null);
-      const idx = pawnIdToIndex[id];
-      if (idx !== undefined) pawns[idx].position = null;
-      const chipCell = document.getElementById('chipCell-' + id);
-      if (chipCell) chipCell.textContent = '-,-';
+      if (cameraMode) {
+        if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
+        currentCell[id] = null;
+        checkDwell(id, null);
+        const idx = pawnIdToIndex[id];
+        if (idx !== undefined) pawns[idx].position = null;
+        const chipCell = document.getElementById('chipCell-' + id);
+        if (chipCell) chipCell.textContent = '-,-';
+      }
     }
   });
   document.getElementById('bBlobs').textContent = totalBlobs;
@@ -1096,20 +1118,6 @@ function hideHint(){ hint.classList.remove('show'); }
 // gridData[row][col] = [{type, db}, ...]
 let gridData = {};
 
-// Fallback inline data (mirrors mock_noise_grid.csv)
-const FALLBACK_GRID = {
-  0:{0:[{type:'dog',db:65},{type:'car',db:72}],1:[{type:'drilling',db:80}],2:[{type:'car',db:60}],3:[],4:[{type:'dog',db:55}],5:[],6:[{type:'car',db:70}],7:[{type:'drilling',db:85}],8:[],9:[{type:'dog',db:60}]},
-  1:{0:[{type:'car',db:68}],1:[{type:'dog',db:62}],2:[{type:'drilling',db:90}],3:[],4:[{type:'car',db:75}],5:[{type:'dog',db:58}],6:[],7:[{type:'drilling',db:88}],8:[{type:'car',db:65}],9:[]},
-  2:{0:[{type:'truck',db:82},{type:'car',db:70}],1:[{type:'hvac',db:60}],2:[{type:'crowd',db:74}],3:[{type:'music',db:65}],4:[{type:'truck',db:85}],5:[{type:'crowd',db:72}],6:[{type:'music',db:68}],7:[{type:'hvac',db:58}],8:[{type:'car',db:71}],9:[{type:'truck',db:78}]},
-  3:{0:[{type:'siren',db:95}],1:[{type:'crowd',db:80}],2:[{type:'car',db:68}],3:[{type:'dog',db:62}],4:[],5:[{type:'music',db:70}],6:[{type:'crowd',db:78}],7:[{type:'car',db:65}],8:[{type:'dog',db:58}],9:[{type:'siren',db:88}]},
-  4:{0:[{type:'hvac',db:62}],1:[{type:'drilling',db:88}],2:[{type:'truck',db:80}],3:[],4:[{type:'car',db:72}],5:[{type:'drilling',db:85}],6:[{type:'truck',db:76}],7:[],8:[{type:'hvac',db:65}],9:[{type:'car',db:70}]},
-  5:{0:[{type:'bird',db:48}],1:[{type:'dog',db:52}],2:[{type:'crowd',db:68}],3:[{type:'music',db:72}],4:[{type:'bird',db:45}],5:[],6:[{type:'music',db:75}],7:[{type:'crowd',db:70}],8:[{type:'dog',db:55}],9:[{type:'bird',db:50}]},
-  6:{0:[{type:'car',db:74},{type:'truck',db:82}],1:[],2:[{type:'siren',db:92}],3:[{type:'car',db:68}],4:[{type:'truck',db:80}],5:[],6:[{type:'car',db:72}],7:[{type:'siren',db:88}],8:[{type:'truck',db:78}],9:[{type:'car',db:65}]},
-  7:{0:[{type:'bird',db:44}],1:[{type:'dog',db:58},{type:'bird',db:42}],2:[{type:'music',db:66}],3:[],4:[{type:'bird',db:46}],5:[{type:'dog',db:60}],6:[],7:[{type:'music',db:68}],8:[{type:'bird',db:48}],9:[{type:'dog',db:55}]},
-  8:{0:[{type:'hvac',db:55}],1:[{type:'crowd',db:70}],2:[{type:'car',db:65}],3:[{type:'dog',db:52}],4:[{type:'hvac',db:58}],5:[{type:'crowd',db:68}],6:[{type:'car',db:62}],7:[{type:'dog',db:56}],8:[{type:'hvac',db:52}],9:[{type:'car',db:60}]},
-  9:{0:[{type:'drilling',db:78},{type:'car',db:70}],1:[{type:'truck',db:82}],2:[{type:'car',db:68}],3:[],4:[{type:'drilling',db:80}],5:[{type:'truck',db:85}],6:[{type:'car',db:72}],7:[],8:[{type:'drilling',db:75}],9:[{type:'truck',db:80}]},
-};
-
 async function loadGridData() {
   try {
     const resp = await fetch('mock_noise_grid.csv');
@@ -1152,7 +1160,7 @@ import('./utils.js').then(function(mod) {
   if (typeof mod.getTimeOfDay === 'function') getTimeOfDay = mod.getTimeOfDay;
 }).catch(function() { /* keep inline fallback */ });
 
-// ── MOCK DATA (mockData.json) ────────────────────────────────────
+// ── DATA (data.json) ────────────────────────────────────
 let mockData    = null;   // full JSON object once loaded
 let sliderSteps = [];     // [{dateKey, dateObj, label}] — one entry per date
 let sliderIndex = 0;      // resolved integer index into sliderSteps
@@ -1162,19 +1170,114 @@ const SLIDER_DWELL_MS = 1000;
 // Maps getTimeOfDay() output → ordered list of mockData slot keys to try
 const TOD_SLOT_MAP = {
   MORNING:   ['morning'],
+  NOON:      ['noon', 'afternoon'],
   AFTERNOON: ['afternoon', 'noon'],
   EVENING:   ['evening'],
   NIGHT:     ['evening', 'afternoon'],
 };
 
+// ── CLOCK / TOD OVERRIDE ─────────────────────────────────────────
+// null = follow real time; otherwise one of the TOD_CYCLE values
+let selectedTOD = null;
+const TOD_CYCLE = ['MORNING', 'NOON', 'AFTERNOON', 'EVENING', 'NIGHT'];
+// Representative clock hour (24h) for each period
+const TOD_HOUR  = { MORNING: 9, NOON: 12, AFTERNOON: 15, EVENING: 19, NIGHT: 22 };
+
+function getActiveTOD() {
+  if (selectedTOD) return selectedTOD;
+  const h = new Date().getHours();
+  if (h >= 5  && h < 12) return 'MORNING';
+  if (h === 12)           return 'NOON';
+  if (h > 12 && h < 17)  return 'AFTERNOON';
+  if (h >= 17 && h < 21) return 'EVENING';
+  return 'NIGHT';
+}
+
+// Bounding box of the clock on projCanvas — updated each draw, used for click detection
+let _clockHitBox = null;
+
+function drawClock(pc, cx, cy, r, tod) {
+  const now   = new Date();
+  // If a TOD is selected (override), show the representative hour; otherwise show real time
+  const hour  = selectedTOD ? TOD_HOUR[tod] : now.getHours();
+  const min   = selectedTOD ? 0             : now.getMinutes();
+
+  const hAngle = ((hour % 12) / 12 + min / 720) * Math.PI * 2 - Math.PI / 2;
+  const mAngle = (min / 60) * Math.PI * 2 - Math.PI / 2;
+
+  // Face
+  pc.beginPath();
+  pc.arc(cx, cy, r, 0, Math.PI * 2);
+  pc.fillStyle = '#fff';
+  pc.fill();
+  pc.strokeStyle = selectedTOD ? '#5b8fff' : '#333';
+  pc.lineWidth = selectedTOD ? 2.5 : 1.5;
+  pc.stroke();
+
+  // Hour ticks
+  pc.strokeStyle = '#ccc';
+  pc.lineWidth = 1;
+  for (let i = 0; i < 12; i++) {
+    const a  = (i / 12) * Math.PI * 2 - Math.PI / 2;
+    const x1 = cx + Math.cos(a) * (r * 0.82);
+    const y1 = cy + Math.sin(a) * (r * 0.82);
+    const x2 = cx + Math.cos(a) * (r * 0.94);
+    const y2 = cy + Math.sin(a) * (r * 0.94);
+    pc.beginPath(); pc.moveTo(x1, y1); pc.lineTo(x2, y2); pc.stroke();
+  }
+
+  // Hour hand
+  pc.strokeStyle = '#222';
+  pc.lineWidth = r * 0.12;
+  pc.lineCap = 'round';
+  pc.beginPath();
+  pc.moveTo(cx, cy);
+  pc.lineTo(cx + Math.cos(hAngle) * r * 0.55, cy + Math.sin(hAngle) * r * 0.55);
+  pc.stroke();
+
+  // Minute hand
+  pc.strokeStyle = '#555';
+  pc.lineWidth = r * 0.07;
+  pc.beginPath();
+  pc.moveTo(cx, cy);
+  pc.lineTo(cx + Math.cos(mAngle) * r * 0.78, cy + Math.sin(mAngle) * r * 0.78);
+  pc.stroke();
+
+  // Center dot
+  pc.beginPath();
+  pc.arc(cx, cy, r * 0.08, 0, Math.PI * 2);
+  pc.fillStyle = '#333';
+  pc.fill();
+
+  // TOD label below clock
+  const labelFs = Math.max(8, Math.round(r * 0.52));
+  pc.font = 'bold ' + labelFs + 'px IBM Plex Mono,monospace';
+  pc.fillStyle = selectedTOD ? '#5b8fff' : '#111';
+  pc.textAlign = 'center';
+  pc.textBaseline = 'top';
+  pc.fillText(tod, cx, cy + r + 4);
+
+  // "click to change" hint when overridden
+  if (selectedTOD) {
+    const hintFs = Math.max(7, Math.round(r * 0.38));
+    pc.font = hintFs + 'px IBM Plex Mono,monospace';
+    pc.fillStyle = '#aaa';
+    pc.fillText('click to cycle', cx, cy + r + 4 + labelFs + 2);
+  }
+
+  pc.textBaseline = 'alphabetic';
+  pc.textAlign    = 'left';
+  pc.lineCap      = 'butt';
+}
+
 async function loadMockData() {
   try {
-    const resp = await fetch('mockData.json');
+    const resp = await fetch('data.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     mockData = await resp.json();
     buildSliderSteps();
   } catch(e) {
-    console.warn('mockData.json not loaded:', e.message);
+    console.warn('data.json not loaded:', e.message);
   }
 }
 
@@ -1379,8 +1482,8 @@ function getMockCellData(row, col) {
   if (mockData && sliderSteps.length && sliderSteps[sliderIndex]) {
     const dateData = mockData[sliderSteps[sliderIndex].dateKey];
     if (dateData) {
-      const tod   = getTimeOfDay(new Date());                  // e.g. 'AFTERNOON'
-      const slots = TOD_SLOT_MAP[tod] || [tod.toLowerCase()]; // slot keys to try in order
+      const tod   = getActiveTOD();
+      const slots = TOD_SLOT_MAP[tod] || [tod.toLowerCase()];
       for (var i = 0; i < slots.length; i++) {
         const slot = dateData[slots[i]];
         if (slot) {
@@ -1414,6 +1517,26 @@ function getProjPawns() {
                   scoreEl: slot.scoreEl, noiseEl: slot.noiseEl, idx: idx });
   });
   return result;
+}
+
+function restartGame() {
+  gameStarted = false;
+  gameEnded   = false;
+  visitedCells.clear();
+  Object.keys(dwellState).forEach(function(id) { dwellState[id] = null; });
+  getProjPawns().forEach(function(p) {
+    if (pawns[p.idx]) pawns[p.idx].score = 0;
+    currentCell[p.id] = null;
+    if (pawnState[p.id]) { pawnState[p.id].pos = null; pawnState[p.id].cell = null; }
+  });
+  gameNotif      = '\u2014 BOTH START TO BEGIN \u2014';
+  gameNotifColor = '#30c050';
+  var overlay = document.getElementById('gameEndOverlay');
+  if (overlay) overlay.style.display = 'none';
+  var slider = document.getElementById('projSlider');
+  if (slider) { slider.disabled = false; slider.style.opacity = '1'; slider.title = ''; }
+  updateProjStats();
+  drawProjection();
 }
 
 // ── GAME RULES ───────────────────────────────────────────────────
@@ -1480,29 +1603,48 @@ function updateGameState(id, prevCell, newCell) {
   if (!gameEnded && bothOnFinish) {
     gameEnded = true;
     visitedCells.clear();
-    // Determine winner (lower score wins)
+    // Determine winner (lower noise score = less noise exposure = wins)
     const scores = projPawns.map(function(p) {
-      return { label: p.label, score: pawns[p.idx] ? pawns[p.idx].score : 0 };
+      return { label: p.label, id: p.id, score: pawns[p.idx] ? pawns[p.idx].score : 0 };
     });
-    var winnerText;
+    var winnerLabel, loserLabel, winnerScore, loserScore, isTie = false;
     if (scores.length >= 2) {
-      if (scores[0].score < scores[1].score)       winnerText = scores[0].label + ' WINS!';
-      else if (scores[1].score < scores[0].score)  winnerText = scores[1].label + ' WINS!';
-      else                                          winnerText = 'TIE!';
-    } else {
-      winnerText = 'FINISH!';
+      if (scores[0].score < scores[1].score) {
+        winnerLabel = scores[0].label; winnerScore = scores[0].score;
+        loserLabel  = scores[1].label; loserScore  = scores[1].score;
+      } else if (scores[1].score < scores[0].score) {
+        winnerLabel = scores[1].label; winnerScore = scores[1].score;
+        loserLabel  = scores[0].label; loserScore  = scores[0].score;
+      } else {
+        isTie = true;
+      }
     }
-    gameNotif      = '\u2014 ' + winnerText + ' \u2014';
+    // Show game-end overlay
+    const overlay = document.getElementById('gameEndOverlay');
+    const winnerEl = document.getElementById('gameEndWinner');
+    const scoresEl = document.getElementById('gameEndScores');
+    const reasonEl = document.getElementById('gameEndReason');
+    if (overlay && winnerEl && scoresEl && reasonEl) {
+      if (isTie) {
+        winnerEl.textContent = "IT'S A TIE!";
+        scoresEl.innerHTML   = scores[0].label + ': ' + scores[0].score + ' dB<br>' +
+                               scores[1].label + ': ' + scores[1].score + ' dB';
+        reasonEl.textContent = 'Both players absorbed the same amount of noise. Try different routes!';
+      } else {
+        winnerEl.textContent = winnerLabel + ' WINS!';
+        scoresEl.innerHTML   = winnerLabel + ': ' + winnerScore + ' dB &nbsp;✓<br>' +
+                               loserLabel  + ': ' + loserScore  + ' dB';
+        reasonEl.textContent = winnerLabel + ' navigated quieter streets — absorbing ' +
+          winnerScore + ' dB vs ' + loserScore + ' dB. ' +
+          'In this game, lower noise exposure wins: the goal is to find the quietest path through the city.';
+      }
+      overlay.style.display = 'flex';
+    }
+    gameNotif      = isTie ? '\u2014 TIE! \u2014' : '\u2014 ' + winnerLabel + ' WINS! \u2014';
     gameNotifColor = '#e63030';
-    // Disable slider during game; re-enable now so user can restart
+    // Re-enable slider
     var slider = document.getElementById('projSlider');
-    if (slider) {
-      slider.disabled = false;
-      slider.style.opacity = '1';
-      slider.title = 'Slide to a new date to restart';
-    }
-    var lbl = document.getElementById('projSliderLabel');
-    if (lbl) lbl.textContent = '\u2014 Slide to restart \u2014';
+    if (slider) { slider.disabled = false; slider.style.opacity = '1'; slider.title = ''; }
     return;
   }
 
@@ -1515,21 +1657,36 @@ function updateGameState(id, prevCell, newCell) {
 const DWELL_MS = 1000;
 const dwellState = {}; // id → { col, row, startTime, scored }
 
+function lockDwell(id) {
+  const ds = dwellState[id];
+  if (!ds || ds.scored) return;
+  ds.scored = true;
+  playPawnSettleSound(ds.row, ds.col);
+  if (!viewMode && gameStarted && !gameEnded) {
+    const idx = pawnIdToIndex[id];
+    if (idx !== undefined && pawns[idx]) {
+      const sources = getMockCellData(ds.row, ds.col);
+      const cellDb  = sources.reduce(function(sum, s) { return sum + (s.db || 0); }, 0);
+      if (cellDb > 0) {
+        pawns[idx].score = Math.round((pawns[idx].score + cellDb) * 10) / 10;
+      }
+    }
+  }
+  updateProjStats();
+  drawProjection();
+}
+
 function checkDwell(id, cell) {
   const ds = dwellState[id];
   if (!cell) { dwellState[id] = null; return; }
   if (!ds || ds.col !== cell.col || ds.row !== cell.row) {
     dwellState[id] = { col: cell.col, row: cell.row, startTime: Date.now(), scored: false };
+    // Auto-lock after DWELL_MS without needing another click
+    setTimeout(function() { lockDwell(id); }, DWELL_MS);
     return;
   }
-  if (!ds.scored && (Date.now() - ds.startTime) >= DWELL_MS) {
-    ds.scored = true;
-    playPawnSettleSound(ds.row, ds.col);
-    if (gameStarted && !gameEnded) {
-      const idx = pawnIdToIndex[id];
-      if (idx !== undefined && pawns[idx]) pawns[idx].score += 1;
-    }
-  }
+  // Fallback: also lock if already elapsed (camera-mode path)
+  if (!ds.scored && (Date.now() - ds.startTime) >= DWELL_MS) lockDwell(id);
 }
 
 function drawProjection() {
@@ -1547,14 +1704,15 @@ function drawProjection() {
   pc.fillStyle = '#fff';
   pc.fillRect(0, 0, cw, ch);
 
-  // Time-of-day label (top-left) — always reflects the user's current real time
-  const timeLabel = getTimeOfDay(new Date());
+  // Graphic clock (top-left) — shows real time by default; click to cycle TOD periods
   const timeFontSize = Math.min(52, Math.max(22, Math.round(ch * 0.11)));
-  pc.font = 'bold ' + timeFontSize + 'px IBM Plex Mono,monospace';
-  pc.fillStyle = '#111';
-  pc.textAlign = 'left';
-  pc.textBaseline = 'top';
-  pc.fillText(timeLabel, 20, 10);
+  const clockR  = Math.round(timeFontSize * 0.72);
+  const clockCX = 20 + clockR;
+  const clockCY = 10 + clockR;
+  const tod     = getActiveTOD();
+  drawClock(pc, clockCX, clockCY, clockR, tod);
+  const labelFs2 = Math.max(8, Math.round(clockR * 0.52));
+  _clockHitBox = { x: 20, y: 10, w: clockR * 2, h: clockR * 2 + 4 + labelFs2 + 4 };
 
   // Game notification (top-right, same baseline as time label)
   if (gameNotif) {
@@ -1571,9 +1729,9 @@ function drawProjection() {
 
   pc.textBaseline = 'alphabetic';
 
-  // Grid layout
+  // Grid layout — leave room for clock (2*clockR + label row + gap)
   const pad      = 20;
-  const gridTop  = timeFontSize + 26;
+  const gridTop  = 10 + clockR * 2 + Math.max(8, Math.round(clockR * 0.52)) + 14;
   const avW      = cw - pad * 2;
   const avH      = ch - gridTop - pad;
   const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
@@ -1606,7 +1764,8 @@ function drawProjection() {
       const y       = gridY + row * cellSize;
       const cellKey = col + ',' + row;
       const visited = visitedCells.has(cellKey);
-      const sources = visited ? getMockCellData(row, col) : [];
+      const reveal  = viewMode || visited;
+      const sources = reveal ? getMockCellData(row, col) : [];
 
       // Draw empty cell background (transparent when map is showing)
       if (overlaysVisible || !mapImg || !mapImg.complete) {
@@ -1614,7 +1773,7 @@ function drawProjection() {
         pc.fillRect(x, y, cellSize, cellSize);
       }
 
-      if (visited && sources.length > 0) {
+      if (reveal && sources.length > 0) {
         // Compute cell's max dB for fill height ratio
         let cellMaxDb = 0;
         sources.forEach(function(src) {
@@ -1646,7 +1805,7 @@ function drawProjection() {
       }
 
       // Indicator dots — only on visited cells
-      if (visited && sources.length > 0 && cellSize >= 18) {
+      if (reveal && sources.length > 0 && cellSize >= 18) {
         sources.slice(0, 4).forEach(function(src, i) {
           const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
           if (!nc) return;
@@ -1659,28 +1818,30 @@ function drawProjection() {
     }
   }
 
-  // Dwell glow — pulsing shadow that grows as pawn dwells in a cell
-  const nowMs = Date.now();
-  activePawnIds.forEach(function(id) {
-    const ds = dwellState[id];
-    if (!ds) return;
-    const pd = allPawnDefs.find(function(p){ return p.id === id; });
-    if (!pd) return;
-    const elapsed  = nowMs - ds.startTime;
-    const progress = Math.min(1, elapsed / DWELL_MS);
-    const pulse    = 0.5 + 0.5 * Math.sin(nowMs / 150);
-    const alpha    = progress * (0.25 + 0.45 * pulse);
-    const blurSize = cellSize * (0.4 + 0.6 * progress) * (0.7 + 0.3 * pulse);
-    const x = gridX + ds.col * cellSize;
-    const y = gridY + ds.row * cellSize;
-    pc.save();
-    pc.shadowColor = pd.color;
-    pc.shadowBlur  = blurSize;
-    pc.globalAlpha = alpha;
-    pc.fillStyle   = pd.color;
-    pc.fillRect(x + 3, y + 3, cellSize - 6, cellSize - 6);
-    pc.restore();
-  });
+  // Dwell glow — pulses for up to 2s; stops entirely once position is locked (ds.scored)
+  if (!viewMode) {
+    const nowMs = Date.now();
+    activePawnIds.forEach(function(id) {
+      const ds = dwellState[id];
+      if (!ds || ds.scored) return; // stop rendering once locked
+      const pd = allPawnDefs.find(function(p){ return p.id === id; });
+      if (!pd) return;
+      const elapsed  = nowMs - ds.startTime;
+      const progress = Math.min(1, elapsed / DWELL_MS);
+      const pulse    = 0.5 + 0.5 * Math.sin(nowMs / 150);
+      const alpha    = progress * (0.25 + 0.45 * pulse);
+      const blurSize = cellSize * (0.4 + 0.6 * progress) * (0.7 + 0.3 * pulse);
+      const x = gridX + ds.col * cellSize;
+      const y = gridY + ds.row * cellSize;
+      pc.save();
+      pc.shadowColor = pd.color;
+      pc.shadowBlur  = blurSize;
+      pc.globalAlpha = alpha;
+      pc.fillStyle   = pd.color;
+      pc.fillRect(x + 3, y + 3, cellSize - 6, cellSize - 6);
+      pc.restore();
+    });
+  }
 
   // Grid lines
   pc.strokeStyle = '#bbb';
@@ -1702,6 +1863,21 @@ function drawProjection() {
   pc.strokeStyle = '#111';
   pc.lineWidth = 2;
   pc.strokeRect(gridX, gridY, gridW, gridH);
+
+  // ── Start / Finish cell highlights (game mode only) ─────────────
+  if (viewMode) {
+    // Draw neutral cursor circle for view mode
+    if (viewCursorCell) {
+      const vx = gridX + viewCursorCell.col * cellSize + cellSize / 2;
+      const vy = gridY + viewCursorCell.row * cellSize + cellSize / 2;
+      const vr = Math.max(7, cellSize * 0.22);
+      pc.beginPath(); pc.arc(vx, vy, vr, 0, Math.PI * 2);
+      pc.fillStyle = 'rgba(80,80,80,0.75)'; pc.fill();
+      pc.strokeStyle = '#fff'; pc.lineWidth = 2; pc.stroke();
+    }
+    pc.textAlign = 'left'; pc.textBaseline = 'alphabetic';
+    return; // skip all game-mode rendering below
+  }
 
   // ── Start / Finish cell highlights ──────────────────────────────
   const startX  = gridX + START_CELL.col  * cellSize;
@@ -1814,8 +1990,38 @@ function drawProjection() {
   });
 }
 
+function renderNoiseIcons(container, cell) {
+  container.innerHTML = '';
+  const sources = cell ? getMockCellData(cell.row, cell.col) : [];
+  if (sources.length === 0) {
+    const quiet = document.createElement('span');
+    quiet.style.cssText = 'font-size:11px;color:#aaa;letter-spacing:.05em;padding:2px 0;';
+    quiet.textContent   = cell ? '\u2014 QUIET \u2014' : '\u2014 CLICK A CELL \u2014';
+    container.appendChild(quiet);
+  } else {
+    sources.forEach(function(src) {
+      const nc  = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
+      const col = nc ? nc.color : '#999';
+      const ico = nc ? nc.icon  : '?';
+      const lbl = nc ? nc.label : src.type;
+      const tag = document.createElement('div');
+      tag.className = 'noise-tag';
+      tag.style.cssText = 'background:' + col + '22;border:1px solid ' + col + '99;';
+      tag.innerHTML = '<span style="font-size:16px;">' + ico + '</span>' +
+        '<span style="color:#111;font-size:10px;letter-spacing:.04em;">' +
+        lbl.toUpperCase() + ' ' + src.db + 'dB</span>';
+      container.appendChild(tag);
+    });
+  }
+}
+
 function updateProjStats() {
-  console.log('Updating projection stats...');
+  if (viewMode) {
+    const panel = document.getElementById('viewNoiseIcons');
+    if (panel) renderNoiseIcons(panel, viewCursorCell);
+    return;
+  }
+
   getProjPawns().forEach(function(p) {
     // Sync avatar color to the live camera pawn color
     const avatarEls = document.querySelectorAll('.proj-avatar');
@@ -1826,39 +2032,13 @@ function updateProjStats() {
       avatarEls[slotIdx].style.borderColor = '#' + darker;
     }
 
-    const cell    = currentCell[p.id];
-    const sources = (cell && gridData[cell.row] && gridData[cell.row][cell.col]) || [];
+    const cell = currentCell[p.id];
 
     const scoreDOM = document.getElementById(p.scoreEl);
-    if (scoreDOM && pawns[p.idx]) scoreDOM.textContent = pawns[p.idx].score;
+    if (scoreDOM && pawns[p.idx]) scoreDOM.textContent = pawns[p.idx].score.toFixed(1);
 
     const noiseDOM = document.getElementById(p.noiseEl);
-    if (!noiseDOM) return;
-    noiseDOM.innerHTML = '';
-
-    // Only show noise during an active game
-    if (!gameStarted || gameEnded) return;
-
-    if (sources.length === 0) {
-      const quiet = document.createElement('span');
-      quiet.style.cssText = 'font-size:11px;color:#aaa;letter-spacing:.05em;padding:2px 0;';
-      quiet.textContent   = cell ? '\u2014 QUIET \u2014' : '\u2014 NO SIGNAL \u2014';
-      noiseDOM.appendChild(quiet);
-    } else {
-      sources.forEach(function(src) {
-        const nc  = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
-        const col = nc ? nc.color : '#999';
-        const ico = nc ? nc.icon  : '?';
-        const lbl = nc ? nc.label : src.type;
-        const tag = document.createElement('div');
-        tag.className = 'noise-tag';
-        tag.style.cssText = 'background:' + col + '22;border:1px solid ' + col + '99;';
-        tag.innerHTML = '<span style="font-size:16px;">' + ico + '</span>' +
-          '<span style="color:#111;font-size:10px;letter-spacing:.04em;">' +
-          lbl.toUpperCase() + ' ' + src.db + 'dB</span>';
-        noiseDOM.appendChild(tag);
-      });
-    }
+    if (noiseDOM) renderNoiseIcons(noiseDOM, cell);
   });
 }
 
@@ -1901,7 +2081,7 @@ function applyMode() {
   // Interaction mode: overlay passes through, bottom UI + projCanvas interactable
   document.getElementById('overlay').style.pointerEvents = cameraMode ? 'auto' : 'none';
   document.getElementById('projBottomUi').style.pointerEvents = cameraMode ? 'none' : 'auto';
-  document.getElementById('projCanvas').style.cursor = cameraMode ? 'default' : 'pointer';
+  updateInteractCursor();
 }
 
 function toggleMode() {
@@ -1909,19 +2089,62 @@ function toggleMode() {
   applyMode();
 }
 
-// Set initial mode
-applyMode();
+// ── VIEW / GAME MODE ────────────────────────────────────────────
+// false = GAME mode (cells hidden until pawn steps), true = VIEW mode (all cells revealed)
+let viewMode = false;
+let viewCursorCell = null; // single neutral cursor used only in view mode
+
+function toggleViewMode() {
+  viewMode = !viewMode;
+  const sw   = document.getElementById('viewSwitch');
+  const lblG = document.getElementById('modeLabelGame');
+  const lblV = document.getElementById('modeLabelView');
+  sw.classList.toggle('on', viewMode);
+  lblG.classList.toggle('active', !viewMode);
+  lblV.classList.toggle('active',  viewMode);
+  document.getElementById('gamePlayers').style.display  = viewMode ? 'none' : '';
+  document.getElementById('viewNoisePanel').style.display = viewMode ? 'flex' : 'none';
+  viewCursorCell = null;
+  updateProjStats();
+  drawProjection();
+}
 
 // ── INTERACT-MODE: click grid to place pawns ────────────────────
 let interactTurnIndex = 0; // cycles through active pawns
+
+// Set initial mode
+applyMode();
+
+function updateInteractCursor() {
+  const canvas = document.getElementById('projCanvas');
+  if (cameraMode) {
+    canvas.style.cursor = 'default';
+    return;
+  }
+  const ids = Array.from(activePawnIds);
+  if (ids.length === 0) { canvas.style.cursor = 'crosshair'; return; }
+  const idx  = interactTurnIndex % ids.length;
+  const id   = ids[idx];
+  const pd   = allPawnDefs.find(function(p){ return p.id === id; });
+  const color = pd ? pd.color : '#ffffff';
+  // Draw a filled circle SVG cursor in the pawn's color
+  const size = 20;
+  const r    = 8;
+  const svg  = `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'>` +
+               `<circle cx='${r}' cy='${r}' r='${r - 1}' fill='${color}' stroke='white' stroke-width='1.5'/>` +
+               `</svg>`;
+  const encoded = 'data:image/svg+xml,' + encodeURIComponent(svg);
+  canvas.style.cursor = `url("${encoded}") ${r} ${r}, crosshair`;
+}
 
 function getProjGridLayout() {
   const zone = document.getElementById('projZone');
   const cw   = zone.clientWidth  || 800;
   const ch   = zone.clientHeight || 500;
   const timeFontSize = Math.min(52, Math.max(22, Math.round(ch * 0.11)));
+  const clockR2  = Math.round(timeFontSize * 0.72);
   const pad      = 20;
-  const gridTop  = timeFontSize + 26;
+  const gridTop  = 10 + clockR2 * 2 + Math.max(8, Math.round(clockR2 * 0.52)) + 14;
   const avW      = cw - pad * 2;
   const avH      = ch - gridTop - pad;
   const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
@@ -1962,16 +2185,48 @@ document.getElementById('projCanvas').addEventListener('click', function(e) {
   const rect = this.getBoundingClientRect();
   const px = (e.clientX - rect.left) * (this.width  / rect.width);
   const py = (e.clientY - rect.top)  * (this.height / rect.height);
+
+  // Clock hit-test: cycle TOD period
+  if (_clockHitBox) {
+    const hb = _clockHitBox;
+    if (px >= hb.x && px <= hb.x + hb.w && py >= hb.y && py <= hb.y + hb.h) {
+      const currentTOD = getActiveTOD();
+      const nextIdx    = (TOD_CYCLE.indexOf(currentTOD) + 1) % TOD_CYCLE.length;
+      const nextTOD    = TOD_CYCLE[nextIdx];
+      // If cycling back to what real time would give, clear override
+      const realTOD    = (function() {
+        const h = new Date().getHours();
+        if (h >= 5  && h < 12) return 'MORNING';
+        if (h === 12)           return 'NOON';
+        if (h > 12 && h < 17)  return 'AFTERNOON';
+        if (h >= 17 && h < 21) return 'EVENING';
+        return 'NIGHT';
+      })();
+      selectedTOD = (nextTOD === realTOD) ? null : nextTOD;
+      drawProjection();
+      return;
+    }
+  }
+
   const cell = projClickToCell(px, py);
   if (!cell) return;
 
-  // Determine which pawn moves: cycle through active pawns in order
+  if (viewMode) {
+    // View mode: just move the neutral cursor and show noise info
+    viewCursorCell = cell;
+    updateProjStats();
+    drawProjection();
+    return;
+  }
+
+  // Game mode: cycle through active pawns in order
   const ids = Array.from(activePawnIds);
   if (ids.length === 0) return;
   interactTurnIndex = interactTurnIndex % ids.length;
   const pawnId = ids[interactTurnIndex];
   setPawnCell(pawnId, cell);
   interactTurnIndex = (interactTurnIndex + 1) % ids.length;
+  updateInteractCursor();
 });
 
 // Commit slider when the 2s glow animation finishes — animationend is the lock signal
@@ -1995,7 +2250,7 @@ setInterval(function() {
 
 // ── FULLSCREEN (press F while on projection tab) ─────────────────
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'm' || e.key === 'M') { toggleOverlays(); return; }
+  if (e.key === 'm' || e.key === 'M') { toggleOverlays(); cameraMode = false; applyMode(); return; }
   if (e.key === 'f' || e.key === 'F') {
     const el = document.getElementById('projView');
     if      (el.requestFullscreen)       el.requestFullscreen();

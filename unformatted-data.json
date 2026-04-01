@@ -1,0 +1,4156 @@
+{
+  "08072019": {
+    "evening": {
+      "19:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 29.15
+          },
+          {
+            "sound": "music",
+            "dB": 29.15
+          },
+          {
+            "sound": "human_voice",
+            "dB": 29.15
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.55
+          },
+          {
+            "sound": "dog",
+            "dB": 34.55
+          },
+          {
+            "sound": "engine",
+            "dB": 34.55
+          },
+          {
+            "sound": "music",
+            "dB": 34.55
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.55
+          }
+        ],
+        "40.73033,-73.9987": [
+          {
+            "sound": "human_voice",
+            "dB": 30.78
+          }
+        ]
+      }
+    }
+  },
+  "12292019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.99
+          },
+          {
+            "sound": "dog",
+            "dB": 32.99
+          }
+        ]
+      }
+    }
+  },
+  "05222019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.49
+          }
+        ],
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.68
+          },
+          {
+            "sound": "engine",
+            "dB": 30.68
+          },
+          {
+            "sound": "music",
+            "dB": 30.68
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.68
+          }
+        ]
+      }
+    }
+  },
+  "01042020": {
+    "evening": {
+      "20:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.61
+          },
+          {
+            "sound": "dog",
+            "dB": 30.61
+          }
+        ]
+      }
+    }
+  },
+  "12162019": {
+    "evening": {
+      "18:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.63
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 34.63
+          },
+          {
+            "sound": "engine",
+            "dB": 34.63
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.63
+          }
+        ]
+      },
+      "19:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 35.5
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.5
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "17:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.86
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.86
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 35.48
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.48
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 35.48
+          }
+        ],
+        "40.73118,-73.99443": [
+          {
+            "sound": "human_voice",
+            "dB": 34.05
+          }
+        ]
+      }
+    }
+  },
+  "07142019": {
+    "morning": {
+      "10:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.17
+          },
+          {
+            "sound": "engine",
+            "dB": 31.17
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "12:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.72
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "engine",
+            "dB": 36.2
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.2
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "dog",
+            "dB": 35.03
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 35.03
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.03
+          }
+        ]
+      }
+    }
+  },
+  "09022019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.7
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.7
+          },
+          {
+            "sound": "engine",
+            "dB": 32.7
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.7
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.94
+          },
+          {
+            "sound": "engine",
+            "dB": 34.94
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.94
+          }
+        ],
+        "40.72915,-73.995": [
+          {
+            "sound": "engine",
+            "dB": 32.0
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.0
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.51
+          },
+          {
+            "sound": "engine",
+            "dB": 36.51
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.51
+          }
+        ]
+      }
+    }
+  },
+  "05122019": {
+    "morning": {
+      "10:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.98
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.98
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "16:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.58
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.58
+          }
+        ]
+      }
+    }
+  },
+  "11262019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.94
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.94
+          }
+        ]
+      },
+      "17:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.17
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.17
+          }
+        ]
+      },
+      "13:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "engine",
+            "dB": 32.88
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.88
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "engine",
+            "dB": 27.08
+          },
+          {
+            "sound": "human_voice",
+            "dB": 27.08
+          }
+        ]
+      }
+    }
+  },
+  "06182019": {
+    "evening": {
+      "18:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.32
+          },
+          {
+            "sound": "dog",
+            "dB": 31.32
+          },
+          {
+            "sound": "engine",
+            "dB": 31.32
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.32
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.66
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 30.66
+          },
+          {
+            "sound": "engine",
+            "dB": 30.66
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "dog",
+            "dB": 31.71
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 31.71
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.71
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 31.71
+          }
+        ]
+      }
+    }
+  },
+  "10142019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.86
+          },
+          {
+            "sound": "music",
+            "dB": 32.86
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.86
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.47
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.47
+          }
+        ]
+      },
+      "17:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.17
+          },
+          {
+            "sound": "music",
+            "dB": 31.17
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.17
+          }
+        ]
+      }
+    },
+    "morning": {
+      "11:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 33.62
+          }
+        ]
+      }
+    }
+  },
+  "08042019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.73
+          },
+          {
+            "sound": "engine",
+            "dB": 31.73
+          }
+        ]
+      }
+    },
+    "morning": {
+      "11:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "dog",
+            "dB": 32.93
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.93
+          }
+        ]
+      }
+    }
+  },
+  "12052019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 29.67
+          },
+          {
+            "sound": "engine",
+            "dB": 29.67
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.3
+          },
+          {
+            "sound": "engine",
+            "dB": 28.3
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 29.85
+          }
+        ]
+      }
+    }
+  },
+  "12182019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 29.79
+          },
+          {
+            "sound": "human_voice",
+            "dB": 29.79
+          }
+        ],
+        "40.73055,-73.99949": [
+          {
+            "sound": "alert_signal",
+            "dB": 30.67
+          },
+          {
+            "sound": "engine",
+            "dB": 30.67
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.67
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.71
+          },
+          {
+            "sound": "engine",
+            "dB": 32.71
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.71
+          }
+        ]
+      }
+    }
+  },
+  "07222019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.19
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.19
+          }
+        ]
+      }
+    },
+    "morning": {
+      "11:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.72
+          },
+          {
+            "sound": "engine",
+            "dB": 32.72
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.72
+          }
+        ]
+      }
+    }
+  },
+  "06192019": {
+    "morning": {
+      "11:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.57
+          },
+          {
+            "sound": "engine",
+            "dB": 30.57
+          }
+        ]
+      }
+    }
+  },
+  "12132019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 29.75
+          },
+          {
+            "sound": "dog",
+            "dB": 29.75
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 29.75
+          },
+          {
+            "sound": "engine",
+            "dB": 29.75
+          },
+          {
+            "sound": "human_voice",
+            "dB": 29.75
+          }
+        ]
+      }
+    },
+    "evening": {
+      "19:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.24
+          },
+          {
+            "sound": "engine",
+            "dB": 35.24
+          }
+        ]
+      }
+    }
+  },
+  "04222019": {
+    "morning": {
+      "10:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.67
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 31.67
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.67
+          }
+        ]
+      },
+      "11:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 31.56
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.32
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.32
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.32
+          }
+        ],
+        "40.72898,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 30.99
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.99
+          }
+        ]
+      },
+      "19:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.92
+          },
+          {
+            "sound": "engine",
+            "dB": 33.92
+          },
+          {
+            "sound": "music",
+            "dB": 33.92
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.92
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "human_voice",
+            "dB": 33.16
+          }
+        ]
+      }
+    }
+  },
+  "09252019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.15
+          }
+        ]
+      }
+    },
+    "morning": {
+      "11:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "engine",
+            "dB": 33.26
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 33.26
+          }
+        ]
+      }
+    }
+  },
+  "12242019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.95
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "alert_signal",
+            "dB": 24.97
+          },
+          {
+            "sound": "engine",
+            "dB": 24.97
+          },
+          {
+            "sound": "human_voice",
+            "dB": 24.97
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "human_voice",
+            "dB": 32.11
+          }
+        ]
+      }
+    }
+  },
+  "10012019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.99
+          },
+          {
+            "sound": "engine",
+            "dB": 33.99
+          }
+        ]
+      }
+    },
+    "morning": {
+      "11:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.16
+          },
+          {
+            "sound": "engine",
+            "dB": 32.16
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.16
+          }
+        ]
+      },
+      "10:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.1
+          },
+          {
+            "sound": "engine",
+            "dB": 32.1
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 32.1
+          }
+        ]
+      }
+    }
+  },
+  "12252019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 27.69
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 27.69
+          },
+          {
+            "sound": "engine",
+            "dB": 27.69
+          },
+          {
+            "sound": "human_voice",
+            "dB": 27.69
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.14
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.14
+          }
+        ]
+      }
+    },
+    "morning": {
+      "10:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "engine",
+            "dB": 26.06
+          }
+        ]
+      }
+    }
+  },
+  "11242019": {
+    "morning": {
+      "08:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.3
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 33.3
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.3
+          }
+        ]
+      }
+    }
+  },
+  "12092019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.59
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.59
+          }
+        ]
+      }
+    }
+  },
+  "09202019": {
+    "morning": {
+      "09:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.91
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "human_voice",
+            "dB": 33.5
+          }
+        ]
+      }
+    }
+  },
+  "11192019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 29.5
+          },
+          {
+            "sound": "engine",
+            "dB": 29.5
+          },
+          {
+            "sound": "human_voice",
+            "dB": 29.5
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "dog",
+            "dB": 29.02
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.22
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 30.22
+          }
+        ]
+      }
+    }
+  },
+  "12122019": {
+    "evening": {
+      "18:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.54
+          },
+          {
+            "sound": "engine",
+            "dB": 28.54
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "14:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.67
+          },
+          {
+            "sound": "engine",
+            "dB": 31.67
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.96
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.96
+          }
+        ]
+      }
+    }
+  },
+  "05082019": {
+    "morning": {
+      "09:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.59
+          },
+          {
+            "sound": "engine",
+            "dB": 31.59
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.59
+          }
+        ]
+      },
+      "10:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "alert_signal",
+            "dB": 33.66
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.66
+          }
+        ]
+      },
+      "08:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "engine",
+            "dB": 34.3
+          }
+        ]
+      }
+    }
+  },
+  "09272019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.14
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.14
+          }
+        ]
+      }
+    }
+  },
+  "10162019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.96
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.96
+          }
+        ],
+        "40.72947,-73.99589": [
+          {
+            "sound": "engine",
+            "dB": 32.0
+          }
+        ]
+      }
+    }
+  },
+  "11112019": {
+    "morning": {
+      "11:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.22
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.22
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "15:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.33
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 34.33
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.33
+          }
+        ]
+      }
+    }
+  },
+  "11282019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.42
+          },
+          {
+            "sound": "engine",
+            "dB": 28.42
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.42
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "human_voice",
+            "dB": 36.96
+          }
+        ]
+      }
+    },
+    "evening": {
+      "19:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.48
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.48
+          }
+        ]
+      }
+    },
+    "morning": {
+      "10:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.26
+          },
+          {
+            "sound": "engine",
+            "dB": 30.26
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.26
+          }
+        ]
+      }
+    }
+  },
+  "11252019": {
+    "evening": {
+      "19:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.13
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 33.13
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.13
+          }
+        ]
+      }
+    }
+  },
+  "10212019": {
+    "evening": {
+      "20:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.05
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.05
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.65
+          },
+          {
+            "sound": "engine",
+            "dB": 34.65
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.65
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 35.64
+          }
+        ]
+      },
+      "12:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 35.25
+          }
+        ]
+      }
+    }
+  },
+  "12232019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.18
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.18
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "engine",
+            "dB": 30.91
+          }
+        ]
+      }
+    }
+  },
+  "09052019": {
+    "morning": {
+      "09:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.4
+          }
+        ]
+      },
+      "11:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "dog",
+            "dB": 34.43
+          },
+          {
+            "sound": "powered_saw",
+            "dB": 34.43
+          }
+        ]
+      }
+    }
+  },
+  "08222019": {
+    "morning": {
+      "11:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.43
+          }
+        ]
+      },
+      "10:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.62
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "17:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.49
+          },
+          {
+            "sound": "engine",
+            "dB": 33.49
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.49
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 34.59
+          }
+        ]
+      }
+    }
+  },
+  "06022019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.08
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.08
+          }
+        ]
+      }
+    },
+    "morning": {
+      "10:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.89
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.89
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "human_voice",
+            "dB": 32.03
+          }
+        ]
+      }
+    }
+  },
+  "07182019": {
+    "evening": {
+      "20:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.66
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 35.66
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.66
+          }
+        ]
+      }
+    }
+  },
+  "11172019": {
+    "evening": {
+      "19:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.77
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 34.77
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.77
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "engine",
+            "dB": 29.18
+          },
+          {
+            "sound": "human_voice",
+            "dB": 29.18
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.74
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.74
+          }
+        ]
+      }
+    }
+  },
+  "05172019": {
+    "morning": {
+      "08:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.63
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "human_voice",
+            "dB": 33.99
+          }
+        ]
+      }
+    }
+  },
+  "08182019": {
+    "evening": {
+      "20:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.56
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.56
+          }
+        ]
+      }
+    }
+  },
+  "05292019": {
+    "evening": {
+      "18:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.55
+          },
+          {
+            "sound": "engine",
+            "dB": 34.55
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.55
+          }
+        ]
+      }
+    }
+  },
+  "10172019": {
+    "morning": {
+      "09:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.88
+          }
+        ]
+      }
+    }
+  },
+  "07082019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.12
+          },
+          {
+            "sound": "engine",
+            "dB": 33.12
+          }
+        ]
+      }
+    }
+  },
+  "10232019": {
+    "evening": {
+      "19:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.3
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.3
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "engine",
+            "dB": 31.89
+          }
+        ]
+      }
+    }
+  },
+  "09092019": {
+    "evening": {
+      "19:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.8
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "human_voice",
+            "dB": 33.0
+          }
+        ]
+      }
+    }
+  },
+  "07302019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.34
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.83
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.83
+          }
+        ]
+      }
+    }
+  },
+  "09172019": {
+    "morning": {
+      "11:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.63
+          }
+        ]
+      }
+    }
+  },
+  "10292019": {
+    "morning": {
+      "11:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.82
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.82
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 35.82
+          }
+        ]
+      }
+    }
+  },
+  "06062019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.01
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 36.01
+          },
+          {
+            "sound": "music",
+            "dB": 36.01
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.01
+          }
+        ]
+      }
+    }
+  },
+  "09142019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.33
+          },
+          {
+            "sound": "engine",
+            "dB": 35.33
+          },
+          {
+            "sound": "music",
+            "dB": 35.33
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.33
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.48
+          },
+          {
+            "sound": "engine",
+            "dB": 34.48
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.48
+          }
+        ]
+      }
+    }
+  },
+  "09122019": {
+    "evening": {
+      "19:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.89
+          },
+          {
+            "sound": "engine",
+            "dB": 33.89
+          },
+          {
+            "sound": "music",
+            "dB": 33.89
+          }
+        ]
+      }
+    }
+  },
+  "09242019": {
+    "morning": {
+      "10:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.55
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 32.55
+          }
+        ]
+      }
+    }
+  },
+  "12222019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.22
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.22
+          },
+          {
+            "sound": "engine",
+            "dB": 32.22
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.22
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 33.72
+          },
+          {
+            "sound": "music",
+            "dB": 33.72
+          }
+        ]
+      }
+    }
+  },
+  "06222019": {
+    "morning": {
+      "08:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.7
+          },
+          {
+            "sound": "engine",
+            "dB": 31.7
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "human_voice",
+            "dB": 34.18
+          }
+        ],
+        "40.73055,-73.99949": [
+          {
+            "sound": "human_voice",
+            "dB": 33.29
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "human_voice",
+            "dB": 29.22
+          }
+        ]
+      }
+    }
+  },
+  "10032019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.75
+          },
+          {
+            "sound": "engine",
+            "dB": 31.75
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.75
+          }
+        ]
+      }
+    },
+    "morning": {
+      "10:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.22
+          },
+          {
+            "sound": "engine",
+            "dB": 34.22
+          }
+        ]
+      },
+      "09:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 34.72
+          }
+        ]
+      }
+    },
+    "evening": {
+      "19:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "human_voice",
+            "dB": 32.51
+          }
+        ]
+      }
+    }
+  },
+  "08282019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.7
+          },
+          {
+            "sound": "music",
+            "dB": 34.7
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.7
+          }
+        ]
+      },
+      "12:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.13
+          },
+          {
+            "sound": "engine",
+            "dB": 34.13
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.13
+          }
+        ]
+      }
+    },
+    "morning": {
+      "08:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "engine",
+            "dB": 35.11
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "human_voice",
+            "dB": 36.3
+          }
+        ]
+      }
+    }
+  },
+  "11302019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.61
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "engine",
+            "dB": 27.81
+          },
+          {
+            "sound": "human_voice",
+            "dB": 27.81
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 32.78
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 28.06
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.06
+          }
+        ]
+      }
+    }
+  },
+  "10302019": {
+    "morning": {
+      "08:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.38
+          },
+          {
+            "sound": "dog",
+            "dB": 34.38
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.99
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 34.99
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.99
+          }
+        ]
+      },
+      "20:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 32.27
+          },
+          {
+            "sound": "music",
+            "dB": 32.27
+          }
+        ]
+      }
+    }
+  },
+  "04302019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.38
+          },
+          {
+            "sound": "engine",
+            "dB": 32.38
+          },
+          {
+            "sound": "music",
+            "dB": 32.38
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.38
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 31.08
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.08
+          }
+        ]
+      }
+    }
+  },
+  "12022019": {
+    "morning": {
+      "09:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.58
+          },
+          {
+            "sound": "engine",
+            "dB": 32.58
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "15:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.9
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.9
+          }
+        ]
+      }
+    }
+  },
+  "07212019": {
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.53
+          },
+          {
+            "sound": "engine",
+            "dB": 35.53
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.53
+          }
+        ]
+      }
+    }
+  },
+  "05132019": {
+    "morning": {
+      "11:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.82
+          },
+          {
+            "sound": "music",
+            "dB": 34.82
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.82
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "14:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.65
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.65
+          },
+          {
+            "sound": "engine",
+            "dB": 32.65
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.65
+          }
+        ]
+      }
+    }
+  },
+  "07272019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.95
+          },
+          {
+            "sound": "dog",
+            "dB": 33.95
+          },
+          {
+            "sound": "music",
+            "dB": 33.95
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.95
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.57
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 31.57
+          },
+          {
+            "sound": "music",
+            "dB": 31.57
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.57
+          }
+        ]
+      },
+      "18:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 35.42
+          }
+        ]
+      }
+    }
+  },
+  "05252019": {
+    "evening": {
+      "19:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.31
+          },
+          {
+            "sound": "engine",
+            "dB": 31.31
+          },
+          {
+            "sound": "music",
+            "dB": 31.31
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.31
+          }
+        ]
+      }
+    },
+    "morning": {
+      "10:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 34.65
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.65
+          }
+        ]
+      }
+    }
+  },
+  "11202019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.97
+          },
+          {
+            "sound": "engine",
+            "dB": 34.97
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "human_voice",
+            "dB": 34.38
+          }
+        ]
+      }
+    }
+  },
+  "09132019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.16
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 34.16
+          },
+          {
+            "sound": "engine",
+            "dB": 34.16
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.16
+          }
+        ]
+      }
+    },
+    "morning": {
+      "08:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "dog",
+            "dB": 35.87
+          },
+          {
+            "sound": "engine",
+            "dB": 35.87
+          }
+        ]
+      }
+    }
+  },
+  "09302019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.05
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 35.05
+          },
+          {
+            "sound": "engine",
+            "dB": 35.05
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.05
+          }
+        ]
+      }
+    }
+  },
+  "07172019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.64
+          }
+        ]
+      }
+    }
+  },
+  "07042019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.95
+          },
+          {
+            "sound": "engine",
+            "dB": 34.95
+          },
+          {
+            "sound": "music",
+            "dB": 34.95
+          }
+        ]
+      }
+    }
+  },
+  "06252019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.6
+          },
+          {
+            "sound": "dog",
+            "dB": 35.6
+          },
+          {
+            "sound": "powered_saw",
+            "dB": 35.6
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.6
+          }
+        ]
+      }
+    }
+  },
+  "08142019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.51
+          },
+          {
+            "sound": "engine",
+            "dB": 34.51
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.51
+          }
+        ],
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 30.77
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.77
+          }
+        ]
+      }
+    }
+  },
+  "07152019": {
+    "morning": {
+      "09:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 35.61
+          },
+          {
+            "sound": "engine",
+            "dB": 35.61
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.61
+          }
+        ]
+      }
+    }
+  },
+  "08092019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.51
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.51
+          },
+          {
+            "sound": "engine",
+            "dB": 32.51
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 31.55
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.55
+          }
+        ]
+      }
+    }
+  },
+  "06052019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.53
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 33.53
+          },
+          {
+            "sound": "engine",
+            "dB": 33.53
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.53
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "music",
+            "dB": 34.52
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.52
+          }
+        ]
+      }
+    }
+  },
+  "07032019": {
+    "morning": {
+      "09:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.74
+          },
+          {
+            "sound": "engine",
+            "dB": 33.74
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.74
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "12:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "engine",
+            "dB": 31.89
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.89
+          }
+        ]
+      }
+    }
+  },
+  "06102019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.79
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.32
+          }
+        ]
+      }
+    }
+  },
+  "05112019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.9
+          },
+          {
+            "sound": "engine",
+            "dB": 32.9
+          }
+        ]
+      }
+    }
+  },
+  "06122019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.47
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.47
+          }
+        ]
+      },
+      "14:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "alert_signal",
+            "dB": 33.35
+          },
+          {
+            "sound": "engine",
+            "dB": 33.35
+          }
+        ]
+      }
+    }
+  },
+  "07292019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.92
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.92
+          }
+        ]
+      }
+    }
+  },
+  "12042019": {
+    "morning": {
+      "10:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.06
+          }
+        ]
+      }
+    }
+  },
+  "05052019": {
+    "morning": {
+      "10:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.3
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "12:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.53
+          },
+          {
+            "sound": "engine",
+            "dB": 28.53
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.53
+          }
+        ]
+      }
+    }
+  },
+  "10072019": {
+    "morning": {
+      "10:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 30.73
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 30.73
+          },
+          {
+            "sound": "engine",
+            "dB": 30.73
+          }
+        ]
+      }
+    }
+  },
+  "07102019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.71
+          },
+          {
+            "sound": "engine",
+            "dB": 31.71
+          },
+          {
+            "sound": "music",
+            "dB": 31.71
+          }
+        ]
+      }
+    }
+  },
+  "10112019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.59
+          },
+          {
+            "sound": "dog",
+            "dB": 33.59
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.59
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 35.05
+          }
+        ]
+      }
+    }
+  },
+  "08242019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.08
+          },
+          {
+            "sound": "engine",
+            "dB": 33.08
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.08
+          }
+        ]
+      },
+      "17:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 32.57
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.57
+          }
+        ]
+      }
+    },
+    "morning": {
+      "09:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.18
+          },
+          {
+            "sound": "engine",
+            "dB": 34.18
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.18
+          }
+        ]
+      }
+    }
+  },
+  "08232019": {
+    "morning": {
+      "08:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 34.12
+          },
+          {
+            "sound": "engine",
+            "dB": 34.12
+          }
+        ]
+      },
+      "11:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "human_voice",
+            "dB": 32.29
+          }
+        ]
+      }
+    }
+  },
+  "10262019": {
+    "morning": {
+      "09:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 36.58
+          }
+        ]
+      }
+    }
+  },
+  "11072019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.78
+          },
+          {
+            "sound": "engine",
+            "dB": 28.78
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 30.89
+          }
+        ]
+      }
+    },
+    "evening": {
+      "19:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "alert_signal",
+            "dB": 31.43
+          }
+        ]
+      }
+    }
+  },
+  "05142019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.04
+          },
+          {
+            "sound": "engine",
+            "dB": 32.04
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.04
+          }
+        ]
+      }
+    },
+    "evening": {
+      "18:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 30.75
+          },
+          {
+            "sound": "music",
+            "dB": 30.75
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.75
+          }
+        ]
+      }
+    }
+  },
+  "08192019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 28.16
+          },
+          {
+            "sound": "engine",
+            "dB": 28.16
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.16
+          }
+        ]
+      },
+      "16:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 32.26
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.26
+          }
+        ]
+      },
+      "17:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "alert_signal",
+            "dB": 33.96
+          }
+        ]
+      }
+    }
+  },
+  "11152019": {
+    "evening": {
+      "19:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 33.58
+          },
+          {
+            "sound": "engine",
+            "dB": 33.58
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.58
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "17:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "non_machinery_impact",
+            "dB": 31.99
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 31.99
+          },
+          {
+            "sound": "engine",
+            "dB": 31.99
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.99
+          }
+        ]
+      }
+    }
+  },
+  "06112019": {
+    "evening": {
+      "19:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "dog",
+            "dB": 32.54
+          },
+          {
+            "sound": "alert_signal",
+            "dB": 32.54
+          },
+          {
+            "sound": "engine",
+            "dB": 32.54
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "human_voice",
+            "dB": 31.82
+          }
+        ]
+      }
+    }
+  },
+  "09282019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "dog",
+            "dB": 33.88
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.88
+          }
+        ]
+      }
+    }
+  },
+  "08202019": {
+    "morning": {
+      "08:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "dog",
+            "dB": 32.8
+          },
+          {
+            "sound": "engine",
+            "dB": 32.8
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "human_voice",
+            "dB": 32.05
+          }
+        ]
+      }
+    }
+  },
+  "05242019": {
+    "morning": {
+      "09:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "dog",
+            "dB": 30.13
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.13
+          }
+        ]
+      }
+    }
+  },
+  "10182019": {
+    "morning": {
+      "10:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "dog",
+            "dB": 35.83
+          },
+          {
+            "sound": "engine",
+            "dB": 35.83
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "17:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "alert_signal",
+            "dB": 33.51
+          },
+          {
+            "sound": "engine",
+            "dB": 33.51
+          }
+        ]
+      }
+    }
+  },
+  "12312019": {
+    "morning": {
+      "08:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "dog",
+            "dB": 37.1
+          }
+        ]
+      },
+      "10:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 35.96
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.96
+          }
+        ]
+      }
+    }
+  },
+  "06072019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "dog",
+            "dB": 31.17
+          },
+          {
+            "sound": "engine",
+            "dB": 31.17
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.17
+          }
+        ]
+      }
+    }
+  },
+  "09102019": {
+    "evening": {
+      "20:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "dog",
+            "dB": 28.05
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.05
+          }
+        ],
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "engine",
+            "dB": 30.15
+          }
+        ]
+      }
+    }
+  },
+  "08122019": {
+    "morning": {
+      "09:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "alert_signal",
+            "dB": 31.93
+          },
+          {
+            "sound": "engine",
+            "dB": 31.93
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.93
+          }
+        ]
+      }
+    }
+  },
+  "11272019": {
+    "evening": {
+      "20:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.35
+          },
+          {
+            "sound": "music",
+            "dB": 32.35
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "17:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.63
+          }
+        ]
+      }
+    }
+  },
+  "07122019": {
+    "evening": {
+      "20:00:00": {
+        "40.72951,-73.99425": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.14
+          },
+          {
+            "sound": "engine",
+            "dB": 34.14
+          }
+        ]
+      }
+    }
+  },
+  "12072019": {
+    "morning": {
+      "10:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "alert_signal",
+            "dB": 35.81
+          },
+          {
+            "sound": "engine",
+            "dB": 35.81
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.81
+          }
+        ]
+      },
+      "11:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "engine",
+            "dB": 32.75
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "16:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.05
+          },
+          {
+            "sound": "engine",
+            "dB": 32.05
+          }
+        ]
+      }
+    }
+  },
+  "07062019": {
+    "morning": {
+      "11:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "alert_signal",
+            "dB": 28.97
+          },
+          {
+            "sound": "engine",
+            "dB": 28.97
+          }
+        ]
+      }
+    }
+  },
+  "09032019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "alert_signal",
+            "dB": 35.87
+          },
+          {
+            "sound": "engine",
+            "dB": 35.87
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.87
+          }
+        ]
+      },
+      "15:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.81
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.81
+          }
+        ]
+      }
+    }
+  },
+  "01032020": {
+    "afternoon": {
+      "12:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.02
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.02
+          }
+        ]
+      }
+    },
+    "morning": {
+      "08:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "engine",
+            "dB": 33.74
+          }
+        ],
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 34.23
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.23
+          }
+        ]
+      },
+      "09:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "engine",
+            "dB": 29.85
+          }
+        ]
+      }
+    }
+  },
+  "06172019": {
+    "morning": {
+      "08:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "alert_signal",
+            "dB": 32.96
+          },
+          {
+            "sound": "engine",
+            "dB": 32.96
+          }
+        ]
+      }
+    }
+  },
+  "10022019": {
+    "morning": {
+      "10:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "alert_signal",
+            "dB": 31.67
+          },
+          {
+            "sound": "engine",
+            "dB": 31.67
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 31.67
+          }
+        ]
+      },
+      "08:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "alert_signal",
+            "dB": 34.53
+          },
+          {
+            "sound": "engine",
+            "dB": 34.53
+          }
+        ]
+      }
+    }
+  },
+  "08132019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "engine",
+            "dB": 32.72
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.72
+          }
+        ],
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 33.41
+          }
+        ]
+      }
+    }
+  },
+  "07072019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "engine",
+            "dB": 28.64
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.64
+          }
+        ]
+      }
+    }
+  },
+  "10082019": {
+    "morning": {
+      "09:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "engine",
+            "dB": 29.83
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "16:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 35.14
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.14
+          }
+        ]
+      }
+    }
+  },
+  "08252019": {
+    "evening": {
+      "18:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "engine",
+            "dB": 31.24
+          },
+          {
+            "sound": "human_voice",
+            "dB": 31.24
+          }
+        ]
+      }
+    }
+  },
+  "05192019": {
+    "morning": {
+      "09:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 28.81
+          },
+          {
+            "sound": "human_voice",
+            "dB": 28.81
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 28.81
+          }
+        ]
+      }
+    }
+  },
+  "08152019": {
+    "morning": {
+      "08:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 30.1
+          }
+        ]
+      },
+      "10:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 33.32
+          },
+          {
+            "sound": "music",
+            "dB": 33.32
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.32
+          }
+        ]
+      }
+    }
+  },
+  "11122019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "engine",
+            "dB": 32.99
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.99
+          }
+        ]
+      }
+    }
+  },
+  "09072019": {
+    "evening": {
+      "18:00:00": {
+        "40.73059,-73.99479": [
+          {
+            "sound": "engine",
+            "dB": 30.3
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.3
+          }
+        ]
+      }
+    }
+  },
+  "12282019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "engine",
+            "dB": 33.71
+          }
+        ]
+      }
+    }
+  },
+  "08272019": {
+    "afternoon": {
+      "15:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "engine",
+            "dB": 35.56
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.56
+          }
+        ]
+      }
+    }
+  },
+  "08012019": {
+    "afternoon": {
+      "13:00:00": {
+        "40.72996,-73.99449": [
+          {
+            "sound": "engine",
+            "dB": 36.66
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.66
+          }
+        ]
+      }
+    }
+  },
+  "01052020": {
+    "morning": {
+      "11:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "engine",
+            "dB": 28.63
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 28.63
+          }
+        ]
+      }
+    }
+  },
+  "10242019": {
+    "morning": {
+      "08:00:00": {
+        "40.72978,-73.9947699999999": [
+          {
+            "sound": "engine",
+            "dB": 29.85
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 29.85
+          }
+        ]
+      }
+    }
+  },
+  "08112019": {
+    "morning": {
+      "09:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 35.31
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "15:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 35.08
+          }
+        ]
+      }
+    }
+  },
+  "06042019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 35.31
+          },
+          {
+            "sound": "human_voice",
+            "dB": 35.31
+          }
+        ]
+      }
+    }
+  },
+  "07232019": {
+    "morning": {
+      "08:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "engine",
+            "dB": 32.89
+          },
+          {
+            "sound": "machinery_impact",
+            "dB": 32.89
+          }
+        ]
+      }
+    }
+  },
+  "12172019": {
+    "morning": {
+      "08:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "engine",
+            "dB": 31.68
+          }
+        ]
+      }
+    }
+  },
+  "08262019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73108,-73.99556": [
+          {
+            "sound": "engine",
+            "dB": 30.51
+          },
+          {
+            "sound": "human_voice",
+            "dB": 30.51
+          }
+        ],
+        "40.72898,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 32.61
+          }
+        ]
+      }
+    }
+  },
+  "11052019": {
+    "morning": {
+      "08:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "engine",
+            "dB": 30.53
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "music",
+            "dB": 34.94
+          },
+          {
+            "sound": "human_voice",
+            "dB": 34.94
+          }
+        ]
+      }
+    }
+  },
+  "09232019": {
+    "morning": {
+      "10:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 33.21
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.21
+          }
+        ]
+      }
+    }
+  },
+  "04292019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.72981,-73.99586": [
+          {
+            "sound": "engine",
+            "dB": 32.26
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.26
+          }
+        ]
+      }
+    }
+  },
+  "06202019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "engine",
+            "dB": 32.37
+          }
+        ]
+      }
+    },
+    "evening": {
+      "20:00:00": {
+        "40.72915,-73.995": [
+          {
+            "sound": "human_voice",
+            "dB": 32.25
+          }
+        ]
+      }
+    }
+  },
+  "09222019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 33.84
+          },
+          {
+            "sound": "human_voice",
+            "dB": 33.84
+          }
+        ]
+      }
+    }
+  },
+  "08022019": {
+    "morning": {
+      "10:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "engine",
+            "dB": 32.47
+          }
+        ]
+      }
+    }
+  },
+  "06152019": {
+    "morning": {
+      "10:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 32.32
+          }
+        ]
+      },
+      "11:00:00": {
+        "40.73206,-73.99763": [
+          {
+            "sound": "music",
+            "dB": 36.73
+          },
+          {
+            "sound": "human_voice",
+            "dB": 36.73
+          }
+        ]
+      }
+    }
+  },
+  "10042019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 32.87
+          },
+          {
+            "sound": "human_voice",
+            "dB": 32.87
+          }
+        ]
+      }
+    }
+  },
+  "09112019": {
+    "morning": {
+      "08:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "engine",
+            "dB": 30.97
+          }
+        ]
+      }
+    }
+  },
+  "09042019": {
+    "evening": {
+      "20:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "music",
+            "dB": 33.83
+          }
+        ]
+      }
+    },
+    "afternoon": {
+      "13:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "machinery_impact",
+            "dB": 31.43
+          }
+        ]
+      }
+    }
+  },
+  "04242019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.73033,-73.9987": [
+          {
+            "sound": "human_voice",
+            "dB": 32.53
+          }
+        ]
+      }
+    }
+  },
+  "12262019": {
+    "evening": {
+      "18:00:00": {
+        "40.73118,-73.99443": [
+          {
+            "sound": "human_voice",
+            "dB": 34.01
+          }
+        ]
+      }
+    }
+  },
+  "12302019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72898,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 30.91
+          }
+        ]
+      }
+    }
+  },
+  "07162019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "human_voice",
+            "dB": 32.49
+          }
+        ]
+      }
+    }
+  },
+  "06142019": {
+    "evening": {
+      "19:00:00": {
+        "40.72947,-73.99589": [
+          {
+            "sound": "human_voice",
+            "dB": 32.65
+          }
+        ]
+      }
+    }
+  },
+  "08162019": {
+    "afternoon": {
+      "16:00:00": {
+        "40.73033,-73.9956": [
+          {
+            "sound": "human_voice",
+            "dB": 32.01
+          }
+        ]
+      }
+    }
+  },
+  "06302019": {
+    "evening": {
+      "20:00:00": {
+        "40.72978,-73.99791": [
+          {
+            "sound": "human_voice",
+            "dB": 36.24
+          }
+        ],
+        "40.73142,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 34.9
+          }
+        ]
+      }
+    }
+  },
+  "05162019": {
+    "afternoon": {
+      "12:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 34.31
+          }
+        ]
+      }
+    }
+  },
+  "12032019": {
+    "afternoon": {
+      "17:00:00": {
+        "40.73142,-73.99629": [
+          {
+            "sound": "human_voice",
+            "dB": 31.63
+          }
+        ]
+      }
+    }
+  },
+  "12202019": {
+    "afternoon": {
+      "14:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "human_voice",
+            "dB": 23.88
+          }
+        ]
+      }
+    }
+  },
+  "09152019": {
+    "morning": {
+      "09:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "human_voice",
+            "dB": 32.55
+          }
+        ]
+      }
+    }
+  },
+  "09212019": {
+    "morning": {
+      "08:00:00": {
+        "40.73055,-73.99949": [
+          {
+            "sound": "human_voice",
+            "dB": 29.51
+          }
+        ]
+      }
+    }
+  }
+}

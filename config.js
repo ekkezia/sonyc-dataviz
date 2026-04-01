@@ -2,24 +2,19 @@
 // Each noise type has a unique color, emoji icon, and label.
 // Add new types here and they will be picked up automatically.
 // config.js — Grid configuration
-const COLS = 12;
-const ROWS = 8;
+const COLS = 7;
+const ROWS = 5;
 
 const NOISE_CONFIG = {
-  dog:          { color: '#FF6B35', icon: '🐕', label: 'Dog',          sound: 'sounds/dog.wav'          },
-  car:          { color: '#4285F4', icon: '🚗', label: 'Car',          sound: 'sounds/car.wav'          },
-  traffic:      { color: '#4285F4', icon: '🚗', label: 'Traffic',      sound: 'sounds/traffic.wav'      },
-  drilling:     { color: '#DB4437', icon: '⚙',  label: 'Drilling',     sound: 'sounds/drilling.wav'     },
-  construction: { color: '#DB4437', icon: '🔨', label: 'Construction', sound: 'sounds/construction.wav' },
-  music:        { color: '#A78BFA', icon: '♪',  label: 'Music',        sound: 'sounds/music.wav'        },
-  siren:        { color: '#F72585', icon: '🚨', label: 'Siren',        sound: 'sounds/siren.wav'        },
-  crowd:        { color: '#FFD93D', icon: '👥', label: 'Crowd',        sound: 'sounds/crowd.wav'        },
-  children:     { color: '#FBBF24', icon: '🧒', label: 'Children',     sound: 'sounds/children.wav'     },
-  wind:         { color: '#6BCB77', icon: '🌬', label: 'Wind',         sound: 'sounds/wind.wav'         },
-  hvac:         { color: '#4D96FF', icon: '❄',  label: 'HVAC',         sound: 'sounds/hvac.wav'         },
-  bird:         { color: '#0F9B58', icon: '🐦', label: 'Bird',         sound: 'sounds/bird.wav'         },
-  birds:        { color: '#0F9B58', icon: '🐦', label: 'Birds',        sound: 'sounds/birds.wav'        },
-  truck:        { color: '#F4845F', icon: '🚛', label: 'Truck',        sound: 'sounds/truck.wav'        },
+  // ── Sounds present in data.json ─────────────────────────────────
+  alert_signal:         { color: '#F72585', icon: '🚨', label: 'Alert Signal',          sound: 'sounds/siren.wav'             },
+  dog:                  { color: '#FF6B35', icon: '🐕', label: 'Dog',                   sound: 'sounds/dog.wav'               },
+  engine:               { color: '#4285F4', icon: '🚗', label: 'Engine',                sound: 'sounds/car.wav'               },
+  human_voice:          { color: '#FFD93D', icon: '🗣', label: 'Human Voice',           sound: 'sounds/crowd.wav'             },
+  machinery_impact:     { color: '#DB4437', icon: '🔨', label: 'Machinery Impact',      sound: 'sounds/drilling.wav'          },
+  music:                { color: '#A78BFA', icon: '♪',  label: 'Music',                 sound: 'sounds/music.wav'             },
+  non_machinery_impact: { color: '#F4845F', icon: '💥', label: 'Non-Machinery Impact',  sound: 'sounds/construction.wav'      },
+  powered_saw:          { color: '#DB4437', icon: '⚙',  label: 'Powered Saw',           sound: 'sounds/drilling.wav'          },
 };
 
 // Legacy helpers kept for any existing callers

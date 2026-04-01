@@ -1,0 +1,4746 @@
+{
+  "10012019": {
+    "noon": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "non_machinery_impact",
+          "dB": 33.99
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "engine",
+          "dB": 33.99
+        }
+      ]
+    },
+    "morning": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "non_machinery_impact",
+          "dB": 32.16
+        },
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "engine",
+          "dB": 32.16
+        },
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32.16
+        }
+      ],
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 32.1
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 32.1
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "machinery_impact",
+          "dB": 32.1
+        }
+      ]
+    }
+  },
+  "10022019": {
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "machinery_impact",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 34.53
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 34.53
+        }
+      ]
+    }
+  },
+  "10032019": {
+    "afternoon": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 31.75
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 31.75
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 31.75
+        }
+      ]
+    },
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.22
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 34.22
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.72
+        }
+      ]
+    },
+    "evening": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32.51
+        }
+      ]
+    }
+  },
+  "10042019": {
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 32.87
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 32.87
+        }
+      ]
+    }
+  },
+  "10072019": {
+    "morning": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "non_machinery_impact",
+          "dB": 30.73
+        },
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "alert_signal",
+          "dB": 30.73
+        },
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "engine",
+          "dB": 30.73
+        }
+      ]
+    }
+  },
+  "10082019": {
+    "morning": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 29.83
+        }
+      ]
+    },
+    "afternoon": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.14
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.14
+        }
+      ]
+    }
+  },
+  "10112019": {
+    "evening": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 33.59
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 33.59
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 33.59
+        }
+      ]
+    },
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 35.05
+        }
+      ]
+    }
+  },
+  "10142019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 32.86
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "music",
+          "dB": 32.86
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.86
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.47
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.47
+        }
+      ]
+    },
+    "evening": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 31.17
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "music",
+          "dB": 31.17
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 31.17
+        }
+      ]
+    },
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 33.62
+        }
+      ]
+    }
+  },
+  "10162019": {
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 33.96
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.96
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "engine",
+          "dB": 32
+        }
+      ]
+    }
+  },
+  "10172019": {
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "non_machinery_impact",
+          "dB": 33.88
+        }
+      ]
+    }
+  },
+  "10182019": {
+    "morning": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "dog",
+          "dB": 35.83
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.83
+        }
+      ]
+    },
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "alert_signal",
+          "dB": 33.51
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 33.51
+        }
+      ]
+    }
+  },
+  "10212019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 33.05
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 33.05
+        }
+      ],
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 34.65
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 34.65
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 34.65
+        }
+      ]
+    },
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 35.64
+        }
+      ]
+    },
+    "noon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 35.25
+        }
+      ]
+    }
+  },
+  "10232019": {
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "non_machinery_impact",
+          "dB": 30.3
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "human_voice",
+          "dB": 30.3
+        }
+      ]
+    },
+    "morning": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 31.89
+        }
+      ]
+    }
+  },
+  "10242019": {
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 29.85
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "machinery_impact",
+          "dB": 29.85
+        }
+      ]
+    }
+  },
+  "10262019": {
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 36.58
+        }
+      ]
+    }
+  },
+  "10292019": {
+    "morning": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 35.82
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.82
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "machinery_impact",
+          "dB": 35.82
+        }
+      ]
+    }
+  },
+  "10302019": {
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.38
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "dog",
+          "dB": 34.38
+        }
+      ]
+    },
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.99
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 34.99
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.99
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 32.27
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 32.27
+        }
+      ]
+    }
+  },
+  "11052019": {
+    "morning": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 30.53
+        }
+      ]
+    },
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "music",
+          "dB": 34.94
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 34.94
+        }
+      ]
+    }
+  },
+  "11072019": {
+    "afternoon": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 28.78
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 28.78
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 30.89
+        }
+      ]
+    },
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 31.43
+        }
+      ]
+    }
+  },
+  "11112019": {
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 31.22
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 31.22
+        }
+      ]
+    },
+    "afternoon": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "non_machinery_impact",
+          "dB": 34.33
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "alert_signal",
+          "dB": 34.33
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "human_voice",
+          "dB": 34.33
+        }
+      ]
+    }
+  },
+  "11122019": {
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 32.99
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 32.99
+        }
+      ]
+    }
+  },
+  "11152019": {
+    "evening": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 33.58
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 33.58
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 33.58
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 31.99
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 31.99
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 31.99
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 31.99
+        }
+      ]
+    }
+  },
+  "11172019": {
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 34.77
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "alert_signal",
+          "dB": 34.77
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 34.77
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "engine",
+          "dB": 29.18
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 29.18
+        }
+      ]
+    },
+    "afternoon": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 36.74
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.74
+        }
+      ]
+    }
+  },
+  "11192019": {
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 29.5
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 29.5
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 29.5
+        }
+      ],
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "dog",
+          "dB": 29.02
+        }
+      ]
+    },
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 30.22
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 30.22
+        }
+      ]
+    }
+  },
+  "11202019": {
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.97
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 34.97
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.38
+        }
+      ]
+    }
+  },
+  "11242019": {
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 33.3
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 33.3
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.3
+        }
+      ]
+    }
+  },
+  "11252019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 33.13
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "alert_signal",
+          "dB": 33.13
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 33.13
+        }
+      ]
+    }
+  },
+  "11262019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.94
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.94
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "engine",
+          "dB": 32.88
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 32.88
+        }
+      ],
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 27.08
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 27.08
+        }
+      ]
+    },
+    "evening": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 30.17
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 30.17
+        }
+      ]
+    }
+  },
+  "11272019": {
+    "evening": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "alert_signal",
+          "dB": 32.35
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "music",
+          "dB": 32.35
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "alert_signal",
+          "dB": 34.63
+        }
+      ]
+    }
+  },
+  "11282019": {
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 28.42
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 28.42
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 28.42
+        }
+      ],
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.96
+        }
+      ]
+    },
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 36.48
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 36.48
+        }
+      ]
+    },
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 30.26
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 30.26
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 30.26
+        }
+      ]
+    }
+  },
+  "11302019": {
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 30.61
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 32.78
+        }
+      ],
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 28.06
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 28.06
+        }
+      ]
+    },
+    "afternoon": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 27.81
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 27.81
+        }
+      ]
+    }
+  },
+  "12022019": {
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 32.58
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 32.58
+        }
+      ]
+    },
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 33.9
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 33.9
+        }
+      ]
+    }
+  },
+  "12032019": {
+    "evening": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.63
+        }
+      ]
+    }
+  },
+  "12042019": {
+    "morning": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "non_machinery_impact",
+          "dB": 31.06
+        }
+      ]
+    }
+  },
+  "12052019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 29.67
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 29.67
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 28.3
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 28.3
+        }
+      ],
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 29.85
+        }
+      ]
+    }
+  },
+  "12072019": {
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "alert_signal",
+          "dB": 35.81
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 35.81
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 35.81
+        }
+      ],
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "engine",
+          "dB": 32.75
+        }
+      ]
+    },
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 32.05
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 32.05
+        }
+      ]
+    }
+  },
+  "12092019": {
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 32.59
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 32.59
+        }
+      ]
+    }
+  },
+  "12122019": {
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 28.54
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 28.54
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "engine",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 32.96
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "alert_signal",
+          "dB": 32.96
+        }
+      ]
+    }
+  },
+  "12132019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 29.75
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 29.75
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 29.75
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 29.75
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 29.75
+        }
+      ]
+    },
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 35.24
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.24
+        }
+      ]
+    }
+  },
+  "12162019": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "non_machinery_impact",
+          "dB": 34.63
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "alert_signal",
+          "dB": 34.63
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "engine",
+          "dB": 34.63
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 34.63
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "alert_signal",
+          "dB": 32.86
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 32.86
+        }
+      ],
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.5
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.5
+        }
+      ]
+    },
+    "afternoon": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.48
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.48
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "machinery_impact",
+          "dB": 35.48
+        }
+      ],
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 34.05
+        }
+      ]
+    }
+  },
+  "12172019": {
+    "morning": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 31.68
+        }
+      ]
+    }
+  },
+  "12182019": {
+    "noon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 29.79
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 29.79
+        }
+      ],
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 30.67
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 30.67
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 30.67
+        }
+      ]
+    },
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 32.71
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 32.71
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.71
+        }
+      ]
+    }
+  },
+  "12202019": {
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 23.88
+        }
+      ]
+    }
+  },
+  "12222019": {
+    "afternoon": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 32.22
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "alert_signal",
+          "dB": 32.22
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 32.22
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 32.22
+        }
+      ]
+    },
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 33.72
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 33.72
+        }
+      ]
+    }
+  },
+  "12232019": {
+    "noon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 33.18
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 33.18
+        }
+      ]
+    },
+    "morning": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 30.91
+        }
+      ]
+    }
+  },
+  "12242019": {
+    "afternoon": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "non_machinery_impact",
+          "dB": 30.95
+        }
+      ],
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "alert_signal",
+          "dB": 24.97
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 24.97
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 24.97
+        }
+      ]
+    },
+    "evening": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "human_voice",
+          "dB": 32.11
+        }
+      ]
+    }
+  },
+  "12252019": {
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 27.69
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 27.69
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 27.69
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 27.69
+        }
+      ],
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 36.14
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 36.14
+        }
+      ]
+    },
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 26.06
+        }
+      ]
+    }
+  },
+  "12262019": {
+    "evening": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 34.01
+        }
+      ]
+    }
+  },
+  "12282019": {
+    "noon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "engine",
+          "dB": 33.71
+        }
+      ]
+    }
+  },
+  "12292019": {
+    "afternoon": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "non_machinery_impact",
+          "dB": 32.99
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "dog",
+          "dB": 32.99
+        }
+      ]
+    }
+  },
+  "12302019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 30.91
+        }
+      ]
+    }
+  },
+  "12312019": {
+    "morning": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "dog",
+          "dB": 37.1
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.96
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.96
+        }
+      ]
+    }
+  },
+  "08072019": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "non_machinery_impact",
+          "dB": 29.15
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "music",
+          "dB": 29.15
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 29.15
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 30.78
+        }
+      ],
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "dog",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "music",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 34.55
+        }
+      ]
+    }
+  },
+  "05222019": {
+    "afternoon": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "non_machinery_impact",
+          "dB": 31.49
+        }
+      ],
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 30.68
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 30.68
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 30.68
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 30.68
+        }
+      ]
+    }
+  },
+  "01042020": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "non_machinery_impact",
+          "dB": 30.61
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "dog",
+          "dB": 30.61
+        }
+      ]
+    }
+  },
+  "07142019": {
+    "morning": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "non_machinery_impact",
+          "dB": 31.17
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 31.17
+        }
+      ]
+    },
+    "noon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 30.72
+        }
+      ]
+    },
+    "afternoon": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 36.2
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.2
+        }
+      ]
+    },
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "dog",
+          "dB": 35.03
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "alert_signal",
+          "dB": 35.03
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 35.03
+        }
+      ]
+    }
+  },
+  "09022019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 32.7
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 32.7
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 32.7
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.7
+        }
+      ]
+    },
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 34.94
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 34.94
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 34.94
+        }
+      ],
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "engine",
+          "dB": 32
+        },
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32
+        }
+      ]
+    },
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 36.51
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 36.51
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.51
+        }
+      ]
+    }
+  },
+  "05122019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 32.98
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.98
+        }
+      ]
+    },
+    "afternoon": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "non_machinery_impact",
+          "dB": 32.58
+        },
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "human_voice",
+          "dB": 32.58
+        }
+      ]
+    }
+  },
+  "06182019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.32
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 31.32
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.32
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.32
+        }
+      ]
+    },
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 30.66
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 30.66
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 30.66
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 31.71
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 31.71
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.71
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "machinery_impact",
+          "dB": 31.71
+        }
+      ]
+    }
+  },
+  "08042019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.73
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.73
+        }
+      ]
+    },
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 32.93
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.93
+        }
+      ]
+    }
+  },
+  "07222019": {
+    "noon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 32.19
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.19
+        }
+      ]
+    },
+    "morning": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 32.72
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 32.72
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 32.72
+        }
+      ]
+    }
+  },
+  "06192019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 30.57
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 30.57
+        }
+      ]
+    }
+  },
+  "04222019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 31.67
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.67
+        }
+      ],
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.56
+        }
+      ]
+    },
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 32.32
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 32.32
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 32.32
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 30.99
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 30.99
+        }
+      ],
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 33.92
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 33.92
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "music",
+          "dB": 33.92
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 33.92
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 33.16
+        }
+      ]
+    }
+  },
+  "09252019": {
+    "noon": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "non_machinery_impact",
+          "dB": 35.15
+        }
+      ]
+    },
+    "morning": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "engine",
+          "dB": 33.26
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "machinery_impact",
+          "dB": 33.26
+        }
+      ]
+    }
+  },
+  "09202019": {
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 28.91
+        }
+      ]
+    },
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.5
+        }
+      ]
+    }
+  },
+  "05082019": {
+    "morning": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 31.59
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 31.59
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 31.59
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "alert_signal",
+          "dB": 33.66
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.66
+        }
+      ],
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 34.3
+        }
+      ]
+    }
+  },
+  "09272019": {
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "non_machinery_impact",
+          "dB": 33.14
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.14
+        }
+      ]
+    }
+  },
+  "09052019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 32.4
+        }
+      ],
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "dog",
+          "dB": 34.43
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "powered_saw",
+          "dB": 34.43
+        }
+      ]
+    }
+  },
+  "08222019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 32.43
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 35.62
+        }
+      ]
+    },
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 33.49
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 33.49
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 33.49
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.59
+        }
+      ]
+    }
+  },
+  "06022019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 28.08
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 28.08
+        }
+      ]
+    },
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "non_machinery_impact",
+          "dB": 31.89
+        },
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 31.89
+        }
+      ]
+    },
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 32.03
+        }
+      ]
+    }
+  },
+  "07182019": {
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 35.66
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "alert_signal",
+          "dB": 35.66
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 35.66
+        }
+      ]
+    }
+  },
+  "05172019": {
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 36.63
+        }
+      ]
+    },
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 33.99
+        }
+      ]
+    }
+  },
+  "08182019": {
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 36.56
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.56
+        }
+      ]
+    }
+  },
+  "05292019": {
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "non_machinery_impact",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 34.55
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 34.55
+        }
+      ]
+    }
+  },
+  "07082019": {
+    "noon": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "non_machinery_impact",
+          "dB": 33.12
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 33.12
+        }
+      ]
+    }
+  },
+  "09092019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 36.8
+        }
+      ],
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "human_voice",
+          "dB": 33
+        }
+      ]
+    }
+  },
+  "07302019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 35.34
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 35.83
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 35.83
+        }
+      ]
+    }
+  },
+  "09172019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 35.63
+        }
+      ]
+    }
+  },
+  "06062019": {
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 36.01
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "alert_signal",
+          "dB": 36.01
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "music",
+          "dB": 36.01
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 36.01
+        }
+      ]
+    }
+  },
+  "09142019": {
+    "afternoon": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 35.33
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.33
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "music",
+          "dB": 35.33
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.33
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "alert_signal",
+          "dB": 34.48
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 34.48
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 34.48
+        }
+      ]
+    }
+  },
+  "09122019": {
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "non_machinery_impact",
+          "dB": 33.89
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 33.89
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "music",
+          "dB": 33.89
+        }
+      ]
+    }
+  },
+  "09242019": {
+    "morning": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 32.55
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "machinery_impact",
+          "dB": 32.55
+        }
+      ]
+    }
+  },
+  "06222019": {
+    "morning": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "non_machinery_impact",
+          "dB": 31.7
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "engine",
+          "dB": 31.7
+        }
+      ]
+    },
+    "afternoon": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 34.18
+        }
+      ],
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 33.29
+        }
+      ]
+    },
+    "evening": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 29.22
+        }
+      ]
+    }
+  },
+  "08282019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.7
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 34.7
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.7
+        }
+      ]
+    },
+    "noon": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "alert_signal",
+          "dB": 34.13
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 34.13
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 34.13
+        }
+      ]
+    },
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 35.11
+        }
+      ]
+    },
+    "evening": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.3
+        }
+      ]
+    }
+  },
+  "04302019": {
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 32.38
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 32.38
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 32.38
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 32.38
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.08
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.08
+        }
+      ]
+    }
+  },
+  "07212019": {
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 35.53
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 35.53
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 35.53
+        }
+      ]
+    }
+  },
+  "05132019": {
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.82
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 34.82
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.82
+        }
+      ]
+    },
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 32.65
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 32.65
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 32.65
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 32.65
+        }
+      ]
+    }
+  },
+  "07272019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 33.95
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "dog",
+          "dB": 33.95
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 33.95
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 33.95
+        }
+      ]
+    },
+    "evening": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 31.57
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 31.57
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "music",
+          "dB": 31.57
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 31.57
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 35.42
+        }
+      ]
+    }
+  },
+  "05252019": {
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 31.31
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 31.31
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 31.31
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 31.31
+        }
+      ]
+    },
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 34.65
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 34.65
+        }
+      ]
+    }
+  },
+  "09132019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 34.16
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 34.16
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 34.16
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.16
+        }
+      ]
+    },
+    "morning": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "dog",
+          "dB": 35.87
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 35.87
+        }
+      ]
+    }
+  },
+  "09302019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "non_machinery_impact",
+          "dB": 35.05
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 35.05
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 35.05
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 35.05
+        }
+      ]
+    }
+  },
+  "07172019": {
+    "afternoon": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 35.64
+        }
+      ]
+    }
+  },
+  "07042019": {
+    "afternoon": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 34.95
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 34.95
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "music",
+          "dB": 34.95
+        }
+      ]
+    }
+  },
+  "06252019": {
+    "afternoon": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 35.6
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "dog",
+          "dB": 35.6
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "powered_saw",
+          "dB": 35.6
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 35.6
+        }
+      ]
+    }
+  },
+  "08142019": {
+    "evening": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 34.51
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 34.51
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 34.51
+        }
+      ],
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 30.77
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 30.77
+        }
+      ]
+    }
+  },
+  "07152019": {
+    "morning": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "non_machinery_impact",
+          "dB": 35.61
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 35.61
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 35.61
+        }
+      ]
+    }
+  },
+  "08092019": {
+    "noon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 32.51
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 32.51
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 32.51
+        }
+      ]
+    },
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 31.55
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 31.55
+        }
+      ]
+    }
+  },
+  "06052019": {
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 33.53
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "alert_signal",
+          "dB": 33.53
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 33.53
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 33.53
+        }
+      ],
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "music",
+          "dB": 34.52
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 34.52
+        }
+      ]
+    }
+  },
+  "07032019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 33.74
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 33.74
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 33.74
+        }
+      ]
+    },
+    "noon": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 31.89
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 31.89
+        }
+      ]
+    }
+  },
+  "06102019": {
+    "afternoon": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "non_machinery_impact",
+          "dB": 32.79
+        }
+      ]
+    },
+    "evening": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "alert_signal",
+          "dB": 32.32
+        }
+      ]
+    }
+  },
+  "05112019": {
+    "afternoon": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "non_machinery_impact",
+          "dB": 32.9
+        },
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "engine",
+          "dB": 32.9
+        }
+      ]
+    }
+  },
+  "06122019": {
+    "evening": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "non_machinery_impact",
+          "dB": 32.47
+        },
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "human_voice",
+          "dB": 32.47
+        }
+      ]
+    },
+    "afternoon": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "alert_signal",
+          "dB": 33.35
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "engine",
+          "dB": 33.35
+        }
+      ]
+    }
+  },
+  "07292019": {
+    "afternoon": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "non_machinery_impact",
+          "dB": 32.92
+        },
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "human_voice",
+          "dB": 32.92
+        }
+      ]
+    }
+  },
+  "05052019": {
+    "morning": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "non_machinery_impact",
+          "dB": 32.3
+        }
+      ]
+    },
+    "noon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 28.53
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 28.53
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 28.53
+        }
+      ]
+    }
+  },
+  "07102019": {
+    "afternoon": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 31.71
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.71
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "music",
+          "dB": 31.71
+        }
+      ]
+    }
+  },
+  "08242019": {
+    "afternoon": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 33.08
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 33.08
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 33.08
+        }
+      ]
+    },
+    "evening": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 32.57
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.57
+        }
+      ]
+    },
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 34.18
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 34.18
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 34.18
+        }
+      ]
+    }
+  },
+  "08232019": {
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "non_machinery_impact",
+          "dB": 34.12
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 34.12
+        }
+      ],
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32.29
+        }
+      ]
+    }
+  },
+  "05142019": {
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 32.04
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 32.04
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 32.04
+        }
+      ]
+    },
+    "evening": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 30.75
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 30.75
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 30.75
+        }
+      ]
+    }
+  },
+  "08192019": {
+    "afternoon": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 28.16
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 28.16
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 28.16
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "non_machinery_impact",
+          "dB": 32.26
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 32.26
+        }
+      ]
+    },
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "alert_signal",
+          "dB": 33.96
+        }
+      ]
+    }
+  },
+  "06112019": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "dog",
+          "dB": 32.54
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "alert_signal",
+          "dB": 32.54
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "engine",
+          "dB": 32.54
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 31.82
+        }
+      ]
+    }
+  },
+  "09282019": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "dog",
+          "dB": 33.88
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 33.88
+        }
+      ]
+    }
+  },
+  "08202019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 32.8
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 32.8
+        }
+      ]
+    },
+    "afternoon": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32.05
+        }
+      ]
+    }
+  },
+  "05242019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "dog",
+          "dB": 30.13
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 30.13
+        }
+      ]
+    }
+  },
+  "06072019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "dog",
+          "dB": 31.17
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 31.17
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 31.17
+        }
+      ]
+    }
+  },
+  "09102019": {
+    "evening": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "dog",
+          "dB": 28.05
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 28.05
+        }
+      ],
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 30.15
+        }
+      ]
+    }
+  },
+  "08122019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 31.93
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 31.93
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 31.93
+        }
+      ]
+    }
+  },
+  "07122019": {
+    "evening": {
+      "0,6": [
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "alert_signal",
+          "dB": 34.14
+        },
+        {
+          "lat": 40.72951,
+          "lon": -73.99425,
+          "sound": "engine",
+          "dB": 34.14
+        }
+      ]
+    }
+  },
+  "07062019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "alert_signal",
+          "dB": 28.97
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 28.97
+        }
+      ]
+    }
+  },
+  "09032019": {
+    "evening": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "alert_signal",
+          "dB": 35.87
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.87
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.87
+        }
+      ]
+    },
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 34.81
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.81
+        }
+      ]
+    }
+  },
+  "01032020": {
+    "noon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "alert_signal",
+          "dB": 34.02
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.02
+        }
+      ]
+    },
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 33.74
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 29.85
+        }
+      ],
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 34.23
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 34.23
+        }
+      ]
+    }
+  },
+  "06172019": {
+    "morning": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "alert_signal",
+          "dB": 32.96
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "engine",
+          "dB": 32.96
+        }
+      ]
+    }
+  },
+  "08132019": {
+    "noon": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "engine",
+          "dB": 32.72
+        },
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 32.72
+        }
+      ],
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 33.41
+        }
+      ]
+    }
+  },
+  "07072019": {
+    "afternoon": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 28.64
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 28.64
+        }
+      ]
+    }
+  },
+  "08252019": {
+    "evening": {
+      "3,6": [
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "engine",
+          "dB": 31.24
+        },
+        {
+          "lat": 40.73118,
+          "lon": -73.99443,
+          "sound": "human_voice",
+          "dB": 31.24
+        }
+      ]
+    }
+  },
+  "05192019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 28.81
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 28.81
+        },
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "machinery_impact",
+          "dB": 28.81
+        }
+      ]
+    }
+  },
+  "08152019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 30.1
+        }
+      ],
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 33.32
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "music",
+          "dB": 33.32
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 33.32
+        }
+      ]
+    }
+  },
+  "09072019": {
+    "evening": {
+      "2,6": [
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "engine",
+          "dB": 30.3
+        },
+        {
+          "lat": 40.73059,
+          "lon": -73.99479,
+          "sound": "human_voice",
+          "dB": 30.3
+        }
+      ]
+    }
+  },
+  "08272019": {
+    "afternoon": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 35.56
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 35.56
+        }
+      ]
+    }
+  },
+  "08012019": {
+    "afternoon": {
+      "1,6": [
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "engine",
+          "dB": 36.66
+        },
+        {
+          "lat": 40.72996,
+          "lon": -73.99449,
+          "sound": "human_voice",
+          "dB": 36.66
+        }
+      ]
+    }
+  },
+  "01052020": {
+    "morning": {
+      "1,6": [
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "engine",
+          "dB": 28.63
+        },
+        {
+          "lat": 40.72978,
+          "lon": -73.9947699999999,
+          "sound": "machinery_impact",
+          "dB": 28.63
+        }
+      ]
+    }
+  },
+  "08112019": {
+    "morning": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 35.31
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 35.08
+        }
+      ]
+    }
+  },
+  "06042019": {
+    "afternoon": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 35.31
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 35.31
+        }
+      ]
+    }
+  },
+  "07232019": {
+    "morning": {
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "engine",
+          "dB": 32.89
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "machinery_impact",
+          "dB": 32.89
+        }
+      ]
+    }
+  },
+  "08262019": {
+    "afternoon": {
+      "3,5": [
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "engine",
+          "dB": 30.51
+        },
+        {
+          "lat": 40.73108,
+          "lon": -73.99556,
+          "sound": "human_voice",
+          "dB": 30.51
+        }
+      ],
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 32.61
+        }
+      ]
+    }
+  },
+  "09232019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 33.21
+        },
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 33.21
+        }
+      ]
+    }
+  },
+  "04292019": {
+    "afternoon": {
+      "1,4": [
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "engine",
+          "dB": 32.26
+        },
+        {
+          "lat": 40.72981,
+          "lon": -73.99586,
+          "sound": "human_voice",
+          "dB": 32.26
+        }
+      ]
+    }
+  },
+  "06202019": {
+    "afternoon": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "engine",
+          "dB": 32.37
+        }
+      ]
+    },
+    "evening": {
+      "0,5": [
+        {
+          "lat": 40.72915,
+          "lon": -73.995,
+          "sound": "human_voice",
+          "dB": 32.25
+        }
+      ]
+    }
+  },
+  "09222019": {
+    "afternoon": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 33.84
+        },
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 33.84
+        }
+      ]
+    }
+  },
+  "08022019": {
+    "morning": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "engine",
+          "dB": 32.47
+        }
+      ]
+    }
+  },
+  "06152019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 32.32
+        }
+      ],
+      "4,2": [
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "music",
+          "dB": 36.73
+        },
+        {
+          "lat": 40.73206,
+          "lon": -73.99763,
+          "sound": "human_voice",
+          "dB": 36.73
+        }
+      ]
+    }
+  },
+  "09112019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "engine",
+          "dB": 30.97
+        }
+      ]
+    }
+  },
+  "09042019": {
+    "evening": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "music",
+          "dB": 33.83
+        }
+      ]
+    },
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72898,
+          "lon": -73.99629,
+          "sound": "machinery_impact",
+          "dB": 31.43
+        }
+      ]
+    }
+  },
+  "04242019": {
+    "noon": {
+      "2,1": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9987,
+          "sound": "human_voice",
+          "dB": 32.53
+        }
+      ]
+    }
+  },
+  "07162019": {
+    "afternoon": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 32.49
+        }
+      ]
+    }
+  },
+  "06142019": {
+    "evening": {
+      "0,4": [
+        {
+          "lat": 40.72947,
+          "lon": -73.99589,
+          "sound": "human_voice",
+          "dB": 32.65
+        }
+      ]
+    }
+  },
+  "08162019": {
+    "afternoon": {
+      "2,5": [
+        {
+          "lat": 40.73033,
+          "lon": -73.9956,
+          "sound": "human_voice",
+          "dB": 32.01
+        }
+      ]
+    }
+  },
+  "06302019": {
+    "evening": {
+      "1,2": [
+        {
+          "lat": 40.72978,
+          "lon": -73.99791,
+          "sound": "human_voice",
+          "dB": 36.24
+        }
+      ],
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 34.9
+        }
+      ]
+    }
+  },
+  "05162019": {
+    "noon": {
+      "3,4": [
+        {
+          "lat": 40.73142,
+          "lon": -73.99629,
+          "sound": "human_voice",
+          "dB": 34.31
+        }
+      ]
+    }
+  },
+  "09152019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 32.55
+        }
+      ]
+    }
+  },
+  "09212019": {
+    "morning": {
+      "2,0": [
+        {
+          "lat": 40.73055,
+          "lon": -73.99949,
+          "sound": "human_voice",
+          "dB": 29.51
+        }
+      ]
+    }
+  }
+}
