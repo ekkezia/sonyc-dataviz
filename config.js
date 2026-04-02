@@ -8,14 +8,14 @@ const ROWS = 5;
 const NOISE_CONFIG = {
   // ── Sounds present in data.json ─────────────────────────────────
   // icon values are Material Symbols Outlined ligature names
-  alert_signal:         { color: '#F72585', icon: 'crisis_alert',       label: 'Alert Signal',         sound: 'sounds/siren.wav'        },
-  dog:                  { color: '#FF6B35', icon: 'pets',               label: 'Dog',                  sound: 'sounds/dog.wav'          },
+  alert_signal:         { color: '#f72525ff', icon: 'crisis_alert',       label: 'Alert Signal',         sound: 'sounds/siren.wav'        },
+  dog:                  { color: '#efa0ffff', icon: 'pets',               label: 'Dog',                  sound: 'sounds/dog.wav'          },
   engine:               { color: '#4285F4', icon: 'directions_car',     label: 'Engine',               sound: 'sounds/car.wav'          },
-  human_voice:          { color: '#FFD93D', icon: 'record_voice_over',  label: 'Human Voice',          sound: 'sounds/crowd.wav'        },
-  machinery_impact:     { color: '#DB4437', icon: 'construction',       label: 'Machinery Impact',     sound: 'sounds/drilling.wav'     },
-  music:                { color: '#A78BFA', icon: 'music_note',         label: 'Music',                sound: 'sounds/music.wav'        },
-  non_machinery_impact: { color: '#F4845F', icon: 'bolt',              label: 'Non-Machinery Impact', sound: 'sounds/construction.wav' },
-  powered_saw:          { color: '#DB4437', icon: 'handyman',           label: 'Powered Saw',          sound: 'sounds/drilling.wav'     },
+  human_voice:          { color: '#ff3defff', icon: 'record_voice_over',  label: 'Human Voice',          sound: 'sounds/crowd.wav'        },
+  machinery_impact:     { color: '#ffa198ff', icon: 'construction',       label: 'Machinery Impact',     sound: 'sounds/drilling.wav'     },
+  music:                { color: '#622dffff', icon: 'music_note',         label: 'Music',                sound: 'sounds/music.wav'        },
+  non_machinery_impact: { color: '#ffa60eff', icon: 'bolt',              label: 'Non-Machinery Impact', sound: 'sounds/construction.wav' },
+  powered_saw:          { color: '#847f00ff', icon: 'handyman',           label: 'Powered Saw',          sound: 'sounds/drilling.wav'     },
 };
 
 // Legacy helpers kept for any existing callers

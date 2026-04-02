@@ -419,17 +419,72 @@
     .proj-score-val.score-bump { transform: scale(1.18); }
     .proj-noise-icons { display: flex; flex-direction: column; gap: 4px; width: 100%; }
     .noise-tag {
-      display: flex; align-items: center; gap: 6px;
-      padding: 6px 10px; border-radius: 4px; font-size: 10px;
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 8px; border-radius: 3px; font-size: 10px;
       letter-spacing: .02em; font-family: var(--sans);
-      transition: background .2s;
-      text-transform: uppercase;
-      margin: 1px 0;
+      background: #000 !important; /* MTA Sign Black */
+      border: 1px solid #333;
+      margin: 3px 0;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+      position: relative; overflow: hidden;
     }
-    .noise-tag .noise-icon { color: #000 !important; font-size: 16px; line-height: 1; flex-shrink: 0; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20; }
-    .noise-tag .noise-label { color: #000; font-weight: 900; font-size: 10px; }
-    .noise-tag .noise-db { color: rgba(0,0,0,0.6); font-size: 9px; margin-left: auto; font-weight: 800; }
+    .noise-tag::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .noise-bullet {
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .noise-tag .noise-icon { 
+      color: #fff !important; 
+      font-size: 14px; line-height: 1; 
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 20; 
+    }
+    .noise-tag .noise-label { color: #fff; font-weight: 800; font-size: 10px; letter-spacing: 0.02em; }
+    .noise-tag .noise-db { color: #fccc0a; font-size: 10px; margin-left: auto; font-weight: 900; }
     .side-divider { width: 100%; height: 1px; background: rgba(0,0,0,0.1); flex-shrink: 0; }
+    
+    /* View mode specific layout */
+    .view-mode-only { display: none; }
+    .side-player-panel.view-mode-active .view-mode-only { display: flex; }
+    .side-player-panel.view-mode-active .game-mode-only { display: none !important; }
+
+    .summary-text {
+      font-size: 11px; line-height: 1.5; color: #1a1a1a; font-family: var(--sans);
+      background: rgba(255,255,255,0.4); padding: 12px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.3); border-bottom: 2px solid rgba(0,0,0,0.1);
+      margin-top: 4px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+      position: relative; overflow: hidden;
+    }
+    /* LLM "thinking" pulse */
+    .summary-text.thinking::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: thinkingGlow 2s infinite linear;
+    }
+    @keyframes thinkingGlow {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(100%); }
+    }
+    .summary-label {
+      font-size: 8px; font-weight: 900; color: #666; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 3px; font-family: var(--sans);
+    }
+    .address-highlight {
+      font-size: 16px; font-weight: 900; color: #fccc0a; font-family: var(--sans);
+      line-height: 1.1; margin-bottom: 4px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .llm-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 8px; font-weight: 800; background: #2850ad; color: #fff;
+      padding: 3px 6px; border-radius: 10px; margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
     /* View mode noise panel — sits above legend bar */
     #viewNoisePanel {
       position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
@@ -553,22 +608,28 @@
     /* ── Custom Pointer ── */
     #customCursor {
       position: fixed; top: 0; left: 0;
-      width: 20px; height: 20px;
-      border: 3px solid #ff3333;
+      width: 28px; height: 28px;
+      border: 2.5px solid rgba(255, 80, 80, 0.85);
       border-radius: 50%;
       pointer-events: none;
       z-index: 2147483647; /* MAX possible z-index value */
       transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, border-color 0.2s;
+      transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, border-width 0.18s ease, opacity 0.18s ease;
+      animation: cursorIdle 1.8s ease-in-out infinite alternate;
     }
     #customCursor.hovering {
-      width: 40px; height: 40px;
-      border-color: #ffcc00;
-      animation: cursorPulse 1s infinite alternate;
+      width: 52px; height: 52px;
+      border-color: rgba(255, 210, 60, 0.95);
+      border-width: 2px;
+      animation: cursorPulse 0.7s ease-in-out infinite alternate;
+    }
+    @keyframes cursorIdle {
+      from { box-shadow: 0 0 0px 0px rgba(255, 80, 80, 0); opacity: 0.75; }
+      to   { box-shadow: 0 0 8px 3px rgba(255, 80, 80, 0.35); opacity: 1; }
     }
     @keyframes cursorPulse {
-      from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+      from { box-shadow: 0 0 6px 2px rgba(255, 210, 60, 0.3); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+      to   { box-shadow: 0 0 18px 7px rgba(255, 210, 60, 0.6); opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
     }
     
     /* Hide native cursor globally to ensure the custom one is always used */
@@ -927,71 +988,136 @@
 
       <!-- P1 side panel (left) -->
       <div id="p1Panel" class="side-player-panel">
-        <div class="mta-side-sign player-sign">
-          <div class="sign-left">
-            <div class="sign-destination" style="font-size:8px; opacity:0.8;">PLAYER 1</div>
-            <div class="sign-score"><span id="p1Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
+        
+        <!-- Game Mode Content (Default) -->
+        <div class="game-mode-only" style="width:100%; display:flex; flex-direction:column; gap:10px; align-items:center;">
+          <div class="mta-side-sign player-sign">
+            <div class="sign-left">
+              <div class="sign-destination" style="font-size:8px; opacity:0.8;">PLAYER 1</div>
+              <div class="sign-score"><span id="p1Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#e63030; box-shadow: 0 0 10px rgba(230,48,48,0.4);">P1</div>
+            </div>
           </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#e63030; box-shadow: 0 0 10px rgba(230,48,48,0.4);">P1</div>
+          <div class="mta-side-sign report-header">
+            <div class="sign-left">
+              <div class="sign-destination">CURRENT</div>
+              <div id="p1CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#2850ad; box-shadow:0 0 10px rgba(40,80,173,0.4);">C</div>
+            </div>
+          </div>
+          <div id="p1NoiseIcons" class="proj-noise-icons"></div>
+          <div class="mta-side-sign report-header">
+            <div class="sign-left">
+              <div class="sign-destination">PAST SOUND MOVES</div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#a626aa;">H</div>
+            </div>
+          </div>
+          <div id="p1MoveLogContainer" class="move-log">
+            <div style="opacity:0.3;text-align:center;padding:10px;">no history</div>
           </div>
         </div>
-        <div class="mta-side-sign report-header">
-          <div class="sign-left">
-            <div class="sign-destination">CURRENT</div>
-            <div id="p1CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
+
+        <!-- View Mode Content -->
+        <div class="view-mode-only" id="p1ViewContent" style="flex-direction:column; gap:14px; width:100%;">
+          <div class="mta-side-sign player-sign" style="height:auto; min-height:84px; padding:2px 0;">
+            <div class="sign-left">
+              <div class="summary-label" style="color:rgba(255,255,255,0.5);">LOCATION IDENTIFIED</div>
+              <div id="viewStreetName" class="address-highlight">Washington Sq Park</div>
+              <div id="viewCoords" style="font-size:9px; color:#fff; opacity:0.6; margin-top:4px; font-family:var(--mono);">40.7308°N, 73.9973°W</div>
+            </div>
+            <div class="sign-right" style="width:50px;">
+              <div class="line-bullet-lg" style="background:#fccc0a; color:#000; box-shadow:0 0 12px rgba(252,204,10,0.4);">L</div>
+            </div>
           </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#2850ad; box-shadow:0 0 10px rgba(40,80,173,0.4);">C</div>
+          
+          <div style="background:rgba(0,0,0,0.1); border-radius:10px; padding:12px; border:1px solid rgba(255,255,255,0.05);">
+            <div class="summary-label">SENSORS IN AREA</div>
+            <div id="viewAreaNoises" class="proj-noise-icons" style="margin-top:8px;"></div>
           </div>
-        </div>
-        <div id="p1NoiseIcons" class="proj-noise-icons"></div>
-        <div class="mta-side-sign report-header">
-          <div class="sign-left">
-            <div class="sign-destination">PAST SOUND MOVES</div>
+
+          <div style="margin-top:auto; padding-top:10px; border-top:1px solid rgba(0,0,0,0.1);">
+            <div class="summary-label" style="opacity:0.5;">POINT OF INTEREST</div>
+            <div style="font-size:10px; color:#1a1a1a; font-weight:700;">GREENWICH VILLAGE GRID</div>
           </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#a626aa;">H</div>
-          </div>
-        </div>
-        <div id="p1MoveLogContainer" class="move-log">
-          <div style="opacity:0.3;text-align:center;padding:10px;">no history</div>
         </div>
 
       </div>
 
       <!-- P2 side panel (right) -->
       <div id="p2Panel" class="side-player-panel">
-        <div class="mta-side-sign player-sign">
-          <div class="sign-left">
-            <div class="sign-destination" style="font-size:8px; opacity:0.8;">PLAYER 2</div>
-            <div class="sign-score"><span id="p2Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
+        
+        <!-- Game Mode Content -->
+        <div class="game-mode-only" style="width:100%; display:flex; flex-direction:column; gap:10px; align-items:center;">
+          <div class="mta-side-sign player-sign">
+            <div class="sign-left">
+              <div class="sign-destination" style="font-size:8px; opacity:0.8;">PLAYER 2</div>
+              <div class="sign-score"><span id="p2Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#3070e6; box-shadow: 0 0 10px rgba(48,112,230,0.4);">P2</div>
+            </div>
           </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#3070e6; box-shadow: 0 0 10px rgba(48,112,230,0.4);">P2</div>
+          <div class="mta-side-sign report-header">
+            <div class="sign-left">
+              <div class="sign-destination">CURRENT</div>
+              <div id="p2CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#2850ad; box-shadow:0 0 10px rgba(40,80,173,0.4);">C</div>
+            </div>
+          </div>
+          <div id="p2NoiseIcons" class="proj-noise-icons"></div>
+          <div class="mta-side-sign report-header">
+            <div class="sign-left">
+              <div class="sign-destination">PAST SOUND MOVES</div>
+            </div>
+            <div class="sign-right">
+              <div class="line-bullet-lg" style="background:#a626aa;">H</div>
+            </div>
+          </div>
+          <div id="p2MoveLogContainer" class="move-log">
+            <div style="opacity:0.3;text-align:center;padding:10px;">no history</div>
           </div>
         </div>
-        <div class="mta-side-sign report-header">
-          <div class="sign-left">
-            <div class="sign-destination">CURRENT</div>
-            <div id="p2CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
+
+        <!-- View Mode Content -->
+        <div class="view-mode-only" id="p2ViewContent" style="flex-direction:column; gap:6px; width:100%;">
+          <div class="llm-badge">
+            <span class="material-symbols-outlined" style="font-size:12px;">psychology</span>
+            <span>SONYC-UST AI Insights</span>
           </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#2850ad; box-shadow:0 0 10px rgba(40,80,173,0.4);">C</div>
+
+          <div class="mta-side-sign report-header" style="height:auto; min-height:50px; padding:8px; margin:0 0 10px 0;">
+            <div class="sign-left" style="border:none;">
+              <div class="summary-label">TEMPORAL CONTEXT</div>
+              <div id="viewAnalysisDate" style="font-size:11px; color:#fff; font-weight:800; letter-spacing:0.02em;">SELECT A DATE & TIME</div>
+            </div>
+            <div class="sign-right" style="width:40px; background:#222;">
+              <div class="line-bullet-lg" style="background:#2850ad; width:24px; height:24px; font-size:10px;">AI</div>
+            </div>
+          </div>
+
+          <div class="summary-label">ACOUSTIC SUMMARY</div>
+          <div id="viewLLMSummary" class="summary-text">
+            Initializing SONYC-UST analysis engine... <br><br>Please select a specific cell on the grid to generate a localized acoustic summary for this date and time.
+          </div>
+
+          <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
+            <div class="llm-badge" style="background:rgba(0,0,0,0.1); color:#666; border:1px solid rgba(0,0,0,0.1);">
+              <span>GPT-4O-MINI</span>
+            </div>
+            <div class="llm-badge" style="background:rgba(0,0,0,0.1); color:#666; border:1px solid rgba(0,0,0,0.1);">
+              <span>NYU CUSP</span>
+            </div>
           </div>
         </div>
-        <div id="p2NoiseIcons" class="proj-noise-icons"></div>
-        <div class="mta-side-sign report-header">
-          <div class="sign-left">
-            <div class="sign-destination">PAST SOUND MOVES</div>
-          </div>
-          <div class="sign-right">
-            <div class="line-bullet-lg" style="background:#a626aa;">H</div>
-          </div>
-        </div>
-        <div id="p2MoveLogContainer" class="move-log">
-          <div style="opacity:0.3;text-align:center;padding:10px;">no history</div>
-        </div>
+
       </div>
 
       <!-- View mode noise panel (bottom-center) -->
@@ -1884,6 +2010,11 @@ function getActiveTOD() {
   return 'NIGHT';
 }
 
+function getActiveDateLabel() {
+  if (typeof sliderSteps !== 'undefined' && sliderSteps[sliderIndex]) return sliderSteps[sliderIndex].label;
+  return 'Select Date';
+}
+
 // Bounding box of the clock widget — updated each draw, used for click detection
 let _clockHitBox = null;
 
@@ -2465,7 +2596,7 @@ function updateMoveLogUI() {
       return `
         <div class="move-entry">
           <div class="move-header">
-            <span class="move-index">#${playerMoves.length - i}</span>
+            <span class="move-index">#${i + 1}</span>
             <span class="move-coords">${move.lat}, ${move.lon}</span>
           </div>
           <div class="move-sound-list">
@@ -2504,7 +2635,6 @@ function lockDwell(id) {
       // Record to Log
       const ll = cellLatLon(ds.row, ds.col);
       const pd = allPawnDefs.find(p => p.id === id);
-      const idx = pawnIdToIndex[id];
       moveLogs.push({
         pawnIndex: idx,
         player: pd ? pd.label : id,
@@ -2678,60 +2808,42 @@ function drawProjection() {
         const targetH   = Math.round(cellSize * 0.44 * fillRatio); // now used as target radius
         const fillH     = getAnimFillH(cellKey, targetH);
 
-        // Blend noise colors weighted by dB amplitude
-        let rSum = 0, gSum = 0, bSum = 0, wSum = 0;
-        sources.forEach(function(src) {
-          const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
-          if (!nc) return;
-          const hex = nc.color.replace('#', '');
-          const w   = Math.pow(10, (src.db || 60) / 20);
-          rSum += parseInt(hex.slice(0,2), 16) * w;
-          gSum += parseInt(hex.slice(2,4), 16) * w;
-          bSum += parseInt(hex.slice(4,6), 16) * w;
-          wSum += w;
-        });
-        if (wSum > 0) {
-          const rC = Math.round(rSum / wSum);
-          const gC = Math.round(gSum / wSum);
-          const bC = Math.round(bSum / wSum);
-          // Draw pulsing circle — radius proportional to dB
-          const maxR   = cellSize * 0.44;
-          const targetR = Math.round(maxR * fillRatio);
-          const animR  = fillH; // reuse spring value (was fillH, now is radius)
-          const pulse  = 1 + 0.07 * Math.sin(Date.now() / 900 + col * 0.9 + row * 1.5);
-          const drawR  = Math.max(3, animR * pulse);
-          const ccx    = x + cellSize / 2;
-          const ccy    = y + cellSize / 2;
-          pc.beginPath();
-          pc.arc(ccx, ccy, drawR, 0, Math.PI * 2);
-          pc.fillStyle = 'rgba(' + rC + ',' + gC + ',' + bC + ',0.82)';
-          pc.fill();
-          // Soft glow ring
-          pc.beginPath();
-          pc.arc(ccx, ccy, drawR * 1.35, 0, Math.PI * 2);
-          pc.strokeStyle = 'rgba(' + rC + ',' + gC + ',' + bC + ',0.22)';
-          pc.lineWidth = drawR * 0.5;
-          pc.stroke();
+        // Indicator dots — small color pips per noise source (now centered and larger)
+        if (reveal && sources.length > 0 && cellSize >= 18) {
+          let cellMax = 0;
+          sources.forEach(function(s) { if ((s.db || 0) > cellMax) cellMax = s.db; });
+          if (cellMax === 0) cellMax = 1;
+
+          // Scaled up for main focus
+          const baseR = Math.max(4, cellSize * 0.12);
+          const spacing = baseR * 2.8;
+          const totalDots = Math.min(sources.length, 4);
+          const startDotX = x + cellSize / 2 - (totalDots - 1) * spacing / 2;
+          const centerY   = y + cellSize / 2;
+          
+          sources.slice(0, 4).forEach(function(src, i) {
+            const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
+            if (!nc) return;
+            
+            // Size proportional to dB (larger dB = larger dot)
+            const sizeRatio = Math.max(0.4, (src.db || 0) / cellMax);
+            const dotPulse = 1 + 0.14 * Math.sin(Date.now() / 320 + i * 0.8);
+            const drawDotR = baseR * sizeRatio * dotPulse;
+
+            pc.beginPath();
+            pc.arc(startDotX + i * spacing, centerY, drawDotR, 0, Math.PI * 2);
+            pc.fillStyle = nc.color;
+            pc.fill();
+            
+            // Add a subtle white outline to make them pop against the map
+            pc.strokeStyle = 'rgba(255,255,255,0.8)';
+            pc.lineWidth = 1.5;
+            pc.stroke();
+          });
         }
       } else if (!reveal) {
         // Spring toward 0 when cell is hidden
         getAnimFillH(cellKey, 0);
-      }
-
-      // Indicator dots — small color pips per noise source
-      if (reveal && sources.length > 0 && cellSize >= 22) {
-        const dotR = Math.max(2.5, cellSize * 0.055);
-        const spacing = dotR * 2.6;
-        const totalDots = Math.min(sources.length, 4);
-        const startDotX = x + cellSize / 2 - (totalDots - 1) * spacing / 2;
-        sources.slice(0, 4).forEach(function(src, i) {
-          const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[src.type];
-          if (!nc) return;
-          pc.beginPath();
-          pc.arc(startDotX + i * spacing, y + cellSize - dotR - 3, dotR, 0, Math.PI * 2);
-          pc.fillStyle = nc.color;
-          pc.fill();
-        });
       }
     }
   }
@@ -2832,12 +2944,23 @@ function drawProjection() {
 
   // ── Start / Finish cell highlights (game mode only) ─────────────
   if (viewMode) {
-    // Draw map pin for selected cell in view mode
     if (viewCursorCell) {
-      const vx   = gridX + viewCursorCell.col * cellSize + cellSize / 2;
-      const vBot = gridY + viewCursorCell.row * cellSize + cellSize - 4;
-      const pinSz = Math.max(8, cellSize * 0.24);
-      drawMapPin(pc, vx, vBot, pinSz, '#1a1a1a', '#fccc0a');
+      const vx   = gridX + viewCursorCell.col * cellSize;
+      const vy   = gridY + viewCursorCell.row * cellSize;
+      
+      // Cell border highlight with glow
+      pc.shadowBlur  = 18;
+      pc.shadowColor = '#fccc0a';
+      pc.strokeStyle = '#fccc0a';
+      pc.lineWidth   = 3.5;
+      pc.strokeRect(vx + 2, vy + 2, cellSize - 4, cellSize - 4);
+      pc.shadowBlur  = 0;
+      
+      // Map pin at bottom-center of cell
+      const pinX  = vx + cellSize / 2;
+      const pinY  = vy + cellSize - 3;
+      const pinSz = Math.max(12, cellSize * 0.28);
+      drawMapPin(pc, pinX, pinY, pinSz, '#1a1a1a', '#fccc0a');
     }
     pc.textAlign = 'left'; pc.textBaseline = 'alphabetic';
     return; // skip all game-mode rendering below
@@ -2966,14 +3089,18 @@ function renderNoiseIcons(container, cell) {
       const col = nc ? nc.color : '#999';
       const ico = nc ? nc.icon  : '?';
       const lbl = nc ? nc.label : src.type;
+
       const tag = document.createElement('div');
       tag.className = 'noise-tag';
-      // Use 0.8 opacity (cc) for a more solid, premium look
-      tag.style.background = col + 'cc'; 
+      
+      // Structured like an MTA line sign
       tag.innerHTML =
-        '<span class="noise-icon material-symbols-outlined">' + ico + '</span>' +
-        '<span class="noise-label">' + lbl + '</span>' +
+        '<div class="noise-bullet" style="background:' + col + '">' +
+          '<span class="noise-icon material-symbols-outlined">' + ico + '</span>' +
+        '</div>' +
+        '<span class="noise-label">' + lbl.toUpperCase() + '</span>' +
         '<span class="noise-db">' + Math.round(src.db * 10) / 10 + ' dB</span>';
+        
       container.appendChild(tag);
     });
   }
@@ -3066,18 +3193,88 @@ function applyInteractionState() {
   updateInteractCursor();
 }
 
+function getStreetName(lat, lon) {
+  const isPark = (lat > 40.730 && lat < 40.7315 && lon > -73.9985 && lon < -73.996);
+  if (isPark) return "Washington Sq Park Interior";
+  
+  if (lat > 40.7312) return "Waverly Pl / Washington Sq N";
+  if (lat < 40.7298) return "W 3rd St / Bleecker St";
+  if (lon < -73.9983) return "MacDougal St / Sullivan St";
+  if (lon > -73.9953) return "Washington Sq E / University Pl";
+  
+  return "Washington Sq South / W 4th St";
+}
+
+function generateLLMSummary(cell, dateStr, timeStr, sources) {
+  if (!cell) return "Initializing SONYC-UST analysis engine... <br><br>Please select a specific cell on the grid to generate a localized acoustic summary for this date and time.";
+  
+  const ll = cellLatLon(cell.row, cell.col);
+  const street = getStreetName(ll.lat, ll.lon);
+  
+  let summary = `On <b>${dateStr}</b> during the <b>${timeStr.toLowerCase()}</b>, the acoustic environment at <b>${street}</b> was characterized by `;
+  
+  if (!sources || sources.length === 0) {
+    summary += "minimal recorded noise activity. The area was relatively tranquil with no significant sound events detected by SONYC-UST sensors.";
+  } else {
+    // Sort sources by dB
+    const sorted = [...sources].sort((a,b) => b.db - a.db);
+    const mainSound = sorted[0];
+    const others = sorted.slice(1);
+    
+    summary += `a prominent level of <b>${mainSound.type.replace(/_/g, ' ')}</b> activity, peaking at <b>${mainSound.db.toFixed(1)} dB</b>. `;
+    
+    if (others.length > 0) {
+      if (others.length > 1) {
+        const last = others.pop();
+        const otherNames = others.map(s => `<b>${s.type.replace(/_/g, ' ')}</b>`).join(', ') + ` and <b>${last.type.replace(/_/g, ' ')}</b>`;
+        summary += `Secondary sound sources including ${otherNames} were also present, contributing to a complex urban soundscape typical of this Greenwich Village corridor.`;
+      } else {
+        summary += `A secondary sound source of <b>${others[0].type.replace(/_/g, ' ')}</b> was also present, contributing to the urban soundscape.`;
+      }
+    } else {
+      summary += "This was the primary sound source identified during this period, with very few other interfering noises.";
+    }
+  }
+  
+  return summary;
+}
+
 const _prevScores = {};
 function updateProjStats() {
   if (viewMode) {
+    // Update VIEW mode panels
+    const stEl = document.getElementById('viewStreetName');
+    const coEl = document.getElementById('viewCoords');
+    const anEl = document.getElementById('viewAreaNoises');
+    const dtEl = document.getElementById('viewAnalysisDate');
+    const smEl = document.getElementById('viewLLMSummary');
+    
+    const dateStr = getActiveDateLabel();
+    const todStr  = getActiveTOD();
+    
+    if (dtEl) dtEl.textContent = dateStr + ' — ' + todStr;
+
+    if (viewCursorCell) {
+      const ll = cellLatLon(viewCursorCell.row, viewCursorCell.col);
+      const street = getStreetName(ll.lat, ll.lon);
+      const sources = getMockCellData(viewCursorCell.row, viewCursorCell.col);
+
+      if (stEl) stEl.textContent = street;
+      if (coEl) coEl.textContent = ll.lat + '°N, ' + Math.abs(ll.lon) + '°W';
+      if (anEl) renderNoiseIcons(anEl, viewCursorCell);
+      if (smEl) {
+        smEl.innerHTML = generateLLMSummary(viewCursorCell, dateStr, todStr, sources);
+        smEl.classList.remove('thinking');
+      }
+    } else {
+      if (stEl) stEl.textContent = 'Select Location';
+      if (coEl) coEl.textContent = 'Click grid to analyze';
+      if (smEl) smEl.innerHTML = 'Initializing SONYC-UST analysis engine... <br><br>Please select a specific cell on the grid to generate a localized acoustic summary for this date and time.';
+    }
+    
+    // Also update the small bottom panel if it exists
     const panel = document.getElementById('viewNoiseIcons');
     if (panel) renderNoiseIcons(panel, viewCursorCell);
-    const vnHeader = document.querySelector('#viewNoisePanel > div:first-child');
-    if (vnHeader && viewCursorCell) {
-      const ll = cellLatLon(viewCursorCell.row, viewCursorCell.col);
-      vnHeader.textContent = ll.lat + '°N, ' + Math.abs(ll.lon) + '°W';
-    } else if (vnHeader) {
-      vnHeader.textContent = 'CELL NOISE';
-    }
     return;
   }
 
@@ -3153,11 +3350,28 @@ function toggleViewMode() {
   sw.classList.toggle('on', viewMode);
   lblG.classList.toggle('active', !viewMode);
   lblV.classList.toggle('active',  viewMode);
-  document.getElementById('p1Panel').classList.toggle('hidden-panel', viewMode);
-  document.getElementById('p2Panel').classList.toggle('hidden-panel', viewMode);
-  document.getElementById('viewNoisePanel').style.display  = viewMode ? 'flex' : 'none';
+  
+  // Toggle view-mode-active class instead of hiding panels entirely
+  const p1 = document.getElementById('p1Panel');
+  const p2 = document.getElementById('p2Panel');
+  p1.classList.toggle('view-mode-active', viewMode);
+  p2.classList.toggle('view-mode-active', viewMode);
+  
+  // In viewMode, always show the panels
+  if (viewMode) {
+    p1.classList.remove('hidden-panel');
+    p2.classList.remove('hidden-panel');
+    document.getElementById('viewNoisePanel').style.display = 'none'; // we'll use side panels instead
+  } else {
+    // Restoration to game behavior
+    p1.classList.toggle('hidden-panel', !activePawnIds.has('red'));
+    p2.classList.toggle('hidden-panel', !activePawnIds.has('blue'));
+    document.getElementById('viewNoisePanel').style.display = 'none';
+  }
+
   const gameOnly = document.getElementById('gameOnlyControls');
   if (gameOnly) gameOnly.style.display = viewMode ? 'none' : 'flex';
+  
   // View mode: hide camera, show map. Game mode: restore camera visibility.
   document.getElementById('cameraLayer').classList.toggle('hidden', viewMode);
   document.getElementById('overlay').classList.toggle('hidden', viewMode);
@@ -3276,8 +3490,19 @@ document.getElementById('projCanvas').addEventListener('click', function(e) {
 (function() {
   const trailer = document.getElementById('trailingCursor');
   const real = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  const lerp = { x: real.x, y: real.y };
-  const SPEED = 0.08; // smoother trailing lag
+  const lerp  = { x: real.x, y: real.y };
+  const ccLerp = { x: real.x, y: real.y };
+  const SPEED    = 0.08;  // trailing blob lag
+  const CC_SPEED = 0.18;  // custom cursor — snappier but still smooth
+
+  const HOVER_SELECTOR = 'a, button, [onclick], input, select, textarea, label, '
+    + '.mode-switch, .legend-item, .btn, .chip, #addPawnBtn, .pick-swatch, '
+    + '.pick-close, #menuBtn, #projSliderWrap, #sliderBarWrap, #projSliderLabel, '
+    + '#clockWidget, canvas[style*="pointer-events: auto"], [role="button"]';
+
+  function isInteractive(el) {
+    return el && el.closest && el.closest(HOVER_SELECTOR);
+  }
 
   document.addEventListener('mousemove', function(e) {
     real.x = e.clientX;
@@ -3287,11 +3512,29 @@ document.getElementById('projCanvas').addEventListener('click', function(e) {
     }
   });
 
+  document.addEventListener('mouseover', function(e) {
+    const cc = document.getElementById('customCursor');
+    if (cc && isInteractive(e.target)) cc.classList.add('hovering');
+  });
+
+  document.addEventListener('mouseout', function(e) {
+    const cc = document.getElementById('customCursor');
+    if (cc && isInteractive(e.target)) cc.classList.remove('hovering');
+  });
+
   (function loop() {
-    lerp.x += (real.x - lerp.x) * SPEED;
-    lerp.y += (real.y - lerp.y) * SPEED;
+    lerp.x   += (real.x - lerp.x)   * SPEED;
+    lerp.y   += (real.y - lerp.y)   * SPEED;
+    ccLerp.x += (real.x - ccLerp.x) * CC_SPEED;
+    ccLerp.y += (real.y - ccLerp.y) * CC_SPEED;
+
     if (trailer) {
       trailer.style.transform = `translate3d(${lerp.x}px, ${lerp.y}px, 0) translate(-50%, -50%)`;
+    }
+    const cc = document.getElementById('customCursor');
+    if (cc) {
+      cc.style.left = ccLerp.x + 'px';
+      cc.style.top  = ccLerp.y + 'px';
     }
     requestAnimationFrame(loop);
   })();

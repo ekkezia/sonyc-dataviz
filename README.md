@@ -1,6 +1,6 @@
-# SONYC DataViz — Tabletop Pawn Tracker
+# SONYC-UST DataViz — Tabletop Pawn Tracker
 
-An interactive two-player installation that combines real-time computer vision pawn tracking with NYC urban noise data visualization. Players move colored physical objects on a camera-monitored grid, racing from start to finish while the board reveals noise sensor data from the SONYC (Sounds of New York City) project.
+An interactive two-player installation that combines real-time computer vision pawn tracking with NYC urban noise data visualization. Players move colored physical objects on a camera-monitored grid, racing from start to finish while the board reveals noise sensor data from the SONYC-UST (Sounds of New York City) project.
 
 ---
 
@@ -41,12 +41,14 @@ sonyc-dataviz/
 ## Setup
 
 ### Requirements
+
 - A modern browser with camera access (Chrome or Safari recommended)
 - Must be served over HTTP/HTTPS — camera requires a secure context
 - A webcam pointing at the play surface from above
 - Two distinctly colored physical pawns (e.g. red and blue cups)
 
 ### Running
+
 ```bash
 # Any static file server works, e.g.:
 python3 -m http.server 8000
@@ -71,14 +73,14 @@ Grant camera permission when prompted.
 
 ## Game Rules
 
-| | |
-|---|---|
-| **Grid** | 12 columns × 8 rows |
-| **Start** | Top-left cell (0,0) |
-| **Finish** | Bottom-right cell (11,7) |
-| **Score** | +1 point per cell you dwell in for ≥1 second |
-| **Winner** | Player with the **lower** score at finish |
-| **Tie** | Equal scores = tie |
+|            |                                              |
+| ---------- | -------------------------------------------- |
+| **Grid**   | 12 columns × 8 rows                          |
+| **Start**  | Top-left cell (0,0)                          |
+| **Finish** | Bottom-right cell (11,7)                     |
+| **Score**  | +1 point per cell you dwell in for ≥1 second |
+| **Winner** | Player with the **lower** score at finish    |
+| **Tie**    | Equal scores = tie                           |
 
 - The board only reveals cell colors after a pawn visits them
 - Cells show a blended color of all noise types detected there (weighted by dB level)
@@ -92,19 +94,19 @@ Grant camera permission when prompted.
 
 Cell colors are computed by blending the colors of all noise types present, weighted by their dB reading:
 
-| Type | Color | Sound file |
-|---|---|---|
-| Dog | `#FF6B35` 🐕 | `sounds/dog.wav` |
-| Car / Traffic | `#4285F4` 🚗 | `sounds/car.wav` / `sounds/traffic.wav` |
-| Siren | `#F72585` 🚨 | `sounds/siren.wav` |
-| Construction / Drilling | `#DB4437` 🔨 | `sounds/construction.wav` |
-| Crowd | `#FFD93D` 👥 | `sounds/crowd.wav` |
-| Children | `#FBBF24` 🧒 | `sounds/children.wav` |
-| Music | `#A78BFA` ♪ | `sounds/music.wav` |
-| Wind | `#6BCB77` 🌬 | `sounds/wind.wav` |
-| HVAC | `#4D96FF` ❄ | `sounds/hvac.wav` |
-| Bird / Birds | `#0F9B58` 🐦 | `sounds/bird.wav` |
-| Truck | `#F4845F` 🚛 | `sounds/truck.wav` |
+| Type                    | Color        | Sound file                              |
+| ----------------------- | ------------ | --------------------------------------- |
+| Dog                     | `#FF6B35` 🐕 | `sounds/dog.wav`                        |
+| Car / Traffic           | `#4285F4` 🚗 | `sounds/car.wav` / `sounds/traffic.wav` |
+| Siren                   | `#F72585` 🚨 | `sounds/siren.wav`                      |
+| Construction / Drilling | `#DB4437` 🔨 | `sounds/construction.wav`               |
+| Crowd                   | `#FFD93D` 👥 | `sounds/crowd.wav`                      |
+| Children                | `#FBBF24` 🧒 | `sounds/children.wav`                   |
+| Music                   | `#A78BFA` ♪  | `sounds/music.wav`                      |
+| Wind                    | `#6BCB77` 🌬 | `sounds/wind.wav`                       |
+| HVAC                    | `#4D96FF` ❄  | `sounds/hvac.wav`                       |
+| Bird / Birds            | `#0F9B58` 🐦 | `sounds/bird.wav`                       |
+| Truck                   | `#F4845F` 🚛 | `sounds/truck.wav`                      |
 
 When a pawn dwells in a cell, all associated sound files play sequentially (staggered 120ms). Volume scales with dB level.
 
@@ -112,12 +114,13 @@ When a pawn dwells in a cell, all associated sound files play sequentially (stag
 
 ## Controls
 
-| Key | Action |
-|---|---|
+| Key | Action                                  |
+| --- | --------------------------------------- |
 | `M` | Toggle camera overlay / projection view |
-| `F` | Fullscreen |
+| `F` | Fullscreen                              |
 
 ### Top Bar
+
 - **+ PAWN** — Add a tracked pawn color
 - **HSV TUNE** — Adjust color detection thresholds for the selected pawn
 - **TIMELINE: [COLOR]** — Change which pawn color controls the date slider
@@ -127,6 +130,7 @@ When a pawn dwells in a cell, all associated sound files play sequentially (stag
 ## Data Format
 
 ### `mockData.json`
+
 ```json
 {
   "MMDDYYYY": {
@@ -142,13 +146,16 @@ When a pawn dwells in a cell, all associated sound files play sequentially (stag
 Time-of-day is determined automatically from the current system clock. To add more dates or noise readings, extend `mockData.json` following the same structure.
 
 ### `config.js`
+
 Change grid size here:
+
 ```js
 const COLS = 12;
 const ROWS = 8;
 ```
 
 Add new noise types by adding entries to `NOISE_CONFIG`:
+
 ```js
 const NOISE_CONFIG = {
   myType: { color: '#aabbcc', icon: '🔔', label: 'My Type', sound: 'sounds/mytype.wav' },
@@ -161,7 +168,9 @@ const NOISE_CONFIG = {
 ## Technical Notes
 
 ### Blob Detection
+
 Each frame the camera image is scaled to 35% for performance, then:
+
 1. Every pixel is tested against the pawn's HSV range
 2. The binary mask is closed with 3× morphological dilation + 3× erosion to merge fragmented regions
 3. Flood-fill finds connected components
@@ -169,7 +178,9 @@ Each frame the camera image is scaled to 35% for performance, then:
 5. Position is smoothed with an exponential moving average (`α = 0.35`) to reduce jitter
 
 ### Coordinate System
+
 The camera output is horizontally flipped by CSS (`scaleX(-1)`) so the physical left appears as left on screen. Internal canvas coordinates are in raw camera space; flip transforms are applied manually where needed.
 
 ### Slider Dwell Lock
+
 When the timeline pawn is stationary in the bar for 1 second, a glowing animation plays on the date label. When the animation ends, the date commits and the board redraws with new data.
