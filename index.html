@@ -868,6 +868,18 @@
       text-align: center; font-family: var(--sans); line-height: 1;
     }
     #clockWidget.tod-override #clockTODLabel { color: var(--accent); }
+    .filter-btn {
+      flex: 1; height: 28px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); color: #888;
+      font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
+      cursor: pointer; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .filter-btn.active {
+      background: var(--mta-blue); color: #fff;
+      border-color: #60b0ff; box-shadow: 0 0 10px rgba(96,176,255,0.3);
+    }
+    #clockWidget.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
   </style>
 </head>
 <body>
@@ -946,6 +958,20 @@
             <span id="modeLabelGame" class="mode-toggle-label active">GAME</span>
             <button id="viewSwitch" class="mode-switch" onclick="toggleViewMode()"></button>
             <span id="modeLabelView" class="mode-toggle-label">VIEW</span>
+          </div>
+
+          <div class="panel-sep"></div>
+          <div class="panel-label">DATA FILTER</div>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+            <div style="display:flex; gap:4px;">
+              <button class="filter-btn" id="filterDay" onclick="setFilterMode('day')">DATE</button>
+              <button class="filter-btn" id="filterWeek" onclick="setFilterMode('week')">WEEK</button>
+              <button class="filter-btn" id="filterMonth" onclick="setFilterMode('month')">MONTH</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:10px; color:#ccc; font-weight:700;">
+              <input type="checkbox" id="timeSpecificity" onchange="toggleTimeSpecificity()" checked>
+              <label for="timeSpecificity" style="cursor:pointer; letter-spacing:0.05em; line-height:1;">TIME SPECIFICITY (TOD)</label>
+            </div>
           </div>
 
           <div id="gameOnlyControls" style="display:flex;flex-direction:column;gap:0;">
@@ -1044,18 +1070,18 @@
             <div>
               <div class="panel-label" style="margin-bottom:6px;">TEMPORAL NAVIGATION</div>
               <div style="font-size:11px; color:#ccc; line-height:1.6;">
-                Navigate the dataset's history using the interactive timeline and clock:
+                Navigate the dataset's history using the interactive timeline and clock. To ensure a comprehensive overview, data is now <strong>aggregated into monthly blocks</strong>.
                 <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
                   <img src="images/timeline_view.png" alt="Timeline View" style="width:100%; display:block;">
                 </div>
                 <ul style="list-style:none; padding:0; margin:10px 0 0 0; display:flex; flex-direction:column; gap:10px;">
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                    <span><strong style="color:#fff;">Timeline Slider:</strong> Specify historical dates. The bar graph indicates periods where sounds are most prominent. Setting a date updates the map to reflect sounds at that specific moment.</span>
+                    <span><strong style="color:#fff;">Monthly Timeline Slider:</strong> Groups acoustic data by month. The bar graph highlights the times where city sounds recorded the highest peak dB levels within that 30-day period.</span>
                   </li>
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                    <span><strong style="color:#fff;">Time Clock:</strong> Cycle through periods (Morning, Noon, etc.) to see how noise distributions shift throughout the day.</span>
+                    <span><strong style="color:#fff;">Time Clock:</strong> Cycle through specific times (Morning, Noon, etc.) within your selected period. If <strong style="color:#fff;">TIME SPECIFICITY</strong> is unchecked in the Menu, the clock is hidden and all data for the requested day/week/month is combined.</span>
                   </li>
                 </ul>
               </div>
@@ -2213,7 +2239,6 @@ function drawClock(pc, cx, cy, r, tod) {
   pc.stroke();
 
   // Hour ticks
-  pc.strokeStyle = '#ccc';
   pc.lineWidth = 1;
   for (let i = 0; i < 12; i++) {
     const a  = (i / 12) * Math.PI * 2 - Math.PI / 2;
@@ -2268,6 +2293,29 @@ function drawClock(pc, cx, cy, r, tod) {
   pc.lineCap      = 'butt';
 }
 
+let currentFilterMode = 'day'; // Default for VIEW mode
+let timeSpecificity   = true;  // Default for VIEW mode
+
+function setFilterMode(mode) {
+  currentFilterMode = mode;
+  document.getElementById('filterDay').classList.toggle('active', mode === 'day');
+  document.getElementById('filterWeek').classList.toggle('active', mode === 'week');
+  document.getElementById('filterMonth').classList.toggle('active', mode === 'month');
+  buildSliderSteps();
+  updateProjStats();
+  drawProjection();
+}
+
+function toggleTimeSpecificity() {
+  timeSpecificity = document.getElementById('timeSpecificity').checked;
+  const clock = document.getElementById('clockWidget');
+  if (clock) clock.classList.toggle('hidden', !timeSpecificity);
+  // If specificity turned off, clear TOD override to avoid confusion
+  if (!timeSpecificity) todOverride = null;
+  updateProjStats();
+  drawProjection();
+}
+
 async function loadMockData() {
   try {
     const resp = await fetch('data.json');
@@ -2279,35 +2327,61 @@ async function loadMockData() {
   }
 }
 
+function getWeekStart(d) {
+  const date = new Date(d);
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+  return new Date(date.setDate(diff)).setHours(0,0,0,0);
+}
+
 function buildSliderSteps() {
   sliderSteps = [];
   if (!mockData) return;
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const S_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  // One step per date key (MMDDYYYY), explicitly sorted chronologically by YYYYMMDD
-  Object.keys(mockData).sort(function(a, b) {
-    const vA = a.slice(4, 8) + a.slice(0, 2) + a.slice(2, 4); // YYYYMMDD
+  const sortedDateKeys = Object.keys(mockData).sort(function(a, b) {
+    const vA = a.slice(4, 8) + a.slice(0, 2) + a.slice(2, 4);
     const vB = b.slice(4, 8) + b.slice(0, 2) + b.slice(2, 4);
     return vA.localeCompare(vB);
-  }).forEach(function(dateKey) {
-    const mm   = parseInt(dateKey.slice(0, 2), 10) - 1;
-    const dd   = parseInt(dateKey.slice(2, 4), 10);
-    const yyyy = parseInt(dateKey.slice(4, 8), 10);
-    sliderSteps.push({
-      dateKey,
-      dateObj: new Date(yyyy, mm, dd),
-      label:   MONTHS[mm] + ' ' + dd + ', ' + yyyy,
-    });
   });
 
-  // Smooth slider: use 0–1000 float range so it glides freely between dates
-  const slider = document.getElementById('projSlider');
-  if (slider) {
-    slider.min   = 0;
-    slider.max   = 1000;
-    slider.value = 0;
+  if (currentFilterMode === 'month') {
+    const months = {};
+    sortedDateKeys.forEach(function(dk) {
+      const mm = parseInt(dk.slice(0, 2), 10) - 1, yyyy = parseInt(dk.slice(4, 8), 10);
+      const k = yyyy + (mm < 9 ? '0' : '') + (mm + 1);
+      if (!months[k]) months[k] = [];
+      months[k].push(dk);
+    });
+    Object.keys(months).sort().forEach(function(mk) {
+      const y = parseInt(mk.slice(0, 4), 10), m = parseInt(mk.slice(4, 6), 10) - 1;
+      sliderSteps.push({ dateKeys: months[mk], dateObj: new Date(y, m, 1), label: 'Month of ' + MONTHS[m] + ' ' + y });
+    });
+  } else if (currentFilterMode === 'week') {
+    const weeks = {};
+    sortedDateKeys.forEach(function(dk) {
+      const mm = parseInt(dk.slice(0, 2), 10) - 1, dd = parseInt(dk.slice(2, 4), 10), yyyy = parseInt(dk.slice(4, 8), 10);
+      const ws = getWeekStart(new Date(yyyy, mm, dd));
+      if (!weeks[ws]) weeks[ws] = [];
+      weeks[ws].push(dk);
+    });
+    Object.keys(weeks).sort().forEach(function(wsTs) {
+      const d = new Date(+wsTs);
+      sliderSteps.push({ dateKeys: weeks[wsTs], dateObj: d, label: 'Week of ' + S_MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() });
+    });
+  } else {
+    // day mode
+    sortedDateKeys.forEach(function(dk) {
+      const mm = parseInt(dk.slice(0, 2), 10) - 1, dd = parseInt(dk.slice(2, 4), 10), yyyy = parseInt(dk.slice(4, 8), 10);
+      sliderSteps.push({ dateKeys: [dk], dateObj: new Date(yyyy, mm, dd), label: S_MONTHS[mm] + ' ' + dd + ', ' + yyyy });
+    });
   }
+
+  const slider = document.getElementById('projSlider');
+  if (slider) { slider.min = 0; slider.max = 1000; slider.value = 0; }
   sliderIndex = 0;
+  _sliderAnim.pct = 0; // Reset timeline highlight
   buildSliderTicks();
   updateProjSliderLabel();
   drawSliderBarGraph();
@@ -2335,24 +2409,30 @@ let selectedNoiseType = null; // Filter for highlighting dates in the timeline
 
 function getStepTotalDb(stepIdx, filterType = null, filterTod = null) {
   if (!mockData || !sliderSteps[stepIdx]) return 0;
-  const dateData = mockData[sliderSteps[stepIdx].dateKey];
-  if (!dateData) return 0;
+  const dateKeys = sliderSteps[stepIdx].dateKeys;
+  if (!dateKeys) return 0;
   
   let total = 0;
-  // If filterTod is provided, only check slots mapping to that TOD (e.g. MORNING -> [morning])
-  // Otherwise, check all slots present in the date's data.
-  const todsToCheck = filterTod ? (TOD_SLOT_MAP[filterTod] || [filterTod.toLowerCase()]) : Object.keys(dateData);
-  
-  todsToCheck.forEach(function(slotKey) {
-    const cells = dateData[slotKey];
-    if (!cells) return;
-    Object.keys(cells).forEach(function(cellKey) {
-      const sources = cells[cellKey];
-      if (!Array.isArray(sources)) return;
-      sources.forEach(function(s) { 
-        if (!filterType || s.sound === filterType) {
-          total += (s.dB || 0); 
-        }
+  dateKeys.forEach(function(dk) {
+    const dateData = mockData[dk];
+    if (!dateData) return;
+
+    // Filter by TOD if specified AND specificity is on. Otherwise check all known slots.
+    const todsToCheck = (timeSpecificity && filterTod) 
+      ? (TOD_SLOT_MAP[filterTod] || [filterTod.toLowerCase()]) 
+      : (timeSpecificity ? Object.keys(dateData) : ['morning','noon','afternoon','evening']);
+    
+    todsToCheck.forEach(function(slotKey) {
+      const cells = dateData[slotKey];
+      if (!cells) return;
+      Object.keys(cells).forEach(function(cellKey) {
+        const sources = cells[cellKey];
+        if (!Array.isArray(sources)) return;
+        sources.forEach(function(s) { 
+          if (!filterType || (s.sound || s.type) === filterType) {
+            total += (s.dB || 0); 
+          }
+        });
       });
     });
   });
@@ -2536,23 +2616,42 @@ function updateProjSliderLabel() {
 }
 
 // Returns [{type, db}] for a grid cell.
-// Date comes from the slider; time-of-day always follows the current real time.
+// Data is now aggregated weekly from the slider; time-of-day follows the current real time.
 function getMockCellData(row, col) {
   if (mockData && sliderSteps.length && sliderSteps[sliderIndex]) {
-    const dateData = mockData[sliderSteps[sliderIndex].dateKey];
-    if (dateData) {
-      const tod   = getActiveTOD();
-      const slots = TOD_SLOT_MAP[tod] || [tod.toLowerCase()];
-      for (var i = 0; i < slots.length; i++) {
-        const slot = dateData[slots[i]];
-        if (slot) {
-          const sources = slot[row + ',' + col] || [];
-          return sources.map(function(s) { 
-            return { type: s.sound, db: s.dB, soundfile: s.soundfile }; 
+    const step = sliderSteps[sliderIndex];
+    if (!step.dateKeys) return [];
+
+    const mergedSources = {}; // type -> { db, soundfile }
+    const tod   = getActiveTOD();
+    // If specificity is OFF, check all known slots. Otherwise use the specific slot.
+    const slots = timeSpecificity ? (TOD_SLOT_MAP[tod] || [tod.toLowerCase()]) : ['morning','noon','afternoon','evening'];
+
+    step.dateKeys.forEach(dk => {
+      const dateData = mockData[dk];
+      if (!dateData) return;
+      slots.forEach(slotKey => {
+        const cells = dateData[slotKey];
+        if (cells && cells[row + ',' + col]) {
+          cells[row + ',' + col].forEach(s => {
+            const type = s.sound || s.type;
+            const db   = s.dB || 0;
+            // Aggregate: take max dB per sound type for the entire period
+            if (!mergedSources[type] || db > mergedSources[type].db) {
+              mergedSources[type] = { db: db, soundfile: s.soundfile };
+            }
           });
         }
-      }
-    }
+      });
+    });
+
+    const result = Object.entries(mergedSources).map(([type, s]) => ({ 
+      type: type, 
+      db: s.db, 
+      soundfile: s.soundfile 
+    }));
+    
+    if (result.length > 0) return result;
   }
   // Fallback: CSV-based gridData (used before mockData loads)
   return (gridData[row] && gridData[row][col]) || [];
@@ -3117,10 +3216,10 @@ function drawProjection() {
       pc.strokeRect(vx + 2, vy + 2, cellSize - 4, cellSize - 4);
       pc.shadowBlur  = 0;
       
-      // Map pin at bottom-center of cell
+      // Map pin at bottom-center of cell — kept small
       const pinX  = vx + cellSize / 2;
       const pinY  = vy + cellSize - 3;
-      const pinSz = Math.max(12, cellSize * 0.28);
+      const pinSz = Math.max(5, cellSize * 0.12);
       drawMapPin(pc, pinX, pinY, pinSz, '#1a1a1a', '#fccc0a');
     }
     pc.textAlign = 'left'; pc.textBaseline = 'alphabetic';
@@ -3417,36 +3516,103 @@ function getStreetName(lat, lon) {
 }
 
 function generateLLMSummary(cell, dateStr, timeStr, sources) {
-  if (!cell) return "Initializing SONYC-UST analysis engine... <br><br>Please select a specific cell on the grid to generate a localized acoustic summary for this date and time.";
-  
-  const ll = cellLatLon(cell.row, cell.col);
+  if (!cell) return 'Initializing SONYC-UST analysis engine... <br><br>Please select a specific cell on the grid to generate a localized acoustic summary for this date and time.';
+
+  const ll     = cellLatLon(cell.row, cell.col);
   const street = getStreetName(ll.lat, ll.lon);
-  
+
+  // ── Time-specificity OFF: per-TOD breakdown ──────────────────────
+  if (!timeSpecificity && mockData && sliderSteps[sliderIndex]) {
+    const step    = sliderSteps[sliderIndex];
+    const dateKeys = step.dateKeys || [];
+    const TOD_ORDER = ['morning', 'noon', 'afternoon', 'evening'];
+    const TOD_LABELS = { morning: 'Morning', noon: 'Noon', afternoon: 'Afternoon', evening: 'Evening' };
+    const cellKey = cell.row + ',' + cell.col;
+
+    // Gather per-TOD peak sounds across all dates in this step
+    const todData = {};
+    TOD_ORDER.forEach(tod => { todData[tod] = {}; });
+
+    dateKeys.forEach(dk => {
+      const dateData = mockData[dk];
+      if (!dateData) return;
+      TOD_ORDER.forEach(tod => {
+        const slot = dateData[tod];
+        if (!slot || !slot[cellKey]) return;
+        slot[cellKey].forEach(s => {
+          const type = s.sound || s.type;
+          const db   = s.dB || 0;
+          if (!todData[tod][type] || db > todData[tod][type]) todData[tod][type] = db;
+        });
+      });
+    });
+
+    let html = `<b>${street}</b> — acoustic breakdown for <b>${dateStr}</b>:<br><br>`;
+    let hasAny = false;
+
+    TOD_ORDER.forEach(tod => {
+      const sounds = Object.entries(todData[tod]).sort((a,b) => b[1] - a[1]);
+      if (sounds.length === 0) return;
+      hasAny = true;
+      const topLabel = TOD_LABELS[tod];
+
+      // Header
+      html += `<span style="color:#5b8fff;font-weight:900;font-size:10px;letter-spacing:.08em;">${topLabel.toUpperCase()}</span><br>`;
+
+      // Paragraph prose
+      const main   = sounds[0];
+      const others = sounds.slice(1);
+      const mainName = main[0].replace(/_/g, ' ');
+      const mainDb   = main[1].toFixed(1);
+      const intensity = main[1] >= 35 ? 'high' : main[1] >= 32 ? 'moderate' : 'low';
+
+      let para = `During the <b>${topLabel.toLowerCase()}</b>, <b>${mainName}</b> was the dominant sound at this location, peaking at <b>${mainDb} dB</b> — a ${intensity}-intensity reading for this corridor. `;
+
+      if (others.length === 1) {
+        para += `<b>${others[0][0].replace(/_/g,' ')}</b> was also detected at ${others[0][1].toFixed(1)} dB, adding to the overall urban soundscape.`;
+      } else if (others.length > 1) {
+        const last = others[others.length - 1];
+        const mid  = others.slice(0, -1).map(([t]) => `<b>${t.replace(/_/g,' ')}</b>`).join(', ');
+        para += `Additional sound sources — ${mid} and <b>${last[0].replace(/_/g,' ')}</b> — were also present, contributing to a layered acoustic environment typical of Greenwich Village.`;
+      } else {
+        para += `No significant secondary sounds were recorded, making this one of the quieter periods at this location.`;
+      }
+
+      html += `<span style="color:#111;font-size:10.5px;line-height:1.6;">${para}</span><br><br>`;
+
+      // Bullet list
+      sounds.forEach(([type, db]) => {
+        const nc  = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[type];
+        const col = nc ? nc.color : '#aaa';
+        html += `<span style="color:${col};">●</span> <b>${type.replace(/_/g,' ')}</b> — ${db.toFixed(1)} dB<br>`;
+      });
+      html += '<br>';
+    });
+
+    if (!hasAny) html += 'No acoustic data recorded for this location during this period.';
+    return html;
+  }
+
+  // ── Time-specificity ON: single-period prose ─────────────────────
   let summary = `On <b>${dateStr}</b> during the <b>${timeStr.toLowerCase()}</b>, the acoustic environment at <b>${street}</b> was characterized by `;
-  
+
   if (!sources || sources.length === 0) {
-    summary += "minimal recorded noise activity. The area was relatively tranquil with no significant sound events detected by SONYC-UST sensors.";
+    summary += 'minimal recorded noise activity. The area was relatively tranquil with no significant sound events detected by SONYC-UST sensors.';
   } else {
-    // Sort sources by dB
     const sorted = [...sources].sort((a,b) => b.db - a.db);
     const mainSound = sorted[0];
     const others = sorted.slice(1);
-    
-    summary += `a prominent level of <b>${mainSound.type.replace(/_/g, ' ')}</b> activity, peaking at <b>${mainSound.db.toFixed(1)} dB</b>. `;
-    
-    if (others.length > 0) {
-      if (others.length > 1) {
-        const last = others.pop();
-        const otherNames = others.map(s => `<b>${s.type.replace(/_/g, ' ')}</b>`).join(', ') + ` and <b>${last.type.replace(/_/g, ' ')}</b>`;
-        summary += `Secondary sound sources including ${otherNames} were also present, contributing to a complex urban soundscape typical of this Greenwich Village corridor.`;
-      } else {
-        summary += `A secondary sound source of <b>${others[0].type.replace(/_/g, ' ')}</b> was also present, contributing to the urban soundscape.`;
-      }
+    summary += `a prominent level of <b>${mainSound.type.replace(/_/g,' ')}</b> activity, peaking at <b>${mainSound.db.toFixed(1)} dB</b>. `;
+    if (others.length > 1) {
+      const last = others[others.length - 1];
+      const mid  = others.slice(0, -1).map(s => `<b>${s.type.replace(/_/g,' ')}</b>`).join(', ');
+      summary += `Secondary sound sources including ${mid} and <b>${last.type.replace(/_/g,' ')}</b> were also present, contributing to a complex urban soundscape typical of this Greenwich Village corridor.`;
+    } else if (others.length === 1) {
+      summary += `A secondary sound source of <b>${others[0].type.replace(/_/g,' ')}</b> was also present, contributing to the urban soundscape.`;
     } else {
-      summary += "This was the primary sound source identified during this period, with very few other interfering noises.";
+      summary += 'This was the primary sound source identified during this period, with very few other interfering noises.';
     }
   }
-  
   return summary;
 }
 
@@ -3463,7 +3629,7 @@ function updateProjStats() {
     const dateStr = getActiveDateLabel();
     const todStr  = getActiveTOD();
     
-    if (dtEl) dtEl.textContent = dateStr + ' — ' + todStr;
+    if (dtEl) dtEl.textContent = timeSpecificity ? (dateStr + ' — ' + todStr) : dateStr;
 
     if (viewCursorCell) {
       const ll = cellLatLon(viewCursorCell.row, viewCursorCell.col);
@@ -3683,6 +3849,26 @@ function toggleViewMode() {
   lblG.classList.toggle('active', !viewMode);
   lblV.classList.toggle('active',  viewMode);
   
+  // Apply Defaults per mode
+  if (viewMode) {
+    // VIEW mode: DATE, Time Specificity ON
+    currentFilterMode = 'day';
+    timeSpecificity   = true;
+  } else {
+    // GAME mode: MONTH, Time Specificity OFF
+    currentFilterMode = 'month';
+    timeSpecificity   = false;
+  }
+  
+  // Sync UI controls with variables
+  document.getElementById('filterDay').classList.toggle('active', currentFilterMode === 'day');
+  document.getElementById('filterWeek').classList.toggle('active', currentFilterMode === 'week');
+  document.getElementById('filterMonth').classList.toggle('active', currentFilterMode === 'month');
+  document.getElementById('timeSpecificity').checked = timeSpecificity;
+  
+  const clock = document.getElementById('clockWidget');
+  if (clock) clock.classList.toggle('hidden', !timeSpecificity);
+
   // Toggle view-mode-active class instead of hiding panels entirely
   const p1 = document.getElementById('p1Panel');
   const p2 = document.getElementById('p2Panel');
@@ -3707,6 +3893,8 @@ function toggleViewMode() {
   // View mode: hide camera, show map. Game mode: restore camera visibility.
   document.getElementById('cameraLayer').classList.toggle('hidden', viewMode);
   document.getElementById('overlay').classList.toggle('hidden', viewMode);
+  
+  buildSliderSteps(); // rebuild steps based on new filter mode
   viewCursorCell = null;
   updateProjStats();
   drawProjection();
@@ -4194,7 +4382,10 @@ startCamera();
 window.addEventListener('DOMContentLoaded', function() {
   // Load noise CSV + mockData
   Promise.all([loadGridData(), loadMockData()]).then(function() {
-    applyMode(); // Initialize default mode
+    // Force set default mode (VIEW mode) and sync UI
+    viewMode = false;
+    toggleViewMode();
+    applyMode(); 
   });
 });
 </script>
