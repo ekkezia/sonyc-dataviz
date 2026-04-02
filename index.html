@@ -1343,16 +1343,16 @@
 <script>
 // ── GRID GEO BOUNDS (from data.json sensor locations) ────────────
 // Used to annotate grid with approximate lat/lon
-const GRID_MIN_LAT =  40.72898;
-const GRID_MAX_LAT =  40.73206;
-const GRID_MIN_LON = -73.99949;
-const GRID_MAX_LON = -73.99425;
+const GRID_MIN_LAT =  40.727742;
+const GRID_MAX_LAT =  40.733000;
+const GRID_MIN_LON = -73.998141;
+const GRID_MAX_LON = -73.994708;
 const GRID_LAT_STEP = (GRID_MAX_LAT - GRID_MIN_LAT) / ROWS; // per row
 const GRID_LON_STEP = (GRID_MAX_LON - GRID_MIN_LON) / COLS; // per col
 
 // Return the approximate lat/lon center of a grid cell
 function cellLatLon(row, col) {
-  const lat = GRID_MIN_LAT + (row + 0.5) * GRID_LAT_STEP;
+  const lat = GRID_MAX_LAT - (row + 0.5) * GRID_LAT_STEP;
   const lon = GRID_MIN_LON + (col + 0.5) * GRID_LON_STEP;
   return { lat: +lat.toFixed(5), lon: +lon.toFixed(5) };
 }
@@ -2557,14 +2557,16 @@ function playPawnSettleSound(row, col) {
   const seen = new Set();
   const unique = sources.filter(function(s) {
     const nc = (typeof NOISE_CONFIG !== 'undefined') && NOISE_CONFIG[s.type];
-    if (!nc || !nc.sound || seen.has(nc.sound)) return false;
-    seen.add(nc.sound);
+    const audioUrl = s.soundfile || (nc && nc.sound);
+    if (!audioUrl || seen.has(audioUrl)) return false;
+    seen.add(audioUrl);
     return true;
   });
   unique.forEach(function(s, i) {
     const nc = NOISE_CONFIG[s.type];
     setTimeout(function() {
-      const audio = new Audio(nc.sound);
+      const audioUrl = s.soundfile || nc.sound;
+      const audio = new Audio(audioUrl);
       audio.volume = Math.min(1, 0.6 + (s.db - 40) / 100); // louder sources play slightly louder
       audio.play().catch(function() {});
     }, i * 120);
@@ -2638,7 +2640,8 @@ function getMockCellData(row, col) {
             const db   = s.dB || 0;
             // Aggregate: take max dB per sound type for the entire period
             if (!mergedSources[type] || db > mergedSources[type].db) {
-              mergedSources[type] = { db: db, soundfile: s.soundfile };
+              const audioFile = s.audio_filename ? 'sounds/' + s.audio_filename : s.soundfile;
+              mergedSources[type] = { db: db, soundfile: audioFile };
             }
           });
         }
@@ -3180,7 +3183,7 @@ function drawProjection() {
   pc.textAlign = 'center';
   pc.textBaseline = 'middle';
   for (let row = 0; row < ROWS; row++) {
-    const lat = (GRID_MIN_LAT + (row + 0.5) * GRID_LAT_STEP).toFixed(4);
+    const lat = (GRID_MAX_LAT - (row + 0.5) * GRID_LAT_STEP).toFixed(4);
     const ly  = gridY + row * cellSize + cellSize / 2;
     pc.save();
     pc.translate(gridX - 7.5, ly);
