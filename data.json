@@ -3,58 +3,66 @@
     "noon": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "non_machinery_impact",
-          "dB": 33.99
+          "audio_filename": "07_027602.wav",
+          "dB": 33.99,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "engine",
-          "dB": 33.99
+          "audio_filename": "07_027602.wav",
+          "dB": 33.99,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     },
     "morning": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "non_machinery_impact",
-          "dB": 32.16
+          "audio_filename": "37_027023.wav",
+          "dB": 32.16,
+          "lat": 40.72915,
+          "lon": -73.995
         },
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "engine",
-          "dB": 32.16
+          "audio_filename": "37_027023.wav",
+          "dB": 32.16,
+          "lat": 40.72915,
+          "lon": -73.995
         },
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32.16
+          "audio_filename": "37_027023.wav",
+          "dB": 32.16,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ],
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 32.1
+          "audio_filename": "09_027851.wav",
+          "dB": 32.1,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 32.1
+          "audio_filename": "09_027851.wav",
+          "dB": 32.1,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "machinery_impact",
-          "dB": 32.1
+          "audio_filename": "09_027851.wav",
+          "dB": 32.1,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -63,34 +71,39 @@
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 31.67
+          "audio_filename": "38_026997.wav",
+          "dB": 31.67,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.67
+          "audio_filename": "38_026997.wav",
+          "dB": 31.67,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "machinery_impact",
-          "dB": 31.67
+          "audio_filename": "38_026997.wav",
+          "dB": 31.67,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 34.53
+          "audio_filename": "38_027516.wav",
+          "dB": 34.53,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 34.53
+          "audio_filename": "38_027516.wav",
+          "dB": 34.53,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -99,54 +112,61 @@
     "afternoon": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 31.75
+          "audio_filename": "27_027592.wav",
+          "dB": 31.75,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 31.75
+          "audio_filename": "27_027592.wav",
+          "dB": 31.75,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 31.75
+          "audio_filename": "27_027592.wav",
+          "dB": 31.75,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.22
+          "audio_filename": "29_027003.wav",
+          "dB": 34.22,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 34.22
+          "audio_filename": "29_027003.wav",
+          "dB": 34.22,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.72
+          "audio_filename": "29_027361.wav",
+          "dB": 34.72,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "evening": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32.51
+          "audio_filename": "37_027215.wav",
+          "dB": 32.51,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -155,16 +175,18 @@
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 32.87
+          "audio_filename": "41_027424.wav",
+          "dB": 32.87,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 32.87
+          "audio_filename": "41_027424.wav",
+          "dB": 32.87,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -173,22 +195,25 @@
     "morning": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "non_machinery_impact",
-          "dB": 30.73
+          "audio_filename": "37_027190.wav",
+          "dB": 30.73,
+          "lat": 40.72915,
+          "lon": -73.995
         },
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "alert_signal",
-          "dB": 30.73
+          "audio_filename": "37_027190.wav",
+          "dB": 30.73,
+          "lat": 40.72915,
+          "lon": -73.995
         },
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "engine",
-          "dB": 30.73
+          "audio_filename": "37_027190.wav",
+          "dB": 30.73,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -197,26 +222,29 @@
     "morning": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 29.83
+          "audio_filename": "02_027672.wav",
+          "dB": 29.83,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     },
     "afternoon": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.14
+          "audio_filename": "24_026968.wav",
+          "dB": 35.14,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.14
+          "audio_filename": "24_026968.wav",
+          "dB": 35.14,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -225,32 +253,36 @@
     "evening": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 33.59
+          "audio_filename": "38_027084.wav",
+          "dB": 33.59,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 33.59
+          "audio_filename": "38_027084.wav",
+          "dB": 33.59,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 33.59
+          "audio_filename": "38_027084.wav",
+          "dB": 33.59,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 35.05
+          "audio_filename": "41_027546.wav",
+          "dB": 35.05,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -259,66 +291,75 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 32.86
+          "audio_filename": "04_027085.wav",
+          "dB": 32.86,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "music",
-          "dB": 32.86
+          "audio_filename": "04_027085.wav",
+          "dB": 32.86,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.86
+          "audio_filename": "04_027085.wav",
+          "dB": 32.86,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.47
+          "audio_filename": "04_027373.wav",
+          "dB": 31.47,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.47
+          "audio_filename": "04_027373.wav",
+          "dB": 31.47,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 31.17
+          "audio_filename": "27_027230.wav",
+          "dB": 31.17,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "music",
-          "dB": 31.17
+          "audio_filename": "27_027230.wav",
+          "dB": 31.17,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 31.17
+          "audio_filename": "27_027230.wav",
+          "dB": 31.17,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 33.62
+          "audio_filename": "29_027766.wav",
+          "dB": 33.62,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -327,24 +368,27 @@
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 33.96
+          "audio_filename": "09_027386.wav",
+          "dB": 33.96,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.96
+          "audio_filename": "09_027386.wav",
+          "dB": 33.96,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "engine",
-          "dB": 32
+          "audio_filename": "17_027789.wav",
+          "dB": 32,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -353,10 +397,11 @@
     "morning": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "non_machinery_impact",
-          "dB": 33.88
+          "audio_filename": "22_027237.wav",
+          "dB": 33.88,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -365,32 +410,36 @@
     "morning": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "dog",
-          "dB": 35.83
+          "audio_filename": "24_026955.wav",
+          "dB": 35.83,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.83
+          "audio_filename": "24_026955.wav",
+          "dB": 35.83,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     },
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "alert_signal",
-          "dB": 33.51
+          "audio_filename": "24_027292.wav",
+          "dB": 33.51,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 33.51
+          "audio_filename": "24_027292.wav",
+          "dB": 33.51,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -399,56 +448,63 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 33.05
+          "audio_filename": "17_027025.wav",
+          "dB": 33.05,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 33.05
+          "audio_filename": "17_027025.wav",
+          "dB": 33.05,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ],
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 34.65
+          "audio_filename": "41_027813.wav",
+          "dB": 34.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 34.65
+          "audio_filename": "41_027813.wav",
+          "dB": 34.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 34.65
+          "audio_filename": "41_027813.wav",
+          "dB": 34.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 35.64
+          "audio_filename": "29_027446.wav",
+          "dB": 35.64,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "noon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 35.25
+          "audio_filename": "29_027841.wav",
+          "dB": 35.25,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -457,26 +513,29 @@
     "evening": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "non_machinery_impact",
-          "dB": 30.3
+          "audio_filename": "22_027706.wav",
+          "dB": 30.3,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "human_voice",
-          "dB": 30.3
+          "audio_filename": "22_027706.wav",
+          "dB": 30.3,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     },
     "morning": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 31.89
+          "audio_filename": "31_027882.wav",
+          "dB": 31.89,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -485,16 +544,18 @@
     "morning": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 29.85
+          "audio_filename": "22_027842.wav",
+          "dB": 29.85,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "machinery_impact",
-          "dB": 29.85
+          "audio_filename": "22_027842.wav",
+          "dB": 29.85,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -503,10 +564,11 @@
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 36.58
+          "audio_filename": "38_027626.wav",
+          "dB": 36.58,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -515,22 +577,25 @@
     "morning": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 35.82
+          "audio_filename": "24_026998.wav",
+          "dB": 35.82,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.82
+          "audio_filename": "24_026998.wav",
+          "dB": 35.82,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "machinery_impact",
-          "dB": 35.82
+          "audio_filename": "24_026998.wav",
+          "dB": 35.82,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -539,50 +604,57 @@
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.38
+          "audio_filename": "29_027012.wav",
+          "dB": 34.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "dog",
-          "dB": 34.38
+          "audio_filename": "29_027012.wav",
+          "dB": 34.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.99
+          "audio_filename": "29_027478.wav",
+          "dB": 34.99,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 34.99
+          "audio_filename": "29_027478.wav",
+          "dB": 34.99,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.99
+          "audio_filename": "29_027478.wav",
+          "dB": 34.99,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 32.27
+          "audio_filename": "29_027306.wav",
+          "dB": 32.27,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 32.27
+          "audio_filename": "29_027306.wav",
+          "dB": 32.27,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -591,26 +663,29 @@
     "morning": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 30.53
+          "audio_filename": "31_027041.wav",
+          "dB": 30.53,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     },
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "music",
-          "dB": 34.94
+          "audio_filename": "01_027635.wav",
+          "dB": 34.94,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 34.94
+          "audio_filename": "01_027635.wav",
+          "dB": 34.94,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -619,32 +694,36 @@
     "afternoon": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 28.78
+          "audio_filename": "38_027664.wav",
+          "dB": 28.78,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 28.78
+          "audio_filename": "38_027664.wav",
+          "dB": 28.78,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 30.89
+          "audio_filename": "38_027286.wav",
+          "dB": 30.89,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 31.43
+          "audio_filename": "09_027729.wav",
+          "dB": 31.43,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -653,38 +732,43 @@
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 31.22
+          "audio_filename": "09_027484.wav",
+          "dB": 31.22,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 31.22
+          "audio_filename": "09_027484.wav",
+          "dB": 31.22,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     },
     "afternoon": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "non_machinery_impact",
-          "dB": 34.33
+          "audio_filename": "22_027750.wav",
+          "dB": 34.33,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "alert_signal",
-          "dB": 34.33
+          "audio_filename": "22_027750.wav",
+          "dB": 34.33,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "human_voice",
-          "dB": 34.33
+          "audio_filename": "22_027750.wav",
+          "dB": 34.33,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -693,16 +777,18 @@
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 32.99
+          "audio_filename": "09_027035.wav",
+          "dB": 32.99,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 32.99
+          "audio_filename": "09_027035.wav",
+          "dB": 32.99,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -711,46 +797,53 @@
     "evening": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 33.58
+          "audio_filename": "41_027268.wav",
+          "dB": 33.58,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 33.58
+          "audio_filename": "41_027268.wav",
+          "dB": 33.58,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 33.58
+          "audio_filename": "41_027268.wav",
+          "dB": 33.58,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 31.99
+          "audio_filename": "41_027695.wav",
+          "dB": 31.99,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 31.99
+          "audio_filename": "41_027695.wav",
+          "dB": 31.99,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 31.99
+          "audio_filename": "41_027695.wav",
+          "dB": 31.99,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 31.99
+          "audio_filename": "41_027695.wav",
+          "dB": 31.99,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -759,52 +852,59 @@
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 34.77
+          "audio_filename": "18_027313.wav",
+          "dB": 34.77,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "alert_signal",
-          "dB": 34.77
+          "audio_filename": "18_027313.wav",
+          "dB": 34.77,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 34.77
+          "audio_filename": "18_027313.wav",
+          "dB": 34.77,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ],
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "engine",
-          "dB": 29.18
+          "audio_filename": "17_026901.wav",
+          "dB": 29.18,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 29.18
+          "audio_filename": "17_026901.wav",
+          "dB": 29.18,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     },
     "afternoon": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 36.74
+          "audio_filename": "18_027332.wav",
+          "dB": 36.74,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.74
+          "audio_filename": "18_027332.wav",
+          "dB": 36.74,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -813,46 +913,52 @@
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 29.5
+          "audio_filename": "09_027127.wav",
+          "dB": 29.5,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 29.5
+          "audio_filename": "09_027127.wav",
+          "dB": 29.5,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 29.5
+          "audio_filename": "09_027127.wav",
+          "dB": 29.5,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "dog",
-          "dB": 29.02
+          "audio_filename": "31_027312.wav",
+          "dB": 29.02,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     },
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 30.22
+          "audio_filename": "09_027541.wav",
+          "dB": 30.22,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 30.22
+          "audio_filename": "09_027541.wav",
+          "dB": 30.22,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -861,22 +967,25 @@
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.97
+          "audio_filename": "29_027501.wav",
+          "dB": 34.97,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 34.97
+          "audio_filename": "29_027501.wav",
+          "dB": 34.97,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.38
+          "audio_filename": "29_027527.wav",
+          "dB": 34.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -885,22 +994,25 @@
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 33.3
+          "audio_filename": "09_026980.wav",
+          "dB": 33.3,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 33.3
+          "audio_filename": "09_026980.wav",
+          "dB": 33.3,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.3
+          "audio_filename": "09_026980.wav",
+          "dB": 33.3,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -909,22 +1021,25 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 33.13
+          "audio_filename": "17_026969.wav",
+          "dB": 33.13,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "alert_signal",
-          "dB": 33.13
+          "audio_filename": "17_026969.wav",
+          "dB": 33.13,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 33.13
+          "audio_filename": "17_026969.wav",
+          "dB": 33.13,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -933,58 +1048,66 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.94
-        },
-        {
+          "audio_filename": "04_026954.wav",
+          "dB": 31.94,
           "lat": 40.72898,
-          "lon": -73.99629,
-          "sound": "human_voice",
-          "dB": 31.94
+          "lon": -73.99629
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
+          "sound": "human_voice",
+          "audio_filename": "04_026954.wav",
+          "dB": 31.94,
+          "lat": 40.72898,
+          "lon": -73.99629
+        },
+        {
           "sound": "engine",
-          "dB": 32.88
+          "audio_filename": "17_027788.wav",
+          "dB": 32.88,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 32.88
+          "audio_filename": "17_027788.wav",
+          "dB": 32.88,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ],
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 27.08
+          "audio_filename": "27_027848.wav",
+          "dB": 27.08,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 27.08
+          "audio_filename": "27_027848.wav",
+          "dB": 27.08,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "evening": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 30.17
+          "audio_filename": "27_027696.wav",
+          "dB": 30.17,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 30.17
+          "audio_filename": "27_027696.wav",
+          "dB": 30.17,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -993,22 +1116,25 @@
     "evening": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "alert_signal",
-          "dB": 32.35
+          "audio_filename": "07_026948.wav",
+          "dB": 32.35,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "music",
-          "dB": 32.35
+          "audio_filename": "07_026948.wav",
+          "dB": 32.35,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "alert_signal",
-          "dB": 34.63
+          "audio_filename": "07_027726.wav",
+          "dB": 34.63,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     }
@@ -1017,68 +1143,77 @@
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 28.42
+          "audio_filename": "09_027880.wav",
+          "dB": 28.42,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 28.42
+          "audio_filename": "09_027880.wav",
+          "dB": 28.42,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 28.42
+          "audio_filename": "09_027880.wav",
+          "dB": 28.42,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.96
+          "audio_filename": "18_027376.wav",
+          "dB": 36.96,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     },
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 36.48
+          "audio_filename": "24_027328.wav",
+          "dB": 36.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 36.48
+          "audio_filename": "24_027328.wav",
+          "dB": 36.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     },
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 30.26
+          "audio_filename": "41_027522.wav",
+          "dB": 30.26,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 30.26
+          "audio_filename": "41_027522.wav",
+          "dB": 30.26,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 30.26
+          "audio_filename": "41_027522.wav",
+          "dB": 30.26,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -1087,46 +1222,52 @@
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 30.61
+          "audio_filename": "29_026938.wav",
+          "dB": 30.61,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 32.78
+          "audio_filename": "29_027055.wav",
+          "dB": 32.78,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ],
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 28.06
+          "audio_filename": "41_027119.wav",
+          "dB": 28.06,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 28.06
+          "audio_filename": "41_027119.wav",
+          "dB": 28.06,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "afternoon": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 27.81
+          "audio_filename": "27_027106.wav",
+          "dB": 27.81,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 27.81
+          "audio_filename": "27_027106.wav",
+          "dB": 27.81,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -1135,32 +1276,36 @@
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 32.58
+          "audio_filename": "29_027247.wav",
+          "dB": 32.58,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 32.58
+          "audio_filename": "29_027247.wav",
+          "dB": 32.58,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 33.9
+          "audio_filename": "29_027647.wav",
+          "dB": 33.9,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 33.9
+          "audio_filename": "29_027647.wav",
+          "dB": 33.9,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -1169,10 +1314,11 @@
     "evening": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.63
+          "audio_filename": "38_027555.wav",
+          "dB": 31.63,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -1181,10 +1327,11 @@
     "morning": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "non_machinery_impact",
-          "dB": 31.06
+          "audio_filename": "37_027019.wav",
+          "dB": 31.06,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -1193,36 +1340,41 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 29.67
+          "audio_filename": "04_027205.wav",
+          "dB": 29.67,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 29.67
+          "audio_filename": "04_027205.wav",
+          "dB": 29.67,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 28.3
+          "audio_filename": "04_027730.wav",
+          "dB": 28.3,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 28.3
+          "audio_filename": "04_027730.wav",
+          "dB": 28.3,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 29.85
+          "audio_filename": "41_027494.wav",
+          "dB": 29.85,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -1231,46 +1383,52 @@
     "morning": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "alert_signal",
-          "dB": 35.81
+          "audio_filename": "18_026989.wav",
+          "dB": 35.81,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 35.81
+          "audio_filename": "18_026989.wav",
+          "dB": 35.81,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 35.81
+          "audio_filename": "18_026989.wav",
+          "dB": 35.81,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ],
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "engine",
-          "dB": 32.75
+          "audio_filename": "35_027692.wav",
+          "dB": 32.75,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     },
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 32.05
+          "audio_filename": "29_027116.wav",
+          "dB": 32.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 32.05
+          "audio_filename": "29_027116.wav",
+          "dB": 32.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -1279,16 +1437,18 @@
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 32.59
+          "audio_filename": "09_026986.wav",
+          "dB": 32.59,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 32.59
+          "audio_filename": "09_026986.wav",
+          "dB": 32.59,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -1297,44 +1457,50 @@
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 28.54
+          "audio_filename": "09_027132.wav",
+          "dB": 28.54,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 28.54
+          "audio_filename": "09_027132.wav",
+          "dB": 28.54,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 31.67
+          "audio_filename": "17_027263.wav",
+          "dB": 31.67,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "engine",
-          "dB": 31.67
+          "audio_filename": "17_027263.wav",
+          "dB": 31.67,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 32.96
+          "audio_filename": "17_027264.wav",
+          "dB": 32.96,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "alert_signal",
-          "dB": 32.96
+          "audio_filename": "17_027264.wav",
+          "dB": 32.96,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -1343,50 +1509,57 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 29.75
+          "audio_filename": "04_027853.wav",
+          "dB": 29.75,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 29.75
+          "audio_filename": "04_027853.wav",
+          "dB": 29.75,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 29.75
+          "audio_filename": "04_027853.wav",
+          "dB": 29.75,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 29.75
+          "audio_filename": "04_027853.wav",
+          "dB": 29.75,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 29.75
+          "audio_filename": "04_027853.wav",
+          "dB": 29.75,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 35.24
+          "audio_filename": "24_027008.wav",
+          "dB": 35.24,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.24
+          "audio_filename": "24_027008.wav",
+          "dB": 35.24,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -1395,84 +1568,96 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "non_machinery_impact",
-          "dB": 34.63
+          "audio_filename": "01_027868.wav",
+          "dB": 34.63,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "alert_signal",
-          "dB": 34.63
+          "audio_filename": "01_027868.wav",
+          "dB": 34.63,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "engine",
-          "dB": 34.63
+          "audio_filename": "01_027868.wav",
+          "dB": 34.63,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 34.63
+          "audio_filename": "01_027868.wav",
+          "dB": 34.63,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "alert_signal",
-          "dB": 32.86
+          "audio_filename": "01_027029.wav",
+          "dB": 32.86,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 32.86
+          "audio_filename": "01_027029.wav",
+          "dB": 32.86,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ],
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.5
+          "audio_filename": "24_027787.wav",
+          "dB": 35.5,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.5
+          "audio_filename": "24_027787.wav",
+          "dB": 35.5,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     },
     "afternoon": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.48
+          "audio_filename": "24_027413.wav",
+          "dB": 35.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.48
+          "audio_filename": "24_027413.wav",
+          "dB": 35.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "machinery_impact",
-          "dB": 35.48
+          "audio_filename": "24_027413.wav",
+          "dB": 35.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ],
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 34.05
+          "audio_filename": "02_027648.wav",
+          "dB": 34.05,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -1481,10 +1666,11 @@
     "morning": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 31.68
+          "audio_filename": "27_027582.wav",
+          "dB": 31.68,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -1493,58 +1679,66 @@
     "noon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 29.79
+          "audio_filename": "04_027239.wav",
+          "dB": 29.79,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 29.79
+          "audio_filename": "04_027239.wav",
+          "dB": 29.79,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 30.67
+          "audio_filename": "41_027645.wav",
+          "dB": 30.67,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 30.67
+          "audio_filename": "41_027645.wav",
+          "dB": 30.67,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 30.67
+          "audio_filename": "41_027645.wav",
+          "dB": 30.67,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "evening": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 32.71
+          "audio_filename": "04_027099.wav",
+          "dB": 32.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 32.71
+          "audio_filename": "04_027099.wav",
+          "dB": 32.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.71
+          "audio_filename": "04_027099.wav",
+          "dB": 32.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -1553,10 +1747,11 @@
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 23.88
+          "audio_filename": "41_027017.wav",
+          "dB": 23.88,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -1565,44 +1760,50 @@
     "afternoon": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 32.22
+          "audio_filename": "27_027466.wav",
+          "dB": 32.22,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "alert_signal",
-          "dB": 32.22
+          "audio_filename": "27_027466.wav",
+          "dB": 32.22,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 32.22
+          "audio_filename": "27_027466.wav",
+          "dB": 32.22,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 32.22
+          "audio_filename": "27_027466.wav",
+          "dB": 32.22,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 33.72
+          "audio_filename": "29_026907.wav",
+          "dB": 33.72,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 33.72
+          "audio_filename": "29_026907.wav",
+          "dB": 33.72,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -1611,26 +1812,29 @@
     "noon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 33.18
+          "audio_filename": "17_027216.wav",
+          "dB": 33.18,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 33.18
+          "audio_filename": "17_027216.wav",
+          "dB": 33.18,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     },
     "morning": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 30.91
+          "audio_filename": "31_027211.wav",
+          "dB": 30.91,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -1639,40 +1843,45 @@
     "afternoon": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "non_machinery_impact",
-          "dB": 30.95
+          "audio_filename": "07_027402.wav",
+          "dB": 30.95,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ],
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "alert_signal",
-          "dB": 24.97
+          "audio_filename": "27_027537.wav",
+          "dB": 24.97,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 24.97
+          "audio_filename": "27_027537.wav",
+          "dB": 24.97,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 24.97
+          "audio_filename": "27_027537.wav",
+          "dB": 24.97,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "evening": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "human_voice",
-          "dB": 32.11
+          "audio_filename": "07_027150.wav",
+          "dB": 32.11,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     }
@@ -1681,52 +1890,59 @@
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 27.69
+          "audio_filename": "09_026940.wav",
+          "dB": 27.69,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 27.69
+          "audio_filename": "09_026940.wav",
+          "dB": 27.69,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 27.69
+          "audio_filename": "09_026940.wav",
+          "dB": 27.69,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 27.69
+          "audio_filename": "09_026940.wav",
+          "dB": 27.69,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 36.14
+          "audio_filename": "24_027705.wav",
+          "dB": 36.14,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 36.14
+          "audio_filename": "24_027705.wav",
+          "dB": 36.14,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     },
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 26.06
+          "audio_filename": "09_027740.wav",
+          "dB": 26.06,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -1735,10 +1951,11 @@
     "evening": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 34.01
+          "audio_filename": "02_027241.wav",
+          "dB": 34.01,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -1747,10 +1964,11 @@
     "noon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "engine",
-          "dB": 33.71
+          "audio_filename": "17_027678.wav",
+          "dB": 33.71,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -1759,16 +1977,18 @@
     "afternoon": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "non_machinery_impact",
-          "dB": 32.99
+          "audio_filename": "01_026905.wav",
+          "dB": 32.99,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "dog",
-          "dB": 32.99
+          "audio_filename": "01_026905.wav",
+          "dB": 32.99,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -1777,10 +1997,11 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 30.91
+          "audio_filename": "04_027111.wav",
+          "dB": 30.91,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -1789,22 +2010,25 @@
     "morning": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "dog",
-          "dB": 37.1
+          "audio_filename": "24_027171.wav",
+          "dB": 37.1,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.96
+          "audio_filename": "24_026921.wav",
+          "dB": 35.96,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.96
+          "audio_filename": "24_026921.wav",
+          "dB": 35.96,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -1813,60 +2037,69 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "non_machinery_impact",
-          "dB": 29.15
+          "audio_filename": "01_026900.wav",
+          "dB": 29.15,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "music",
-          "dB": 29.15
+          "audio_filename": "01_026900.wav",
+          "dB": 29.15,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 29.15
+          "audio_filename": "01_026900.wav",
+          "dB": 29.15,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 30.78
+          "audio_filename": "01_027018.wav",
+          "dB": 30.78,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ],
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 34.55
+          "audio_filename": "31_027802.wav",
+          "dB": 34.55,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "dog",
-          "dB": 34.55
+          "audio_filename": "31_027802.wav",
+          "dB": 34.55,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 34.55
+          "audio_filename": "31_027802.wav",
+          "dB": 34.55,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "music",
-          "dB": 34.55
+          "audio_filename": "31_027802.wav",
+          "dB": 34.55,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 34.55
+          "audio_filename": "31_027802.wav",
+          "dB": 34.55,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -1875,36 +2108,41 @@
     "afternoon": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "non_machinery_impact",
-          "dB": 31.49
+          "audio_filename": "01_026976.wav",
+          "dB": 31.49,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ],
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 30.68
+          "audio_filename": "29_027778.wav",
+          "dB": 30.68,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 30.68
+          "audio_filename": "29_027778.wav",
+          "dB": 30.68,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 30.68
+          "audio_filename": "29_027778.wav",
+          "dB": 30.68,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 30.68
+          "audio_filename": "29_027778.wav",
+          "dB": 30.68,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -1913,16 +2151,18 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "non_machinery_impact",
-          "dB": 30.61
+          "audio_filename": "01_027742.wav",
+          "dB": 30.61,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "dog",
-          "dB": 30.61
+          "audio_filename": "01_027742.wav",
+          "dB": 30.61,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -1931,64 +2171,72 @@
     "morning": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "non_machinery_impact",
-          "dB": 31.17
+          "audio_filename": "02_027570.wav",
+          "dB": 31.17,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 31.17
+          "audio_filename": "02_027570.wav",
+          "dB": 31.17,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     },
     "noon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 30.72
+          "audio_filename": "09_027144.wav",
+          "dB": 30.72,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     },
     "afternoon": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 36.2
+          "audio_filename": "18_027152.wav",
+          "dB": 36.2,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.2
+          "audio_filename": "18_027152.wav",
+          "dB": 36.2,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     },
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "dog",
-          "dB": 35.03
+          "audio_filename": "18_027353.wav",
+          "dB": 35.03,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "alert_signal",
-          "dB": 35.03
+          "audio_filename": "18_027353.wav",
+          "dB": 35.03,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 35.03
+          "audio_filename": "18_027353.wav",
+          "dB": 35.03,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -1997,86 +2245,98 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 32.7
+          "audio_filename": "04_026889.wav",
+          "dB": 32.7,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 32.7
+          "audio_filename": "04_026889.wav",
+          "dB": 32.7,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 32.7
+          "audio_filename": "04_026889.wav",
+          "dB": 32.7,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.7
+          "audio_filename": "04_026889.wav",
+          "dB": 32.7,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 34.94
+          "audio_filename": "18_027131.wav",
+          "dB": 34.94,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 34.94
+          "audio_filename": "18_027131.wav",
+          "dB": 34.94,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 34.94
+          "audio_filename": "18_027131.wav",
+          "dB": 34.94,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ],
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "engine",
-          "dB": 32
+          "audio_filename": "37_027238.wav",
+          "dB": 32,
+          "lat": 40.72915,
+          "lon": -73.995
         },
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32
+          "audio_filename": "37_027238.wav",
+          "dB": 32,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     },
     "morning": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 36.51
+          "audio_filename": "18_027514.wav",
+          "dB": 36.51,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 36.51
+          "audio_filename": "18_027514.wav",
+          "dB": 36.51,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.51
+          "audio_filename": "18_027514.wav",
+          "dB": 36.51,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -2085,32 +2345,36 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 32.98
+          "audio_filename": "04_026951.wav",
+          "dB": 32.98,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.98
+          "audio_filename": "04_026951.wav",
+          "dB": 32.98,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "afternoon": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "non_machinery_impact",
-          "dB": 32.58
+          "audio_filename": "35_027114.wav",
+          "dB": 32.58,
+          "lat": 40.72981,
+          "lon": -73.99586
         },
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "human_voice",
-          "dB": 32.58
+          "audio_filename": "35_027114.wav",
+          "dB": 32.58,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -2119,76 +2383,87 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.32
+          "audio_filename": "04_026992.wav",
+          "dB": 31.32,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 31.32
+          "audio_filename": "04_026992.wav",
+          "dB": 31.32,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.32
+          "audio_filename": "04_026992.wav",
+          "dB": 31.32,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.32
+          "audio_filename": "04_026992.wav",
+          "dB": 31.32,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 30.66
+          "audio_filename": "29_027000.wav",
+          "dB": 30.66,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 30.66
+          "audio_filename": "29_027000.wav",
+          "dB": 30.66,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 30.66
+          "audio_filename": "29_027000.wav",
+          "dB": 30.66,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ],
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 31.71
+          "audio_filename": "04_027712.wav",
+          "dB": 31.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 31.71
+          "audio_filename": "04_027712.wav",
+          "dB": 31.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.71
+          "audio_filename": "04_027712.wav",
+          "dB": 31.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "machinery_impact",
-          "dB": 31.71
+          "audio_filename": "04_027712.wav",
+          "dB": 31.71,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -2197,32 +2472,36 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.73
+          "audio_filename": "04_027185.wav",
+          "dB": 31.73,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.73
+          "audio_filename": "04_027185.wav",
+          "dB": 31.73,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 32.93
+          "audio_filename": "04_026937.wav",
+          "dB": 32.93,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.93
+          "audio_filename": "04_026937.wav",
+          "dB": 32.93,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -2231,38 +2510,43 @@
     "noon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 32.19
+          "audio_filename": "04_027411.wav",
+          "dB": 32.19,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.19
+          "audio_filename": "04_027411.wav",
+          "dB": 32.19,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "morning": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 32.72
+          "audio_filename": "24_027174.wav",
+          "dB": 32.72,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 32.72
+          "audio_filename": "24_027174.wav",
+          "dB": 32.72,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 32.72
+          "audio_filename": "24_027174.wav",
+          "dB": 32.72,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -2271,16 +2555,18 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 30.57
+          "audio_filename": "04_027613.wav",
+          "dB": 30.57,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 30.57
+          "audio_filename": "04_027613.wav",
+          "dB": 30.57,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -2289,102 +2575,116 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.67
+          "audio_filename": "04_027875.wav",
+          "dB": 31.67,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 31.67
+          "audio_filename": "04_027875.wav",
+          "dB": 31.67,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.67
+          "audio_filename": "04_027875.wav",
+          "dB": 31.67,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.56
+          "audio_filename": "38_027650.wav",
+          "dB": 31.56,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 32.32
+          "audio_filename": "29_026885.wav",
+          "dB": 32.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 32.32
+          "audio_filename": "29_026885.wav",
+          "dB": 32.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 32.32
+          "audio_filename": "29_026885.wav",
+          "dB": 32.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ],
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 30.99
+          "audio_filename": "04_027502.wav",
+          "dB": 30.99,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 30.99
+          "audio_filename": "04_027502.wav",
+          "dB": 30.99,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 33.92
+          "audio_filename": "38_027002.wav",
+          "dB": 33.92,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 33.92
+          "audio_filename": "38_027002.wav",
+          "dB": 33.92,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "music",
-          "dB": 33.92
+          "audio_filename": "38_027002.wav",
+          "dB": 33.92,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 33.92
+          "audio_filename": "38_027002.wav",
+          "dB": 33.92,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 33.16
+          "audio_filename": "17_027735.wav",
+          "dB": 33.16,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -2393,26 +2693,29 @@
     "noon": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "non_machinery_impact",
-          "dB": 35.15
+          "audio_filename": "07_027320.wav",
+          "dB": 35.15,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     },
     "morning": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "engine",
-          "dB": 33.26
+          "audio_filename": "07_027523.wav",
+          "dB": 33.26,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "machinery_impact",
-          "dB": 33.26
+          "audio_filename": "07_027523.wav",
+          "dB": 33.26,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     }
@@ -2421,20 +2724,22 @@
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 28.91
+          "audio_filename": "09_026995.wav",
+          "dB": 28.91,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     },
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.5
+          "audio_filename": "09_027075.wav",
+          "dB": 33.5,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -2443,42 +2748,48 @@
     "morning": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 31.59
+          "audio_filename": "09_027149.wav",
+          "dB": 31.59,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 31.59
+          "audio_filename": "09_027149.wav",
+          "dB": 31.59,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 31.59
+          "audio_filename": "09_027149.wav",
+          "dB": 31.59,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "alert_signal",
-          "dB": 33.66
+          "audio_filename": "09_027605.wav",
+          "dB": 33.66,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.66
+          "audio_filename": "09_027605.wav",
+          "dB": 33.66,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 34.3
+          "audio_filename": "02_026883.wav",
+          "dB": 34.3,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -2487,16 +2798,18 @@
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "non_machinery_impact",
-          "dB": 33.14
+          "audio_filename": "09_027201.wav",
+          "dB": 33.14,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.14
+          "audio_filename": "09_027201.wav",
+          "dB": 33.14,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -2505,24 +2818,27 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 32.4
+          "audio_filename": "17_027556.wav",
+          "dB": 32.4,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ],
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "dog",
-          "dB": 34.43
+          "audio_filename": "01_027147.wav",
+          "dB": 34.43,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "powered_saw",
-          "dB": 34.43
+          "audio_filename": "01_027147.wav",
+          "dB": 34.43,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -2531,44 +2847,50 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 32.43
+          "audio_filename": "17_027656.wav",
+          "dB": 32.43,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 35.62
+          "audio_filename": "23_027098.wav",
+          "dB": 35.62,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 33.49
+          "audio_filename": "29_027335.wav",
+          "dB": 33.49,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 33.49
+          "audio_filename": "29_027335.wav",
+          "dB": 33.49,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 33.49
+          "audio_filename": "29_027335.wav",
+          "dB": 33.49,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.59
+          "audio_filename": "29_027269.wav",
+          "dB": 34.59,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -2577,42 +2899,47 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 28.08
+          "audio_filename": "17_027760.wav",
+          "dB": 28.08,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 28.08
+          "audio_filename": "17_027760.wav",
+          "dB": 28.08,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     },
     "morning": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "non_machinery_impact",
-          "dB": 31.89
+          "audio_filename": "17_027822.wav",
+          "dB": 31.89,
+          "lat": 40.72947,
+          "lon": -73.99589
         },
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 31.89
+          "audio_filename": "17_027822.wav",
+          "dB": 31.89,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     },
     "evening": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 32.03
+          "audio_filename": "17_027072.wav",
+          "dB": 32.03,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -2621,22 +2948,25 @@
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 35.66
+          "audio_filename": "18_027151.wav",
+          "dB": 35.66,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "alert_signal",
-          "dB": 35.66
+          "audio_filename": "18_027151.wav",
+          "dB": 35.66,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 35.66
+          "audio_filename": "18_027151.wav",
+          "dB": 35.66,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -2645,20 +2975,22 @@
     "morning": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 36.63
+          "audio_filename": "18_027543.wav",
+          "dB": 36.63,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     },
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 33.99
+          "audio_filename": "09_026999.wav",
+          "dB": 33.99,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -2667,16 +2999,18 @@
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 36.56
+          "audio_filename": "18_027838.wav",
+          "dB": 36.56,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.56
+          "audio_filename": "18_027838.wav",
+          "dB": 36.56,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -2685,22 +3019,25 @@
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "non_machinery_impact",
-          "dB": 34.55
+          "audio_filename": "18_027845.wav",
+          "dB": 34.55,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 34.55
+          "audio_filename": "18_027845.wav",
+          "dB": 34.55,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 34.55
+          "audio_filename": "18_027845.wav",
+          "dB": 34.55,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -2709,16 +3046,18 @@
     "noon": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "non_machinery_impact",
-          "dB": 33.12
+          "audio_filename": "22_027508.wav",
+          "dB": 33.12,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 33.12
+          "audio_filename": "22_027508.wav",
+          "dB": 33.12,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -2727,18 +3066,20 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 36.8
+          "audio_filename": "23_027288.wav",
+          "dB": 36.8,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "human_voice",
-          "dB": 33
+          "audio_filename": "35_027199.wav",
+          "dB": 33,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -2747,22 +3088,25 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 35.34
+          "audio_filename": "23_027309.wav",
+          "dB": 35.34,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 35.83
+          "audio_filename": "23_027752.wav",
+          "dB": 35.83,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 35.83
+          "audio_filename": "23_027752.wav",
+          "dB": 35.83,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -2771,10 +3115,11 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 35.63
+          "audio_filename": "23_027654.wav",
+          "dB": 35.63,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -2783,28 +3128,32 @@
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 36.01
+          "audio_filename": "24_027194.wav",
+          "dB": 36.01,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "alert_signal",
-          "dB": 36.01
+          "audio_filename": "24_027194.wav",
+          "dB": 36.01,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "music",
-          "dB": 36.01
+          "audio_filename": "24_027194.wav",
+          "dB": 36.01,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 36.01
+          "audio_filename": "24_027194.wav",
+          "dB": 36.01,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -2813,46 +3162,53 @@
     "afternoon": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 35.33
+          "audio_filename": "24_027437.wav",
+          "dB": 35.33,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.33
+          "audio_filename": "24_027437.wav",
+          "dB": 35.33,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "music",
-          "dB": 35.33
+          "audio_filename": "24_027437.wav",
+          "dB": 35.33,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.33
+          "audio_filename": "24_027437.wav",
+          "dB": 35.33,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "alert_signal",
-          "dB": 34.48
+          "audio_filename": "24_026887.wav",
+          "dB": 34.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 34.48
+          "audio_filename": "24_026887.wav",
+          "dB": 34.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 34.48
+          "audio_filename": "24_026887.wav",
+          "dB": 34.48,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -2861,22 +3217,25 @@
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "non_machinery_impact",
-          "dB": 33.89
+          "audio_filename": "24_027601.wav",
+          "dB": 33.89,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 33.89
+          "audio_filename": "24_027601.wav",
+          "dB": 33.89,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "music",
-          "dB": 33.89
+          "audio_filename": "24_027601.wav",
+          "dB": 33.89,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -2885,16 +3244,18 @@
     "morning": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 32.55
+          "audio_filename": "27_027113.wav",
+          "dB": 32.55,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "machinery_impact",
-          "dB": 32.55
+          "audio_filename": "27_027113.wav",
+          "dB": 32.55,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -2903,44 +3264,49 @@
     "morning": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "non_machinery_impact",
-          "dB": 31.7
+          "audio_filename": "27_027471.wav",
+          "dB": 31.7,
+          "lat": 40.73033,
+          "lon": -73.9956
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "engine",
-          "dB": 31.7
+          "audio_filename": "27_027471.wav",
+          "dB": 31.7,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     },
     "afternoon": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 34.18
+          "audio_filename": "09_027244.wav",
+          "dB": 34.18,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ],
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 33.29
+          "audio_filename": "41_027659.wav",
+          "dB": 33.29,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "evening": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 29.22
+          "audio_filename": "27_027483.wav",
+          "dB": 29.22,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -2949,64 +3315,72 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.7
+          "audio_filename": "29_026916.wav",
+          "dB": 34.7,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 34.7
+          "audio_filename": "29_026916.wav",
+          "dB": 34.7,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.7
+          "audio_filename": "29_026916.wav",
+          "dB": 34.7,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "noon": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "alert_signal",
-          "dB": 34.13
+          "audio_filename": "02_027223.wav",
+          "dB": 34.13,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 34.13
+          "audio_filename": "02_027223.wav",
+          "dB": 34.13,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 34.13
+          "audio_filename": "02_027223.wav",
+          "dB": 34.13,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     },
     "morning": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 35.11
+          "audio_filename": "18_027170.wav",
+          "dB": 35.11,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     },
     "evening": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.3
+          "audio_filename": "18_027178.wav",
+          "dB": 36.3,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -3015,44 +3389,50 @@
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 32.38
+          "audio_filename": "29_027158.wav",
+          "dB": 32.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 32.38
+          "audio_filename": "29_027158.wav",
+          "dB": 32.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 32.38
+          "audio_filename": "29_027158.wav",
+          "dB": 32.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 32.38
+          "audio_filename": "29_027158.wav",
+          "dB": 32.38,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.08
+          "audio_filename": "04_027754.wav",
+          "dB": 31.08,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.08
+          "audio_filename": "04_027754.wav",
+          "dB": 31.08,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -3061,22 +3441,25 @@
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 35.53
+          "audio_filename": "29_027380.wav",
+          "dB": 35.53,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 35.53
+          "audio_filename": "29_027380.wav",
+          "dB": 35.53,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 35.53
+          "audio_filename": "29_027380.wav",
+          "dB": 35.53,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -3085,50 +3468,57 @@
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.82
+          "audio_filename": "29_027400.wav",
+          "dB": 34.82,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 34.82
+          "audio_filename": "29_027400.wav",
+          "dB": 34.82,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.82
+          "audio_filename": "29_027400.wav",
+          "dB": 34.82,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 32.65
+          "audio_filename": "32_027781.wav",
+          "dB": 32.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 32.65
+          "audio_filename": "32_027781.wav",
+          "dB": 32.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 32.65
+          "audio_filename": "32_027781.wav",
+          "dB": 32.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 32.65
+          "audio_filename": "32_027781.wav",
+          "dB": 32.65,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -3137,64 +3527,73 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 33.95
+          "audio_filename": "29_027450.wav",
+          "dB": 33.95,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "dog",
-          "dB": 33.95
+          "audio_filename": "29_027450.wav",
+          "dB": 33.95,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 33.95
+          "audio_filename": "29_027450.wav",
+          "dB": 33.95,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 33.95
+          "audio_filename": "29_027450.wav",
+          "dB": 33.95,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "evening": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 31.57
+          "audio_filename": "41_026996.wav",
+          "dB": 31.57,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 31.57
+          "audio_filename": "41_026996.wav",
+          "dB": 31.57,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "music",
-          "dB": 31.57
+          "audio_filename": "41_026996.wav",
+          "dB": 31.57,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 31.57
+          "audio_filename": "41_026996.wav",
+          "dB": 31.57,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ],
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 35.42
+          "audio_filename": "23_026985.wav",
+          "dB": 35.42,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -3203,44 +3602,50 @@
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 31.31
+          "audio_filename": "29_027474.wav",
+          "dB": 31.31,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 31.31
+          "audio_filename": "29_027474.wav",
+          "dB": 31.31,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 31.31
+          "audio_filename": "29_027474.wav",
+          "dB": 31.31,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 31.31
+          "audio_filename": "29_027474.wav",
+          "dB": 31.31,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 34.65
+          "audio_filename": "38_027395.wav",
+          "dB": 34.65,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 34.65
+          "audio_filename": "38_027395.wav",
+          "dB": 34.65,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -3249,44 +3654,50 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 34.16
+          "audio_filename": "29_027660.wav",
+          "dB": 34.16,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 34.16
+          "audio_filename": "29_027660.wav",
+          "dB": 34.16,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 34.16
+          "audio_filename": "29_027660.wav",
+          "dB": 34.16,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.16
+          "audio_filename": "29_027660.wav",
+          "dB": 34.16,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "morning": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "dog",
-          "dB": 35.87
+          "audio_filename": "29_027423.wav",
+          "dB": 35.87,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 35.87
+          "audio_filename": "29_027423.wav",
+          "dB": 35.87,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -3295,28 +3706,32 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "non_machinery_impact",
-          "dB": 35.05
+          "audio_filename": "29_027704.wav",
+          "dB": 35.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 35.05
+          "audio_filename": "29_027704.wav",
+          "dB": 35.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 35.05
+          "audio_filename": "29_027704.wav",
+          "dB": 35.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 35.05
+          "audio_filename": "29_027704.wav",
+          "dB": 35.05,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -3325,10 +3740,11 @@
     "afternoon": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 35.64
+          "audio_filename": "31_027298.wav",
+          "dB": 35.64,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -3337,22 +3753,25 @@
     "afternoon": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 34.95
+          "audio_filename": "31_027348.wav",
+          "dB": 34.95,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 34.95
+          "audio_filename": "31_027348.wav",
+          "dB": 34.95,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "music",
-          "dB": 34.95
+          "audio_filename": "31_027348.wav",
+          "dB": 34.95,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -3361,28 +3780,32 @@
     "afternoon": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 35.6
+          "audio_filename": "31_027354.wav",
+          "dB": 35.6,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "dog",
-          "dB": 35.6
+          "audio_filename": "31_027354.wav",
+          "dB": 35.6,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "powered_saw",
-          "dB": 35.6
+          "audio_filename": "31_027354.wav",
+          "dB": 35.6,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 35.6
+          "audio_filename": "31_027354.wav",
+          "dB": 35.6,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -3391,36 +3814,41 @@
     "evening": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 34.51
+          "audio_filename": "31_027746.wav",
+          "dB": 34.51,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 34.51
+          "audio_filename": "31_027746.wav",
+          "dB": 34.51,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 34.51
+          "audio_filename": "31_027746.wav",
+          "dB": 34.51,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ],
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 30.77
+          "audio_filename": "29_027447.wav",
+          "dB": 30.77,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 30.77
+          "audio_filename": "29_027447.wav",
+          "dB": 30.77,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -3429,22 +3857,25 @@
     "morning": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "non_machinery_impact",
-          "dB": 35.61
+          "audio_filename": "31_027790.wav",
+          "dB": 35.61,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 35.61
+          "audio_filename": "31_027790.wav",
+          "dB": 35.61,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 35.61
+          "audio_filename": "31_027790.wav",
+          "dB": 35.61,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -3453,38 +3884,43 @@
     "noon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 32.51
+          "audio_filename": "32_027145.wav",
+          "dB": 32.51,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 32.51
+          "audio_filename": "32_027145.wav",
+          "dB": 32.51,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 32.51
+          "audio_filename": "32_027145.wav",
+          "dB": 32.51,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 31.55
+          "audio_filename": "32_026966.wav",
+          "dB": 31.55,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 31.55
+          "audio_filename": "32_026966.wav",
+          "dB": 31.55,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -3493,42 +3929,48 @@
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 33.53
+          "audio_filename": "32_027206.wav",
+          "dB": 33.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "alert_signal",
-          "dB": 33.53
+          "audio_filename": "32_027206.wav",
+          "dB": 33.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 33.53
+          "audio_filename": "32_027206.wav",
+          "dB": 33.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 33.53
+          "audio_filename": "32_027206.wav",
+          "dB": 33.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ],
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "music",
-          "dB": 34.52
+          "audio_filename": "24_027078.wav",
+          "dB": 34.52,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 34.52
+          "audio_filename": "24_027078.wav",
+          "dB": 34.52,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -3537,38 +3979,43 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 33.74
+          "audio_filename": "32_027608.wav",
+          "dB": 33.74,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 33.74
+          "audio_filename": "32_027608.wav",
+          "dB": 33.74,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 33.74
+          "audio_filename": "32_027608.wav",
+          "dB": 33.74,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "noon": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 31.89
+          "audio_filename": "02_026904.wav",
+          "dB": 31.89,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 31.89
+          "audio_filename": "02_026904.wav",
+          "dB": 31.89,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -3577,20 +4024,22 @@
     "afternoon": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "non_machinery_impact",
-          "dB": 32.79
+          "audio_filename": "35_026894.wav",
+          "dB": 32.79,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     },
     "evening": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "alert_signal",
-          "dB": 32.32
+          "audio_filename": "35_027384.wav",
+          "dB": 32.32,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -3599,16 +4048,18 @@
     "afternoon": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "non_machinery_impact",
-          "dB": 32.9
+          "audio_filename": "35_027409.wav",
+          "dB": 32.9,
+          "lat": 40.72981,
+          "lon": -73.99586
         },
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "engine",
-          "dB": 32.9
+          "audio_filename": "35_027409.wav",
+          "dB": 32.9,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -3617,32 +4068,36 @@
     "evening": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "non_machinery_impact",
-          "dB": 32.47
+          "audio_filename": "35_027463.wav",
+          "dB": 32.47,
+          "lat": 40.72981,
+          "lon": -73.99586
         },
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "human_voice",
-          "dB": 32.47
+          "audio_filename": "35_027463.wav",
+          "dB": 32.47,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     },
     "afternoon": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "alert_signal",
-          "dB": 33.35
+          "audio_filename": "07_027365.wav",
+          "dB": 33.35,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "engine",
-          "dB": 33.35
+          "audio_filename": "07_027365.wav",
+          "dB": 33.35,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     }
@@ -3651,16 +4106,18 @@
     "afternoon": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "non_machinery_impact",
-          "dB": 32.92
+          "audio_filename": "35_027738.wav",
+          "dB": 32.92,
+          "lat": 40.72981,
+          "lon": -73.99586
         },
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "human_voice",
-          "dB": 32.92
+          "audio_filename": "35_027738.wav",
+          "dB": 32.92,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -3669,32 +4126,36 @@
     "morning": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "non_machinery_impact",
-          "dB": 32.3
+          "audio_filename": "37_027134.wav",
+          "dB": 32.3,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     },
     "noon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 28.53
+          "audio_filename": "41_027681.wav",
+          "dB": 28.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 28.53
+          "audio_filename": "41_027681.wav",
+          "dB": 28.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 28.53
+          "audio_filename": "41_027681.wav",
+          "dB": 28.53,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -3703,22 +4164,25 @@
     "afternoon": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 31.71
+          "audio_filename": "38_027032.wav",
+          "dB": 31.71,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.71
+          "audio_filename": "38_027032.wav",
+          "dB": 31.71,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "music",
-          "dB": 31.71
+          "audio_filename": "38_027032.wav",
+          "dB": 31.71,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -3727,60 +4191,68 @@
     "afternoon": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 33.08
+          "audio_filename": "38_027397.wav",
+          "dB": 33.08,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 33.08
+          "audio_filename": "38_027397.wav",
+          "dB": 33.08,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 33.08
+          "audio_filename": "38_027397.wav",
+          "dB": 33.08,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "evening": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 32.57
+          "audio_filename": "38_027743.wav",
+          "dB": 32.57,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.57
+          "audio_filename": "38_027743.wav",
+          "dB": 32.57,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     },
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 34.18
+          "audio_filename": "38_027748.wav",
+          "dB": 34.18,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 34.18
+          "audio_filename": "38_027748.wav",
+          "dB": 34.18,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 34.18
+          "audio_filename": "38_027748.wav",
+          "dB": 34.18,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -3789,24 +4261,27 @@
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "non_machinery_impact",
-          "dB": 34.12
+          "audio_filename": "38_027619.wav",
+          "dB": 34.12,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 34.12
+          "audio_filename": "38_027619.wav",
+          "dB": 34.12,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ],
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32.29
+          "audio_filename": "37_027416.wav",
+          "dB": 32.29,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -3815,44 +4290,50 @@
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 32.04
+          "audio_filename": "41_027005.wav",
+          "dB": 32.04,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 32.04
+          "audio_filename": "41_027005.wav",
+          "dB": 32.04,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 32.04
+          "audio_filename": "41_027005.wav",
+          "dB": 32.04,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "evening": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 30.75
+          "audio_filename": "29_027784.wav",
+          "dB": 30.75,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 30.75
+          "audio_filename": "29_027784.wav",
+          "dB": 30.75,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 30.75
+          "audio_filename": "29_027784.wav",
+          "dB": 30.75,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -3861,44 +4342,50 @@
     "afternoon": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 28.16
+          "audio_filename": "41_027233.wav",
+          "dB": 28.16,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 28.16
+          "audio_filename": "41_027233.wav",
+          "dB": 28.16,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 28.16
+          "audio_filename": "41_027233.wav",
+          "dB": 28.16,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "non_machinery_impact",
-          "dB": 32.26
+          "audio_filename": "41_027370.wav",
+          "dB": 32.26,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 32.26
+          "audio_filename": "41_027370.wav",
+          "dB": 32.26,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     },
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "alert_signal",
-          "dB": 33.96
+          "audio_filename": "01_027352.wav",
+          "dB": 33.96,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -3907,32 +4394,36 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "dog",
-          "dB": 32.54
+          "audio_filename": "01_026984.wav",
+          "dB": 32.54,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "alert_signal",
-          "dB": 32.54
+          "audio_filename": "01_026984.wav",
+          "dB": 32.54,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "engine",
-          "dB": 32.54
+          "audio_filename": "01_026984.wav",
+          "dB": 32.54,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 31.82
+          "audio_filename": "17_027472.wav",
+          "dB": 31.82,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -3941,16 +4432,18 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "dog",
-          "dB": 33.88
+          "audio_filename": "01_027336.wav",
+          "dB": 33.88,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 33.88
+          "audio_filename": "01_027336.wav",
+          "dB": 33.88,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -3959,26 +4452,29 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 32.8
+          "audio_filename": "04_027473.wav",
+          "dB": 32.8,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 32.8
+          "audio_filename": "04_027473.wav",
+          "dB": 32.8,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "afternoon": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32.05
+          "audio_filename": "37_027661.wav",
+          "dB": 32.05,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -3987,16 +4483,18 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "dog",
-          "dB": 30.13
+          "audio_filename": "04_027817.wav",
+          "dB": 30.13,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 30.13
+          "audio_filename": "04_027817.wav",
+          "dB": 30.13,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4005,22 +4503,25 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "dog",
-          "dB": 31.17
+          "audio_filename": "29_026973.wav",
+          "dB": 31.17,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 31.17
+          "audio_filename": "29_026973.wav",
+          "dB": 31.17,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 31.17
+          "audio_filename": "29_026973.wav",
+          "dB": 31.17,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -4029,24 +4530,27 @@
     "evening": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "dog",
-          "dB": 28.05
+          "audio_filename": "31_027717.wav",
+          "dB": 28.05,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 28.05
+          "audio_filename": "31_027717.wav",
+          "dB": 28.05,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ],
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 30.15
+          "audio_filename": "22_027440.wav",
+          "dB": 30.15,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -4055,22 +4559,25 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 31.93
+          "audio_filename": "04_027731.wav",
+          "dB": 31.93,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 31.93
+          "audio_filename": "04_027731.wav",
+          "dB": 31.93,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 31.93
+          "audio_filename": "04_027731.wav",
+          "dB": 31.93,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4079,16 +4586,18 @@
     "evening": {
       "0,6": [
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "alert_signal",
-          "dB": 34.14
+          "audio_filename": "07_027714.wav",
+          "dB": 34.14,
+          "lat": 40.72951,
+          "lon": -73.99425
         },
         {
-          "lat": 40.72951,
-          "lon": -73.99425,
           "sound": "engine",
-          "dB": 34.14
+          "audio_filename": "07_027714.wav",
+          "dB": 34.14,
+          "lat": 40.72951,
+          "lon": -73.99425
         }
       ]
     }
@@ -4097,16 +4606,18 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "alert_signal",
-          "dB": 28.97
+          "audio_filename": "23_027256.wav",
+          "dB": 28.97,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 28.97
+          "audio_filename": "23_027256.wav",
+          "dB": 28.97,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4115,38 +4626,43 @@
     "evening": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "alert_signal",
-          "dB": 35.87
+          "audio_filename": "24_027385.wav",
+          "dB": 35.87,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.87
+          "audio_filename": "24_027385.wav",
+          "dB": 35.87,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.87
+          "audio_filename": "24_027385.wav",
+          "dB": 35.87,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     },
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 34.81
+          "audio_filename": "29_027110.wav",
+          "dB": 34.81,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.81
+          "audio_filename": "29_027110.wav",
+          "dB": 34.81,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -4155,46 +4671,52 @@
     "noon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "alert_signal",
-          "dB": 34.02
+          "audio_filename": "29_026981.wav",
+          "dB": 34.02,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.02
+          "audio_filename": "29_026981.wav",
+          "dB": 34.02,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     },
     "morning": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 33.74
+          "audio_filename": "22_027504.wav",
+          "dB": 33.74,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 29.85
+          "audio_filename": "22_027684.wav",
+          "dB": 29.85,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ],
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 34.23
+          "audio_filename": "29_027066.wav",
+          "dB": 34.23,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 34.23
+          "audio_filename": "29_027066.wav",
+          "dB": 34.23,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -4203,16 +4725,18 @@
     "morning": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "alert_signal",
-          "dB": 32.96
+          "audio_filename": "31_027567.wav",
+          "dB": 32.96,
+          "lat": 40.72978,
+          "lon": -73.99791
         },
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "engine",
-          "dB": 32.96
+          "audio_filename": "31_027567.wav",
+          "dB": 32.96,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ]
     }
@@ -4221,24 +4745,27 @@
     "noon": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "engine",
-          "dB": 32.72
+          "audio_filename": "01_027568.wav",
+          "dB": 32.72,
+          "lat": 40.73033,
+          "lon": -73.9987
         },
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 32.72
+          "audio_filename": "01_027568.wav",
+          "dB": 32.72,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ],
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 33.41
+          "audio_filename": "29_027859.wav",
+          "dB": 33.41,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -4247,16 +4774,18 @@
     "afternoon": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 28.64
+          "audio_filename": "02_027448.wav",
+          "dB": 28.64,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 28.64
+          "audio_filename": "02_027448.wav",
+          "dB": 28.64,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -4265,16 +4794,18 @@
     "evening": {
       "3,6": [
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "engine",
-          "dB": 31.24
+          "audio_filename": "02_027828.wav",
+          "dB": 31.24,
+          "lat": 40.73118,
+          "lon": -73.99443
         },
         {
-          "lat": 40.73118,
-          "lon": -73.99443,
           "sound": "human_voice",
-          "dB": 31.24
+          "audio_filename": "02_027828.wav",
+          "dB": 31.24,
+          "lat": 40.73118,
+          "lon": -73.99443
         }
       ]
     }
@@ -4283,22 +4814,25 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 28.81
+          "audio_filename": "04_026982.wav",
+          "dB": 28.81,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 28.81
+          "audio_filename": "04_026982.wav",
+          "dB": 28.81,
+          "lat": 40.72898,
+          "lon": -73.99629
         },
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "machinery_impact",
-          "dB": 28.81
+          "audio_filename": "04_026982.wav",
+          "dB": 28.81,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4307,30 +4841,34 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 30.1
+          "audio_filename": "04_027432.wav",
+          "dB": 30.1,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ],
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 33.32
+          "audio_filename": "29_027115.wav",
+          "dB": 33.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "music",
-          "dB": 33.32
+          "audio_filename": "29_027115.wav",
+          "dB": 33.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 33.32
+          "audio_filename": "29_027115.wav",
+          "dB": 33.32,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ]
     }
@@ -4339,16 +4877,18 @@
     "evening": {
       "2,6": [
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "engine",
-          "dB": 30.3
+          "audio_filename": "09_027529.wav",
+          "dB": 30.3,
+          "lat": 40.73059,
+          "lon": -73.99479
         },
         {
-          "lat": 40.73059,
-          "lon": -73.99479,
           "sound": "human_voice",
-          "dB": 30.3
+          "audio_filename": "09_027529.wav",
+          "dB": 30.3,
+          "lat": 40.73059,
+          "lon": -73.99479
         }
       ]
     }
@@ -4357,16 +4897,18 @@
     "afternoon": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 35.56
+          "audio_filename": "18_027285.wav",
+          "dB": 35.56,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 35.56
+          "audio_filename": "18_027285.wav",
+          "dB": 35.56,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -4375,16 +4917,18 @@
     "afternoon": {
       "1,6": [
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "engine",
-          "dB": 36.66
+          "audio_filename": "18_027337.wav",
+          "dB": 36.66,
+          "lat": 40.72996,
+          "lon": -73.99449
         },
         {
-          "lat": 40.72996,
-          "lon": -73.99449,
           "sound": "human_voice",
-          "dB": 36.66
+          "audio_filename": "18_027337.wav",
+          "dB": 36.66,
+          "lat": 40.72996,
+          "lon": -73.99449
         }
       ]
     }
@@ -4393,16 +4937,18 @@
     "morning": {
       "1,6": [
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "engine",
-          "dB": 28.63
+          "audio_filename": "22_027209.wav",
+          "dB": 28.63,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         },
         {
-          "lat": 40.72978,
-          "lon": -73.9947699999999,
           "sound": "machinery_impact",
-          "dB": 28.63
+          "audio_filename": "22_027209.wav",
+          "dB": 28.63,
+          "lat": 40.72978,
+          "lon": -73.9947699999999
         }
       ]
     }
@@ -4411,20 +4957,22 @@
     "morning": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 35.31
+          "audio_filename": "23_027410.wav",
+          "dB": 35.31,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 35.08
+          "audio_filename": "23_027161.wav",
+          "dB": 35.08,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4433,16 +4981,18 @@
     "afternoon": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 35.31
+          "audio_filename": "24_027182.wav",
+          "dB": 35.31,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 35.31
+          "audio_filename": "24_027182.wav",
+          "dB": 35.31,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -4451,16 +5001,18 @@
     "morning": {
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "engine",
-          "dB": 32.89
+          "audio_filename": "24_027417.wav",
+          "dB": 32.89,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "machinery_impact",
-          "dB": 32.89
+          "audio_filename": "24_027417.wav",
+          "dB": 32.89,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -4469,24 +5021,27 @@
     "afternoon": {
       "3,5": [
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "engine",
-          "dB": 30.51
+          "audio_filename": "29_027261.wav",
+          "dB": 30.51,
+          "lat": 40.73108,
+          "lon": -73.99556
         },
         {
-          "lat": 40.73108,
-          "lon": -73.99556,
           "sound": "human_voice",
-          "dB": 30.51
+          "audio_filename": "29_027261.wav",
+          "dB": 30.51,
+          "lat": 40.73108,
+          "lon": -73.99556
         }
       ],
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 32.61
+          "audio_filename": "04_027204.wav",
+          "dB": 32.61,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4495,16 +5050,18 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 33.21
+          "audio_filename": "32_027044.wav",
+          "dB": 33.21,
+          "lat": 40.73055,
+          "lon": -73.99949
         },
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 33.21
+          "audio_filename": "32_027044.wav",
+          "dB": 33.21,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -4513,16 +5070,18 @@
     "afternoon": {
       "1,4": [
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "engine",
-          "dB": 32.26
+          "audio_filename": "35_027521.wav",
+          "dB": 32.26,
+          "lat": 40.72981,
+          "lon": -73.99586
         },
         {
-          "lat": 40.72981,
-          "lon": -73.99586,
           "sound": "human_voice",
-          "dB": 32.26
+          "audio_filename": "35_027521.wav",
+          "dB": 32.26,
+          "lat": 40.72981,
+          "lon": -73.99586
         }
       ]
     }
@@ -4531,20 +5090,22 @@
     "afternoon": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "engine",
-          "dB": 32.37
+          "audio_filename": "37_027693.wav",
+          "dB": 32.37,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     },
     "evening": {
       "0,5": [
         {
-          "lat": 40.72915,
-          "lon": -73.995,
           "sound": "human_voice",
-          "dB": 32.25
+          "audio_filename": "37_027252.wav",
+          "dB": 32.25,
+          "lat": 40.72915,
+          "lon": -73.995
         }
       ]
     }
@@ -4553,16 +5114,18 @@
     "afternoon": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 33.84
+          "audio_filename": "38_027092.wav",
+          "dB": 33.84,
+          "lat": 40.73142,
+          "lon": -73.99629
         },
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 33.84
+          "audio_filename": "38_027092.wav",
+          "dB": 33.84,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -4571,10 +5134,11 @@
     "morning": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "engine",
-          "dB": 32.47
+          "audio_filename": "38_027467.wav",
+          "dB": 32.47,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -4583,24 +5147,27 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 32.32
+          "audio_filename": "41_027160.wav",
+          "dB": 32.32,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ],
       "4,2": [
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "music",
-          "dB": 36.73
+          "audio_filename": "24_027722.wav",
+          "dB": 36.73,
+          "lat": 40.73206,
+          "lon": -73.99763
         },
         {
-          "lat": 40.73206,
-          "lon": -73.99763,
           "sound": "human_voice",
-          "dB": 36.73
+          "audio_filename": "24_027722.wav",
+          "dB": 36.73,
+          "lat": 40.73206,
+          "lon": -73.99763
         }
       ]
     }
@@ -4609,10 +5176,11 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "engine",
-          "dB": 30.97
+          "audio_filename": "41_027544.wav",
+          "dB": 30.97,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -4621,20 +5189,22 @@
     "evening": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "music",
-          "dB": 33.83
+          "audio_filename": "01_027042.wav",
+          "dB": 33.83,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     },
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72898,
-          "lon": -73.99629,
           "sound": "machinery_impact",
-          "dB": 31.43
+          "audio_filename": "04_027657.wav",
+          "dB": 31.43,
+          "lat": 40.72898,
+          "lon": -73.99629
         }
       ]
     }
@@ -4643,10 +5213,11 @@
     "noon": {
       "2,1": [
         {
-          "lat": 40.73033,
-          "lon": -73.9987,
           "sound": "human_voice",
-          "dB": 32.53
+          "audio_filename": "01_027028.wav",
+          "dB": 32.53,
+          "lat": 40.73033,
+          "lon": -73.9987
         }
       ]
     }
@@ -4655,10 +5226,11 @@
     "afternoon": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 32.49
+          "audio_filename": "17_027597.wav",
+          "dB": 32.49,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -4667,10 +5239,11 @@
     "evening": {
       "0,4": [
         {
-          "lat": 40.72947,
-          "lon": -73.99589,
           "sound": "human_voice",
-          "dB": 32.65
+          "audio_filename": "17_027786.wav",
+          "dB": 32.65,
+          "lat": 40.72947,
+          "lon": -73.99589
         }
       ]
     }
@@ -4679,10 +5252,11 @@
     "afternoon": {
       "2,5": [
         {
-          "lat": 40.73033,
-          "lon": -73.9956,
           "sound": "human_voice",
-          "dB": 32.01
+          "audio_filename": "27_027646.wav",
+          "dB": 32.01,
+          "lat": 40.73033,
+          "lon": -73.9956
         }
       ]
     }
@@ -4691,18 +5265,20 @@
     "evening": {
       "1,2": [
         {
-          "lat": 40.72978,
-          "lon": -73.99791,
           "sound": "human_voice",
-          "dB": 36.24
+          "audio_filename": "31_027542.wav",
+          "dB": 36.24,
+          "lat": 40.72978,
+          "lon": -73.99791
         }
       ],
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 34.9
+          "audio_filename": "38_026953.wav",
+          "dB": 34.9,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -4711,10 +5287,11 @@
     "noon": {
       "3,4": [
         {
-          "lat": 40.73142,
-          "lon": -73.99629,
           "sound": "human_voice",
-          "dB": 34.31
+          "audio_filename": "38_027388.wav",
+          "dB": 34.31,
+          "lat": 40.73142,
+          "lon": -73.99629
         }
       ]
     }
@@ -4723,10 +5300,11 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 32.55
+          "audio_filename": "41_027090.wav",
+          "dB": 32.55,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
@@ -4735,10 +5313,11 @@
     "morning": {
       "2,0": [
         {
-          "lat": 40.73055,
-          "lon": -73.99949,
           "sound": "human_voice",
-          "dB": 29.51
+          "audio_filename": "41_027214.wav",
+          "dB": 29.51,
+          "lat": 40.73055,
+          "lon": -73.99949
         }
       ]
     }
