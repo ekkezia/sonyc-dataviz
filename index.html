@@ -1008,23 +1008,23 @@
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;">
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span>Grid: <b style="color:#fff;">7 columns × 5 rows</b></span>
+                  <span><b style="color:#fff;">Core Objective:</b> Two players race from the <b style="color:#fff;">Start Zone (Green)</b> to the <b style="color:#fff;">Finish Zone (Red)</b>. The winner is the player with the <b style="color:var(--mta-yellow);">lowest cumulative noise penalty</b> in dB.</span>
                 </li>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span>Race from <b style="color:#fff;">(0,0)</b> to <b style="color:#fff;">(6,4)</b></span>
+                  <span><b style="color:#fff;">Game Setup &amp; Environment:</b> The field is a <b style="color:#fff;">7 x 5</b> coordinate grid with <b style="color:#fff;">35 cells</b>. All players must begin on the <b style="color:#fff;">Green START cell</b>, and each player begins at <b style="color:#fff;">0.0 dB</b>.</span>
                 </li>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span>Board reveals sensor data as you visit cells</span>
+                  <span><b style="color:#fff;">Movement &amp; Mechanics:</b> Play is turn-based, and the board stays <b style="color:#fff;">blind</b> until a player lands on a cell. The revealed sensor dB is added to that player’s cumulative score, and players must complete at least <b style="color:#fff;">10 moves</b> before they can enter the Finish Zone.</span>
                 </li>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span>Score: <b style="color:#fff;">+1 point</b> per cell visited (≥1s dwell)</span>
+                  <span><b style="color:#fff;">Conclusion of Play:</b> The match stays active until <b style="color:#fff;">both</b> players reach the Red FINISH cell. Once both have finished, the player with the <b style="color:var(--mta-yellow);">lowest total dB accumulation</b> is declared the winner.</span>
                 </li>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span>Winner has the <b style="color:var(--mta-yellow);">LOWER score</b> at finish</span>
+                  <span><b style="color:#fff;">On the User Interface:</b> <b style="color:#fff;">Noise Penalty (dB)</b> tracks cumulative noise, <b style="color:#fff;">Current Sensor</b> shows the noise type for the active cell, <b style="color:#fff;">Past Sound Moves</b> logs visited cells, and the <b style="color:#fff;">Status Bar</b> shows active noise interference types impacting the map.</span>
                 </li>
               </ul>
             </div>
@@ -1058,7 +1058,7 @@
                   </li>
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                    <span><strong style="color:#fff;">GAME MODE:</strong> An interactive experience where users navigate the grid using pawns. It tracks accumulated <strong>noise exposure (dB)</strong>, shows current sounds at your position, and maintains a <strong>History of Moves</strong> to look back at your journey.</span>
+                    <span><strong style="color:#fff;">GAME MODE:</strong> An interactive experience where users navigate the grid using pawns. It tracks accumulated <strong>noise penalty (dB)</strong>, reveals the <strong>current sensor</strong> at your position, keeps a <strong>Past Sound Moves</strong> log, and uses the <strong>Status Bar</strong> to surface active noise interference on the map.</span>
                   </li>
                 </ul>
               </div>
@@ -1188,7 +1188,7 @@
           </div>
           <div class="mta-side-sign report-header">
             <div class="sign-left">
-              <div class="sign-destination">CURRENT</div>
+              <div class="sign-destination">CURRENT SENSOR</div>
               <div id="p1CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
             </div>
             <div class="sign-right">
@@ -1256,7 +1256,7 @@
           </div>
           <div class="mta-side-sign report-header">
             <div class="sign-left">
-              <div class="sign-destination">CURRENT</div>
+              <div class="sign-destination">CURRENT SENSOR</div>
               <div id="p2CurrentCoords" style="font-size:8px; color:#fccc0a; font-weight:800; margin-top:1px;">waiting...</div>
             </div>
             <div class="sign-right">
