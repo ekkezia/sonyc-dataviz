@@ -66,16 +66,14 @@
     /* Camera layer — video only, faded */
     #cameraLayer {
       position: absolute; inset: 0; z-index: 2;
-      pointer-events: none; transform: scaleX(-1);
+      pointer-events: none;
     }
     #cameraLayer.hidden { opacity: 0; }
     #video { opacity: 0.4; }
-    /* Overlay canvas: lives OUTSIDE cameraLayer so it gets its own z-index above bottom panels.
-       Flip applied here directly so the draw logic stays the same. */
+    /* Overlay canvas: lives OUTSIDE cameraLayer so it gets its own z-index above bottom panels. */
     #overlay {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: auto; z-index: 110;
-      transform: scaleX(-1);
       grid-area: 1 / 1 / 4 / 4;
     }
     #overlay.hidden { opacity: 0; pointer-events: none; }
@@ -1150,6 +1148,14 @@
 
             <div class="panel-sep"></div>
             <div class="panel-label">TOOLS</div>
+            <div style="display:flex; flex-direction:column; gap:6px; margin:8px 0 10px;">
+              <div style="font-size:9px; color:#888; letter-spacing:0.08em;">TRACKING SENSITIVITY</div>
+              <div style="display:flex; gap:4px;">
+                <button class="filter-btn" id="trackingStrict" onclick="setTrackingSensitivity('strict')">STRICT</button>
+                <button class="filter-btn active" id="trackingBalanced" onclick="setTrackingSensitivity('balanced')">BALANCED</button>
+                <button class="filter-btn" id="trackingLoose" onclick="setTrackingSensitivity('loose')">LOOSE</button>
+              </div>
+            </div>
             <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
             <button class="btn" id="tlColorBtn" onclick="openTimelinePicker()">TIMELINE: PURPLE</button>
 
@@ -1650,7 +1656,12 @@ const currentCell = {};
 const smoothPos = {};
 const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
 const missedDetectionFrames = {};
-const MAX_MISSED_DETECTION_FRAMES = 8;
+let trackingSensitivity = 'balanced';
+const TRACKING_SENSITIVITY = {
+  strict:   { hueMul: 0.72, sBoost: 16, vBoost: 10, minCount: 20, circMin: 0.22, aspectMax: 3.0, dilate: 3, erode: 3, missedFrames: 4 },
+  balanced: { hueMul: 0.88, sBoost: 8,  vBoost: 4,  minCount: 16, circMin: 0.17, aspectMax: 3.6, dilate: 4, erode: 2, missedFrames: 6 },
+  loose:    { hueMul: 1.00, sBoost: 0,  vBoost: 0,  minCount: 14, circMin: 0.14, aspectMax: 4.2, dilate: 4, erode: 2, missedFrames: 8 }
+};
 
 // pawns[1] = { color, position: {col,row}|null, score }
 const pawns = {
@@ -1674,10 +1685,7 @@ let timelineSliderPct   = null;   // 0–1, null when not detected
 
 function canvasPxToCell(px, py) {
   if (!grid) return null;
-  // px is raw camera space: high x = physical left = visual left (CSS scaleX(-1) corrects it).
-  // Convert to visual x so it aligns with grid coords (visual space, 0=left).
-  const vx  = overlay.width - px;
-  const col = Math.floor((vx - grid.x) / (grid.w / COLS));
+  const col = Math.floor((px - grid.x) / (grid.w / COLS));
   const row = Math.floor((py - grid.y) / (grid.h / ROWS));
   if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return null;
   return { col, row };
@@ -1866,6 +1874,14 @@ function syncSliders() {
     document.getElementById('v'+k).textContent = document.getElementById('s'+k).value;
   });
 }
+function setTrackingSensitivity(mode) {
+  if (!TRACKING_SENSITIVITY[mode]) return;
+  trackingSensitivity = mode;
+  document.getElementById('trackingStrict').classList.toggle('active', mode === 'strict');
+  document.getElementById('trackingBalanced').classList.toggle('active', mode === 'balanced');
+  document.getElementById('trackingLoose').classList.toggle('active', mode === 'loose');
+  statusTag.textContent = 'TRACK ' + mode.toUpperCase();
+}
 function toggleTuner() { document.getElementById('tuner').classList.toggle('open'); }
 loadSliders();
 // updatePanelColors() is defined later in the script; call it after full init
@@ -1968,8 +1984,6 @@ function canvasPoint(e) {
   const sy = overlay.height / rect.height;
   const cx = e.touches ? e.touches[0].clientX : e.clientX;
   const cy = e.touches ? e.touches[0].clientY : e.clientY;
-  // Return VISUAL coordinates (0=visual-left). CSS scaleX(-1) is on #overlay so
-  // the visual left IS the left edge of the bounding rect, same as a normal element.
   return { x:(cx - rect.left)*sx, y:(cy-rect.top)*sy };
 }
 
@@ -2116,7 +2130,8 @@ function loop() {
       if (cameraMode) updatePawnState(id, smoothPos[id].cx, smoothPos[id].cy, smoothPos[id].r);
     } else {
       missedDetectionFrames[id] = (missedDetectionFrames[id] || 0) + 1;
-      if (missedDetectionFrames[id] > MAX_MISSED_DETECTION_FRAMES) {
+      const sens = TRACKING_SENSITIVITY[trackingSensitivity] || TRACKING_SENSITIVITY.balanced;
+      if (missedDetectionFrames[id] > sens.missedFrames) {
         smoothPos[id] = null;
         if (cameraMode) {
           if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
@@ -2138,10 +2153,7 @@ function loop() {
     if (tlBlobs.length > 0) {
       const best = tlBlobs.reduce(function(a,b){ return a.area>b.area?a:b; });
       const cx_raw = best.cx / SCALE;
-      // cx_raw is raw camera space (high x = visual left). Convert to visual x first,
-      // then map onto the bar (timeBar.x is visual-left in visual space).
-      const visual_cx = overlay.width - cx_raw;
-      const rawPct = Math.max(0, Math.min(1, (visual_cx - timeBar.x) / timeBar.w));
+      const rawPct = Math.max(0, Math.min(1, (cx_raw - timeBar.x) / timeBar.w));
       timelineSliderPct = rawPct;
       const sliderVal = Math.round(rawPct * 1000);
       const slider = document.getElementById('projSlider');
@@ -2205,24 +2217,29 @@ function pixelMatches(r,g,b,id) {
   const pp  = pawnParams[id];
   const def = allPawnDefs.find(function(p){ return p.id===id; });
   if (!pp||!def) return false;
+  const sens = TRACKING_SENSITIVITY[trackingSensitivity] || TRACKING_SENSITIVITY.balanced;
   const hsv = rgbToHsv(r,g,b);
   const h=hsv[0], s=hsv[1], v=hsv[2];
-  if (v<pp.vMin||v>pp.vMax) return false;
-  if (def.isWhite) return s < pp.sMin;
-  return hueDiff(h,def.hue)<=pp.hRange && s>=pp.sMin;
+  const effHueRange = Math.max(6, Math.round(pp.hRange * sens.hueMul));
+  const effSMin = Math.min(255, pp.sMin + sens.sBoost);
+  const effVMin = Math.min(255, pp.vMin + sens.vBoost);
+  if (v<effVMin||v>pp.vMax) return false;
+  if (def.isWhite) return s < effSMin;
+  return hueDiff(h,def.hue)<=effHueRange && s>=effSMin;
 }
 
 // ── BLOB DETECTION ──────────────────────────────────────────────
 function detectBlobs(imgData, id) {
   const data=imgData.data, w=imgData.width, h=imgData.height;
   const pp = pawnParams[id]; if (!pp) return [];
+  const sens = TRACKING_SENSITIVITY[trackingSensitivity] || TRACKING_SENSITIVITY.balanced;
   const mask = new Uint8Array(w*h);
   for (var i=0; i<w*h; i++)
     mask[i] = pixelMatches(data[i*4],data[i*4+1],data[i*4+2],id) ? 1 : 0;
   // Extra closing helps smaller distant hits merge into one usable marker.
   var closed = mask;
-  for (var p=0; p<4; p++) closed = morphDilate(closed,w,h);
-  for (var p=0; p<2; p++) closed = morphErode(closed,w,h);
+  for (var p=0; p<sens.dilate; p++) closed = morphDilate(closed,w,h);
+  for (var p=0; p<sens.erode; p++) closed = morphErode(closed,w,h);
   const visited = new Uint8Array(w*h);
   const blobs = [];
   for (var y=0; y<h; y++) for (var x=0; x<w; x++) {
@@ -2247,7 +2264,7 @@ function detectBlobs(imgData, id) {
     const bw=mxX-mnX+1, bh=mxY-mnY+1, r=(bw+bh)/4;
     const circ=count/(Math.PI*r*r);
     const asp=Math.max(bw,bh)/Math.max(1,Math.min(bw,bh));
-    if (r>=pp.rMin&&r<=pp.rMax&&count>=14&&circ>0.14&&asp<4.2)
+    if (r>=pp.rMin&&r<=pp.rMax&&count>=sens.minCount&&circ>sens.circMin&&asp<sens.aspectMax)
       blobs.push({ cx:sumX/count, cy:sumY/count, r, area:count });
   }
   return blobs;
@@ -2328,10 +2345,6 @@ function draw() {
 
 function drawGridOverlay(showActive) {
   if (!grid) return;
-  // Flip horizontally so the overlay matches the CSS-corrected camera view
-  ctx.save();
-  ctx.translate(overlay.width, 0);
-  ctx.scale(-1, 1);
   const gx=grid.x, gy=grid.y, gw=grid.w, gh=grid.h;
   const cellW=gw/COLS, cellH=gh/ROWS;
   const fontSize=Math.max(7, Math.min(10, cellW/4));
@@ -2372,12 +2385,8 @@ function drawGridOverlay(showActive) {
   ctx.textAlign='left';
   ctx.strokeStyle='rgba(0,0,0,0.85)'; ctx.lineWidth=2;
   ctx.strokeRect(gx,gy,gw,gh);
-  ctx.restore();
 
-  // Corner handles (drawn after restore so they're also flipped with the layer)
-  ctx.save();
-  ctx.translate(overlay.width, 0);
-  ctx.scale(-1, 1);
+  // Corner handles
   [[gx, gy], [gx+gw, gy+gh]].forEach(function(h) {
     ctx.beginPath(); ctx.arc(h[0], h[1], HANDLE_R, 0, Math.PI*2);
     ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.fill();
@@ -2388,7 +2397,6 @@ function drawGridOverlay(showActive) {
     ctx.beginPath(); ctx.moveTo(h[0],h[1]-6); ctx.lineTo(h[0],h[1]+6); ctx.stroke();
   });
   ctx.globalAlpha = 1;
-  ctx.restore();
 }
 
 function drawTimeBar() {
@@ -2396,10 +2404,6 @@ function drawTimeBar() {
   const tx = timeBar.x, ty = timeBar.y, tw = timeBar.w, th = timeBar.h;
   const tlPd = allPawnDefs.find(function(p){ return p.id === timelineTrackerId; });
   const tlColor = tlPd ? tlPd.color : '#ff8800';
-
-  ctx.save();
-  ctx.translate(overlay.width, 0);
-  ctx.scale(-1, 1);
 
   // Bar background
   ctx.globalAlpha = 0.65;
@@ -2444,16 +2448,11 @@ function drawTimeBar() {
     // Pct label
     ctx.font = 'bold 9px Roboto Mono,monospace';
     ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
-    ctx.fillText(Math.round(timelineSliderPct * 100) + '%', cx_draw, ty - 5);
-    ctx.textAlign = 'left';
+      ctx.fillText(Math.round(timelineSliderPct * 100) + '%', cx_draw, ty - 5);
+      ctx.textAlign = 'left';
   }
 
-  ctx.restore();
-
   // Handles (orange to distinguish from grid's blue handles)
-  ctx.save();
-  ctx.translate(overlay.width, 0);
-  ctx.scale(-1, 1);
   [[tx, ty], [tx + tw, ty + th]].forEach(function(h) {
     ctx.beginPath(); ctx.arc(h[0], h[1], HANDLE_R, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.fill();
@@ -2462,7 +2461,6 @@ function drawTimeBar() {
     ctx.beginPath(); ctx.moveTo(h[0]-6,h[1]); ctx.lineTo(h[0]+6,h[1]); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(h[0],h[1]-6); ctx.lineTo(h[0],h[1]+6); ctx.stroke();
   });
-  ctx.restore();
 }
 
 function drawPawn(pd, state) {
@@ -4656,8 +4654,8 @@ document.getElementById('projCanvas').addEventListener('click', function(e) {
   const real = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   const lerp  = { x: real.x, y: real.y };
   const ccLerp = { x: real.x, y: real.y };
-  const SPEED    = 0.08;  // trailing blob lag
-  const CC_SPEED = 0.18;  // custom cursor — snappier but still smooth
+  const SPEED    = 0.42;  // trailing blob lag — minimal smoothing
+  const CC_SPEED = 0.72;  // custom cursor — nearly direct
 
   const HOVER_SELECTOR = 'a, button, [onclick], input, select, textarea, label, '
     + '.mode-switch, .legend-item, .btn, .chip, #addPawnBtn, .pick-swatch, '
