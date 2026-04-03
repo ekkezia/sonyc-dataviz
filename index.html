@@ -916,6 +916,112 @@
       border-color: #60b0ff; box-shadow: 0 0 10px rgba(96,176,255,0.3);
     }
     #clockWidget.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
+
+    /* ── Onboarding overlay ────────────────────────────────────── */
+    body.onboarding-active #customCursor { opacity: 0 !important; }
+    #onboardingOverlay {
+      position: fixed; inset: 0; z-index: 6000;
+      display: none;
+    }
+    #onboardingOverlay.active { display: block; }
+    #onboardingBackdrop {
+      position: absolute; inset: 0;
+      background: rgba(3, 6, 16, 0.18);
+      pointer-events: auto;
+    }
+    #onboardingSpotlight {
+      position: fixed; top: 0; left: 0;
+      width: 0; height: 0;
+      border-radius: 18px;
+      box-shadow:
+        0 0 0 9999px rgba(3, 6, 16, 0.76),
+        0 0 0 3px rgba(252, 204, 10, 0.95),
+        0 0 28px rgba(252, 204, 10, 0.42);
+      pointer-events: none;
+      transition:
+        top 0.24s ease,
+        left 0.24s ease,
+        width 0.24s ease,
+        height 0.24s ease,
+        border-radius 0.24s ease;
+    }
+    #onboardingCard {
+      position: fixed;
+      width: min(360px, calc(100vw - 32px));
+      background: rgba(6, 10, 20, 0.96);
+      color: #fff;
+      border: 1px solid rgba(252, 204, 10, 0.34);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.5);
+      pointer-events: auto;
+    }
+    #onboardingStepTag {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mta-yellow);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    #onboardingTitle {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    #onboardingBody {
+      font-size: 12px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.84);
+    }
+    #onboardingControls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    #onboardingNav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .onboarding-btn {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+    }
+    .onboarding-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .onboarding-btn.primary {
+      background: var(--mta-yellow);
+      color: #111;
+      border-color: var(--mta-yellow);
+    }
+    .onboarding-btn.primary:hover {
+      background: #ffe169;
+      border-color: #ffe169;
+    }
+    .onboarding-btn[disabled] {
+      opacity: 0.4;
+      cursor: default;
+    }
+    @media (max-width: 720px) {
+      #onboardingCard {
+        width: calc(100vw - 24px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1034,6 +1140,15 @@
             </div>
 
             <div class="panel-sep"></div>
+            <div class="panel-label">CAMERA SOURCE</div>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
+              <select id="cameraSelect" onchange="onCameraSelectChange()" style="height:28px; background:rgba(255,255,255,0.05); color:#fff; border:1px solid rgba(255,255,255,0.2); border-radius:3px; padding:0 8px; font-size:10px; font-weight:700; letter-spacing:0.04em;">
+                <option value="">DEFAULT CAMERA</option>
+              </select>
+              <button class="filter-btn" onclick="refreshCameraOptions()">REFRESH CAMERAS</button>
+            </div>
+
+            <div class="panel-sep"></div>
             <div class="panel-label">TOOLS</div>
             <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
             <button class="btn" id="tlColorBtn" onclick="openTimelinePicker()">TIMELINE: PURPLE</button>
@@ -1063,7 +1178,7 @@
                 </div>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                  <span><b style="color:#fff;">On the User Interface:</b> <b style="color:#fff;">Noise Penalty (dB)</b> tracks cumulative noise, <b style="color:#fff;">Current Sensor</b> shows the noise type for the active cell, <b style="color:#fff;">Past Sound Moves</b> logs visited cells, and the <b style="color:#fff;">Status Bar</b> shows active noise interference types impacting the map.</span>
+                  <span><b style="color:#fff;">On the You Interface:</b> <b style="color:#fff;">Noise Penalty (dB)</b> tracks cumulative noise, <b style="color:#fff;">Current Sensor</b> shows the noise type for the active cell, <b style="color:#fff;">Past Sound Moves</b> logs visited cells, and the <b style="color:#fff;">Status Bar</b> shows active noise interference types impacting the map.</span>
                 </li>
               </ul>
             </div>
@@ -1146,7 +1261,7 @@
                 <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
                   <img src="images/view.png" alt="View" style="width:120px; display:block;">
                 </div>
-                This project features two distinct modes tailored for different user experiences:
+                This project features two distinct modes tailored for different You experiences:
               
                
                 <ul style="list-style:none; padding:0; margin:10px 0 0 0; display:flex; flex-direction:column; gap:10px;">
@@ -1456,8 +1571,27 @@
 
 </div>
 
+<div id="onboardingOverlay" aria-hidden="true">
+  <div id="onboardingBackdrop"></div>
+  <div id="onboardingSpotlight"></div>
+  <div id="onboardingCard">
+    <div id="onboardingStepTag">Quick Tour</div>
+    <div id="onboardingTitle"></div>
+    <div id="onboardingBody"></div>
+    <div id="onboardingControls">
+      <button id="onboardingSkip" class="onboarding-btn">Skip Tour</button>
+      <div id="onboardingNav">
+        <button id="onboardingBack" class="onboarding-btn">Back</button>
+        <button id="onboardingNext" class="onboarding-btn primary">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script>
+const SHOW_ONBOARDING = true;
+
 // ── GRID GEO BOUNDS (from data.json sensor locations) ────────────
 // Used to annotate grid with approximate lat/lon
 const GRID_MIN_LAT =  40.727742;
@@ -1489,9 +1623,18 @@ let customCounter = 0;
 
 const pawnParams = {};
 function defaultParams(pd) {
+  if (pd && pd.id === 'red') {
+    return { hRange:34, sMin:50, vMin:30, vMax:255, rMin:4, rMax:100 };
+  }
+  if (pd && pd.id === 'green') {
+    return { hRange:30, sMin:42, vMin:28, vMax:255, rMin:4, rMax:100 };
+  }
+  if (pd && pd.id === 'purple') {
+    return { hRange:36, sMin:38, vMin:28, vMax:255, rMin:4, rMax:100 };
+  }
   return pd.isWhite
     ? { hRange:20, sMin:0,  vMin:190, vMax:255, rMin:8, rMax:80 }
-    : { hRange:25, sMin:80, vMin:40,  vMax:255, rMin:8, rMax:80 };
+    : { hRange:28, sMin:55, vMin:30,  vMax:255, rMin:5, rMax:100 };
 }
 PRESET_PAWNS.forEach(p => { pawnParams[p.id] = defaultParams(p); });
 
@@ -1506,6 +1649,8 @@ const currentCell = {};
 // EMA-smoothed positions for stable rendering: { cx, cy, r }
 const smoothPos = {};
 const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
+const missedDetectionFrames = {};
+const MAX_MISSED_DETECTION_FRAMES = 8;
 
 // pawns[1] = { color, position: {col,row}|null, score }
 const pawns = {
@@ -1550,9 +1695,12 @@ const bCellsEl   = document.getElementById('bCells');
 
 const offC = document.createElement('canvas');
 const offX = offC.getContext('2d', { willReadFrequently:true });
-const SCALE = 0.35;
+// Higher sampling keeps smaller, farther-away pawns detectable.
+const SCALE = 0.5;
 
 let frameCount = 0, lastFpsTime = performance.now();
+let activeCameraDeviceId = null;
+let activeCameraStream   = null;
 
 // ── CHIPS ───────────────────────────────────────────────────────
 function rebuildChips() {
@@ -1724,12 +1872,83 @@ loadSliders();
 setTimeout(updatePanelColors, 0);
 
 // ── CAMERA ──────────────────────────────────────────────────────
-async function startCamera() {
+function stopCameraStream() {
+  if (!activeCameraStream) return;
+  activeCameraStream.getTracks().forEach(function(track) { track.stop(); });
+  activeCameraStream = null;
+}
+
+async function refreshCameraOptions() {
+  const select = document.getElementById('cameraSelect');
+  if (!select || !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return;
   try {
-    const s = await navigator.mediaDevices.getUserMedia({
-      video:{ facingMode:'environment', width:{ideal:1280}, height:{ideal:720} }, audio:false });
-    video.srcObject = s; statusTag.textContent = 'CAMERA OK';
-  } catch(e) { statusTag.textContent = 'CAM ERROR'; console.error(e); }
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const cams = devices.filter(function(d) { return d.kind === 'videoinput'; });
+    const prev = select.value || activeCameraDeviceId || '';
+
+    select.innerHTML = '';
+    if (!cams.length) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'NO CAMERAS DETECTED';
+      select.appendChild(opt);
+      return;
+    }
+
+    cams.forEach(function(cam, i) {
+      const opt = document.createElement('option');
+      opt.value = cam.deviceId;
+      opt.textContent = cam.label || ('Camera ' + (i + 1));
+      select.appendChild(opt);
+    });
+
+    const hasPrev = cams.some(function(cam) { return cam.deviceId === prev; });
+    if (hasPrev) {
+      select.value = prev;
+    } else if (activeCameraDeviceId) {
+      const hasActive = cams.some(function(cam) { return cam.deviceId === activeCameraDeviceId; });
+      if (hasActive) select.value = activeCameraDeviceId;
+    }
+  } catch (e) {
+    console.error('Failed to enumerate cameras:', e);
+  }
+}
+
+async function startCamera(preferredDeviceId) {
+  const constraints = {
+    audio: false,
+    video: preferredDeviceId
+      ? { deviceId: { exact: preferredDeviceId }, width: { ideal: 1280 }, height: { ideal: 720 } }
+      : { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
+  };
+
+  try {
+    stopCameraStream();
+    const s = await navigator.mediaDevices.getUserMedia(constraints);
+    activeCameraStream = s;
+    video.srcObject = s;
+    const track = s.getVideoTracks()[0];
+    const settings = track ? track.getSettings() : null;
+    activeCameraDeviceId = (settings && settings.deviceId) ? settings.deviceId : (preferredDeviceId || null);
+    statusTag.textContent = 'CAMERA OK';
+    await refreshCameraOptions();
+  } catch(e) {
+    if (preferredDeviceId) {
+      console.warn('Preferred camera failed, falling back to default camera.', e);
+      activeCameraDeviceId = null;
+      await startCamera(null);
+      return;
+    }
+    statusTag.textContent = 'CAM ERROR';
+    console.error(e);
+  }
+}
+
+async function onCameraSelectChange() {
+  const select = document.getElementById('cameraSelect');
+  if (!select) return;
+  const id = select.value || null;
+  await startCamera(id);
 }
 
 function resizeCanvases() {
@@ -1871,6 +2090,7 @@ function loop() {
     const blobs = detectBlobs(imgData, id);
     totalBlobs += blobs.length;
     if (blobs.length > 0) {
+      missedDetectionFrames[id] = 0;
       // Prefer blob closest to last known position; fall back to largest
       var best;
       const sp = smoothPos[id];
@@ -1895,15 +2115,18 @@ function loop() {
       }
       if (cameraMode) updatePawnState(id, smoothPos[id].cx, smoothPos[id].cy, smoothPos[id].r);
     } else {
-      smoothPos[id] = null;
-      if (cameraMode) {
-        if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
-        currentCell[id] = null;
-        checkDwell(id, null);
-        const idx = pawnIdToIndex[id];
-        if (idx !== undefined) pawns[idx].position = null;
-        const chipCell = document.getElementById('chipCell-' + id);
-        if (chipCell) chipCell.textContent = '-,-';
+      missedDetectionFrames[id] = (missedDetectionFrames[id] || 0) + 1;
+      if (missedDetectionFrames[id] > MAX_MISSED_DETECTION_FRAMES) {
+        smoothPos[id] = null;
+        if (cameraMode) {
+          if (pawnState[id]) { pawnState[id].pos = null; pawnState[id].cell = null; }
+          currentCell[id] = null;
+          checkDwell(id, null);
+          const idx = pawnIdToIndex[id];
+          if (idx !== undefined) pawns[idx].position = null;
+          const chipCell = document.getElementById('chipCell-' + id);
+          if (chipCell) chipCell.textContent = '-,-';
+        }
       }
     }
   });
@@ -1996,11 +2219,10 @@ function detectBlobs(imgData, id) {
   const mask = new Uint8Array(w*h);
   for (var i=0; i<w*h; i++)
     mask[i] = pixelMatches(data[i*4],data[i*4+1],data[i*4+2],id) ? 1 : 0;
-  // 3× dilate then 3× erode = aggressive closing: merges nearby same-color regions
-  // into one solid blob before flood-fill, eliminating flicker from sparse pixels
+  // Extra closing helps smaller distant hits merge into one usable marker.
   var closed = mask;
-  for (var p=0; p<3; p++) closed = morphDilate(closed,w,h);
-  for (var p=0; p<3; p++) closed = morphErode(closed,w,h);
+  for (var p=0; p<4; p++) closed = morphDilate(closed,w,h);
+  for (var p=0; p<2; p++) closed = morphErode(closed,w,h);
   const visited = new Uint8Array(w*h);
   const blobs = [];
   for (var y=0; y<h; y++) for (var x=0; x<w; x++) {
@@ -2013,16 +2235,19 @@ function detectBlobs(imgData, id) {
       sumX+=cx; sumY+=cy2; count++;
       if(cx<mnX)mnX=cx; if(cx>mxX)mxX=cx;
       if(cy2<mnY)mnY=cy2; if(cy2>mxY)mxY=cy2;
-      const ns=[ci-1,ci+1,ci-w,ci+w];
-      for (var ni=0; ni<ns.length; ni++) {
-        const n=ns[ni];
-        if (n>=0&&n<w*h&&!visited[n]&&closed[n]) { visited[n]=1; queue.push(n); }
+      for (var oy=-1; oy<=1; oy++) for (var ox=-1; ox<=1; ox++) {
+        if (ox === 0 && oy === 0) continue;
+        const nx = cx + ox;
+        const ny = cy2 + oy;
+        if (nx < 0 || nx >= w || ny < 0 || ny >= h) continue;
+        const n = ny * w + nx;
+        if (!visited[n] && closed[n]) { visited[n]=1; queue.push(n); }
       }
     }
     const bw=mxX-mnX+1, bh=mxY-mnY+1, r=(bw+bh)/4;
     const circ=count/(Math.PI*r*r);
     const asp=Math.max(bw,bh)/Math.max(1,Math.min(bw,bh));
-    if (r>=pp.rMin&&r<=pp.rMax&&circ>0.35&&asp<2.5)
+    if (r>=pp.rMin&&r<=pp.rMax&&count>=14&&circ>0.14&&asp<4.2)
       blobs.push({ cx:sumX/count, cy:sumY/count, r, area:count });
   }
   return blobs;
@@ -2032,7 +2257,17 @@ function morphDilate(mask,w,h) {
   const out=new Uint8Array(w*h);
   for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
     const i=y*w+x;
-    if(mask[i]||(x>0&&mask[i-1])||(x<w-1&&mask[i+1])||(y>0&&mask[i-w])||(y<h-1&&mask[i+w])) out[i]=1;
+    if(
+      mask[i] ||
+      (x>0&&mask[i-1]) ||
+      (x<w-1&&mask[i+1]) ||
+      (y>0&&mask[i-w]) ||
+      (y<h-1&&mask[i+w]) ||
+      (x>0&&y>0&&mask[i-w-1]) ||
+      (x<w-1&&y>0&&mask[i-w+1]) ||
+      (x>0&&y<h-1&&mask[i+w-1]) ||
+      (x<w-1&&y<h-1&&mask[i+w+1])
+    ) out[i]=1;
   }
   return out;
 }
@@ -2040,7 +2275,17 @@ function morphErode(mask,w,h) {
   const out=new Uint8Array(w*h);
   for(var y=0;y<h;y++) for(var x=0;x<w;x++) {
     const i=y*w+x;
-    if(mask[i]&&(x===0||mask[i-1])&&(x===w-1||mask[i+1])&&(y===0||mask[i-w])&&(y===h-1||mask[i+w])) out[i]=1;
+    if(
+      mask[i] &&
+      (x===0||mask[i-1]) &&
+      (x===w-1||mask[i+1]) &&
+      (y===0||mask[i-w]) &&
+      (y===h-1||mask[i+w]) &&
+      (x===0||y===0||mask[i-w-1]) &&
+      (x===w-1||y===0||mask[i-w+1]) &&
+      (x===0||y===h-1||mask[i+w-1]) &&
+      (x===w-1||y===h-1||mask[i+w+1])
+    ) out[i]=1;
   }
   return out;
 }
@@ -2714,7 +2959,7 @@ function onProjSliderChange(val, fromDwell) {
   // Block slider while game is in progress (but always allow in view mode)
   if (!viewMode && gameStarted && !gameEnded) return;
 
-  // Restart game when user slides after game ended
+  // Restart game when You slides after game ended
   if (gameEnded) {
     gameStarted = false;
     gameEnded   = false;
@@ -3189,10 +3434,10 @@ function drawProjection() {
     zone.style.setProperty('--panel-w', (gridX - 14) + 'px');
   }
 
-  // Draw map at full opacity in both modes
+  // When projection edit is on, fade map so camera is easier to align against.
   if (mapImg && mapImg.complete) {
     pc.save();
-    pc.globalAlpha = 1;
+    pc.globalAlpha = editProjectionMode ? 0.35 : 1;
     pc.drawImage(mapImg, gridX, gridY, gridW, gridH);
     pc.restore();
   }
@@ -3529,6 +3774,7 @@ mapImg.onload = function() { drawProjection(); };
 let overlaysVisible = true;
 let _sidePanelOpen = false;
 let _docsPanelOpen = false;
+let onboardingActive = false;
 
 function openSidePanel() {
   if (_sidePanelOpen) return;
@@ -3628,6 +3874,8 @@ function toggleOverlays() {
 // ── MODE TOGGLE (Interaction vs Camera) ─────────────────────────
 // false = Interaction mode (default), true = Camera mode
 let cameraMode = false;
+const DEFAULT_VIDEO_OPACITY = 0.4;
+const EDIT_VIDEO_OPACITY = 0.9;
 
 let editProjectionMode = false;
 function toggleEditProjection() {
@@ -3635,6 +3883,8 @@ function toggleEditProjection() {
   document.getElementById('editModeSwitch').classList.toggle('on', editProjectionMode);
   document.getElementById('editOffLbl').classList.toggle('active', !editProjectionMode);
   document.getElementById('editOnLbl').classList.toggle('active', editProjectionMode);
+  const v = document.getElementById('video');
+  if (v) v.style.opacity = editProjectionMode ? String(EDIT_VIDEO_OPACITY) : String(DEFAULT_VIDEO_OPACITY);
   applyInteractionState();
   if (editProjectionMode) {
     // Show handles immediately
@@ -3856,7 +4106,7 @@ function toggleMode() {
 
 // ── VIEW / GAME MODE ────────────────────────────────────────────
 // false = GAME mode (cells hidden until pawn steps), true = VIEW mode (all cells revealed)
-// CHANGED: View mode is now the default as per user request.
+// CHANGED: View mode is now the default as per You request.
 let viewMode = true;
 let viewCursorCell = null; // single neutral cursor used only in view mode
 
@@ -3925,7 +4175,7 @@ class NoiseAudioEngine {
     
     // Resume audio context if needed (browser autoplay protection)
     audio.play().catch(e => {
-        // Many browsers require user gesture (click) before audio plays
+        // Many browsers require You gesture (click) before audio plays
         console.warn("Audio autoplay blocked for " + type + ". Interaction required.");
     });
 
@@ -3977,6 +4227,7 @@ const audioEngine = new NoiseAudioEngine();
 
 // HTML clock click → cycle TOD (HTML element click, simpler than canvas hit-test)
 document.getElementById('clockWidget').addEventListener('click', function() {
+  if (onboardingActive) return;
   const currentTOD = getActiveTOD();
   const nextIdx    = (TOD_CYCLE.indexOf(currentTOD) + 1) % TOD_CYCLE.length;
   const nextTOD    = TOD_CYCLE[nextIdx];
@@ -4046,6 +4297,7 @@ function toggleViewMode() {
   if (gameOnly) gameOnly.style.display = viewMode ? 'none' : 'flex';
   const viewOnly = document.getElementById('viewOnlyControls');
   if (viewOnly) viewOnly.style.display = viewMode ? 'flex' : 'none';
+  if (!viewMode) refreshCameraOptions();
   
   // View mode: hide camera, show map. Game mode: restore camera visibility.
   document.getElementById('cameraLayer').classList.toggle('hidden', viewMode);
@@ -4056,6 +4308,240 @@ function toggleViewMode() {
   updateProjStats();
   drawProjection();
 }
+
+function ensureViewModeForOnboarding() {
+  if (!viewMode) toggleViewMode();
+}
+
+const ONBOARDING_STEPS = [
+  {
+    title: 'Welcome to SONYC Data Visualization',
+    body: 'Welcome to SONYC Data Visualization. This project doubles as both a visualization of sounds in Washington Square and an interactive game to avoid as much sound exposure as possible. It can be played on a tabletop, using a computer-vision-aided camera to detect colored pawns and track movement in real time.',
+    spotlight: false,
+    onEnter: function() {
+      ensureViewModeForOnboarding();
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  },
+  {
+    selector: '#menuBtn',
+    title: 'Menu controls',
+    body: 'When you first enter the site, the "DISPLAY MODE" is set by default to "VIEW". You can change the mode from "GAME" mode by toggling the "DISPLAY MODE" switch in the menu. You can also toggle through the "DATA FILTER" to sort through date, week, or month.',
+    padding: 12,
+    radius: 18,
+    onEnter: function() {
+      ensureViewModeForOnboarding();
+      closeDocsPanel();
+      openSidePanel();
+    }
+  },
+  {
+    selector: '#projSliderWrap',
+    title: 'Date slider',
+    body: 'You can toggle across different dates, months, or weeks depending on the data filter that you have set in the menu.',
+    padding: 12,
+    radius: 10,
+    onEnter: function() {
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  },
+  {
+    selector: '#clockWidget',
+    title: 'Time-of-day filter',
+    body: 'You can filter the data through different times of the day: morning, noon, afternoon, evening, and night, by clicking on the clock.',
+    padding: 12,
+    radius: 999,
+    onEnter: function() {
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  },
+  {
+    selector: '#noiseLegend',
+    title: 'Noise legend',
+    body: 'You can toggle through different noise legends and check the date slider to see how different noise types may be more prominent at different times.',
+    padding: 10,
+    radius: 8,
+    onEnter: function() {
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  },
+  {
+    selector: '#p1Panel',
+    title: 'Left panel',
+    body: 'In "VIEW" mode, this panel shows the location of the grid that you have clicked on. In "GAME" mode, this panel shows (1) the dB penalty score that the first player (P1) has obtained, (2) the current move that shows the sounds triggered in that location, and (3) the past history moves that the player has made.',
+    padding: 10,
+    radius: 10,
+    onEnter: function() {
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  },
+  {
+    selector: '#p2Panel',
+    title: 'Right panel',
+    body: 'In "VIEW" mode, this panel contains a text-based summary about the sounds that are present in that location during the selected time and date. In "GAME" mode, it shows the game stats for the second player (P2).',
+    padding: 10,
+    radius: 10,
+    onEnter: function() {
+      closeSidePanel();
+      closeDocsPanel();
+    }
+  }
+];
+
+let onboardingStepIndex = 0;
+
+function getOnboardingElements() {
+  return {
+    overlay: document.getElementById('onboardingOverlay'),
+    spotlight: document.getElementById('onboardingSpotlight'),
+    card: document.getElementById('onboardingCard'),
+    stepTag: document.getElementById('onboardingStepTag'),
+    title: document.getElementById('onboardingTitle'),
+    body: document.getElementById('onboardingBody'),
+    back: document.getElementById('onboardingBack'),
+    next: document.getElementById('onboardingNext')
+  };
+}
+
+function getOnboardingTargetRect(step) {
+  if (!step) return null;
+  const el = document.querySelector(step.selector);
+  if (!el) return null;
+  const rect = el.getBoundingClientRect();
+  const pad = step.padding == null ? 10 : step.padding;
+  return {
+    top: Math.max(8, rect.top - pad),
+    left: Math.max(8, rect.left - pad),
+    width: Math.min(window.innerWidth - 16, rect.width + pad * 2),
+    height: Math.min(window.innerHeight - 16, rect.height + pad * 2),
+    radius: step.radius == null ? 16 : step.radius
+  };
+}
+
+function placeOnboardingCard(rect) {
+  const els = getOnboardingElements();
+  if (!els.card || !rect) return;
+
+  const margin = 16;
+  const gap = 18;
+
+  els.card.style.top = margin + 'px';
+  els.card.style.left = margin + 'px';
+  const cardRect = els.card.getBoundingClientRect();
+
+  let left = rect.left + rect.width + gap;
+  let top = rect.top;
+
+  if (left + cardRect.width > window.innerWidth - margin) {
+    left = rect.left - cardRect.width - gap;
+  }
+  if (left < margin) {
+    left = Math.min(
+      window.innerWidth - cardRect.width - margin,
+      Math.max(margin, rect.left + (rect.width - cardRect.width) / 2)
+    );
+  }
+
+  if (rect.width > window.innerWidth * 0.45 || left < margin) {
+    left = Math.min(
+      window.innerWidth - cardRect.width - margin,
+      Math.max(margin, rect.left + (rect.width - cardRect.width) / 2)
+    );
+    top = rect.top + rect.height + gap;
+    if (top + cardRect.height > window.innerHeight - margin) {
+      top = rect.top - cardRect.height - gap;
+    }
+  }
+
+  if (top + cardRect.height > window.innerHeight - margin) {
+    top = window.innerHeight - cardRect.height - margin;
+  }
+  if (top < margin) top = margin;
+  if (left < margin) left = margin;
+
+  els.card.style.left = left + 'px';
+  els.card.style.top = top + 'px';
+}
+
+function syncOnboardingStep() {
+  if (!onboardingActive) return;
+  const step = ONBOARDING_STEPS[onboardingStepIndex];
+  if (!step) return;
+
+  if (typeof step.onEnter === 'function') step.onEnter();
+
+  const els = getOnboardingElements();
+  const shouldHighlight = step.spotlight !== false;
+  const rect = shouldHighlight ? getOnboardingTargetRect(step) : null;
+  if (!els.overlay || !els.spotlight || !els.card || !els.title || !els.body || !els.stepTag) return;
+  if (shouldHighlight && !rect) {
+    finishOnboarding();
+    return;
+  }
+
+  els.stepTag.textContent = 'Quick Tour ' + (onboardingStepIndex + 1) + ' / ' + ONBOARDING_STEPS.length;
+  els.title.textContent = step.title;
+  els.body.textContent = step.body;
+
+  if (shouldHighlight && rect) {
+    els.spotlight.style.opacity = '1';
+    els.spotlight.style.top = rect.top + 'px';
+    els.spotlight.style.left = rect.left + 'px';
+    els.spotlight.style.width = rect.width + 'px';
+    els.spotlight.style.height = rect.height + 'px';
+    els.spotlight.style.borderRadius = rect.radius + 'px';
+    placeOnboardingCard(rect);
+  } else {
+    els.spotlight.style.opacity = '0';
+    els.spotlight.style.width = '0px';
+    els.spotlight.style.height = '0px';
+    els.spotlight.style.top = '0px';
+    els.spotlight.style.left = '0px';
+
+    const cardRect = els.card.getBoundingClientRect();
+    const top = Math.max(16, Math.round((window.innerHeight - cardRect.height) * 0.24));
+    const left = Math.max(16, Math.round((window.innerWidth - cardRect.width) / 2));
+    els.card.style.top = top + 'px';
+    els.card.style.left = left + 'px';
+  }
+
+  if (els.back) els.back.disabled = onboardingStepIndex === 0;
+  if (els.next) els.next.textContent = onboardingStepIndex === ONBOARDING_STEPS.length - 1 ? 'Finish' : 'Next';
+
+}
+
+function finishOnboarding() {
+  const els = getOnboardingElements();
+  onboardingActive = false;
+  document.body.classList.remove('onboarding-active');
+  if (els.overlay) {
+    els.overlay.classList.remove('active');
+    els.overlay.setAttribute('aria-hidden', 'true');
+  }
+  closeSidePanel();
+  closeDocsPanel();
+}
+
+function startOnboarding() {
+  const els = getOnboardingElements();
+  if (!SHOW_ONBOARDING || !els.overlay) return;
+
+  ensureViewModeForOnboarding();
+  onboardingActive = true;
+  onboardingStepIndex = 0;
+  document.body.classList.add('onboarding-active');
+  els.overlay.classList.add('active');
+  els.overlay.setAttribute('aria-hidden', 'false');
+  syncOnboardingStep();
+}
+
+window.startOnboarding = startOnboarding;
+window.finishOnboarding = finishOnboarding;
 
 // ── INTERACT-MODE: click grid to place pawns ────────────────────
 let interactTurnIndex = 0; // cycles through active pawns
@@ -4114,6 +4600,7 @@ function setPawnCell(id, cell) {
 }
 
 document.getElementById('projCanvas').addEventListener('click', function(e) {
+  if (onboardingActive) return;
   if (cameraMode) return; // only in interaction mode
   const rect = this.getBoundingClientRect();
   const px = (e.clientX - rect.left) * (this.width  / rect.width);
@@ -4448,6 +4935,10 @@ toggleViewMode();
 
 // ── FULLSCREEN (press F while on projection tab) ─────────────────
 document.addEventListener('keydown', function(e) {
+  if (onboardingActive) {
+    if (e.key === 'Escape') finishOnboarding();
+    return;
+  }
   if (e.key === 'm' || e.key === 'M') { toggleSidePanel(); return; }
   if (e.key === 'd' || e.key === 'D') { toggleDocsPanel(); return; }
   if (e.key === 'f' || e.key === 'F') {
@@ -4458,7 +4949,11 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-window.addEventListener('resize', function() { drawProjection(); drawSliderBarGraph(); });
+window.addEventListener('resize', function() {
+  drawProjection();
+  drawSliderBarGraph();
+  if (onboardingActive) syncOnboardingStep();
+});
 document.addEventListener('fullscreenchange',       drawProjection);
 document.addEventListener('webkitfullscreenchange', drawProjection);
 
@@ -4534,6 +5029,36 @@ function buildNoiseLegend() {
 rebuildChips();
 buildNoiseLegend();
 
+(function initOnboardingControls() {
+  const backBtn = document.getElementById('onboardingBack');
+  const nextBtn = document.getElementById('onboardingNext');
+  const skipBtn = document.getElementById('onboardingSkip');
+  const backdrop = document.getElementById('onboardingBackdrop');
+
+  if (backBtn) {
+    backBtn.addEventListener('click', function() {
+      if (!onboardingActive || onboardingStepIndex === 0) return;
+      onboardingStepIndex -= 1;
+      syncOnboardingStep();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (!onboardingActive) return;
+      if (onboardingStepIndex >= ONBOARDING_STEPS.length - 1) {
+        finishOnboarding();
+        return;
+      }
+      onboardingStepIndex += 1;
+      syncOnboardingStep();
+    });
+  }
+
+  if (skipBtn) skipBtn.addEventListener('click', finishOnboarding);
+  if (backdrop) backdrop.addEventListener('click', function() {});
+})();
+
 video.addEventListener('playing', function(){
   resizeCanvases();
   centerGrid();
@@ -4546,12 +5071,19 @@ new ResizeObserver(function(){
 startCamera();
 
 window.addEventListener('DOMContentLoaded', function() {
+  if (SHOW_ONBOARDING) {
+    requestAnimationFrame(function() {
+      startOnboarding();
+    });
+  }
+
   // Load noise CSV + mockData
   Promise.all([loadGridData(), loadMockData()]).then(function() {
     // Force set default mode (VIEW mode) and sync UI
     viewMode = false;
     toggleViewMode();
     applyMode(); 
+    if (SHOW_ONBOARDING && onboardingActive) syncOnboardingStep();
   });
 });
 </script>
