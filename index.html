@@ -178,7 +178,7 @@
     /* ── MTA subway-door side panel ── */
     #sidePanel, #docsPanel {
       position: absolute; top: 0; bottom: 0; z-index: 1505;
-      width: 320px;
+      width: 50%;
       background: transparent;
       display: flex; flex-direction: column; gap: 0;
       padding: 0;
@@ -588,6 +588,42 @@
       100% { box-shadow: inset 0 0 20px rgba(80,160,255,0.08), 0 0 12px rgba(80,160,255,0.15); }
     }
     #projSliderWrap.slider-pop { animation: sliderPop 0.5s ease-out forwards; }
+    @keyframes sliderLegendPulse {
+      0% {
+        transform: scale(1);
+        box-shadow:
+          inset 0 0 20px rgba(80, 160, 255, 0.08),
+          0 0 12px rgba(80, 160, 255, 0.15),
+          0 0 4px rgba(0,0,0,0.6);
+      }
+      28% {
+        transform: scale(1.018);
+        box-shadow:
+          inset 0 0 34px rgba(180, 235, 255, 0.35),
+          0 0 30px rgba(120, 205, 255, 0.85),
+          0 0 52px rgba(96, 176, 255, 0.62),
+          0 0 4px rgba(0,0,0,0.6);
+      }
+      58% {
+        transform: scale(1.01);
+        box-shadow:
+          inset 0 0 26px rgba(160, 220, 255, 0.22),
+          0 0 24px rgba(140, 210, 255, 0.65),
+          0 0 36px rgba(96, 176, 255, 0.45),
+          0 0 4px rgba(0,0,0,0.6);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow:
+          inset 0 0 20px rgba(80, 160, 255, 0.08),
+          0 0 12px rgba(80, 160, 255, 0.15),
+          0 0 4px rgba(0,0,0,0.6);
+      }
+    }
+    #projSliderWrap.slider-legend-pulse {
+      animation: sliderLegendPulse 1.05s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      border-color: rgba(160, 220, 255, 0.95);
+    }
     .proj-noise-icons .material-symbols-outlined { font-size: 15px; color: #fff; }
 
     /* ── Move History Log (Card System) ── */
@@ -1022,11 +1058,68 @@
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
                   <span><b style="color:#fff;">Conclusion of Play:</b> The match stays active until <b style="color:#fff;">both</b> players reach the Red FINISH cell. Once both have finished, the player with the <b style="color:var(--mta-yellow);">lowest total dB accumulation</b> is declared the winner.</span>
                 </li>
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/score.png" alt="Score" style="width:120px; display:block;">
+                </div>
                 <li style="display:flex; gap:6px; align-items:flex-start;">
                   <span style="color:var(--mta-yellow); font-weight:900;">•</span>
                   <span><b style="color:#fff;">On the User Interface:</b> <b style="color:#fff;">Noise Penalty (dB)</b> tracks cumulative noise, <b style="color:#fff;">Current Sensor</b> shows the noise type for the active cell, <b style="color:#fff;">Past Sound Moves</b> logs visited cells, and the <b style="color:#fff;">Status Bar</b> shows active noise interference types impacting the map.</span>
                 </li>
               </ul>
+            </div>
+          </div>
+
+          <div id="viewOnlyControls" style="display:none;flex-direction:column;gap:0;">
+            <div class="panel-sep"></div>
+
+            <!-- TEMPORAL FILTERING SECTION -->
+            <div>
+              <div class="panel-label" style="margin-bottom:6px;">TEMPORAL NAVIGATION</div>
+              <div style="font-size:11px; color:#ccc; line-height:1.6;">
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/timeline_view.png" alt="Timeline View" style="width:100%; display:block;">
+                </div>
+                Navigate the dataset's history using the interactive timeline and clock. To ensure a fun gameplay overview, data is by default <strong>filtered by monthly and without time specificity</strong>. On <strong>VIEW</strong> mode, data by default is filtered by date with time specifity.
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/filter.png" alt="Filter" style="width:100%; display:block;">
+                </div>
+                <ul style="list-style:none; padding:0; margin:10px 0 0 0; display:flex; flex-direction:column; gap:10px;">
+                  <li style="display:flex; gap:8px; align-items:flex-start;">
+                    <span style="color:var(--mta-yellow); font-weight:900;">•</span>
+                    <span><strong style="color:#fff;">Timeline Slider:</strong> Groups acoustic data by date, week or month. The filter can be changed in the Menu > DATA FILTER.</span>
+                  </li>
+                  <li style="display:flex; gap:8px; align-items:flex-start;">
+                    <span style="color:var(--mta-yellow); font-weight:900;">•</span>
+                    <span><strong style="color:#fff;">Time Clock:</strong> Cycle through specific times (Morning, Noon, etc.) within your selected period. If <strong style="color:#fff;">TIME SPECIFICITY</strong> is unchecked in the Menu, the clock is hidden and all data for the requested day/week/month is combined.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel-sep"></div>
+
+            <!-- SOUND LEGENDS SECTION -->
+            <div>
+              <div class="panel-label" style="margin-bottom:6px;">SOUND LEGENDS & INDICATORS</div>
+              <div style="font-size:11px; color:#ccc; line-height:1.6;">
+                Each sound type is represented by a unique color-coded MTA bullet. When a sound is detected at a location, it is marked with a <strong>pulsing indicator</strong> in the corresponding color that can be referred back to the legends.
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/sound_legend.png" alt="Sound Legends" style="width:100%; display:block;">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:12px; font-size:10px; color:#aaa;">
+                  <div><span style="color:#f72525;">●</span> Alert Signal</div>
+                  <div><span style="color:#efa0ff;">●</span> Dog</div>
+                  <div><span style="color:#4285F4;">●</span> Engine</div>
+                  <div><span style="color:#ff3def;">●</span> Human Voice</div>
+                  <div><span style="color:#ffa198;">●</span> Machinery Impact</div>
+                  <div><span style="color:#622dff;">●</span> Music</div>
+                  <div><span style="color:#ffa60e;">●</span> Non-Machinery Impact</div>
+                  <div><span style="color:#847f00;">●</span> Powered Saw</div>
+                </div>
+                <p style="margin-top:8px;">
+                  The <strong>Sound Legend bar</strong> at the bottom allows you to toggle specifically which sounds you want to focus on. Toggling a legend item will update the timeline view to highlight periods where that specific sound is prominent.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -1050,12 +1143,23 @@
             <div>
               <div class="panel-label" style="margin-bottom:6px;">DISPLAY MODES</div>
               <div style="font-size:11px; color:#ccc; line-height:1.6;">
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/view.png" alt="View" style="width:120px; display:block;">
+                </div>
                 This project features two distinct modes tailored for different user experiences:
+              
+               
                 <ul style="list-style:none; padding:0; margin:10px 0 0 0; display:flex; flex-direction:column; gap:10px;">
+                   <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/view_mode.png" alt="VIEW Mode" style="width:100%; display:block;">
+                </div>
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
                     <span><strong style="color:#fff;">VIEW MODE (Accessibility Focus):</strong> Designed for data exploration. Users can click anywhere on the map grid to analyze acoustic data. The <strong>left column</strong> shows the identified location and detected sounds, while the <strong>right column</strong> provides an AI-generated summary of the area's acoustic environment.</span>
                   </li>
+                  <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/game_mode.png" alt="GAME Mode" style="width:100%; display:block;">
+                </div>
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
                     <span><strong style="color:#fff;">GAME MODE:</strong> An interactive experience where users navigate the grid using pawns. It tracks accumulated <strong>noise penalty (dB)</strong>, reveals the <strong>current sensor</strong> at your position, keeps a <strong>Past Sound Moves</strong> log, and uses the <strong>Status Bar</strong> to surface active noise interference on the map.</span>
@@ -1070,14 +1174,17 @@
             <div>
               <div class="panel-label" style="margin-bottom:6px;">TEMPORAL NAVIGATION</div>
               <div style="font-size:11px; color:#ccc; line-height:1.6;">
-                Navigate the dataset's history using the interactive timeline and clock. To ensure a comprehensive overview, data is now <strong>aggregated into monthly blocks</strong>.
                 <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
                   <img src="images/timeline_view.png" alt="Timeline View" style="width:100%; display:block;">
+                </div>
+                Navigate the dataset's history using the interactive timeline and clock. To ensure a fun gameplay overview, data is by default <strong>filtered by monthly and without time specificity</strong>. On <strong>VIEW</strong> mode, data by default is filtered by date with time specifity.
+                <div style="margin:10px 0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden;">
+                  <img src="images/filter.png" alt="Filter" style="width:100%; display:block;">
                 </div>
                 <ul style="list-style:none; padding:0; margin:10px 0 0 0; display:flex; flex-direction:column; gap:10px;">
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
-                    <span><strong style="color:#fff;">Monthly Timeline Slider:</strong> Groups acoustic data by month. The bar graph highlights the times where city sounds recorded the highest peak dB levels within that 30-day period.</span>
+                    <span><strong style="color:#fff;">Timeline Slider:</strong> Groups acoustic data by date, week or month. The filter can be changed in the Menu > DATA FILTER.</span>
                   </li>
                   <li style="display:flex; gap:8px; align-items:flex-start;">
                     <span style="color:var(--mta-yellow); font-weight:900;">•</span>
@@ -3082,10 +3189,10 @@ function drawProjection() {
     zone.style.setProperty('--panel-w', (gridX - 14) + 'px');
   }
 
-  // Draw map: near-invisible in game mode so camera shows through; normal in view mode
+  // Draw map at full opacity in both modes
   if (mapImg && mapImg.complete) {
     pc.save();
-    pc.globalAlpha = viewMode ? 1 : 0.08;
+    pc.globalAlpha = 1;
     pc.drawImage(mapImg, gridX, gridY, gridW, gridH);
     pc.restore();
   }
@@ -3937,6 +4044,8 @@ function toggleViewMode() {
 
   const gameOnly = document.getElementById('gameOnlyControls');
   if (gameOnly) gameOnly.style.display = viewMode ? 'none' : 'flex';
+  const viewOnly = document.getElementById('viewOnlyControls');
+  if (viewOnly) viewOnly.style.display = viewMode ? 'flex' : 'none';
   
   // View mode: hide camera, show map. Game mode: restore camera visibility.
   document.getElementById('cameraLayer').classList.toggle('hidden', viewMode);
@@ -4354,6 +4463,14 @@ document.addEventListener('fullscreenchange',       drawProjection);
 document.addEventListener('webkitfullscreenchange', drawProjection);
 
 // ── MTA NOISE LEGEND ─────────────────────────────────────────────
+function pulseSliderLegendFeedback() {
+  const wrap = document.getElementById('projSliderWrap');
+  if (!wrap) return;
+  wrap.classList.remove('slider-legend-pulse');
+  void wrap.offsetWidth;
+  wrap.classList.add('slider-legend-pulse');
+}
+
 function buildNoiseLegend() {
   const el = document.getElementById('noiseLegend');
   if (!el || typeof NOISE_CONFIG === 'undefined') return;
@@ -4392,6 +4509,7 @@ function buildNoiseLegend() {
         }
       });
       drawSliderBarGraph();
+      pulseSliderLegendFeedback();
     };
     item.dataset.key = key;
 
