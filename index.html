@@ -1178,8 +1178,13 @@
               <div class="sign-score"><span id="p1Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
             </div>
             <div class="sign-right">
-              <div class="line-bullet-lg" style="background:#e63030; box-shadow: 0 0 10px rgba(230,48,48,0.4);">P1</div>
+              <div id="p1Bullet" class="line-bullet-lg" style="background:#e63030; box-shadow: 0 0 10px rgba(230,48,48,0.4);">P1</div>
             </div>
+          </div>
+          <div id="p1Trophy" style="display:none; text-align:center; padding:10px 8px; background:rgba(252,204,10,0.12); border:2px solid #fccc0a; border-radius:10px; width:100%;">
+            <div style="font-size:36px; line-height:1;">🏆</div>
+            <div style="font-size:11px; font-weight:900; color:#fccc0a; letter-spacing:0.06em; margin-top:4px;">WINNER!</div>
+            <div style="font-size:9px; color:#fff; opacity:0.8; margin-top:2px;">You avoided more noise!</div>
           </div>
           <div class="mta-side-sign report-header">
             <div class="sign-left">
@@ -1241,8 +1246,13 @@
               <div class="sign-score"><span id="p2Score">0.0</span> <span style="font-size:10px; opacity:0.6;">dB</span></div>
             </div>
             <div class="sign-right">
-              <div class="line-bullet-lg" style="background:#3070e6; box-shadow: 0 0 10px rgba(48,112,230,0.4);">P2</div>
+              <div id="p2Bullet" class="line-bullet-lg" style="background:#3070e6; box-shadow: 0 0 10px rgba(48,112,230,0.4);">P2</div>
             </div>
+          </div>
+          <div id="p2Trophy" style="display:none; text-align:center; padding:10px 8px; background:rgba(252,204,10,0.12); border:2px solid #fccc0a; border-radius:10px; width:100%;">
+            <div style="font-size:36px; line-height:1;">🏆</div>
+            <div style="font-size:11px; font-weight:900; color:#fccc0a; letter-spacing:0.06em; margin-top:4px;">WINNER!</div>
+            <div style="font-size:9px; color:#fff; opacity:0.8; margin-top:2px;">You avoided more noise!</div>
           </div>
           <div class="mta-side-sign report-header">
             <div class="sign-left">
@@ -1373,12 +1383,12 @@ let customCounter = 0;
 const pawnParams = {};
 function defaultParams(pd) {
   return pd.isWhite
-    ? { hRange:20, sMin:0,  vMin:190, vMax:255, rMin:10, rMax:60 }
-    : { hRange:18, sMin:80, vMin:50,  vMax:255, rMin:10, rMax:60 };
+    ? { hRange:20, sMin:0,  vMin:190, vMax:255, rMin:8, rMax:80 }
+    : { hRange:25, sMin:80, vMin:40,  vMax:255, rMin:8, rMax:80 };
 }
 PRESET_PAWNS.forEach(p => { pawnParams[p.id] = defaultParams(p); });
 
-let activePawnIds  = new Set(['red', 'blue']);
+let activePawnIds  = new Set(['red', 'green']);
 let selectedChipId = 'red';
 const pawnState    = {};
 PRESET_PAWNS.forEach(p => { pawnState[p.id] = { pos:null, cell:null }; });
@@ -1393,9 +1403,9 @@ const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
 // pawns[1] = { color, position: {col,row}|null, score }
 const pawns = {
   1: { color: '#e63030', position: null, score: 0 },
-  2: { color: '#3070e6', position: null, score: 0 }
+  2: { color: '#30c050', position: null, score: 0 }
 };
-const pawnIdToIndex = { red: 1, blue: 2 };
+const pawnIdToIndex = { red: 1, green: 2 };
 let nextPawnIndex = 3;
 
 // Grid state
@@ -1454,9 +1464,26 @@ function rebuildChips() {
     trackerRow.appendChild(chip);
   });
   updateBottomCells();
+  updatePanelColors();
 }
 
 function selectChip(id) { selectedChipId = id; rebuildChips(); loadSliders(); }
+
+function updatePanelColors() {
+  const proj = getProjPawns();
+  const bullets = [
+    document.getElementById('p1Bullet'),
+    document.getElementById('p2Bullet'),
+  ];
+  bullets.forEach(function(el, i) {
+    if (!el) return;
+    const color = proj[i] ? proj[i].color : (i === 0 ? '#e63030' : '#3070e6');
+    const hex = color.replace('#','');
+    const r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16);
+    el.style.background = color;
+    el.style.boxShadow  = '0 0 10px rgba(' + r + ',' + g + ',' + b + ',0.4)';
+  });
+}
 
 function removePawn(id) {
   activePawnIds.delete(id);
@@ -1586,6 +1613,8 @@ function syncSliders() {
 }
 function toggleTuner() { document.getElementById('tuner').classList.toggle('open'); }
 loadSliders();
+// updatePanelColors() is defined later in the script; call it after full init
+setTimeout(updatePanelColors, 0);
 
 // ── CAMERA ──────────────────────────────────────────────────────
 async function startCamera() {
@@ -1773,8 +1802,8 @@ function loop() {
   });
   document.getElementById('bBlobs').textContent = totalBlobs;
 
-  // Timeline bar tracker — detect the dedicated color, map X position to slider
-  if (timeBar && timelineTrackerId && pawnParams[timelineTrackerId]) {
+  // Timeline bar tracker — only runs in camera mode; detect the dedicated color, map X position to slider
+  if (cameraMode && timeBar && timelineTrackerId && pawnParams[timelineTrackerId]) {
     const tlBlobs = detectBlobs(imgData, timelineTrackerId);
     if (tlBlobs.length > 0) {
       const best = tlBlobs.reduce(function(a,b){ return a.area>b.area?a:b; });
@@ -2686,6 +2715,10 @@ function restartGame() {
   gameStarted = false;
   gameEnded   = false;
   visitedCells.clear();
+  moveLogs.length = 0;
+  // Hide trophies
+  var t1 = document.getElementById('p1Trophy'); if (t1) t1.style.display = 'none';
+  var t2 = document.getElementById('p2Trophy'); if (t2) t2.style.display = 'none';
   Object.keys(dwellState).forEach(function(id) { dwellState[id] = null; });
   getProjPawns().forEach(function(p) {
     if (pawns[p.idx]) pawns[p.idx].score = 0;
@@ -2703,8 +2736,8 @@ function restartGame() {
 }
 
 // ── GAME RULES ───────────────────────────────────────────────────
-const START_CELL  = { col: 0,        row: 0        }; // top-left cell
-const FINISH_CELL = { col: COLS - 1, row: ROWS - 1 }; // bottom-right cell
+const START_CELL  = { col: 0, row: 2 }; // left edge, middle row
+const FINISH_CELL = { col: 0, row: 3 }; // left edge, one row below start
 const moveHistory    = {};  // id → Set<"col,row">
 const visitedCells   = new Set(); // "col,row" cells any pawn has ever stepped on
 let   gameStarted    = false;
@@ -2757,71 +2790,87 @@ function updateGameState(id, prevCell, newCell) {
 
   if (projPawns.length < 2) return;
 
-  const bothOnFinish = projPawns.every(function(p) {
-    const c = currentCell[p.id];
-    return c && c.col === FINISH_CELL.col && c.row === FINISH_CELL.row;
-  });
-
-  // Finish condition: both simultaneously on FINISH cell (game must be started)
-  if (!gameEnded && bothOnFinish) {
-    gameEnded = true;
-    visitedCells.clear();
-    // Determine winner (lower noise score = less noise exposure = wins)
-    const scores = projPawns.map(function(p) {
-      return { label: p.label, id: p.id, score: pawns[p.idx] ? pawns[p.idx].score : 0 };
-    });
-    var winnerLabel, loserLabel, winnerScore, loserScore, isTie = false;
-    if (scores.length >= 2) {
-      if (scores[0].score < scores[1].score) {
-        winnerLabel = scores[0].label; winnerScore = scores[0].score;
-        loserLabel  = scores[1].label; loserScore  = scores[1].score;
-      } else if (scores[1].score < scores[0].score) {
-        winnerLabel = scores[1].label; winnerScore = scores[1].score;
-        loserLabel  = scores[0].label; loserScore  = scores[0].score;
-      } else {
-        isTie = true;
-      }
-    }
-    // Show game-end overlay
-    const overlay = document.getElementById('gameEndOverlay');
-    const winnerEl = document.getElementById('gameEndWinner');
-    const scoresEl = document.getElementById('gameEndScores');
-    const reasonEl = document.getElementById('gameEndReason');
-    if (overlay && winnerEl && scoresEl && reasonEl) {
-      if (isTie) {
-        winnerEl.textContent = "IT'S A TIE!";
-        scoresEl.innerHTML   = scores[0].label + ': ' + scores[0].score + ' dB<br>' +
-                               scores[1].label + ': ' + scores[1].score + ' dB';
-        reasonEl.textContent = 'Both players absorbed the same amount of noise. Try different routes!';
-      } else {
-        winnerEl.textContent = winnerLabel + ' WINS!';
-        scoresEl.innerHTML   = winnerLabel + ': ' + winnerScore + ' dB &nbsp;✓<br>' +
-                               loserLabel  + ': ' + loserScore  + ' dB';
-        reasonEl.textContent = winnerLabel + ' navigated quieter streets — absorbing ' +
-          winnerScore + ' dB vs ' + loserScore + ' dB. ' +
-          'In this game, lower noise exposure wins: the goal is to find the quietest path through the city.';
-      }
-      overlay.style.display = 'flex';
-    }
-    gameNotif      = isTie ? '\u2014 TIE! \u2014' : '\u2014 ' + winnerLabel + ' WINS! \u2014';
-    gameNotifColor = '#e63030';
-    // Re-enable slider
-    var slider = document.getElementById('projSlider');
-    if (slider) { slider.disabled = false; slider.style.opacity = '1'; slider.title = ''; }
-    return;
-  }
-
+  // Game-end check is now handled by checkMoveBasedGameEnd() called from lockDwell
   if (!gameEnded) {
     gameNotif = '';
   }
+}
+
+// Called after every move is logged in lockDwell
+function checkMoveBasedGameEnd() {
+  if (gameEnded || !gameStarted) return;
+  const projPawns = getProjPawns();
+  if (projPawns.length < 2) return;
+
+  const bothFinished = projPawns.every(function(p) {
+    const moves = moveLogs.filter(m => m.pawnIndex === p.idx).length;
+    const cell  = currentCell[p.id];
+    const onFinish = cell && cell.col === FINISH_CELL.col && cell.row === FINISH_CELL.row;
+    return moves >= 10 && onFinish;
+  });
+  if (!bothFinished) return;
+
+  gameEnded = true;
+  visitedCells.clear();
+
+  // Determine winner (lower score = avoided more noise = wins)
+  const p1score = pawns[projPawns[0].idx] ? pawns[projPawns[0].idx].score : 0;
+  const p2score = pawns[projPawns[1].idx] ? pawns[projPawns[1].idx].score : 0;
+
+  const t1 = document.getElementById('p1Trophy');
+  const t2 = document.getElementById('p2Trophy');
+
+  if (p1score < p2score) {
+    if (t1) t1.style.display = 'block';
+    if (t2) t2.style.display = 'none';
+    gameNotif = '\u2014 ' + (projPawns[0].label || 'P1') + ' WINS! \u2014';
+  } else if (p2score < p1score) {
+    if (t2) t2.style.display = 'block';
+    if (t1) t1.style.display = 'none';
+    gameNotif = '\u2014 ' + (projPawns[1].label || 'P2') + ' WINS! \u2014';
+  } else {
+    // Tie — both get trophies
+    if (t1) { t1.style.display = 'block'; t1.querySelector('div:nth-child(2)').textContent = "IT'S A TIE!"; }
+    if (t2) { t2.style.display = 'block'; t2.querySelector('div:nth-child(2)').textContent = "IT'S A TIE!"; }
+    gameNotif = '\u2014 TIE! \u2014';
+  }
+  gameNotifColor = '#e63030';
+
+  // Show game-end overlay too
+  const overlay = document.getElementById('gameEndOverlay');
+  const winnerEl = document.getElementById('gameEndWinner');
+  const scoresEl = document.getElementById('gameEndScores');
+  const reasonEl = document.getElementById('gameEndReason');
+  if (overlay && winnerEl && scoresEl && reasonEl) {
+    if (p1score === p2score) {
+      winnerEl.textContent = "IT'S A TIE!";
+      reasonEl.textContent = 'Both players reached the finish with the same noise. Try different routes!';
+    } else {
+      const wLabel = p1score < p2score ? (projPawns[0].label || 'P1') : (projPawns[1].label || 'P2');
+      winnerEl.textContent = wLabel + ' WINS!';
+      reasonEl.textContent = wLabel + ' reached the finish and avoided more noise!';
+    }
+    scoresEl.innerHTML = (projPawns[0].label || 'P1') + ': ' + p1score + ' dB<br>' +
+                         (projPawns[1].label || 'P2') + ': ' + p2score + ' dB';
+    overlay.style.display = 'flex';
+  }
+
+  // Re-enable slider
+  var slider = document.getElementById('projSlider');
+  if (slider) { slider.disabled = false; slider.style.opacity = '1'; slider.title = ''; }
+
+  drawProjection();
 }
 
 // ── MOVE LOGGING ────────────────────────────────────────────────
 const moveLogs = [];
 
 function updateMoveLogUI() {
-  const p1Cont = document.getElementById('p1MoveLogContainer');
-  const p2Cont = document.getElementById('p2MoveLogContainer');
+  const containers = [
+    document.getElementById('p1MoveLogContainer'),
+    document.getElementById('p2MoveLogContainer'),
+  ];
+  const projPawns = getProjPawns();
 
   const renderMoves = function(container, playerIndex) {
     if (!container) return;
@@ -2870,8 +2919,10 @@ function updateMoveLogUI() {
     }).reverse().join('');
   };
 
-  renderMoves(p1Cont, 1);
-  renderMoves(p2Cont, 2);
+  containers.forEach(function(cont, i) {
+    const pawn = projPawns[i];
+    renderMoves(cont, pawn ? pawn.idx : -(i + 1)); // use -1/-2 sentinel when no pawn → no matches
+  });
 }
 
 const DWELL_MS = 1000;
@@ -2910,6 +2961,7 @@ function lockDwell(id) {
         dB: cellDb
       });
       updateMoveLogUI();
+      checkMoveBasedGameEnd();
     }
   }
   updateProjStats();
@@ -3030,9 +3082,12 @@ function drawProjection() {
     zone.style.setProperty('--panel-w', (gridX - 14) + 'px');
   }
 
-  // Draw map: always draw if available to provide thematic context
+  // Draw map: near-invisible in game mode so camera shows through; normal in view mode
   if (mapImg && mapImg.complete) {
+    pc.save();
+    pc.globalAlpha = viewMode ? 1 : 0.08;
     pc.drawImage(mapImg, gridX, gridY, gridW, gridH);
+    pc.restore();
   }
 
   // Cell fills — color only revealed after a pawn has stepped on the cell
@@ -3149,9 +3204,9 @@ function drawProjection() {
     });
   }
 
-  // Grid lines — subtle
-  pc.strokeStyle = viewMode ? 'rgba(0,0,0,0.12)' : 'rgba(0,0,0,0.09)';
-  pc.lineWidth = 0.75;
+  // Grid lines — subtle in view mode, bright in game mode so they show over camera
+  pc.strokeStyle = viewMode ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.7)';
+  pc.lineWidth = viewMode ? 0.75 : 1.5;
   for (let r = 0; r <= ROWS; r++) {
     pc.beginPath();
     pc.moveTo(gridX, gridY + r * cellSize);
@@ -3165,9 +3220,9 @@ function drawProjection() {
     pc.stroke();
   }
 
-  // Outer border — thin, dark
-  pc.strokeStyle = 'rgba(0,0,0,0.22)';
-  pc.lineWidth = 1.5;
+  // Outer border
+  pc.strokeStyle = viewMode ? 'rgba(0,0,0,0.22)' : 'rgba(255,255,255,0.9)';
+  pc.lineWidth = viewMode ? 1.5 : 2.5;
   pc.strokeRect(gridX, gridY, gridW, gridH);
 
   // ── Lat / Lon axis annotations (Sitting on the metal frame bars) ─────
@@ -3232,8 +3287,6 @@ function drawProjection() {
   // ── Start / Finish cell highlights ──────────────────────────────
   const startX  = gridX + START_CELL.col  * cellSize;
   const startY  = gridY + START_CELL.row  * cellSize;
-  const finishX = gridX + FINISH_CELL.col * cellSize;
-  const finishY = gridY + FINISH_CELL.row * cellSize;
 
   // Start cell — green tint + thick border
   pc.fillStyle = 'rgba(48,192,80,0.18)';
@@ -3242,64 +3295,55 @@ function drawProjection() {
   pc.strokeRect(startX + 1, startY + 1, cellSize - 2, cellSize - 2);
 
   // Finish cell — red tint + thick border
+  const finishX = gridX + FINISH_CELL.col * cellSize;
+  const finishY = gridY + FINISH_CELL.row * cellSize;
   pc.fillStyle = 'rgba(230,48,48,0.18)';
   pc.fillRect(finishX, finishY, cellSize, cellSize);
   pc.strokeStyle = '#e63030'; pc.lineWidth = 2.5;
   pc.strokeRect(finishX + 1, finishY + 1, cellSize - 2, cellSize - 2);
 
-  // ── Start / Finish flags outside the grid ───────────────────────
+  // ── Start / Finish flags inside their cells (bottom-left corner) ──
   const flagSize = Math.min(28, Math.max(16, cellSize * 0.7));
-  pc.font = flagSize + 'px serif';
-  pc.textBaseline = 'middle';
+  const flagPad  = Math.max(2, cellSize * 0.06);
 
-  // Start flag 🚩 — left of the grid, at row-0 vertical centre
-  const startFlagX = gridX - flagSize * 1.6;
-  const startFlagY = startY + cellSize / 2;
-  // Dashed connector line
-  pc.save();
-  pc.setLineDash([4, 4]);
-  pc.strokeStyle = '#30c050'; pc.lineWidth = 1.5;
-  pc.beginPath();
-  pc.moveTo(startFlagX + flagSize * 1.2, startFlagY);
-  pc.lineTo(startX, startFlagY);
-  pc.stroke();
-  pc.restore();
-  pc.textAlign = 'right';
-  pc.fillText('\uD83D\uDEA9', startFlagX + flagSize, startFlagY + flagSize * 0.15);
-  // Label
-  pc.font = 'bold ' + Math.max(8, Math.round(flagSize * 0.45)) + 'px Roboto Mono,monospace';
+  // Start flag 🚩 — bottom-left of start cell
+  pc.font = flagSize + 'px serif';
+  pc.textAlign = 'left';
+  pc.textBaseline = 'bottom';
+  pc.fillText('\uD83D\uDEA9', startX + flagPad, startY + cellSize - flagPad);
+  // "START" label above the flag
+  pc.font = 'bold ' + Math.max(7, Math.round(flagSize * 0.38)) + 'px Roboto Mono,monospace';
   pc.fillStyle = '#30c050';
-  pc.fillText('START', startFlagX + flagSize, startFlagY + flagSize * 0.85);
+  pc.fillText('START', startX + flagPad, startY + cellSize - flagSize - flagPad * 2);
 
-  // Finish flag 🏁 — right of the grid, at row-(ROWS-1) vertical centre
-  const finishFlagX = gridX + gridW + flagSize * 0.4;
-  const finishFlagY = finishY + cellSize / 2;
-  // Dashed connector line
-  pc.save();
-  pc.setLineDash([4, 4]);
-  pc.strokeStyle = '#e63030'; pc.lineWidth = 1.5;
-  pc.beginPath();
-  pc.moveTo(finishX + cellSize, finishFlagY);
-  pc.lineTo(finishFlagX, finishFlagY);
-  pc.stroke();
-  pc.restore();
-  pc.textAlign = 'left';
+  // Finish flag 🏁 — bottom-left of finish cell
   pc.font = flagSize + 'px serif';
-  pc.fillText('\uD83C\uDFC1', finishFlagX, finishFlagY + flagSize * 0.15);
-  // Label
-  pc.font = 'bold ' + Math.max(8, Math.round(flagSize * 0.45)) + 'px Roboto Mono,monospace';
+  pc.textBaseline = 'bottom';
+  pc.fillText('\uD83C\uDFC1', finishX + flagPad, finishY + cellSize - flagPad);
+  // "FINISH" label above the flag
+  pc.font = 'bold ' + Math.max(7, Math.round(flagSize * 0.38)) + 'px Roboto Mono,monospace';
   pc.fillStyle = '#e63030';
-  pc.textAlign = 'left';
-  pc.fillText('FINISH', finishFlagX, finishFlagY + flagSize * 0.85);
+  pc.fillText('FINISH', finishX + flagPad, finishY + cellSize - flagSize - flagPad * 2);
 
-  // Moves counter per active player (small, below flag labels)
-  let moveCountY = finishFlagY + flagSize * 1.4;
+  // Moves counter per active player (small, right of the grid)
+  const moveCounterX = gridX + gridW + flagSize * 0.4;
+  let moveCountY = gridY + flagSize;
+  
+  pc.font = 'bold ' + Math.max(8, Math.round(flagSize * 0.45)) + 'px Roboto Mono,monospace';
+  pc.fillStyle = '#666';
+  pc.textAlign = 'left';
+  pc.fillText('MOVES', moveCounterX, moveCountY);
+  moveCountY += flagSize * 0.8;
+
   getProjPawns().forEach(function(p) {
-    const moves = moveHistory[p.id] ? moveHistory[p.id].size : 0;
+    const moves = moveLogs.filter(m => m.pawnIndex === p.idx).length;
+    const cell  = currentCell[p.id];
+    const onFinish = cell && cell.col === FINISH_CELL.col && cell.row === FINISH_CELL.row;
+    const done = moves >= 10 && onFinish;
     pc.font = 'bold ' + Math.max(8, Math.round(flagSize * 0.38)) + 'px Roboto Mono,monospace';
-    pc.fillStyle = gameEnded ? '#30c050' : p.color;
+    pc.fillStyle = done ? '#30c050' : p.color;
     pc.textAlign = 'left';
-    pc.fillText(p.label + ': ' + moves + (gameEnded ? ' \u2713' : ''), finishFlagX, moveCountY);
+    pc.fillText(p.label + ': ' + moves + '/10' + (onFinish ? ' \uD83C\uDFC1' : '') + (done ? ' \u2713' : ''), moveCounterX, moveCountY);
     moveCountY += flagSize * 0.6;
   });
 
@@ -3884,9 +3928,10 @@ function toggleViewMode() {
     p2.classList.remove('hidden-panel');
     document.getElementById('viewNoisePanel').style.display = 'none'; // we'll use side panels instead
   } else {
-    // Restoration to game behavior
-    p1.classList.toggle('hidden-panel', !activePawnIds.has('red'));
-    p2.classList.toggle('hidden-panel', !activePawnIds.has('blue'));
+    // Restoration to game behavior — show panels based on how many pawns are active
+    const activeArr = [...activePawnIds];
+    p1.classList.toggle('hidden-panel', activeArr.length < 1);
+    p2.classList.toggle('hidden-panel', activeArr.length < 2);
     document.getElementById('viewNoisePanel').style.display = 'none';
   }
 
