@@ -1,4 +1,4 @@
-# SONYC-UST DataViz — Tabletop Pawn Tracker
+# NYC SONYC Playground - Interactive Data Visualization Game
 
 An interactive two-player installation that combines real-time computer vision pawn tracking with NYC urban noise data visualization. Players move colored physical objects on a camera-monitored grid, racing from start to finish while the board reveals noise sensor data from the SONYC-UST (Sounds of New York City) project.
 
