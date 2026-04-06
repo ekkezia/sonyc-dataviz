@@ -360,6 +360,40 @@
     }
     #timelinePicker.open { display:flex; }
     #tlPickerSwatches { display:flex; flex-wrap:wrap; gap:8px; }
+    /* Role picker (unified P1 / P2 / Slider assignment) */
+    #rolePicker {
+      position:absolute; top:96px; left:330px; background:var(--surface);
+      border:1px solid var(--border); border-radius:8px; padding:12px;
+      z-index:3000; display:none; flex-direction:column; gap:8px;
+      min-width:270px; box-shadow:0 8px 28px rgba(0,0,0,.85);
+    }
+    #rolePicker.open { display:flex; }
+    #rolePickerSwatches { display:flex; flex-wrap:wrap; gap:8px; }
+    #camSampleBtn {
+      font-family:var(--mono); font-size:9px; letter-spacing:.06em;
+      padding:6px 10px; background:rgba(26,26,255,.15);
+      border:1px solid var(--accent); border-radius:5px;
+      color:var(--accent); cursor:pointer; transition:background .15s;
+    }
+    #camSampleBtn:hover { background:rgba(26,26,255,.3); }
+    /* Tracker role rows */
+    .tracker-role-row {
+      display:flex; align-items:center; gap:7px;
+      padding:5px 0; border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .tracker-role-row:last-child { border-bottom:none; }
+    .role-dot { width:11px; height:11px; border-radius:50%; flex-shrink:0; border:1px solid rgba(255,255,255,.2); }
+    .role-label { font-size:9px; color:var(--muted); min-width:36px; letter-spacing:.04em; font-family:var(--mono); }
+    .role-assigned { font-size:10px; color:#fff; flex:1; letter-spacing:.04em; font-family:var(--mono); font-weight:700; }
+    .role-btn { font-size:8px; padding:2px 7px; font-family:var(--mono); background:transparent; border:1px solid rgba(255,255,255,.25); border-radius:3px; color:#ccc; cursor:pointer; letter-spacing:.04em; }
+    .role-btn:hover { border-color:var(--accent); color:var(--accent); }
+    #camPickBanner {
+      position:absolute; top:12px; left:50%; transform:translateX(-50%);
+      background:rgba(26,26,255,.92); color:#fff; font-size:11px; font-weight:700;
+      padding:7px 18px; border-radius:6px; letter-spacing:.06em; pointer-events:none;
+      z-index:3000; display:none; white-space:nowrap; font-family:var(--mono);
+      border:1px solid #fff; box-shadow:0 4px 16px rgba(0,0,0,.5);
+    }
     #tuner { position:absolute; bottom:0; right:0; z-index:25; background:var(--surface); border:1px solid var(--border); border-radius:8px 0 0 0; padding:12px 14px; min-width:210px; font-size:10px; display:none; }
     #tuner.open { display:block; }
     #tuner h4 { font-size:10px; color:var(--accent); margin-bottom:9px; letter-spacing:.06em; }
@@ -1150,9 +1184,10 @@
 
           <div id="gameOnlyControls" style="display:flex;flex-direction:column;gap:0;">
             <div class="panel-sep"></div>
-            <div class="panel-label">PAWNS</div>
-            <div id="trackerRow"></div>
-            <button id="addPawnBtn" onclick="openPicker()">+ PAWN</button>
+            <div class="panel-label">TRACKER ROLES</div>
+            <div id="trackerRoles" style="display:flex;flex-direction:column;padding:4px 0;"></div>
+            <!-- trackerRow kept hidden; used internally by rebuildChips for HSV tuner -->
+            <div id="trackerRow" style="display:none;"></div>
 
             <div class="panel-label">PROJECTION EDIT</div>
             <div class="mode-toggle">
@@ -1191,7 +1226,13 @@
               </div>
             </div>
             <button class="btn" onclick="toggleTuner()">HSV TUNE</button>
-            <button class="btn" id="tlColorBtn" onclick="openTimelinePicker()">TIMELINE: PURPLE</button>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+              <span style="font-size:9px;color:#888;letter-spacing:.06em;min-width:68px;">COLOR DIST</span>
+              <input type="range" id="euclidSlider" min="20" max="120" value="50"
+                oninput="euclidThreshold=+this.value;document.getElementById('euclidVal').textContent=this.value"
+                style="flex:1;accent-color:var(--accent);">
+              <span id="euclidVal" style="font-size:9px;color:#ccc;min-width:22px;">50</span>
+            </div>
 
             <div class="panel-sep"></div>
             <div class="panel-label">GAMEPLAY RULES</div>
@@ -1402,6 +1443,20 @@
         <button class="pick-close" onclick="closeTimelinePicker()">CLOSE x</button>
         <div style="font-size:9px;color:var(--muted);letter-spacing:.05em;">TIMELINE TRACKER COLOR</div>
         <div id="tlPickerSwatches"></div>
+      </div>
+
+      <!-- Camera sample color banner -->
+      <div id="camPickBanner">CLICK ON CAMERA TO SAMPLE COLOR FOR ROLE</div>
+
+      <!-- Unified role picker -->
+      <div id="rolePicker">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span id="rolePickerTitle" style="font-size:10px;font-weight:700;letter-spacing:.07em;color:var(--text);font-family:var(--mono);"></span>
+          <button class="pick-close" onclick="closeRolePicker()">CLOSE ✕</button>
+        </div>
+        <button id="camSampleBtn" onclick="startCameraColorPick()">SAMPLE FROM CAMERA</button>
+        <div style="font-size:8px;color:var(--muted);letter-spacing:.05em;margin-top:-2px;">— or pick a color below —</div>
+        <div id="rolePickerSwatches"></div>
       </div>
 
       <!-- Pawn picker -->
@@ -1664,7 +1719,9 @@ let customCounter = 0;
 const pawnParams = {};
 function defaultParams(pd) {
   if (pd && pd.id === 'red') {
-    return { hRange:34, sMin:50, vMin:30, vMax:255, rMin:4, rMax:100 };
+    // Red wraps at hue 0/360 and cameras desaturate it more than green at half-res;
+    // wider hRange + lower sMin compensates. Shape (circularity) filter avoids false positives.
+    return { hRange:42, sMin:32, vMin:24, vMax:255, rMin:4, rMax:100 };
   }
   if (pd && pd.id === 'green') {
     return { hRange:30, sMin:42, vMin:28, vMax:255, rMin:4, rMax:100 };
@@ -1688,8 +1745,14 @@ const currentCell = {};
 
 // EMA-smoothed positions for stable rendering: { cx, cy, r }
 const smoothPos = {};
-const SMOOTH_ALPHA = 0.35; // 0=frozen, 1=raw — lower = smoother but more lag
+const SMOOTH_ALPHA = 0.20; // 0=frozen, 1=raw — lower = smoother but more lag
 const missedDetectionFrames = {};
+
+// ── p5-style Euclidean RGB tracking ─────────────────────────────
+// pawnTargetRGB[id] = [r, g, b] — exact pixel sampled from the camera.
+// When set, detectByEuclid() is used instead of HSV blob detection.
+const pawnTargetRGB   = {};
+let   euclidThreshold = 50; // max RGB distance to count as a match (same default as p5 example)
 let trackingSensitivity = 'balanced';
 const TRACKING_SENSITIVITY = {
   strict:   { hueMul: 0.72, sBoost: 16, vBoost: 10, minCount: 20, circMin: 0.22, aspectMax: 3.0, dilate: 3, erode: 3, missedFrames: 4 },
@@ -1874,11 +1937,244 @@ function buildTimelinePickerSwatches() {
     div.onclick = function() {
       timelineTrackerId = pd.id;
       if (!pawnParams[pd.id]) pawnParams[pd.id] = defaultParams(pd);
-      document.getElementById('tlColorBtn').textContent = 'TIMELINE: ' + pd.label.toUpperCase();
+      updateTrackerRolesUI();
       closeTimelinePicker();
     };
     sw.appendChild(div);
   });
+}
+
+// ── TRACKER ROLES (P1 / P2 / SLIDER unified assignment) ─────────
+let activeRolePicker = null; // 'p1' | 'p2' | 'slider' | null
+let cameraPickMode   = false;
+
+function getP1Id()     { return [...activePawnIds][0] || null; }
+function getP2Id()     { return [...activePawnIds][1] || null; }
+function getSliderId() { return timelineTrackerId; }
+
+function openRolePicker(role) {
+  activeRolePicker = role;
+  const titles = { p1:'ASSIGN P1 PAWN', p2:'ASSIGN P2 PAWN', slider:'ASSIGN DATE SLIDER' };
+  document.getElementById('rolePickerTitle').textContent = titles[role] || 'ASSIGN';
+  buildRolePickerSwatches();
+  document.getElementById('rolePicker').classList.add('open');
+}
+function closeRolePicker() {
+  document.getElementById('rolePicker').classList.remove('open');
+  activeRolePicker = null;
+}
+
+function buildRolePickerSwatches() {
+  const sw = document.getElementById('rolePickerSwatches');
+  sw.innerHTML = '';
+  allPawnDefs.forEach(function(pd) {
+    const div = document.createElement('div');
+    div.className = 'pick-swatch';
+    div.innerHTML = '<div class="pick-circle" style="background:' + pd.color + '"></div><span>' + pd.label.toUpperCase() + '</span>';
+    div.onclick = function() { assignRole(activeRolePicker, pd.id); closeRolePicker(); };
+    sw.appendChild(div);
+  });
+}
+
+function ensurePawnTracked(id) {
+  const pd = allPawnDefs.find(function(p){ return p.id === id; }); if (!pd) return;
+  if (!pawnParams[id]) pawnParams[id] = defaultParams(pd);
+  if (!pawnState[id])  pawnState[id]  = { pos: null, cell: null };
+  if (!pawnIdToIndex[id]) {
+    const idx = nextPawnIndex++;
+    pawnIdToIndex[id] = idx;
+    pawns[idx] = { color: pd.color, position: null, score: 0 };
+  }
+}
+
+function assignRole(role, pawnId) {
+  if (!role || !pawnId) return;
+  const pd = allPawnDefs.find(function(p){ return p.id === pawnId; }); if (!pd) return;
+  ensurePawnTracked(pawnId);
+  // Preset colors don't have a camera-sampled target — clear stale Euclidean state
+  if (!pawnId.startsWith('cam_')) delete pawnTargetRGB[pawnId];
+
+  if (role === 'slider') {
+    timelineTrackerId = pawnId;
+  } else if (role === 'p1') {
+    const p2 = getP2Id();
+    activePawnIds.clear();
+    activePawnIds.add(pawnId);
+    if (p2 && p2 !== pawnId) activePawnIds.add(p2);
+    selectedChipId = pawnId;
+    ensurePawnTracked(pawnId);
+  } else if (role === 'p2') {
+    const p1 = getP1Id();
+    activePawnIds.clear();
+    if (p1 && p1 !== pawnId) { activePawnIds.add(p1); ensurePawnTracked(p1); }
+    activePawnIds.add(pawnId);
+    if (!p1) selectedChipId = pawnId;
+  }
+  updateTrackerRolesUI();
+  rebuildChips();
+  updatePanelColors();
+}
+
+function updateTrackerRolesUI() {
+  const container = document.getElementById('trackerRoles');
+  if (!container) return;
+  const roles = [
+    { key:'p1',     label:'P1',     id: getP1Id()     },
+    { key:'p2',     label:'P2',     id: getP2Id()      },
+    { key:'slider', label:'SLIDER', id: getSliderId()  },
+  ];
+  container.innerHTML = '';
+  roles.forEach(function(r) {
+    const pd = r.id ? allPawnDefs.find(function(p){ return p.id === r.id; }) : null;
+    const color = pd ? pd.color : '#555';
+    const name  = pd ? pd.label.toUpperCase() : 'NONE';
+    const row = document.createElement('div');
+    row.className = 'tracker-role-row';
+    row.innerHTML =
+      '<div class="role-dot" style="background:' + color + '"></div>' +
+      '<span class="role-label">' + r.label + '</span>' +
+      '<span class="role-assigned">' + name + '</span>' +
+      '<button class="role-btn" onclick="openRolePicker(\'' + r.key + '\')">CHANGE</button>';
+    container.appendChild(row);
+  });
+}
+
+// Camera color sampling
+function startCameraColorPick() {
+  // Save role before closeRolePicker() clears it
+  const savedRole = activeRolePicker;
+  document.getElementById('rolePicker').classList.remove('open');
+  activeRolePicker = savedRole; // restore for sampleCameraColorForRole
+  cameraPickMode = true;
+  // Temporarily enable pointer events on the overlay so user can click the camera feed
+  overlay.style.pointerEvents = 'auto';
+  overlay.style.zIndex = '600';
+  const banner = document.getElementById('camPickBanner');
+  if (banner) banner.style.display = 'block';
+}
+
+function stopCameraPickMode() {
+  cameraPickMode = false;
+  const banner = document.getElementById('camPickBanner');
+  if (banner) banner.style.display = 'none';
+  // Restore pointer-events to what they should be
+  applyInteractionState();
+}
+
+// Live crosshair cursor position during camera pick mode (overlay coords)
+let camPickCursor = null;
+
+function sampleCameraColorForRole(px, py) {
+  stopCameraPickMode();
+  camPickCursor = null;
+  if (!activeRolePicker) return;
+
+  // ── Step 1: tiny center anchor (5×5 in offC) — this IS the pawn pixel ──────
+  // Reading directly from the offscreen canvas that mirrors the raw video frame.
+  // CSS opacity on the video element does NOT affect drawImage pixel values.
+  const ANCHOR = 2; // half-size → 5×5 patch
+  const OUTER  = 12; // half-size of outer calibration ring → 25×25 patch
+  const ocx = Math.round(px * SCALE);
+  const ocy = Math.round(py * SCALE);
+
+  function readRegion(halfW, halfH) {
+    const sx = Math.max(0, ocx - halfW);
+    const sy = Math.max(0, ocy - halfH);
+    const iw = Math.min(halfW * 2 + 1, offC.width  - sx);
+    const ih = Math.min(halfH * 2 + 1, offC.height - sy);
+    if (iw <= 0 || ih <= 0) return null;
+    return offX.getImageData(sx, sy, iw, ih);
+  }
+
+  // Get anchor hue from the center patch
+  const anchorData = readRegion(ANCHOR, ANCHOR);
+  if (!anchorData) return;
+  let rSum = 0, gSum = 0, bSum = 0, n = 0;
+  for (let i = 0; i < anchorData.data.length; i += 4) {
+    rSum += anchorData.data[i]; gSum += anchorData.data[i+1]; bSum += anchorData.data[i+2]; n++;
+  }
+  if (n === 0) return;
+  const rAvg = rSum / n, gAvg = gSum / n, bAvg = bSum / n;
+  const anchorHSV = rgbToHsv(rAvg, gAvg, bAvg);
+  const anchorHue = anchorHSV[0]; // 0–360, raw from center — this is the true pawn hue
+
+  // ── Step 2: outer ring calibrates tolerance around the anchor hue ─────────
+  const outerData = readRegion(OUTER, OUTER);
+  const outerHues = [], outerS = [], outerV = [];
+  if (outerData) {
+    for (let i = 0; i < outerData.data.length; i += 4) {
+      const r = outerData.data[i], g = outerData.data[i+1], b = outerData.data[i+2];
+      const hsv = rgbToHsv(r, g, b);
+      const h = hsv[0], s = hsv[1], v = hsv[2];
+      if (s < 25 || v < 25 || v > 248) continue;
+      // Only keep pixels whose hue is close to the anchor (handles wraparound)
+      const diff = Math.abs(((h - anchorHue + 540) % 360) - 180);
+      if (diff > 45) continue; // skip background / skin that differs too much
+      outerHues.push(h);
+      outerS.push(s);
+      outerV.push(v);
+    }
+  }
+
+  let hRange, sMin, vMin;
+  if (outerHues.length >= 4) {
+    // Measure actual spread of matching hues
+    let minH = anchorHue, maxH = anchorHue;
+    outerHues.forEach(function(h) {
+      // Unwrap around anchor
+      let dh = ((h - anchorHue + 540) % 360) - 180;
+      if (anchorHue + dh < minH) minH = anchorHue + dh;
+      if (anchorHue + dh > maxH) maxH = anchorHue + dh;
+    });
+    hRange = Math.max(14, Math.min(50, Math.ceil((maxH - minH) / 2) + 8));
+    sMin   = Math.max(12, Math.round(Math.min.apply(null, outerS) * 0.72));
+    vMin   = Math.max(12, Math.round(Math.min.apply(null, outerV) * 0.72));
+  } else {
+    // Fallback: generous defaults centred on the anchor
+    hRange = 28; sMin = 35; vMin = 25;
+  }
+
+  // ── Step 3: build a representative RGB swatch from the anchor hue ────────
+  const sRep = anchorHSV[1] > 0 ? anchorHSV[1] : 180;
+  const vRep = anchorHSV[2] > 0 ? anchorHSV[2] : 180;
+  const hex  = hsvToHex(anchorHue, sRep, vRep);
+
+  // Pass the raw anchor RGB so Euclidean tracking uses the exact sampled pixel color
+  _applyRoleSample(activeRolePicker, Math.round(anchorHue), hex,
+    { hRange, sMin, vMin, vMax:255, rMin:5, rMax:120 },
+    [Math.round(rAvg), Math.round(gAvg), Math.round(bAvg)]);
+}
+
+// HSV (h:0-360, s:0-255, v:0-255) → '#rrggbb'
+function hsvToHex(h, s, v) {
+  const hN = h / 360, sN = s / 255, vN = v / 255;
+  const i6 = Math.floor(hN * 6);
+  const f  = hN * 6 - i6;
+  const p  = vN * (1 - sN), q = vN * (1 - f * sN), t = vN * (1 - (1 - f) * sN);
+  let r, g, b;
+  switch (i6 % 6) {
+    case 0: r=vN;g=t; b=p;  break; case 1: r=q; g=vN;b=p;  break;
+    case 2: r=p; g=vN;b=t;  break; case 3: r=p; g=q; b=vN; break;
+    case 4: r=t; g=p; b=vN; break; default:r=vN;g=p; b=q;  break;
+  }
+  return '#' + [r,g,b].map(function(c){ return Math.round(c*255).toString(16).padStart(2,'0'); }).join('');
+}
+
+function _applyRoleSample(role, hue, hex, params, rgb) {
+  const camId = 'cam_' + role;
+  const roleNames = { p1:'Cam P1', p2:'Cam P2', slider:'Cam Slider' };
+  const pd = { id:camId, hue:hue, color:hex, label:roleNames[role] || 'Cam', isWhite:false };
+  const existIdx = allPawnDefs.findIndex(function(p){ return p.id === camId; });
+  if (existIdx >= 0) allPawnDefs[existIdx] = pd;
+  else allPawnDefs.push(pd);
+  pawnParams[camId] = params;
+  // Store the exact sampled RGB for Euclidean tracking
+  if (rgb) pawnTargetRGB[camId] = rgb;
+  selectedChipId = camId;
+  const savedRole = role;
+  activeRolePicker = null;
+  assignRole(savedRole, camId);
+  if (document.getElementById('tuner').classList.contains('open')) loadSliders();
 }
 
 // ── HSV TUNER ───────────────────────────────────────────────────
@@ -2041,6 +2337,11 @@ overlay.addEventListener('pointerdown', function(e) {
   e.preventDefault();
   overlay.setPointerCapture(e.pointerId);
   const p = canvasPoint(e);
+  // Camera-pick mode: sample pixel color for role assignment
+  if (cameraPickMode) {
+    sampleCameraColorForRole(p.x, p.y);
+    return;
+  }
   const th = hitTimeHandle(p.x, p.y);
   if (th) { draggingTimeHandle = th; return; }
   draggingHandle = hitHandle(p.x, p.y);
@@ -2067,6 +2368,11 @@ overlay.addEventListener('pointermove', function(e) {
 overlay.addEventListener('pointermove', function(e) {
   if (draggingHandle || draggingTimeHandle) return;
   const p = canvasPoint(e);
+  if (cameraPickMode) {
+    camPickCursor = p;
+    overlay.style.cursor = 'crosshair';
+    return;
+  }
   overlay.style.cursor = (hitHandle(p.x, p.y) || hitTimeHandle(p.x, p.y)) ? 'nwse-resize' : 'default';
 });
 
@@ -2094,26 +2400,45 @@ function clearGrid() {
 
 function centerGrid() {
   if (!overlay.width || !overlay.height) return;
-  const pad    = 30;
-  const tbH    = 24;
-  const tbGap  = 16;
-  
-  // Respect the MTA UI boundaries (Top Rail: 96px, Seating: 60px)
-  const safeTop = 96;
-  const safeBot = 60;
-  const safeH   = overlay.height - safeTop - safeBot;
+  // Use the same layout math as drawProjection() so the default mapping
+  // lines up exactly with the visible projection grid.
+  const zone = document.getElementById('projZone');
+  const cw   = zone ? (zone.clientWidth  || overlay.width)  : overlay.width;
+  const ch   = zone ? (zone.clientHeight || overlay.height) : overlay.height;
 
-  const cellSize = Math.min(
-    Math.floor((overlay.width  - pad * 2) / COLS),
-    Math.floor((safeH - pad * 2 - tbH - tbGap) / ROWS)
-  );
-  const w = COLS * cellSize;
-  const h = ROWS * cellSize;
-  const x = Math.round((overlay.width  - w) / 2);
-  const y = Math.round((safeH - h - tbH - tbGap) / 2) + safeTop;
-  grid = { x, y, w, h };
-  timeBar = { x, y: y + h + tbGap, w, h: tbH };
-  document.getElementById('bGrid').textContent = COLS + 'x' + ROWS + ' (' + cellSize + 'px/cell)';
+  const isMobile  = cw <= 599;
+  const PANEL_MIN = isMobile ? 0 : 134;
+  const TOP_H     = 96;
+  const LEGEND_H  = 60;
+  const pad       = 12;
+  const tbH       = 24;
+  const tbGap     = 16;
+
+  const avW      = cw - pad * 2 - PANEL_MIN * 2;
+  const mapAreaH = isMobile ? (ch - TOP_H - LEGEND_H) / 2 : (ch - TOP_H - LEGEND_H);
+  const avH      = mapAreaH - pad;
+  const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
+  const gridW    = COLS * cellSize;
+  const gridH    = ROWS * cellSize;
+  const gridX    = Math.round((cw - gridW) / 2);
+  const gridY    = TOP_H + Math.round((avH - gridH) / 2);
+
+  // Scale from CSS-px space → overlay canvas space (video resolution)
+  const sx = overlay.width  / cw;
+  const sy = overlay.height / ch;
+  grid = {
+    x: Math.round(gridX * sx),
+    y: Math.round(gridY * sy),
+    w: Math.round(gridW * sx),
+    h: Math.round(gridH * sy),
+  };
+  timeBar = {
+    x: grid.x,
+    y: grid.y + grid.h + Math.round(tbGap * sy),
+    w: grid.w,
+    h: Math.round(tbH * sy),
+  };
+  document.getElementById('bGrid').textContent = COLS + 'x' + ROWS + ' (' + Math.round(grid.w / COLS) + 'px/cell)';
 }
 
 // ── MAIN LOOP ───────────────────────────────────────────────────
@@ -2135,24 +2460,39 @@ function loop() {
 
   let totalBlobs = 0;
   activePawnIds.forEach(function(id) {
-    const blobs = detectBlobs(imgData, id);
-    totalBlobs += blobs.length;
-    if (blobs.length > 0) {
-      missedDetectionFrames[id] = 0;
-      // Prefer blob closest to last known position; fall back to largest
-      var best;
-      const sp = smoothPos[id];
-      if (sp) {
-        var minDist = Infinity;
-        blobs.forEach(function(b) {
-          const dx = b.cx - sp.cx * SCALE, dy = b.cy - sp.cy * SCALE;
-          const dist = dx*dx + dy*dy - b.area * 0.5; // area bonus to avoid tiny noise blobs
-          if (dist < minDist) { minDist = dist; best = b; }
-        });
-      } else {
-        best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
+    // ── Choose detection method ────────────────────────────────────
+    // If a camera-sampled RGB target exists → use p5-style Euclidean scan.
+    // Otherwise → fall back to HSV blob detection.
+    var best = null;
+    var found = false;
+    if (pawnTargetRGB[id]) {
+      best = detectByEuclid(imgData, pawnTargetRGB[id], smoothPos[id]);
+      found = best !== null;
+    } else {
+      const blobs = detectBlobs(imgData, id);
+      totalBlobs += blobs.length;
+      if (blobs.length > 0) {
+        found = true;
+        const sp = smoothPos[id];
+        if (sp) {
+          const MAX_JUMP_SQ = 70 * 70;
+          var minScore = Infinity;
+          blobs.forEach(function(b) {
+            const dx = b.cx - sp.cx * SCALE, dy = b.cy - sp.cy * SCALE;
+            const d2 = dx*dx + dy*dy;
+            if (d2 > MAX_JUMP_SQ) return;
+            const score = d2 - b.area * 0.5;
+            if (score < minScore) { minScore = score; best = b; }
+          });
+          if (!best) best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
+        } else {
+          best = blobs.reduce(function(a,b){ return a.area>b.area?a:b; });
+        }
       }
-      // EMA smooth the position
+    }
+
+    if (found && best) {
+      missedDetectionFrames[id] = 0;
       const rawCx = best.cx/SCALE, rawCy = best.cy/SCALE, rawR = best.r/SCALE;
       if (!smoothPos[id]) {
         smoothPos[id] = { cx: rawCx, cy: rawCy, r: rawR };
@@ -2181,12 +2521,22 @@ function loop() {
   });
   document.getElementById('bBlobs').textContent = totalBlobs;
 
-  // Timeline bar tracker — only runs in camera mode; detect the dedicated color, map X position to slider
-  if (cameraMode && timeBar && timelineTrackerId && pawnParams[timelineTrackerId]) {
-    const tlBlobs = detectBlobs(imgData, timelineTrackerId);
-    if (tlBlobs.length > 0) {
-      const best = tlBlobs.reduce(function(a,b){ return a.area>b.area?a:b; });
-      const cx_raw = best.cx / SCALE;
+  // Timeline bar tracker
+  if (cameraMode && timeBar && timelineTrackerId) {
+    let tlBest = null;
+    if (pawnTargetRGB[timelineTrackerId]) {
+      tlBest = detectByEuclid(imgData, pawnTargetRGB[timelineTrackerId], null);
+    } else if (pawnParams[timelineTrackerId]) {
+      const tlBlobs = detectBlobs(imgData, timelineTrackerId);
+      if (tlBlobs.length > 0) {
+        const tbCy = (timeBar.y + timeBar.h / 2) * SCALE;
+        const tlGated = tlBlobs.filter(function(b){ return Math.abs(b.cy - tbCy) < 30; });
+        tlBest = (tlGated.length > 0 ? tlGated : tlBlobs)
+          .reduce(function(a,b){ return a.area>b.area?a:b; });
+      }
+    }
+    if (tlBest) {
+      const cx_raw = tlBest.cx / SCALE;
       const rawPct = Math.max(0, Math.min(1, (cx_raw - timeBar.x) / timeBar.w));
       timelineSliderPct = rawPct;
       const sliderVal = Math.round(rawPct * 1000);
@@ -2259,7 +2609,87 @@ function pixelMatches(r,g,b,id) {
   const effVMin = Math.min(255, pp.vMin + sens.vBoost);
   if (v<effVMin||v>pp.vMax) return false;
   if (def.isWhite) return s < effSMin;
-  return hueDiff(h,def.hue)<=effHueRange && s>=effSMin;
+  // Red (hue≈0) straddles the 0/360 boundary — check both ends explicitly
+  // to avoid any floating-point/modulo edge cases in hueDiff.
+  if (def.hue === 0 || def.id === 'red') {
+    return (h <= effHueRange || h >= (360 - effHueRange)) && s >= effSMin;
+  }
+  return hueDiff(h, def.hue) <= effHueRange && s >= effSMin;
+}
+
+// ── p5-STYLE EUCLIDEAN RGB DETECTION ────────────────────────────
+// Direct port of the Learning Processing / p5.js color-tracking example.
+// Scans every pixel; tracks the one with the smallest RGB distance to the
+// target color (set by clicking the camera feed). No HSV conversion needed.
+//
+// lastSP = smoothPos[id] (in overlay-canvas coords) — used to apply a
+// position gate so a distant false-positive can't hijack a locked track.
+function detectByEuclid(imgData, targetRGB, lastSP) {
+  const data = imgData.data;
+  const w = imgData.width, h = imgData.height;
+  const tr = targetRGB[0], tg = targetRGB[1], tb = targetRGB[2];
+  const THRESH_SQ = euclidThreshold * euclidThreshold;
+
+  // If we have a previous position, restrict the search to a window around
+  // it so distant same-colored objects don't steal the lock.
+  let x0 = 0, y0 = 0, x1 = w, y1 = h;
+  if (lastSP) {
+    const WIN = Math.round(80 * SCALE); // search window half-size in offC px
+    x0 = Math.max(0, Math.round(lastSP.cx * SCALE) - WIN);
+    y0 = Math.max(0, Math.round(lastSP.cy * SCALE) - WIN);
+    x1 = Math.min(w, Math.round(lastSP.cx * SCALE) + WIN);
+    y1 = Math.min(h, Math.round(lastSP.cy * SCALE) + WIN);
+  }
+
+  // ── worldRecord scan (exactly like the p5 example) ──────────────
+  let worldRecord = THRESH_SQ; // only beats this if d² < threshold²
+  let bx = -1, by = -1;
+  for (let y = y0; y < y1; y++) {
+    for (let x = x0; x < x1; x++) {
+      const loc = (y * w + x) * 4;
+      const dr = data[loc]   - tr;
+      const dg = data[loc+1] - tg;
+      const db = data[loc+2] - tb;
+      const d2 = dr*dr + dg*dg + db*db; // skip sqrt for speed
+      if (d2 < worldRecord) { worldRecord = d2; bx = x; by = y; }
+    }
+  }
+
+  // If nothing in the window was close enough, widen to full frame once
+  // (handles the pawn leaving the window boundary)
+  if (bx < 0 && lastSP) {
+    worldRecord = THRESH_SQ;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const loc = (y * w + x) * 4;
+        const dr = data[loc]-tr, dg = data[loc+1]-tg, db = data[loc+2]-tb;
+        const d2 = dr*dr + dg*dg + db*db;
+        if (d2 < worldRecord) { worldRecord = d2; bx = x; by = y; }
+      }
+    }
+  }
+
+  if (bx < 0) return null;
+
+  // Compute a weighted centroid in the neighbourhood for sub-pixel stability
+  // (avoids the single-pixel snap jitter of the raw worldRecord position)
+  const NR = 8;
+  let sumX = 0, sumY = 0, wTot = 0;
+  const WIDE_SQ = THRESH_SQ * 4;
+  for (let ny = Math.max(0,by-NR); ny <= Math.min(h-1,by+NR); ny++) {
+    for (let nx = Math.max(0,bx-NR); nx <= Math.min(w-1,bx+NR); nx++) {
+      const loc = (ny*w+nx)*4;
+      const dr = data[loc]-tr, dg = data[loc+1]-tg, db = data[loc+2]-tb;
+      const d2 = dr*dr + dg*dg + db*db;
+      if (d2 < WIDE_SQ) {
+        const weight = 1 / (1 + d2 * 0.001);
+        sumX += nx * weight; sumY += ny * weight; wTot += weight;
+      }
+    }
+  }
+  const cx = (wTot > 0 ? sumX / wTot : bx) + 0.5;
+  const cy = (wTot > 0 ? sumY / wTot : by) + 0.5;
+  return { cx, cy, r: 10, area: 100 };
 }
 
 // ── BLOB DETECTION ──────────────────────────────────────────────
@@ -2375,6 +2805,71 @@ function draw() {
     const s = pawnState[id];
     if (s&&s.pos) drawPawn(allPawnDefs.find(function(p){ return p.id===id; }), s);
   });
+  if (cameraPickMode && camPickCursor) drawPickCrosshair(camPickCursor.x, camPickCursor.y);
+}
+
+function drawPickCrosshair(px, py) {
+  // Inner circle = anchor region (5×5 in offC → ~10px in overlay)
+  // Outer circle = calibration ring (25×25 in offC → ~50px in overlay)
+  const ANCHOR_R = Math.round(5  / SCALE);
+  const OUTER_R  = Math.round(13 / SCALE);
+  ctx.save();
+
+  // Live color preview: sample the center pixel from offC right now
+  const ocx = Math.round(px * SCALE), ocy = Math.round(py * SCALE);
+  let previewHex = '#fff';
+  if (ocx >= 0 && ocx < offC.width && ocy >= 0 && ocy < offC.height) {
+    try {
+      const p1 = offX.getImageData(Math.max(0,ocx-1), Math.max(0,ocy-1), 3, 3);
+      let r=0,g=0,b=0,n=0;
+      for (let i=0;i<p1.data.length;i+=4){r+=p1.data[i];g+=p1.data[i+1];b+=p1.data[i+2];n++;}
+      if (n>0) { const hsv=rgbToHsv(r/n,g/n,b/n); previewHex=hsvToHex(hsv[0],hsv[1],hsv[2]); }
+    } catch(e) {}
+  }
+
+  // Outer dashed calibration ring
+  ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+  ctx.lineWidth   = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.arc(px, py, OUTER_R, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Inner solid anchor circle filled with the sampled live color
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth   = 2;
+  ctx.fillStyle   = previewHex;
+  ctx.beginPath();
+  ctx.arc(px, py, ANCHOR_R, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  // Crosshair lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+  ctx.lineWidth   = 1;
+  const ARM = OUTER_R + 8;
+  ctx.beginPath();
+  ctx.moveTo(px - ARM, py); ctx.lineTo(px - ANCHOR_R - 2, py);
+  ctx.moveTo(px + ANCHOR_R + 2, py); ctx.lineTo(px + ARM, py);
+  ctx.moveTo(px, py - ARM); ctx.lineTo(px, py - ANCHOR_R - 2);
+  ctx.moveTo(px, py + ANCHOR_R + 2); ctx.lineTo(px, py + ARM);
+  ctx.stroke();
+
+  // Label showing live hex
+  ctx.fillStyle   = 'rgba(0,0,0,0.7)';
+  ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+  ctx.lineWidth   = 0.5;
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  const labelX = px + OUTER_R + 6;
+  const labelY = py;
+  ctx.strokeText(previewHex, labelX, labelY);
+  ctx.fillStyle = '#fff';
+  ctx.fillText(previewHex, labelX, labelY);
+
+  ctx.restore();
 }
 
 function drawGridOverlay(showActive) {
@@ -3917,13 +4412,19 @@ function toggleEditProjection() {
   document.getElementById('editModeSwitch').classList.toggle('on', editProjectionMode);
   document.getElementById('editOffLbl').classList.toggle('active', !editProjectionMode);
   document.getElementById('editOnLbl').classList.toggle('active', editProjectionMode);
-  const v = document.getElementById('video');
-  if (v) v.style.opacity = editProjectionMode ? String(EDIT_VIDEO_OPACITY) : String(DEFAULT_VIDEO_OPACITY);
-  applyInteractionState();
+  const v   = document.getElementById('video');
+  const cam = document.getElementById('cameraLayer');
   if (editProjectionMode) {
-    // Show handles immediately
+    // Force camera visible at high opacity so user can align the grid
+    if (cam) cam.classList.remove('hidden');
+    if (v)   v.style.opacity = String(EDIT_VIDEO_OPACITY);
     drawProjection();
+  } else {
+    // Restore camera visibility based on current view/game mode
+    if (cam) cam.classList.toggle('hidden', viewMode);
+    if (v)   v.style.opacity = String(DEFAULT_VIDEO_OPACITY);
   }
+  applyInteractionState();
 }
 
 function applyInteractionState() {
@@ -5113,6 +5614,10 @@ new ResizeObserver(function(){
 startCamera();
 
 window.addEventListener('DOMContentLoaded', function() {
+  // Init tracker roles UI (P1=red, P2=green, Slider=purple by default)
+  updateTrackerRolesUI();
+  rebuildChips();
+
   if (SHOW_ONBOARDING) {
     requestAnimationFrame(function() {
       startOnboarding();
@@ -5124,7 +5629,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Force set default mode (VIEW mode) and sync UI
     viewMode = false;
     toggleViewMode();
-    applyMode(); 
+    applyMode();
     if (SHOW_ONBOARDING && onboardingActive) syncOnboardingStep();
   });
 });
