@@ -1019,6 +1019,41 @@
         width: calc(100vw - 24px);
       }
     }
+    @media (max-width: 599px) {
+      #menuBtn, #docsBtn { display: none; }
+      #projZone {
+        grid-template-columns: 1fr;
+        grid-template-rows: 96px 1fr 1fr 60px;
+      }
+      #mtaTopRail {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+      #p1Panel {
+        display: none !important;
+      }
+      #p2Panel {
+        grid-row: 3;
+        grid-column: 1;
+        border-left: none;
+        border-top: 4px solid #3a3d42;
+        box-shadow: inset 0 8px 15px rgba(0,0,0,0.08), inset 0 -4px 8px rgba(255,255,255,0.3);
+        padding: 12px 10px;
+        gap: 8px;
+        min-height: 0;
+      }
+      #noiseLegend {
+        grid-area: 4 / 1 / 5 / 2;
+      }
+      #noiseLegend .mta-side-sign {
+        display: none;
+      }
+      .mta-side-sign.player-sign {
+        margin-bottom: 8px;
+      }
+      .move-log {
+        max-height: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3408,19 +3443,21 @@ function drawProjection() {
 
   pc.textBaseline = 'alphabetic';
 
-  // Grid layout — leave room for MTA top rail (96px), bottom legend (60px) and side panels (min 134px)
-  const PANEL_MIN = 134;
+  // Grid layout — on mobile: full width, map occupies top half. Desktop: side panels.
+  const isMobile  = cw <= 599;
+  const PANEL_MIN = isMobile ? 0 : 134;
   const TOP_H     = 96;  // Matches CSS grid-template-rows
   const LEGEND_H  = 60;  // Matches CSS grid-template-rows
   const pad       = 12;
-  
+
   const avW      = cw - pad * 2 - PANEL_MIN * 2;
-  const avH      = ch - TOP_H - LEGEND_H - pad;
+  const mapAreaH = isMobile ? (ch - TOP_H - LEGEND_H) / 2 : (ch - TOP_H - LEGEND_H);
+  const avH      = mapAreaH - pad;
   const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
   const gridW    = COLS * cellSize;
   const gridH    = ROWS * cellSize;
   const gridX    = Math.round((cw - gridW) / 2);
-  const gridY    = TOP_H + Math.round((avH - gridH) / 2); // Center vertically in Row 2
+  const gridY    = TOP_H + Math.round((avH - gridH) / 2); // Center vertically in map area
 
   // Sync window frame and side panels via CSS variables
   if (zone) {
@@ -3428,7 +3465,7 @@ function drawProjection() {
     zone.style.setProperty('--grid-y', gridY + 'px');
     zone.style.setProperty('--grid-w', gridW + 'px');
     zone.style.setProperty('--grid-h', gridH + 'px');
-    zone.style.setProperty('--panel-w', (gridX - 14) + 'px');
+    zone.style.setProperty('--panel-w', isMobile ? '0px' : (gridX - 14) + 'px');
   }
 
   // When projection edit is on, fade map so camera is easier to align against.
@@ -4243,6 +4280,8 @@ document.getElementById('clockWidget').addEventListener('click', function() {
 });
 
 function toggleViewMode() {
+  // Game mode is disabled on mobile — block switching away from view mode.
+  if (viewMode && window.innerWidth <= 599) return;
   viewMode = !viewMode;
   const sw   = document.getElementById('viewSwitch');
   const lblG = document.getElementById('modeLabelGame');
@@ -4309,6 +4348,11 @@ function toggleViewMode() {
 function ensureViewModeForOnboarding() {
   if (!viewMode) toggleViewMode();
 }
+
+// On mobile (<600px), always force view mode — game mode is disabled.
+window.addEventListener('resize', function() {
+  if (window.innerWidth <= 599 && !viewMode) toggleViewMode();
+});
 
 const ONBOARDING_STEPS = [
   {
@@ -4556,18 +4600,19 @@ function getProjGridLayout() {
   const zone = document.getElementById('projZone');
   const cw   = zone.clientWidth  || 800;
   const ch   = zone.clientHeight || 500;
-  const timeFontSize = Math.min(52, Math.max(22, Math.round(ch * 0.11)));
-  const clockR2  = Math.round(timeFontSize * 0.72);
-  const PANEL_W2 = 134;
-  const pad      = 12;
-  const gridTop  = 10 + clockR2 * 2 + Math.max(8, Math.round(clockR2 * 0.52)) + 14;
-  const avW      = cw - pad * 2 - PANEL_W2 * 2;
-  const avH      = ch - gridTop - pad;
-  const cellSize = Math.floor(Math.min(avW / COLS, avH / ROWS));
-  const gridW    = COLS * cellSize;
-  const gridH    = ROWS * cellSize;
-  const gridX    = Math.round((cw - gridW) / 2);
-  const gridY    = gridTop;
+  const isMobile2  = cw <= 599;
+  const PANEL_W2   = isMobile2 ? 0 : 134;
+  const TOP_H2     = 96;
+  const LEGEND_H2  = 60;
+  const pad        = 12;
+  const avW        = cw - pad * 2 - PANEL_W2 * 2;
+  const mapAreaH2  = isMobile2 ? (ch - TOP_H2 - LEGEND_H2) / 2 : (ch - TOP_H2 - LEGEND_H2);
+  const avH        = mapAreaH2 - pad;
+  const cellSize   = Math.floor(Math.min(avW / COLS, avH / ROWS));
+  const gridW      = COLS * cellSize;
+  const gridH      = ROWS * cellSize;
+  const gridX      = Math.round((cw - gridW) / 2);
+  const gridY      = TOP_H2 + Math.round((avH - gridH) / 2);
   return { gridX: gridX, gridY: gridY, gridW: gridW, gridH: gridH, cellSize: cellSize };
 }
 
